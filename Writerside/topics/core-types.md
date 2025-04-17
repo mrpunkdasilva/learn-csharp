@@ -353,7 +353,7 @@ public class TypeExercises
 
 ## [SYSTEM://DESAFIOS_AVANÇADOS] 🎯
 
-```csharp
+```c#
 public class DesafiosAvancados
 {
     // Desafio 1: Sistema de Tipos Genérico
