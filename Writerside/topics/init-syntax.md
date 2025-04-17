@@ -20,170 +20,319 @@
 ### 📝 Anatomia de um Programa
 
 ```csharp
-// 1. Importações
+// 1. Importações (using directives)
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
-// 2. Namespace
+// 2. Namespace (organização lógica do código)
 namespace MatrixSyntax
 {
-    // 3. Classe
-    class Program
+    // 3. Classe (blueprint para objetos)
+    public class Program
     {
-        // 4. Método Principal
+        // 4. Método Principal (ponto de entrada)
         static void Main(string[] args)
         {
-            // 5. Instruções
+            // 5. Instruções (comandos executáveis)
             Console.WriteLine("Hello, Matrix!");
         }
     }
 }
 ```
 
-## [SYSTEM://REGRAS_FUNDAMENTAIS] 📋
+## [SYSTEM://TIPOS_DADOS] 💾
 
-```ascii
-╔════════════════════════════════════════════════════╗
-║ REGRA              EXEMPLO                         ║
-║ ════════════════════════════════════════════════   ║
-║ Case-Sensitive     count ≠ Count                   ║
-║ Ponto-e-vírgula    cada instrução;                ║
-║ Chaves            { delimita blocos }             ║
-║ Identação         4 espaços ou 1 tab              ║
-╚════════════════════════════════════════════════════╝
-```
-
-## [SYSTEM://CONVENÇÕES] 🎯
-
-### 📌 Nomenclatura
+### 🔢 Tipos Numéricos
 
 ```csharp
-// PascalCase para classes e métodos
-public class UserProfile
+// Inteiros
+byte smallNumber = 255;        // 0 a 255
+short mediumNumber = 32767;    // -32,768 a 32,767
+int standardNumber = 2147483647; // -2.1B a 2.1B
+long bigNumber = 9223372036854775807L; // -9.2Q a 9.2Q
+
+// Ponto Flutuante
+float precisionNumber = 3.14f;  // 7 dígitos de precisão
+double highPrecision = 3.14159265359; // 15-17 dígitos
+decimal moneyValue = 1234.56m;  // 28-29 dígitos
+```
+
+### 📝 Tipos de Texto
+
+```csharp
+// Caracteres
+char singleLetter = 'A';       // Um único caractere Unicode
+string text = "Matrix";        // Sequência de caracteres
+string multiLine = @"
+    Este é um texto
+    com múltiplas linhas
+    usando @ (verbatim string)
+";
+string interpolated = $"O valor é {standardNumber}"; // String interpolation
+```
+
+### ⚡ Tipos Lógicos
+
+```csharp
+bool isConnected = true;
+bool hasAccess = false;
+```
+
+## [SYSTEM://OPERADORES] 🔧
+
+### 📊 Operadores Aritméticos
+
+```csharp
+int a = 10, b = 3;
+
+int soma = a + b;        // 13
+int subtracao = a - b;   // 7
+int multiplicacao = a * b; // 30
+int divisao = a / b;     // 3
+int modulo = a % b;      // 1
+
+// Incremento/Decremento
+int i = 0;
+i++;    // Pós-incremento
+++i;    // Pré-incremento
+i--;    // Pós-decremento
+--i;    // Pré-decremento
+```
+
+### 🔍 Operadores de Comparação
+
+```csharp
+bool igual = (a == b);           // false
+bool diferente = (a != b);       // true
+bool maior = (a > b);            // true
+bool menor = (a < b);            // false
+bool maiorOuIgual = (a >= b);    // true
+bool menorOuIgual = (a <= b);    // false
+```
+
+### 🔄 Operadores Lógicos
+
+```csharp
+bool x = true, y = false;
+
+bool and = x && y;    // false (E lógico)
+bool or = x || y;     // true (OU lógico)
+bool not = !x;        // false (NÃO lógico)
+```
+
+## [SYSTEM://ESTRUTURAS_CONTROLE] 🎮
+
+### 🔀 Condicionais
+
+```csharp
+// If-Else tradicional
+if (isConnected)
 {
-    public void SaveData() { }
+    Console.WriteLine("Conectado à Matrix");
 }
-
-// camelCase para variáveis e parâmetros
-string userName;
-int userAge;
-
-// MAIÚSCULAS para constantes
-const int MAX_SIZE = 100;
-
-// _underline para campos privados
-private string _password;
-```
-
-## [SYSTEM://COMENTÁRIOS] 💭
-
-```csharp
-// Comentário de linha única
-
-/* Comentário
-   de múltiplas
-   linhas */
-
-/// <summary>
-/// Comentário de documentação XML
-/// </summary>
-public class DocumentedClass { }
-```
-
-## [SYSTEM://BLOCOS_CÓDIGO] 🧊
-
-### 🔄 Estruturas de Controle
-
-```csharp
-// If-Else
-if (condition)
+else if (hasAccess)
 {
-    // código
+    Console.WriteLine("Tentando conectar...");
 }
 else
 {
-    // código
+    Console.WriteLine("Acesso negado");
 }
 
-// Switch
-switch (value)
+// Operador Ternário
+string status = isConnected ? "Online" : "Offline";
+
+// Switch Expression (C# 8.0+)
+string message = status switch
 {
-    case 1:
-        // código
-        break;
-    default:
-        // código
-        break;
-}
+    "Online" => "Conexão estabelecida",
+    "Offline" => "Conexão perdida",
+    _ => "Status desconhecido"
+};
+```
 
-// Loops
+### 🔁 Loops
+
+```csharp
+// For tradicional
 for (int i = 0; i < 10; i++)
 {
-    // código
+    Console.WriteLine($"Iteração {i}");
 }
 
-while (condition)
+// Foreach (para coleções)
+string[] codes = { "Alpha", "Beta", "Gamma" };
+foreach (string code in codes)
 {
-    // código
+    Console.WriteLine(code);
+}
+
+// While (pré-condição)
+int count = 0;
+while (count < 5)
+{
+    Console.WriteLine($"Contagem: {count}");
+    count++;
+}
+
+// Do-While (pós-condição)
+do
+{
+    Console.WriteLine("Executado pelo menos uma vez");
+} while (false);
+```
+
+## [SYSTEM://MÉTODOS] 🛠️
+
+### 📋 Declaração e Uso
+
+```csharp
+public class MatrixOperations
+{
+    // Método simples
+    public void ShowMessage()
+    {
+        Console.WriteLine("Mensagem da Matrix");
+    }
+
+    // Método com parâmetros
+    public int Add(int x, int y)
+    {
+        return x + y;
+    }
+
+    // Método com parâmetros opcionais
+    public string FormatCode(string code, string prefix = "MTX")
+    {
+        return $"{prefix}-{code}";
+    }
+
+    // Método com parâmetros de saída
+    public void DivideNumbers(int x, int y, out int result, out int remainder)
+    {
+        result = x / y;
+        remainder = x % y;
+    }
+
+    // Método com params
+    public double Calculate(params double[] numbers)
+    {
+        return numbers.Sum();
+    }
 }
 ```
 
 ## [SYSTEM://BOAS_PRÁTICAS] 💡
 
-```ascii
-╔════════════════════════════════════════════════════╗
-║ [!] DIRETRIZES DE CÓDIGO                          ║
-║     ✓ Use nomes significativos                    ║
-║     ✓ Mantenha métodos pequenos                   ║
-║     ✓ Uma instrução por linha                     ║
-║     ✓ Comente apenas quando necessário            ║
-║     ✓ Mantenha consistência no estilo             ║
-╚════════════════════════════════════════════════════╝
-```
-
-## [SYSTEM://ERROS_COMUNS] ⚠️
+### 📌 Convenções de Código
 
 ```ascii
 ╔════════════════════════════════════════════════════╗
-║ ERRO               CORREÇÃO                        ║
-║ ════════════════════════════════════════════════   ║
-║ Falta ;           Adicione ao final               ║
-║ Chaves não       Verifique abertura/fechamento    ║
-║ pareadas                                          ║
-║ Case errado      Verifique maiúsculas/minúsculas ║
-║ Identação        Alinhe corretamente             ║
+║ ELEMENTO          CONVENÇÃO         EXEMPLO        ║
+║ ═══════════════════════════════════════════════    ║
+║ Interfaces        Prefixo I        IMatrix        ║
+║ Classes           PascalCase       MatrixHandler  ║
+║ Métodos           PascalCase       ProcessData    ║
+║ Variáveis        camelCase        matrixCode     ║
+║ Constantes       MAIÚSCULAS       MAX_VALUE      ║
+║ Parâmetros       camelCase        inputData      ║
 ╚════════════════════════════════════════════════════╝
 ```
 
-## [ARIA://EXERCÍCIOS] 🏋️
+### 🎯 Práticas Recomendadas
 
-1. Identifique e corrija erros de sintaxe:
 ```csharp
-class program
+// ✅ BOM: Nomes descritivos
+public class UserAuthentication
 {
-    static void main()
+    private readonly string _username;
+    
+    public bool ValidateCredentials(string password)
     {
-        console.writeline("Error prone code")
+        // Implementação
+    }
+}
+
+// ❌ RUIM: Nomes pouco descritivos
+public class UA
+{
+    private readonly string u;
+    
+    public bool vc(string p)
+    {
+        // Implementação
     }
 }
 ```
 
-2. Aplique convenções de nomenclatura:
+## [SYSTEM://EXERCÍCIOS_AVANÇADOS] 🏋️
+
+### 🎯 Desafio 1: Refatoração
+
 ```csharp
-class user_data
+// Refatore este código aplicando as convenções corretas
+class data_processor
 {
-    private string Username;
-    public void save_user() { }
+    private int MAX;
+    public string CurrentStatus;
+    
+    public void Process_data(string Data)
+    {
+        // Implementação
+    }
+}
+```
+
+### 🎯 Desafio 2: Estruturas de Controle
+
+```csharp
+// Implemente diferentes maneiras de resolver este problema
+public class MatrixChallenge
+{
+    public string ClassifyNumber(int number)
+    {
+        // Retorne "Positivo", "Negativo" ou "Zero"
+        // Use: if-else, switch e operador ternário
+    }
+}
+```
+
+### 🎯 Desafio 3: Métodos
+
+```csharp
+// Crie uma classe com diferentes tipos de métodos
+public class MatrixCalculator
+{
+    // TODO: Implemente métodos com:
+    // 1. Parâmetros opcionais
+    // 2. Parâmetros de saída (out)
+    // 3. Sobrecarga de métodos
+    // 4. Params
 }
 ```
 
 ## [ARIA://PRÓXIMOS_PASSOS] 🎯
 
-> "Excelente progresso! Com o domínio da sintaxe básica, você está pronto para avançar para conceitos mais complexos. Mantenha essas regras em mente enquanto exploramos as próximas camadas da Matrix."
+```ascii
+╔════════════════════════════════════════════════════╗
+║ [!] MÓDULOS RECOMENDADOS                          ║
+║     → Tipos Avançados                             ║
+║     → Programação Orientada a Objetos             ║
+║     → Manipulação de Exceções                     ║
+║     → LINQ e Coleções                             ║
+╚════════════════════════════════════════════════════╝
+```
+
+## [SYSTEM://RECURSOS_ADICIONAIS] 📚
 
 ```ascii
 ╔════════════════════════════════════════════════════╗
-║ [!] SINTAXE BÁSICA ASSIMILADA                     ║
-║     CARREGANDO PRÓXIMO MÓDULO: TIPOS AVANÇADOS    ║
+║ [!] LINKS ÚTEIS                                   ║
+║     → Documentação Oficial C#                     ║
+║     → Guia de Estilo Microsoft                    ║
+║     → Exercícios Práticos                         ║
+║     → Fórum da Comunidade                         ║
 ╚════════════════════════════════════════════════════╝
 ```
 

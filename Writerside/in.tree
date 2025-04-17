@@ -3,7 +3,7 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
 
 <instance-profile id="in" 
-                 name="Learn C#" 
+                 name="C# Matrix: Neural Programming Guide" 
                  start-page="matrix-welcome.md">
 
     <toc-element topic="matrix-welcome.md"/>
