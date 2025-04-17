@@ -98,9 +98,9 @@ dotnet restore mind
 
 ## [SYSTEM://CONTACT] 📡
 
-- **Neural Link**: [@seu-twitter](https://twitter.com/seu-usuario)
-- **Matrix Mail**: seu-email@exemplo.com
-- **Digital HQ**: [seu-site.com](https://seu-site.com)
+- **Neural Link**: [@mrpunksama](https://twitter.com/mrpunksama)
+- **Matrix Mail**: gustavojs417@gmail.com
+- **Digital HQ**: [punkdomus.com](https://seu-site.com)
 
 ---
 
