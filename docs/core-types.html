@@ -1,0 +1,309 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#E8488B"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-04-17T01:42:10.29486122"><title>[SYSTEM://TYPES] 🧬 | C# Matrix: Neural Programming Guide</title><script type="application/json" id="virtual-toc-data">[{"id":"aria-mensagem","level":0,"title":"[ARIA://MENSAGEM] 📡","anchor":"#aria-mensagem"},{"id":"system-overview","level":0,"title":"[SYSTEM://OVERVIEW] 🌐","anchor":"#system-overview"},{"id":"system-tipos-valor","level":0,"title":"[SYSTEM://TIPOS_VALOR] 💎","anchor":"#system-tipos-valor"},{"id":"system-tipos-refer-ncia","level":0,"title":"[SYSTEM://TIPOS_REFERÊNCIA] 🔗","anchor":"#system-tipos-refer-ncia"},{"id":"system-convers-es","level":0,"title":"[SYSTEM://CONVERSÕES] 🔄","anchor":"#system-convers-es"},{"id":"system-nullable-types","level":0,"title":"[SYSTEM://NULLABLE_TYPES] ⚠️","anchor":"#system-nullable-types"},{"id":"system-tipos-avan-ados","level":0,"title":"[SYSTEM://TIPOS_AVANÇADOS] 🔬","anchor":"#system-tipos-avan-ados"},{"id":"aria-boas-pr-ticas","level":0,"title":"[ARIA://BOAS_PRÁTICAS] 💡","anchor":"#aria-boas-pr-ticas"},{"id":"system-exerc-cios","level":0,"title":"[SYSTEM://EXERCÍCIOS] 🏋️","anchor":"#system-exerc-cios"},{"id":"system-desafios-avan-ados","level":0,"title":"[SYSTEM://DESAFIOS_AVANÇADOS] 🎯","anchor":"#system-desafios-avan-ados"},{"id":"system-pr-ximos-passos","level":0,"title":"[SYSTEM://PRÓXIMOS_PASSOS] 🚀","anchor":"#system-pr-ximos-passos"},{"id":"aria-aviso-final","level":0,"title":"[ARIA://AVISO_FINAL] ⚠️","anchor":"#aria-aviso-final"},{"id":"system-recursos-adicionais","level":0,"title":"[SYSTEM://RECURSOS_ADICIONAIS] 📚","anchor":"#system-recursos-adicionais"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><link rel="icon" type="image/svg" sizes="16x16" href="images/logo-primary.svg"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="[SYSTEM://TYPES] 🧬 | C# Matrix: Neural Programming Guide"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="C# Matrix: Neural Programming Guide Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/core-types.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="[SYSTEM://TYPES] 🧬 | C# Matrix: Neural Programming Guide"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/core-types.html#webpage",
+    "url": "writerside-documentation/core-types.html",
+    "name": "[SYSTEM://TYPES] 🧬 | C# Matrix: Neural Programming Guide",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "C# Matrix: Neural Programming Guide Help"
+}</script><!-- End Schema.org --></head><body data-id="core-types" data-main-title="[SYSTEM://TYPES] 🧬" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="domus-core.md|[SYSTEM://CORE_MATRIX] 🧬///core-fundamentals.md|[SYSTEM://FUNDAMENTALS] 🧬"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>C# Matrix: Neural Programming Guide  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="core-types" id="core-types.md">[SYSTEM://TYPES] 🧬</h1><div class="code-block" data-lang="none">
+╔══════════════════════════════════════════════════════════════════╗
+║ ████████╗██╗   ██╗██████╗ ███████╗███████╗                      ║
+║ ╚══██╔══╝╚██╗ ██╔╝██╔══██╗██╔════╝██╔════╝                      ║
+║    ██║    ╚████╔╝ ██████╔╝█████╗  ███████╗                      ║
+║    ██║     ╚██╔╝  ██╔═══╝ ██╔══╝  ╚════██║                      ║
+║    ██║      ██║   ██║     ███████╗███████║                      ║
+║    ╚═╝      ╚═╝   ╚═╝     ╚══════╝╚══════╝                      ║
+╚══════════════════════════════════════════════════════════════════╝
+</div><section class="chapter"><h2 id="aria-mensagem" data-toc="aria-mensagem">[ARIA://MENSAGEM] 📡</h2><aside class="prompt" data-type="tip" data-title="" id="mui0aa_18"><p id="mui0aa_19">&quot;Desenvolvedor, voc&ecirc; est&aacute; prestes a mergulhar no sistema de tipos da Matrix. Cada tipo &eacute; um bloco fundamental que define como os dados s&atilde;o estruturados e manipulados no c&oacute;digo. Compreenda-os profundamente.&quot;</p></aside></section><section class="chapter"><h2 id="system-overview" data-toc="system-overview">[SYSTEM://OVERVIEW] 🌐</h2><div class="code-block" data-lang="none">
+╔════════════════════════════════════════════════════╗
+║ MÓDULO: TIPOS                                     ║
+║ STATUS: FUNDAMENTAL                               ║
+║ PRIORIDADE: CRÍTICA                              ║
+║ CLEARANCE: NÍVEL-1                               ║
+╚════════════════════════════════════════════════════╝
+</div></section><section class="chapter"><h2 id="system-tipos-valor" data-toc="system-tipos-valor">[SYSTEM://TIPOS_VALOR] 💎</h2><section class="chapter"><h3 id="inteiros-simples" data-toc="inteiros-simples">Inteiros Simples</h3><div class="code-block" data-lang="none">
+// Tipos inteiros com sinal
+sbyte byteComSinal = -128;    // 8-bit  [-128 até 127]
+byte byteSemSinal = 255;      // 8-bit  [0 até 255]
+short inteirosCurtos = -32768;// 16-bit [-32,768 até 32,767]
+ushort curtosSemSinal = 65535;// 16-bit [0 até 65,535]
+int inteiros = 2147483647;    // 32-bit [-2,147,483,648 até 2,147,483,647]
+uint intSemSinal = 4294967295;// 32-bit [0 até 4,294,967,295]
+long longos = 9223372036854775807L; // 64-bit
+ulong longosSemSinal = 18446744073709551615UL; // 64-bit
+
+// Literais numéricos com separadores
+int milhao = 1_000_000;
+long bilhao = 1_000_000_000L;
+</div></section><section class="chapter"><h3 id="ponto-flutuante" data-toc="ponto-flutuante">Ponto Flutuante</h3><div class="code-block" data-lang="none">
+// Tipos de ponto flutuante
+float precisaoSimples = 3.14159f;   // ±1.5 × 10^−45 até ±3.4 × 10^38
+double precisaoDupla = 3.14159265359; // ±5.0 × 10^−324 até ±1.7 × 10^308
+decimal precisaoDecimal = 3.14159265359m; // 28-29 dígitos significativos
+
+// Casos especiais
+double infinito = double.PositiveInfinity;
+double naoNumero = double.NaN;
+float minimo = float.MinValue;
+</div></section><section class="chapter"><h3 id="outros-tipos-valor" data-toc="outros-tipos-valor">Outros Tipos Valor</h3><div class="code-block" data-lang="none">
+// Booleanos
+bool booleano = true;         // true ou false
+bool padrao = default(bool);  // false
+
+// Caracteres
+char caractere = 'A';         // 16-bit Unicode
+char unicode = '\u0041';      // Unicode hexadecimal
+char escape = '\n';           // Caractere de escape
+
+// Enumerações
+enum Status
+{
+    Offline = 0,
+    Online = 1,
+    Erro = 2
+}
+</div></section><section class="chapter"><h3 id="structs" data-toc="structs">Structs</h3><div class="code-block" data-lang="none">
+public struct Ponto
+{
+    public int X { get; set; }
+    public int Y { get; set; }
+    
+    public Ponto(int x, int y)
+    {
+        X = x;
+        Y = y;
+    }
+    
+    public double CalcularDistancia(Ponto outro)
+    {
+        int deltaX = X - outro.X;
+        int deltaY = Y - outro.Y;
+        return Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
+    }
+}
+</div></section></section><section class="chapter"><h2 id="system-tipos-refer-ncia" data-toc="system-tipos-refer-ncia">[SYSTEM://TIPOS_REFER&Ecirc;NCIA] 🔗</h2><section class="chapter"><h3 id="string" data-toc="string">String</h3><div class="code-block" data-lang="none">
+// Declarações básicas
+string texto = &quot;Matrix&quot;;
+string nula = null;
+string vazia = string.Empty;
+
+// Strings multilinhas
+string multiLinha = @&quot;Neo
+Trinity
+Morpheus&quot;;
+
+// Interpolação
+string nome = &quot;Smith&quot;;
+string interpolado = $&quot;Agente {nome}&quot;;
+string formatado = string.Format(&quot;Agente {0}&quot;, nome);
+
+// Operações comuns
+string concatenada = &quot;Hello&quot; + &quot; &quot; + &quot;World&quot;;
+string subString = &quot;Matrix&quot;[0..3];  // &quot;Mat&quot;
+string maiuscula = &quot;neo&quot;.ToUpper(); // &quot;NEO&quot;
+</div></section><section class="chapter"><h3 id="arrays" data-toc="arrays">Arrays</h3><div class="code-block" data-lang="none">
+// Arrays unidimensionais
+int[] vetor = new int[5];
+int[] inicializado = new int[] { 1, 2, 3, 4, 5 };
+int[] simplificado = { 1, 2, 3, 4, 5 };
+
+// Arrays multidimensionais
+int[,] matriz = new int[3,3];
+int[,] matrizInicializada = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
+};
+
+// Arrays irregulares (jagged)
+int[][] irregular = new int[3][];
+irregular[0] = new int[] { 1, 2 };
+irregular[1] = new int[] { 3, 4, 5 };
+irregular[2] = new int[] { 6 };
+</div></section><section class="chapter"><h3 id="classes" data-toc="classes">Classes</h3><div class="code-block" data-lang="none">
+// Classe básica
+public class Agente
+{
+    // Campos
+    private string _codinome;
+    private int _nivel;
+    
+    // Propriedades
+    public string Codinome 
+    { 
+        get =&gt; _codinome;
+        set =&gt; _codinome = value ?? &quot;Desconhecido&quot;;
+    }
+    
+    public int Nivel
+    {
+        get =&gt; _nivel;
+        set =&gt; _nivel = Math.Max(0, value);
+    }
+    
+    // Construtores
+    public Agente() : this(&quot;Smith&quot;, 1) { }
+    
+    public Agente(string codinome, int nivel)
+    {
+        Codinome = codinome;
+        Nivel = nivel;
+    }
+}
+</div></section><section class="chapter"><h3 id="object" data-toc="object">Object</h3><div class="code-block" data-lang="none">
+// Tipo base de todos os tipos
+object obj1 = 42;              // Boxing de int
+object obj2 = &quot;Matrix&quot;;        // Referência de string
+object obj3 = new Agente();    // Referência de objeto
+
+// Métodos comuns
+string str = obj1.ToString();  // Conversão para string
+Type tipo = obj2.GetType();    // Obtém o tipo
+bool igual = obj1.Equals(42);  // Comparação
+</div></section><section class="chapter"><h3 id="dynamic" data-toc="dynamic">Dynamic</h3><div class="code-block" data-lang="none">
+// Tipo dinâmico (resolução em tempo de execução)
+dynamic valor = 100;
+valor = &quot;Mudou para string&quot;;  // Permitido
+valor = new Agente();        // Permitido
+
+// Operações dinâmicas
+dynamic resultado = valor.Codinome;  // Resolvido em runtime
+</div></section></section><section class="chapter"><h2 id="system-convers-es" data-toc="system-convers-es">[SYSTEM://CONVERS&Otilde;ES] 🔄</h2><section class="chapter"><h3 id="convers-es-impl-citas" data-toc="convers-es-impl-citas">Convers&otilde;es Impl&iacute;citas</h3><div class="code-block" data-lang="none">
+int numero = 42;
+long numeroLongo = numero;      // int -&gt; long
+float flutuante = numero;       // int -&gt; float
+double duplo = flutuante;       // float -&gt; double
+
+// Upcasting
+Agente agente = new Agente();
+object obj = agente;            // Agente -&gt; object
+</div></section><section class="chapter"><h3 id="convers-es-expl-citas" data-toc="convers-es-expl-citas">Convers&otilde;es Expl&iacute;citas</h3><div class="code-block" data-lang="none">
+double d = 3.14;
+int i = (int)d;                // Trunca para 3
+
+// Métodos de conversão
+string numeroTexto = &quot;42&quot;;
+int convertido = Convert.ToInt32(numeroTexto);
+int parseado = int.Parse(numeroTexto);
+bool sucesso = int.TryParse(numeroTexto, out int resultado);
+</div></section></section><section class="chapter"><h2 id="system-nullable-types" data-toc="system-nullable-types">[SYSTEM://NULLABLE_TYPES] ⚠️</h2><div class="code-block" data-lang="none">
+// Declaração de nullable types
+int? numeroNulavel = null;
+DateTime? dataNulavel = null;
+bool? booleanoNulavel = null;
+
+// Operador de coalescência nula
+int valor = numeroNulavel ?? 0;
+string texto = textoNulavel ?? string.Empty;
+
+// Operador de coalescência nula com atribuição
+string mensagem = null;
+mensagem ??= &quot;Mensagem padrão&quot;;
+
+// Operador de acesso condicional
+int? comprimento = textoNulavel?.Length;
+
+// Verificações
+if (numeroNulavel.HasValue)
+{
+    Console.WriteLine(numeroNulavel.Value);
+}
+
+// Nullable em structs
+public struct ConfiguracaoNulavel
+{
+    public int? Timeout { get; set; }
+    public string? Servidor { get; set; }
+    public DateTime? UltimaAtualizacao { get; set; }
+}
+</div></section><section class="chapter"><h2 id="system-tipos-avan-ados" data-toc="system-tipos-avan-ados">[SYSTEM://TIPOS_AVAN&Ccedil;ADOS] 🔬</h2><section class="chapter"><h3 id="tuplas" data-toc="tuplas">Tuplas</h3><div class="code-block" data-lang="none">
+// Declaração de tuplas
+(string, int) tupla = (&quot;Neo&quot;, 1);
+var tupla2 = (Nome: &quot;Trinity&quot;, Nivel: 2);
+
+// Desconstrução
+var (nome, nivel) = tupla;
+(string n, int l) = tupla2;
+
+// Retorno múltiplo
+(int Soma, int Produto) CalcularOperacoes(int a, int b)
+{
+    return (a + b, a * b);
+}
+</div></section></section><section class="chapter"><h2 id="aria-boas-pr-ticas" data-toc="aria-boas-pr-ticas">[ARIA://BOAS_PR&Aacute;TICAS] 💡</h2><aside class="prompt" data-type="tip" data-title="" id="mui0aa_53"><p id="mui0aa_55">&quot;Siga estas diretrizes ao trabalhar com tipos:&quot;</p></aside><ol class="list _decimal" id="mui0aa_54" type="1"><li class="list__item" id="mui0aa_56"><p id="mui0aa_61">Use o tipo mais apropriado para seus dados</p><ul class="list _bullet" id="mui0aa_62"><li class="list__item" id="mui0aa_63"><p id="mui0aa_66">Use <code class="code" id="mui0aa_67">int</code> para n&uacute;meros inteiros na maioria dos casos</p></li><li class="list__item" id="mui0aa_64"><p id="mui0aa_68">Use <code class="code" id="mui0aa_69">decimal</code> para c&aacute;lculos financeiros</p></li><li class="list__item" id="mui0aa_65"><p id="mui0aa_70">Use <code class="code" id="mui0aa_71">double</code> para c&aacute;lculos cient&iacute;ficos</p></li></ul></li><li class="list__item" id="mui0aa_57"><p id="mui0aa_72">Prefira tipos n&atilde;o-nul&aacute;veis quando poss&iacute;vel</p><ul class="list _bullet" id="mui0aa_73"><li class="list__item" id="mui0aa_74"><p id="mui0aa_76">Evite <code class="code" id="mui0aa_77">null</code> a menos que seja realmente necess&aacute;rio</p></li><li class="list__item" id="mui0aa_75"><p id="mui0aa_78">Use o operador <code class="code" id="mui0aa_79">??</code> para fornecer valores padr&atilde;o</p></li></ul></li><li class="list__item" id="mui0aa_58"><p id="mui0aa_80">Seja expl&iacute;cito em convers&otilde;es n&atilde;o seguras</p><ul class="list _bullet" id="mui0aa_81"><li class="list__item" id="mui0aa_82"><p id="mui0aa_84">Use casting expl&iacute;cito quando houver possibilidade de perda de dados</p></li><li class="list__item" id="mui0aa_83"><p id="mui0aa_85">Prefira m&eacute;todos <code class="code" id="mui0aa_86">TryParse</code> sobre <code class="code" id="mui0aa_87">Parse</code></p></li></ul></li><li class="list__item" id="mui0aa_59"><p id="mui0aa_88">Utilize checagem de nulidade</p><ul class="list _bullet" id="mui0aa_89"><li class="list__item" id="mui0aa_90"><p id="mui0aa_92">Implemente verifica&ccedil;&otilde;es defensivas</p></li><li class="list__item" id="mui0aa_91"><p id="mui0aa_93">Use o operador <code class="code" id="mui0aa_94">?.</code> para navega&ccedil;&atilde;o segura</p></li></ul></li><li class="list__item" id="mui0aa_60"><p id="mui0aa_95">Considere o tamanho e precis&atilde;o necess&aacute;rios</p><ul class="list _bullet" id="mui0aa_96"><li class="list__item" id="mui0aa_97"><p id="mui0aa_99">Escolha tipos num&eacute;ricos apropriados para a faixa de valores</p></li><li class="list__item" id="mui0aa_98"><p id="mui0aa_100">Considere o impacto na mem&oacute;ria</p></li></ul></li></ol></section><section class="chapter"><h2 id="system-exerc-cios" data-toc="system-exerc-cios">[SYSTEM://EXERC&Iacute;CIOS] 🏋️</h2><div class="code-block" data-lang="none">
+public class TypeExercises
+{
+    // Exercício 1: Conversões Seguras
+    public static int ConversaoSegura(long numero)
+    {
+        // TODO: Implementar conversão segura de long para int
+        throw new NotImplementedException();
+    }
+    
+    // Exercício 2: Manipulação de Nullable Types
+    public static string ProcessarDadoNulavel(int? valor)
+    {
+        // TODO: Retornar &quot;Nulo&quot; se valor for null, ou o dobro do valor como string
+        throw new NotImplementedException();
+    }
+    
+    // Exercício 3: Manipulação de Strings
+    public static (int palavras, int caracteres) AnalisarTexto(string input)
+    {
+        // TODO: Retornar número de palavras e caracteres
+        throw new NotImplementedException();
+    }
+    
+    // Exercício 4: Trabalho com Arrays
+    public static T[] InverterArray&lt;T&gt;(T[] array)
+    {
+        // TODO: Retornar um novo array com elementos na ordem inversa
+        throw new NotImplementedException();
+    }
+    
+    // Exercício 5: Implementação de Struct
+    public struct Complexo
+    {
+        // TODO: Implementar número complexo com operações básicas
+        public double Real { get; }
+        public double Imaginario { get; }
+    }
+}
+</div></section><section class="chapter"><h2 id="system-desafios-avan-ados" data-toc="system-desafios-avan-ados">[SYSTEM://DESAFIOS_AVAN&Ccedil;ADOS] 🎯</h2><div class="code-block" data-lang="none">
+public class DesafiosAvancados
+{
+    // Desafio 1: Sistema de Tipos Genérico
+    public class Matrix&lt;T&gt; where T : struct
+    {
+        // TODO: Implementar matriz genérica com operações matemáticas
+    }
+    
+    // Desafio 2: Conversão Personalizada
+    public class Conversor
+    {
+        // TODO: Implementar sistema de conversão entre tipos customizados
+    }
+    
+    // Desafio 3: Sistema de Tipos Dinâmico
+    public class TipoDinamico
+    {
+        // TODO: Implementar sistema que lida com tipos em tempo de execução
+    }
+}
+</div></section><section class="chapter"><h2 id="system-pr-ximos-passos" data-toc="system-pr-ximos-passos">[SYSTEM://PR&Oacute;XIMOS_PASSOS] 🚀</h2><div class="code-block" data-lang="none">
+╔════════════════════════════════════════════════════╗
+║ CONTINUE SEU TREINAMENTO:                         ║
+║     → Variáveis e Escopo                          ║
+║     → Operadores                                  ║
+║     → Controle de Fluxo                          ║
+║     → Métodos e Parâmetros                       ║
+╚════════════════════════════════════════════════════╝
+</div><aside class="prompt" data-type="tip" data-title="" id="mui0aa_107"><p id="mui0aa_108">[!NOTE] &quot;Lembre-se: na Matrix, tipos s&atilde;o mais que simples containers de dados - s&atilde;o a pr&oacute;pria estrutura da realidade digital.&quot;</p></aside></section><section class="chapter"><h2 id="aria-aviso-final" data-toc="aria-aviso-final">[ARIA://AVISO_FINAL] ⚠️</h2><aside class="prompt" data-type="tip" data-title="" id="mui0aa_110"><p id="mui0aa_111">&quot;O sistema de tipos &eacute; o DNA da Matrix. Domine-o, e voc&ecirc; ter&aacute; o poder de moldar a realidade do c&oacute;digo. Cada tipo tem seu prop&oacute;sito - aprenda a escolher sabiamente. A compreens&atilde;o profunda dos tipos &eacute; a chave para manipular a Matrix com precis&atilde;o e efici&ecirc;ncia.&quot;</p></aside></section><section class="chapter"><h2 id="system-recursos-adicionais" data-toc="system-recursos-adicionais">[SYSTEM://RECURSOS_ADICIONAIS] 📚</h2><ul class="list _bullet" id="mui0aa_113"><li class="list__item" id="mui0aa_116"><p id="mui0aa_119"><a href="https://docs.microsoft.com/dotnet/csharp/language-reference/builtin-types/" id="mui0aa_120" data-external="true" rel="noopener noreferrer" target="_blank">Documenta&ccedil;&atilde;o Oficial C#</a></p></li><li class="list__item" id="mui0aa_117"><p id="mui0aa_121"><a href="https://docs.microsoft.com/dotnet/standard/design-guidelines/choosing-between-class-and-struct" id="mui0aa_122" data-external="true" rel="noopener noreferrer" target="_blank">Guia de Design de Tipos</a></p></li><li class="list__item" id="mui0aa_118"><p id="mui0aa_123"><a href="https://docs.microsoft.com/dotnet/standard/performance/performance-best-practices" id="mui0aa_124" data-external="true" rel="noopener noreferrer" target="_blank">Melhores Pr&aacute;ticas de Performance</a></p></li></ul><aside class="prompt" data-type="tip" data-title="" id="mui0aa_115"><p id="mui0aa_125">[SYSTEM://UPDATE] Last modified: 2025-04-17 | Status: ONLINE | Matrix Stability: 100%</p></aside></section><div class="last-modified">17 abril 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="core-fundamentals.html" class="navigation-links__prev">[SYSTEM://FUNDAMENTALS] 🧬</a><a href="core-variables.html" class="navigation-links__next">[SYSTEM://VARIABLES] 🔮</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

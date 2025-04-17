@@ -1,0 +1,349 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#E8488B"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-04-17T01:42:10.456075861"><title>[SYSTEM://VARIABLES] 🔮 | C# Matrix: Neural Programming Guide</title><script type="application/json" id="virtual-toc-data">[{"id":"aria-mensagem","level":0,"title":"[ARIA://MENSAGEM] 📡","anchor":"#aria-mensagem"},{"id":"system-fundamentos","level":0,"title":"[SYSTEM://FUNDAMENTOS] 🌟","anchor":"#system-fundamentos"},{"id":"system-tipos-de-vari-veis","level":0,"title":"[SYSTEM://TIPOS_DE_VARIÁVEIS] 📊","anchor":"#system-tipos-de-vari-veis"},{"id":"system-modificadores-avan-ados","level":0,"title":"[SYSTEM://MODIFICADORES_AVANÇADOS] ⚡","anchor":"#system-modificadores-avan-ados"},{"id":"system-escopo-e-lifetime","level":0,"title":"[SYSTEM://ESCOPO_E_LIFETIME] ⏳","anchor":"#system-escopo-e-lifetime"},{"id":"system-boas-pr-ticas","level":0,"title":"[SYSTEM://BOAS_PRÁTICAS] 💡","anchor":"#system-boas-pr-ticas"},{"id":"system-padr-es-avan-ados","level":0,"title":"[SYSTEM://PADRÕES_AVANÇADOS] 🎯","anchor":"#system-padr-es-avan-ados"},{"id":"system-exerc-cios","level":0,"title":"[SYSTEM://EXERCÍCIOS] 🏋️","anchor":"#system-exerc-cios"},{"id":"aria-aviso-final","level":0,"title":"[ARIA://AVISO_FINAL] ⚠️","anchor":"#aria-aviso-final"},{"id":"system-recursos-adicionais","level":0,"title":"[SYSTEM://RECURSOS_ADICIONAIS] 📚","anchor":"#system-recursos-adicionais"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><link rel="icon" type="image/svg" sizes="16x16" href="images/logo-primary.svg"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="[SYSTEM://VARIABLES] 🔮 | C# Matrix: Neural Programming Guide"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="C# Matrix: Neural Programming Guide Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/core-variables.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="[SYSTEM://VARIABLES] 🔮 | C# Matrix: Neural Programming Guide"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/core-variables.html#webpage",
+    "url": "writerside-documentation/core-variables.html",
+    "name": "[SYSTEM://VARIABLES] 🔮 | C# Matrix: Neural Programming Guide",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "C# Matrix: Neural Programming Guide Help"
+}</script><!-- End Schema.org --></head><body data-id="core-variables" data-main-title="[SYSTEM://VARIABLES] 🔮" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="domus-core.md|[SYSTEM://CORE_MATRIX] 🧬///core-fundamentals.md|[SYSTEM://FUNDAMENTALS] 🧬"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>C# Matrix: Neural Programming Guide  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="core-variables" id="core-variables.md">[SYSTEM://VARIABLES] 🔮</h1><div class="code-block" data-lang="none">
+╔══════════════════════════════════════════════════════════════════╗
+║ ██╗   ██╗ █████╗ ██████╗ ██╗ █████╗ ██████╗ ██╗     ███████╗███████╗║
+║ ██║   ██║██╔══██╗██╔══██╗██║██╔══██╗██╔══██╗██║     ██╔════╝██╔════╝║
+║ ██║   ██║███████║██████╔╝██║███████║██████╔╝██║     █████╗  ███████╗║
+║ ╚██╗ ██╔╝██╔══██║██╔══██╗██║██╔══██║██╔══██╗██║     ██╔══╝  ╚════██║║
+║  ╚████╔╝ ██║  ██║██║  ██║██║██║  ██║██████╔╝███████╗███████╗███████║║
+║   ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝╚══════╝║
+╚══════════════════════════════════════════════════════════════════╝
+</div><section class="chapter"><h2 id="aria-mensagem" data-toc="aria-mensagem">[ARIA://MENSAGEM] 📡</h2><aside class="prompt" data-type="tip" data-title="" id="z5evzg4_15"><p id="z5evzg4_16">&quot;Desenvolvedor, as vari&aacute;veis s&atilde;o a ess&ecirc;ncia da Matrix. Elas s&atilde;o os cont&ecirc;ineres que armazenam dados, estados e comportamentos. Dominar seu uso &eacute; fundamental para manipular a realidade digital.&quot;</p></aside></section><section class="chapter"><h2 id="system-fundamentos" data-toc="system-fundamentos">[SYSTEM://FUNDAMENTOS] 🌟</h2><section class="chapter"><h3 id="1-anatomia-de-uma-vari-vel" data-toc="1-anatomia-de-uma-vari-vel">1. Anatomia de uma Vari&aacute;vel</h3><div class="code-block" data-lang="none">
+// [modificador] [tipo] [identificador] [operador] [valor];
+private string _codinome = &quot;Neo&quot;;
+</div><section class="chapter"><h4 id="componentes" data-toc="componentes">Componentes:</h4><ul class="list _bullet" id="z5evzg4_22"><li class="list__item" id="z5evzg4_23"><p id="z5evzg4_28"><span class="control" id="z5evzg4_29">Modificador</span>: Define visibilidade e comportamento</p></li><li class="list__item" id="z5evzg4_24"><p id="z5evzg4_30"><span class="control" id="z5evzg4_31">Tipo</span>: Define a natureza do dado</p></li><li class="list__item" id="z5evzg4_25"><p id="z5evzg4_32"><span class="control" id="z5evzg4_33">Identificador</span>: Nome &uacute;nico da vari&aacute;vel</p></li><li class="list__item" id="z5evzg4_26"><p id="z5evzg4_34"><span class="control" id="z5evzg4_35">Operador</span>: Atribui&ccedil;&atilde;o ou inicializa&ccedil;&atilde;o</p></li><li class="list__item" id="z5evzg4_27"><p id="z5evzg4_36"><span class="control" id="z5evzg4_37">Valor</span>: Dado armazenado</p></li></ul></section></section><section class="chapter"><h3 id="2-stack-vs-heap" data-toc="2-stack-vs-heap">2. Stack vs Heap</h3><div class="code-block" data-lang="none">
+╔════════════════════════════════════════════════════╗
+║ STACK                    HEAP                     ║
+║ ─────                    ────                     ║
+║ - Tipos valor           - Tipos referência        ║
+║ - Acesso mais rápido    - Gerenciado pelo GC     ║
+║ - Tamanho fixo          - Tamanho dinâmico       ║
+║ - Liberação automática  - Liberação pelo GC      ║
+╚════════════════════════════════════════════════════╝
+</div></section></section><section class="chapter"><h2 id="system-tipos-de-vari-veis" data-toc="system-tipos-de-vari-veis">[SYSTEM://TIPOS_DE_VARI&Aacute;VEIS] 📊</h2><section class="chapter"><h3 id="1-por-localiza-o" data-toc="1-por-localiza-o">1. Por Localiza&ccedil;&atilde;o</h3><section class="chapter"><h4 id="1-1-vari-veis-locais" data-toc="1-1-vari-veis-locais">1.1 Vari&aacute;veis Locais</h4><div class="code-block" data-lang="none">
+public void MetodoExemplo()
+{
+    int contador = 0;          // Local simples
+    var nome = &quot;Trinity&quot;;      // Local com inferência
+    
+    if (true)
+    {
+        int temp = 42;         // Local de bloco
+        // temp só existe aqui
+    }
+}
+</div></section><section class="chapter"><h4 id="1-2-campos-fields" data-toc="1-2-campos-fields">1.2 Campos (Fields)</h4><div class="code-block" data-lang="none">
+public class AgenteMatrix
+{
+    // Campos de instância
+    private int _nivel;
+    private readonly string _identificador;
+    
+    // Campos estáticos
+    private static int _contadorAgentes;
+    public static readonly DateTime INICIO_MATRIX = DateTime.Now;
+    
+    // Constantes
+    public const string VERSAO = &quot;1.0.0&quot;;
+}
+</div></section><section class="chapter"><h4 id="1-3-par-metros" data-toc="1-3-par-metros">1.3 Par&acirc;metros</h4><div class="code-block" data-lang="none">
+public void ProcessarDados(
+    int nivel,                     // Parâmetro por valor
+    ref string codinome,          // Parâmetro por referência
+    out bool sucesso,             // Parâmetro de saída
+    params string[] habilidades)  // Parâmetro array
+{
+    // Implementação
+}
+</div></section></section><section class="chapter"><h3 id="2-por-tipo-de-dado" data-toc="2-por-tipo-de-dado">2. Por Tipo de Dado</h3><section class="chapter"><h4 id="2-1-tipos-valor" data-toc="2-1-tipos-valor">2.1 Tipos Valor</h4><div class="code-block" data-lang="none">
+public struct DadosAgente
+{
+    // Tipos numéricos
+    byte nivel;            // 0 a 255
+    short ranking;         // -32,768 a 32,767
+    int pontos;           // -2^31 a 2^31-1
+    long identificador;    // -2^63 a 2^63-1
+    
+    // Tipos de ponto flutuante
+    float precisao;       // ±1.5 × 10^−45 a ±3.4 × 10^38
+    double energia;       // ±5.0 × 10^−324 a ±1.7 × 10^308
+    decimal creditos;     // 28-29 dígitos significativos
+    
+    // Outros tipos valor
+    bool ativo;          // true/false
+    char simbolo;        // Caractere Unicode
+    DateTime data;       // Data e hora
+}
+</div></section><section class="chapter"><h4 id="2-2-tipos-refer-ncia" data-toc="2-2-tipos-refer-ncia">2.2 Tipos Refer&ecirc;ncia</h4><div class="code-block" data-lang="none">
+public class SistemaMatrix
+{
+    // Strings
+    string mensagem = &quot;Bem-vindo à Matrix&quot;;
+    
+    // Arrays
+    int[] niveis = new int[10];
+    
+    // Objetos
+    object dados = new object();
+    
+    // Interfaces
+    IAgente agente = new AgenteProxy();
+    
+    // Delegates
+    Action&lt;string&gt; log = Console.WriteLine;
+}
+</div></section></section></section><section class="chapter"><h2 id="system-modificadores-avan-ados" data-toc="system-modificadores-avan-ados">[SYSTEM://MODIFICADORES_AVAN&Ccedil;ADOS] ⚡</h2><section class="chapter"><h3 id="1-modificadores-de-acesso" data-toc="1-modificadores-de-acesso">1. Modificadores de Acesso</h3><div class="code-block" data-lang="none">
+public class ModificadoresExemplo
+{
+    public int AcessoTotal;        // Visível em todo lugar
+    private int AcessoPrivado;     // Só na classe
+    protected int AcessoHeranca;   // Classe e derivadas
+    internal int AcessoAssembly;   // Só no assembly
+    
+    protected internal int AcessoMisto;  // Protected OU internal
+    private protected int AcessoRestrito;  // Protected E internal
+}
+</div></section><section class="chapter"><h3 id="2-modificadores-especiais" data-toc="2-modificadores-especiais">2. Modificadores Especiais</h3><div class="code-block" data-lang="none">
+public class ModificadoresEspeciais
+{
+    // Somente leitura
+    readonly string _versao = &quot;1.0&quot;;
+    
+    // Constante
+    const double PI = 3.14159;
+    
+    // Estático
+    static int _contador;
+    
+    // Volátil (threading)
+    volatile bool _executando;
+    
+    // Novo (oculta membro da base)
+    new public void Processar() { }
+    
+    // Virtual (pode ser sobrescrito)
+    virtual protected void Calcular() { }
+    
+    // Abstract (deve ser implementado)
+    abstract public void Executar();
+    
+    // Override (sobrescreve virtual)
+    override public string ToString() =&gt; &quot;Matrix&quot;;
+    
+    // Sealed (impede herança)
+    sealed protected void Finalizar() { }
+}
+</div></section></section><section class="chapter"><h2 id="system-escopo-e-lifetime" data-toc="system-escopo-e-lifetime">[SYSTEM://ESCOPO_E_LIFETIME] ⏳</h2><section class="chapter"><h3 id="1-n-veis-de-escopo" data-toc="1-n-veis-de-escopo">1. N&iacute;veis de Escopo</h3><div class="code-block" data-lang="none">
+public class EscopoExemplo
+{
+    private int _campoClasse;  // Escopo de classe
+    
+    public void MetodoExemplo()
+    {
+        int varMetodo = 0;     // Escopo de método
+        
+        for (int i = 0; i &lt; 10; i++)  // Escopo de loop
+        {
+            int varLoop = i;    // Só existe no loop
+            
+            if (i &gt; 5)
+            {
+                int varIf = 42; // Escopo do if
+            }  // varIf morre aqui
+        }  // varLoop morre aqui
+    }  // varMetodo morre aqui
+}
+</div></section><section class="chapter"><h3 id="2-gerenciamento-de-lifetime" data-toc="2-gerenciamento-de-lifetime">2. Gerenciamento de Lifetime</h3><div class="code-block" data-lang="none">
+public class LifetimeExemplo
+{
+    // Lifetime de classe
+    private readonly IDisposable _recurso;
+    
+    public LifetimeExemplo()
+    {
+        _recurso = new RecursoMatrix();
+    }
+    
+    public void ProcessarComUsing()
+    {
+        // Lifetime controlado com using
+        using var recursoTemp = new RecursoMatrix();
+        recursoTemp.Processar();
+    }  // Dispose automático
+    
+    public async Task ProcessarAsync()
+    {
+        // Lifetime assíncrono
+        await using var recursoAsync = new RecursoMatrixAsync();
+        await recursoAsync.ProcessarAsync();
+    }  // Dispose assíncrono
+}
+</div></section></section><section class="chapter"><h2 id="system-boas-pr-ticas" data-toc="system-boas-pr-ticas">[SYSTEM://BOAS_PR&Aacute;TICAS] 💡</h2><section class="chapter"><h3 id="1-nomenclatura" data-toc="1-nomenclatura">1. Nomenclatura</h3><div class="code-block" data-lang="none">
+public class ConvencoesCodigo
+{
+    // Campos privados: _camelCase
+    private string _nomeInterno;
+    
+    // Propriedades e métodos públicos: PascalCase
+    public string NomePublico { get; set; }
+    
+    // Constantes: MAIÚSCULAS
+    const string VERSAO_SISTEMA = &quot;1.0&quot;;
+    
+    // Parâmetros e variáveis locais: camelCase
+    public void ProcessarDados(string dadosEntrada)
+    {
+        var resultadoProcessamento = true;
+    }
+    
+    // Interfaces: I prefixo
+    interface IProcessador { }
+    
+    // Tipos genéricos: T prefixo
+    class Contenedor&lt;TDado&gt; { }
+}
+</div></section><section class="chapter"><h3 id="2-inicializa-o" data-toc="2-inicializa-o">2. Inicializa&ccedil;&atilde;o</h3><div class="code-block" data-lang="none">
+public class InicializacaoBestPractices
+{
+    // Inicialização inline
+    private List&lt;string&gt; _lista = new();
+    private Dictionary&lt;string, int&gt; _mapa = new();
+    
+    // Inicialização no construtor
+    private readonly string _identificador;
+    public InicializacaoBestPractices()
+    {
+        _identificador = Guid.NewGuid().ToString();
+    }
+    
+    // Inicialização preguiçosa
+    private Lazy&lt;ExpensiveResource&gt; _recurso 
+        = new(() =&gt; new ExpensiveResource());
+}
+</div></section><section class="chapter"><h3 id="3-organiza-o" data-toc="3-organiza-o">3. Organiza&ccedil;&atilde;o</h3><div class="code-block" data-lang="none">
+public class OrganizacaoCodigo
+{
+    // 1. Campos privados
+    private readonly ILogger _logger;
+    private int _contador;
+    
+    // 2. Propriedades públicas
+    public string Nome { get; set; }
+    public bool Ativo { get; private set; }
+    
+    // 3. Construtores
+    public OrganizacaoCodigo(ILogger logger)
+    {
+        _logger = logger;
+    }
+    
+    // 4. Métodos públicos
+    public void Processar() { }
+    
+    // 5. Métodos privados
+    private void LogarAcao() { }
+}
+</div></section></section><section class="chapter"><h2 id="system-padr-es-avan-ados" data-toc="system-padr-es-avan-ados">[SYSTEM://PADR&Otilde;ES_AVAN&Ccedil;ADOS] 🎯</h2><section class="chapter"><h3 id="1-padr-o-de-propriedade" data-toc="1-padr-o-de-propriedade">1. Padr&atilde;o de Propriedade</h3><div class="code-block" data-lang="none">
+public class PadroesPropriedade
+{
+    // Auto-propriedade
+    public string Nome { get; set; }
+    
+    // Propriedade somente leitura
+    public string Id { get; }
+    
+    // Propriedade computada
+    public bool EstaAtivo =&gt; _status == Status.Ativo;
+    
+    // Propriedade com validação
+    private int _nivel;
+    public int Nivel
+    {
+        get =&gt; _nivel;
+        set
+        {
+            if (value &lt; 0 || value &gt; 100)
+                throw new ArgumentException(&quot;Nível inválido&quot;);
+            _nivel = value;
+        }
+    }
+    
+    // Propriedade com backing field
+    private string _codinome;
+    public string Codinome
+    {
+        get =&gt; _codinome ?? &quot;Desconhecido&quot;;
+        set =&gt; _codinome = value?.Trim();
+    }
+}
+</div></section><section class="chapter"><h3 id="2-padr-es-de-inicializa-o" data-toc="2-padr-es-de-inicializa-o">2. Padr&otilde;es de Inicializa&ccedil;&atilde;o</h3><div class="code-block" data-lang="none">
+public class PadroesInicializacao
+{
+    // Inicializador de objeto
+    public Agente CriarAgente() =&gt; new()
+    {
+        Nome = &quot;Neo&quot;,
+        Nivel = 100,
+        Habilidades = new[] { &quot;Kung Fu&quot;, &quot;Hacking&quot; }
+    };
+    
+    // Tuplas nomeadas
+    public (string Nome, int Nivel) ObterStatus()
+        =&gt; (&quot;Ativo&quot;, 85);
+    
+    // Desconstrução
+    public void DesestruturarDados()
+    {
+        var (nome, nivel) = ObterStatus();
+    }
+}
+</div></section></section><section class="chapter"><h2 id="system-exerc-cios" data-toc="system-exerc-cios">[SYSTEM://EXERC&Iacute;CIOS] 🏋️</h2><section class="chapter"><h3 id="exerc-cio-1-gerenciamento-de-escopo" data-toc="exerc-cio-1-gerenciamento-de-escopo">Exerc&iacute;cio 1: Gerenciamento de Escopo</h3><div class="code-block" data-lang="none">
+public class ExercicioEscopo
+{
+    // TODO: Implementar sistema que demonstre:
+    // 1. Diferentes níveis de escopo
+    // 2. Lifetime de variáveis
+    // 3. Uso correto de using
+}
+</div></section><section class="chapter"><h3 id="exerc-cio-2-padr-es-de-propriedade" data-toc="exerc-cio-2-padr-es-de-propriedade">Exerc&iacute;cio 2: Padr&otilde;es de Propriedade</h3><div class="code-block" data-lang="none">
+public class ExercicioPropriedades
+{
+    // TODO: Criar classe com:
+    // 1. Auto-propriedades
+    // 2. Propriedades computadas
+    // 3. Propriedades com validação
+    // 4. Propriedades somente leitura
+}
+</div></section><section class="chapter"><h3 id="exerc-cio-3-modificadores" data-toc="exerc-cio-3-modificadores">Exerc&iacute;cio 3: Modificadores</h3><div class="code-block" data-lang="none">
+public class ExercicioModificadores
+{
+    // TODO: Demonstrar uso de:
+    // 1. Todos os modificadores de acesso
+    // 2. readonly vs const
+    // 3. static vs instance
+    // 4. virtual e override
+}
+</div></section></section><section class="chapter"><h2 id="aria-aviso-final" data-toc="aria-aviso-final">[ARIA://AVISO_FINAL] ⚠️</h2><div class="code-block" data-lang="none">
+╔════════════════════════════════════════════════════╗
+║ [!] DIRETRIZES CRÍTICAS                          ║
+║     → Sempre inicialize suas variáveis           ║
+║     → Use o modificador mais restritivo possível ║
+║     → Mantenha o escopo o mais limitado possível ║
+║     → Prefira imutabilidade quando apropriado    ║
+║     → Documente variáveis complexas              ║
+╚════════════════════════════════════════════════════╝
+</div><aside class="prompt" data-type="tip" data-title="" id="z5evzg4_83"><p id="z5evzg4_84">&quot;Lembre-se: cada vari&aacute;vel &eacute; um ponto de acesso &agrave; Matrix. Use-as com sabedoria e precis&atilde;o. A realidade digital depende disso.&quot;</p></aside></section><section class="chapter"><h2 id="system-recursos-adicionais" data-toc="system-recursos-adicionais">[SYSTEM://RECURSOS_ADICIONAIS] 📚</h2><section class="chapter"><h3 id="documenta-o-oficial" data-toc="documenta-o-oficial">Documenta&ccedil;&atilde;o Oficial</h3><ul class="list _bullet" id="z5evzg4_88"><li class="list__item" id="z5evzg4_89"><p id="z5evzg4_91"><a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/variables" id="z5evzg4_92" data-external="true" rel="noopener noreferrer" target="_blank">C# Variables Documentation</a></p></li><li class="list__item" id="z5evzg4_90"><p id="z5evzg4_93"><a href="https://docs.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions" id="z5evzg4_94" data-external="true" rel="noopener noreferrer" target="_blank">C# Coding Conventions</a></p></li></ul></section><section class="chapter"><h3 id="ferramentas-recomendadas" data-toc="ferramentas-recomendadas">Ferramentas Recomendadas</h3><ul class="list _bullet" id="z5evzg4_95"><li class="list__item" id="z5evzg4_98"><p id="z5evzg4_101">Visual Studio com ReSharper/CodeMaid</p></li><li class="list__item" id="z5evzg4_99"><p id="z5evzg4_102">.NET Memory Profiler</p></li><li class="list__item" id="z5evzg4_100"><p id="z5evzg4_103">dotTrace</p></li></ul><aside class="prompt" data-type="tip" data-title="" id="z5evzg4_97"><p id="z5evzg4_104">[SYSTEM://UPDATE] Last modified: | Status: ONLINE | Matrix Stability: 100%</p></aside></section></section><div class="last-modified">17 abril 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="core-types.html" class="navigation-links__prev">[SYSTEM://TYPES] 🧬</a><a href="core-operators.html" class="navigation-links__next">[SYSTEM://OPERATORS] 🔣</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>
