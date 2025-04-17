@@ -32,7 +32,7 @@ A Programação Orientada a Objetos (OOP) é um paradigma de programação que o
 
 ### Princípios Fundamentais
 
-```csharp
+```c#
 // Exemplo de uma classe que demonstra os princípios OOP
 public class Agent
 {
@@ -69,7 +69,7 @@ public class Sentinel : Agent
 
 A abstração permite que você modele objetos do mundo real de forma simplificada, focando apenas nos aspectos relevantes.
 
-```csharp
+```c#
 // Exemplo de Abstração
 public abstract class Program
 {
@@ -88,7 +88,7 @@ public abstract class Program
 
 O encapsulamento protege os dados e garante que eles sejam acessados apenas através de uma interface controlada.
 
-```csharp
+```c#
 public class SecuritySystem
 {
     private string _encryptionKey;
@@ -120,7 +120,7 @@ public class SecuritySystem
 
 A herança permite criar novas classes baseadas em classes existentes, promovendo reuso de código.
 
-```csharp
+```c#
 public class Entity
 {
     public string Id { get; protected set; }
@@ -150,7 +150,7 @@ public class Document : Entity
 
 O polimorfismo permite que objetos de diferentes classes sejam tratados de maneira uniforme.
 
-```csharp
+```c#
 public interface IDataProcessor
 {
     void ProcessData(byte[] data);
@@ -213,7 +213,7 @@ public class DataSystem
 ## [SYSTEM://PRINCÍPIOS_SOLID] 🔧
 
 ### 1. Single Responsibility (SRP)
-```csharp
+```c#
 // Boa prática: Classe com única responsabilidade
 public class UserAuthentication
 {
@@ -226,7 +226,7 @@ public class UserAuthentication
 ```
 
 ### 2. Open/Closed (OCP)
-```csharp
+```c#
 public abstract class Logger
 {
     public abstract void Log(string message);
@@ -242,7 +242,7 @@ public class FileLogger : Logger
 ```
 
 ### 3. Liskov Substitution (LSP)
-```csharp
+```c#
 public class Rectangle
 {
     public virtual int Width { get; set; }
@@ -261,7 +261,7 @@ public class Square : Rectangle
 ```
 
 ### 4. Interface Segregation (ISP)
-```csharp
+```c#
 public interface IMessageSender
 {
     void SendMessage(string message);
@@ -274,7 +274,7 @@ public interface IMessageReceiver
 ```
 
 ### 5. Dependency Inversion (DIP)
-```csharp
+```c#
 public class UserService
 {
     private readonly IUserRepository _repository;
@@ -289,7 +289,7 @@ public class UserService
 ## [SYSTEM://PADRÕES_PRÁTICOS] 🎯
 
 ### 1. Composição vs Herança
-```csharp
+```c#
 // Preferir composição
 public class Car
 {
@@ -305,7 +305,7 @@ public class Car
 ```
 
 ### 2. Injeção de Dependência
-```csharp
+```c#
 public class MatrixSystem
 {
     private readonly ILogger _logger;
@@ -322,7 +322,7 @@ public class MatrixSystem
 ## [SYSTEM://EXERCÍCIOS] 🏋️
 
 ### Exercício 1: Modelagem de Sistema
-```csharp
+```c#
 // TODO: Criar um sistema de gerenciamento de programas da Matrix
 // - Implementar hierarquia de classes
 // - Aplicar encapsulamento
@@ -331,7 +331,7 @@ public class MatrixSystem
 ```
 
 ### Exercício 2: Refatoração
-```csharp
+```c#
 // TODO: Refatorar o código abaixo aplicando princípios OOP
 public class BadDesign
 {

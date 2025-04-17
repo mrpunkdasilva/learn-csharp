@@ -29,7 +29,7 @@
 ## [SYSTEM://TIPOS_VALOR] 💎
 
 ### Inteiros Simples
-```csharp
+```c#
 // Tipos inteiros com sinal
 sbyte byteComSinal = -128;    // 8-bit  [-128 até 127]
 byte byteSemSinal = 255;      // 8-bit  [0 até 255]
@@ -46,7 +46,7 @@ long bilhao = 1_000_000_000L;
 ```
 
 ### Ponto Flutuante
-```csharp
+```c#
 // Tipos de ponto flutuante
 float precisaoSimples = 3.14159f;   // ±1.5 × 10^−45 até ±3.4 × 10^38
 double precisaoDupla = 3.14159265359; // ±5.0 × 10^−324 até ±1.7 × 10^308
@@ -59,7 +59,7 @@ float minimo = float.MinValue;
 ```
 
 ### Outros Tipos Valor
-```csharp
+```c#
 // Booleanos
 bool booleano = true;         // true ou false
 bool padrao = default(bool);  // false
@@ -79,7 +79,7 @@ enum Status
 ```
 
 ### Structs
-```csharp
+```c#
 public struct Ponto
 {
     public int X { get; set; }
@@ -103,7 +103,7 @@ public struct Ponto
 ## [SYSTEM://TIPOS_REFERÊNCIA] 🔗
 
 ### String
-```csharp
+```c#
 // Declarações básicas
 string texto = "Matrix";
 string nula = null;
@@ -126,7 +126,7 @@ string maiuscula = "neo".ToUpper(); // "NEO"
 ```
 
 ### Arrays
-```csharp
+```c#
 // Arrays unidimensionais
 int[] vetor = new int[5];
 int[] inicializado = new int[] { 1, 2, 3, 4, 5 };
@@ -148,7 +148,7 @@ irregular[2] = new int[] { 6 };
 ```
 
 ### Classes
-```csharp
+```c#
 // Classe básica
 public class Agente
 {
@@ -181,7 +181,7 @@ public class Agente
 ```
 
 ### Object
-```csharp
+```c#
 // Tipo base de todos os tipos
 object obj1 = 42;              // Boxing de int
 object obj2 = "Matrix";        // Referência de string
@@ -194,7 +194,7 @@ bool igual = obj1.Equals(42);  // Comparação
 ```
 
 ### Dynamic
-```csharp
+```c#
 // Tipo dinâmico (resolução em tempo de execução)
 dynamic valor = 100;
 valor = "Mudou para string";  // Permitido
@@ -207,7 +207,7 @@ dynamic resultado = valor.Codinome;  // Resolvido em runtime
 ## [SYSTEM://CONVERSÕES] 🔄
 
 ### Conversões Implícitas
-```csharp
+```c#
 int numero = 42;
 long numeroLongo = numero;      // int -> long
 float flutuante = numero;       // int -> float
@@ -219,7 +219,7 @@ object obj = agente;            // Agente -> object
 ```
 
 ### Conversões Explícitas
-```csharp
+```c#
 double d = 3.14;
 int i = (int)d;                // Trunca para 3
 
@@ -232,7 +232,7 @@ bool sucesso = int.TryParse(numeroTexto, out int resultado);
 
 ## [SYSTEM://NULLABLE_TYPES] ⚠️
 
-```csharp
+```c#
 // Declaração de nullable types
 int? numeroNulavel = null;
 DateTime? dataNulavel = null;
@@ -267,7 +267,7 @@ public struct ConfiguracaoNulavel
 ## [SYSTEM://TIPOS_AVANÇADOS] 🔬
 
 ### Tuplas
-```csharp
+```c#
 // Declaração de tuplas
 (string, int) tupla = ("Neo", 1);
 var tupla2 = (Nome: "Trinity", Nivel: 2);
@@ -310,7 +310,7 @@ var (nome, nivel) = tupla;
 
 ## [SYSTEM://EXERCÍCIOS] 🏋️
 
-```csharp
+```c#
 public class TypeExercises
 {
     // Exercício 1: Conversões Seguras

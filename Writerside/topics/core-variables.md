@@ -18,7 +18,7 @@
 ## [SYSTEM://FUNDAMENTOS] 🌟
 
 ### 1. Anatomia de uma Variável
-```csharp
+```c#
 // [modificador] [tipo] [identificador] [operador] [valor];
 private string _codinome = "Neo";
 ```
@@ -47,7 +47,7 @@ private string _codinome = "Neo";
 ### 1. Por Localização
 
 #### 1.1 Variáveis Locais
-```csharp
+```c#
 public void MetodoExemplo()
 {
     int contador = 0;          // Local simples
@@ -62,7 +62,7 @@ public void MetodoExemplo()
 ```
 
 #### 1.2 Campos (Fields)
-```csharp
+```c#
 public class AgenteMatrix
 {
     // Campos de instância
@@ -79,7 +79,7 @@ public class AgenteMatrix
 ```
 
 #### 1.3 Parâmetros
-```csharp
+```c#
 public void ProcessarDados(
     int nivel,                     // Parâmetro por valor
     ref string codinome,          // Parâmetro por referência
@@ -93,7 +93,7 @@ public void ProcessarDados(
 ### 2. Por Tipo de Dado
 
 #### 2.1 Tipos Valor
-```csharp
+```c#
 public struct DadosAgente
 {
     // Tipos numéricos
@@ -115,7 +115,7 @@ public struct DadosAgente
 ```
 
 #### 2.2 Tipos Referência
-```csharp
+```c#
 public class SistemaMatrix
 {
     // Strings
@@ -138,7 +138,7 @@ public class SistemaMatrix
 ## [SYSTEM://MODIFICADORES_AVANÇADOS] ⚡
 
 ### 1. Modificadores de Acesso
-```csharp
+```c#
 public class ModificadoresExemplo
 {
     public int AcessoTotal;        // Visível em todo lugar
@@ -152,7 +152,7 @@ public class ModificadoresExemplo
 ```
 
 ### 2. Modificadores Especiais
-```csharp
+```c#
 public class ModificadoresEspeciais
 {
     // Somente leitura
@@ -187,7 +187,7 @@ public class ModificadoresEspeciais
 ## [SYSTEM://ESCOPO_E_LIFETIME] ⏳
 
 ### 1. Níveis de Escopo
-```csharp
+```c#
 public class EscopoExemplo
 {
     private int _campoClasse;  // Escopo de classe
@@ -210,7 +210,7 @@ public class EscopoExemplo
 ```
 
 ### 2. Gerenciamento de Lifetime
-```csharp
+```c#
 public class LifetimeExemplo
 {
     // Lifetime de classe
@@ -240,7 +240,7 @@ public class LifetimeExemplo
 ## [SYSTEM://BOAS_PRÁTICAS] 💡
 
 ### 1. Nomenclatura
-```csharp
+```c#
 public class ConvencoesCodigo
 {
     // Campos privados: _camelCase
@@ -267,7 +267,7 @@ public class ConvencoesCodigo
 ```
 
 ### 2. Inicialização
-```csharp
+```c#
 public class InicializacaoBestPractices
 {
     // Inicialização inline
@@ -288,7 +288,7 @@ public class InicializacaoBestPractices
 ```
 
 ### 3. Organização
-```csharp
+```c#
 public class OrganizacaoCodigo
 {
     // 1. Campos privados
@@ -316,7 +316,7 @@ public class OrganizacaoCodigo
 ## [SYSTEM://PADRÕES_AVANÇADOS] 🎯
 
 ### 1. Padrão de Propriedade
-```csharp
+```c#
 public class PadroesPropriedade
 {
     // Auto-propriedade
@@ -352,7 +352,7 @@ public class PadroesPropriedade
 ```
 
 ### 2. Padrões de Inicialização
-```csharp
+```c#
 public class PadroesInicializacao
 {
     // Inicializador de objeto
@@ -378,7 +378,7 @@ public class PadroesInicializacao
 ## [SYSTEM://EXERCÍCIOS] 🏋️
 
 ### Exercício 1: Gerenciamento de Escopo
-```csharp
+```c#
 public class ExercicioEscopo
 {
     // TODO: Implementar sistema que demonstre:
@@ -389,7 +389,7 @@ public class ExercicioEscopo
 ```
 
 ### Exercício 2: Padrões de Propriedade
-```csharp
+```c#
 public class ExercicioPropriedades
 {
     // TODO: Criar classe com:
@@ -401,7 +401,7 @@ public class ExercicioPropriedades
 ```
 
 ### Exercício 3: Modificadores
-```csharp
+```c#
 public class ExercicioModificadores
 {
     // TODO: Demonstrar uso de:

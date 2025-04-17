@@ -32,7 +32,7 @@
 
 #### 1.1 If-Else Statement
 
-```csharp
+```c#
 public class AdvancedConditionals
 {
     public void IfElseExample(int value)
@@ -82,7 +82,7 @@ public class AdvancedConditionals
 
 #### 1.2 Switch Expressions
 
-```csharp
+```c#
 public class SwitchPatterns
 {
     // Switch expression moderno
@@ -111,7 +111,7 @@ public class SwitchPatterns
 
 #### 2.1 For e Suas Variações
 
-```csharp
+```c#
 public class AdvancedLoops
 {
     // For tradicional
@@ -156,7 +156,7 @@ public class AdvancedLoops
 
 #### 2.2 While e Do-While
 
-```csharp
+```c#
 public class WhileVariations
 {
     // While com retry pattern
@@ -195,7 +195,7 @@ public class WhileVariations
 
 #### 2.3 Foreach e LINQ
 
-```csharp
+```c#
 public class CollectionIterations
 {
     // Foreach com filtros
@@ -221,7 +221,7 @@ public class CollectionIterations
 
 ### 3. Pattern Matching Avançado
 
-```csharp
+```c#
 public class AdvancedPatterns
 {
     // Pattern matching com tipos
@@ -281,7 +281,7 @@ public class AdvancedPatterns
 
 ## [SYSTEM://EXERCÍCIOS] 🏋️
 
-```csharp
+```c#
 public class ControlFlowExercises
 {
     // Exercício 1: Sistema de Validação

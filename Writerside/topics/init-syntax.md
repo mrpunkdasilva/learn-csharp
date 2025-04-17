@@ -19,7 +19,7 @@
 
 ### 📝 Anatomia de um Programa
 
-```csharp
+```
 // 1. Importações (using directives)
 using System;
 using System.Collections.Generic;
@@ -45,7 +45,7 @@ namespace MatrixSyntax
 
 ### 🔢 Tipos Numéricos
 
-```csharp
+```
 // Inteiros
 byte smallNumber = 255;        // 0 a 255
 short mediumNumber = 32767;    // -32,768 a 32,767
@@ -60,7 +60,7 @@ decimal moneyValue = 1234.56m;  // 28-29 dígitos
 
 ### 📝 Tipos de Texto
 
-```csharp
+```
 // Caracteres
 char singleLetter = 'A';       // Um único caractere Unicode
 string text = "Matrix";        // Sequência de caracteres
@@ -74,7 +74,7 @@ string interpolated = $"O valor é {standardNumber}"; // String interpolation
 
 ### ⚡ Tipos Lógicos
 
-```csharp
+```
 bool isConnected = true;
 bool hasAccess = false;
 ```
@@ -83,7 +83,7 @@ bool hasAccess = false;
 
 ### 📊 Operadores Aritméticos
 
-```csharp
+```
 int a = 10, b = 3;
 
 int soma = a + b;        // 13
@@ -102,7 +102,7 @@ i--;    // Pós-decremento
 
 ### 🔍 Operadores de Comparação
 
-```csharp
+```
 bool igual = (a == b);           // false
 bool diferente = (a != b);       // true
 bool maior = (a > b);            // true
@@ -113,7 +113,7 @@ bool menorOuIgual = (a <= b);    // false
 
 ### 🔄 Operadores Lógicos
 
-```csharp
+```
 bool x = true, y = false;
 
 bool and = x && y;    // false (E lógico)
@@ -125,7 +125,7 @@ bool not = !x;        // false (NÃO lógico)
 
 ### 🔀 Condicionais
 
-```csharp
+```
 // If-Else tradicional
 if (isConnected)
 {
@@ -154,7 +154,7 @@ string message = status switch
 
 ### 🔁 Loops
 
-```csharp
+```
 // For tradicional
 for (int i = 0; i < 10; i++)
 {
@@ -187,7 +187,7 @@ do
 
 ### 📋 Declaração e Uso
 
-```csharp
+```
 public class MatrixOperations
 {
     // Método simples
@@ -242,7 +242,7 @@ public class MatrixOperations
 
 ### 🎯 Práticas Recomendadas
 
-```csharp
+```
 // ✅ BOM: Nomes descritivos
 public class UserAuthentication
 {
@@ -270,7 +270,7 @@ public class UA
 
 ### 🎯 Desafio 1: Refatoração
 
-```csharp
+```
 // Refatore este código aplicando as convenções corretas
 class data_processor
 {
@@ -286,7 +286,7 @@ class data_processor
 
 ### 🎯 Desafio 2: Estruturas de Controle
 
-```csharp
+```
 // Implemente diferentes maneiras de resolver este problema
 public class MatrixChallenge
 {
@@ -300,7 +300,7 @@ public class MatrixChallenge
 
 ### 🎯 Desafio 3: Métodos
 
-```csharp
+```c#
 // Crie uma classe com diferentes tipos de métodos
 public class MatrixCalculator
 {

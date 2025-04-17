@@ -65,7 +65,7 @@
 
 ## [SYSTEM://CÓDIGO_BASE] 💻
 
-```csharp
+```c#
 public class MatrixFundamentals
 {
     // Tipos e Variáveis
@@ -131,7 +131,7 @@ public class MatrixFundamentals
 ## [SYSTEM://EXERCÍCIOS] 🏋️
 
 ### Nível 1: Iniciação
-```csharp
+```c#
 // Implemente operações básicas com tipos primitivos
 public class Exercise01
 {
@@ -143,7 +143,7 @@ public class Exercise01
 ```
 
 ### Nível 2: Manipulação
-```csharp
+```c#
 // Trabalhe com controle de fluxo e exceções
 public class Exercise02
 {
@@ -155,7 +155,7 @@ public class Exercise02
 ```
 
 ### Nível 3: Integração
-```csharp
+```c#
 // Combine todos os conceitos
 public class Exercise03
 {

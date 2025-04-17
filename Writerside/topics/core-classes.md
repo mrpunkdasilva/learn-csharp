@@ -8,7 +8,7 @@ Uma classe é basicamente um puteiro organizado de dados e comportamentos. É o 
 
 ### Anatomia do Caos
 
-```csharp
+```c#
 // O cafetão (classe) que gerencia tudo
 public class Bordel
 {
@@ -28,7 +28,7 @@ public class Bordel
 
 ## [SYSTEM://TIPOS_DE_BORDÉIS] 🎭
 
-```csharp
+```c#
 // O bordel padrão de esquina
 public class BordelPadrao { }
 
@@ -52,7 +52,7 @@ public class BordelMatrix
 
 ### 1. Os Segredos Sujos (Fields)
 
-```csharp
+```c#
 public class EntidadeSecreta
 {
     // O caderninho preto
@@ -68,7 +68,7 @@ public class EntidadeSecreta
 
 ### 2. A Fachada (Properties)
 
-```csharp
+```c#
 public class FachadaSocial
 {
     // Auto-property (preguiça de esconder melhor)
@@ -89,7 +89,7 @@ public class FachadaSocial
 
 ### 3. Os Serviços Especiais (Methods)
 
-```csharp
+```c#
 public class ServicosEspeciais
 {
     // O método que todo mundo usa mas ninguém admite
@@ -118,7 +118,7 @@ public class ServicosEspeciais
 
 Herança é como uma pirâmide financeira: a classe base promete o mundo, as derivadas fazem o trabalho sujo, e quem se ferra é o usuário final.
 
-```csharp
+```c#
 // A promessa
 public abstract class PiramideFinanceira
 {
@@ -146,7 +146,7 @@ public class EsquemaPonzi : PiramideFinanceira
 
 Interfaces são como contratos de casamento: todo mundo assina, ninguém lê, e no final todo mundo se arrepende.
 
-```csharp
+```c#
 // O contrato que ninguém respeita
 public interface IResponsavel
 {
@@ -177,7 +177,7 @@ public class Developer : IResponsavel
 
 ## [SYSTEM://CONSTRUTORES_DA_DESGRAÇA] 🏗️
 
-```csharp
+```c#
 public class ProjetoFudido
 {
     // Construtor padrão: a ilusão do começo
@@ -205,7 +205,7 @@ public class ProjetoFudido
 
 ## [SYSTEM://PROPRIEDADES_OBSCENAS] 🔞
 
-```csharp
+```c#
 public class GerenciamentoDoCaos
 {
     // A propriedade que todo mundo acha que controla
@@ -248,7 +248,7 @@ public class GerenciamentoDoCaos
 ### 1. Public (A Zona Livre)
 Como banheiro de festa rave: todo mundo pode entrar, usar e ainda fazer merda.
 
-```csharp
+```c#
 public class ZonaLivre
 {
     public void QualquerUmPodeCagar()
@@ -262,7 +262,7 @@ public class ZonaLivre
 ### 2. Private (O Bunker)
 O famoso "só entre nós". Como aquela pasta no PC que você esconde da família.
 
-```csharp
+```c#
 public class ClubeSecreto
 {
     private string _senhaDoWifi = "admin123";
@@ -276,7 +276,7 @@ public class ClubeSecreto
 ### 3. Protected (A Família)
 Como segredo de família: só os herdeiros podem saber das vergonhas.
 
-```csharp
+```c#
 public class SegredinhosDeFamilia
 {
     protected string esqueletoNoArmario;
@@ -289,7 +289,7 @@ public class SegredinhosDeFamilia
 
 ## [SYSTEM://STATIC_VS_INSTANCE] 🤼
 
-```csharp
+```c#
 public class ClubeDoBolinh
 {
     // Método de instância: cada um com seus problemas
@@ -310,7 +310,7 @@ public class ClubeDoBolinh
 
 Partial classes são como personalidade múltipla: o mesmo maluco espalhado em vários arquivos.
 
-```csharp
+```c#
 // Arquivo: Esquizofrenia.Part1.cs
 public partial class Esquizofrenia
 {
@@ -334,7 +334,7 @@ public partial class Esquizofrenia
 
 Classes aninhadas são tipo boneca russa: quanto mais fundo você vai, mais arrependido fica.
 
-```csharp
+```c#
 public class CaixaDePandora
 {
     private class PrimeiroNivel
@@ -355,7 +355,7 @@ public class CaixaDePandora
 
 Extension methods são como plástica: você finge que nasceu com aquilo.
 
-```csharp
+```c#
 public static class CirurgiaoPlastico
 {
     public static string FingirJuventude(this string texto)
@@ -376,7 +376,7 @@ public static class CirurgiaoPlastico
 
 Records são como casamento moderno: imutável na teoria, mas todo mundo dá um jeitinho.
 
-```csharp
+```c#
 public record CasamentoModerno(
     string Aparencias = "Mantidas",
     bool FidelidadeEmocional = false,
@@ -392,7 +392,7 @@ public record CasamentoModerno(
 
 Eventos são como fofoca de empresa: todo mundo fica escutando, e quando acontece algo, todo mundo fica sabendo.
 
-```csharp
+```c#
 public class RadioCorredor
 {
     // O delegate é o formato padrão da fofoca
@@ -413,7 +413,7 @@ public class RadioCorredor
 
 Finalizadores são como velório: ninguém sabe quando vai acontecer, mas quando rola, geralmente dá merda.
 
-```csharp
+```c#
 public class UltimosDesejos
 {
     ~UltimosDesejos()

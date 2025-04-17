@@ -1,0 +1,295 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#E8488B"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-04-17T19:25:54.090098946"><title>[SYSTEM://POLIMORFISMO] 🦎 | C# Matrix: Neural Programming Guide</title><script type="application/json" id="virtual-toc-data">[{"id":"system-conceito","level":0,"title":"[SYSTEM://CONCEITO] 🧬","anchor":"#system-conceito"},{"id":"system-tipos-de-polimorfismo","level":0,"title":"[SYSTEM://TIPOS_DE_POLIMORFISMO] 🎭","anchor":"#system-tipos-de-polimorfismo"},{"id":"system-polimorfismo-na-pratica","level":0,"title":"[SYSTEM://POLIMORFISMO_NA_PRATICA] 🎪","anchor":"#system-polimorfismo-na-pratica"},{"id":"system-polimorfismo-avan-ado","level":0,"title":"[SYSTEM://POLIMORFISMO_AVANÇADO] 🧠","anchor":"#system-polimorfismo-avan-ado"},{"id":"system-armadilhas-mortais","level":0,"title":"[SYSTEM://ARMADILHAS_MORTAIS] ☠️","anchor":"#system-armadilhas-mortais"},{"id":"system-dicas-do-al-m","level":0,"title":"[SYSTEM://DICAS_DO_ALÉM] 👻","anchor":"#system-dicas-do-al-m"},{"id":"aria-avisos-importantes","level":0,"title":"[ARIA://AVISOS_IMPORTANTES] ⚠️","anchor":"#aria-avisos-importantes"},{"id":"system-conclus-o","level":0,"title":"[SYSTEM://CONCLUSÃO] 🎬","anchor":"#system-conclus-o"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><link rel="icon" type="image/svg" sizes="16x16" href="images/logo-primary.svg"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="[SYSTEM://POLIMORFISMO] 🦎 | C# Matrix: Neural Programming Guide"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="C# Matrix: Neural Programming Guide Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/core-polymorphism.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="[SYSTEM://POLIMORFISMO] 🦎 | C# Matrix: Neural Programming Guide"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/core-polymorphism.html#webpage",
+    "url": "writerside-documentation/core-polymorphism.html",
+    "name": "[SYSTEM://POLIMORFISMO] 🦎 | C# Matrix: Neural Programming Guide",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "C# Matrix: Neural Programming Guide Help"
+}</script><!-- End Schema.org --></head><body data-id="core-polymorphism" data-main-title="[SYSTEM://POLIMORFISMO] 🦎" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="core-oop.md|[SYSTEM://OOP] 🏗️"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>C# Matrix: Neural Programming Guide  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="core-polymorphism" id="core-polymorphism.md">[SYSTEM://POLIMORFISMO] 🦎</h1><aside class="prompt" data-type="tip" data-title="" id="byf4o3_3"><p id="byf4o3_12">&quot;Polimorfismo &eacute; como aquele seu amigo que muda de personalidade dependendo de quem t&aacute; pagando a cerveja&quot;</p></aside><section class="chapter"><h2 id="system-conceito" data-toc="system-conceito">[SYSTEM://CONCEITO] 🧬</h2><p id="byf4o3_14">Polimorfismo &eacute; a arte de ser v&aacute;rias coisas ao mesmo tempo, tipo pol&iacute;tico em &eacute;poca de elei&ccedil;&atilde;o.</p><div class="code-block" data-lang="csharp">
+public class PoliticoBrasileiro
+{
+    public virtual void DiscursarParaPovo()
+    {
+        Console.WriteLine(&quot;Vou acabar com a corrupção!&quot;);
+    }
+}
+
+public class DeputadoFederal : PoliticoBrasileiro
+{
+    public override void DiscursarParaPovo()
+    {
+        if (EmAnoDeEleicao)
+            base.DiscursarParaPovo();
+        else
+            Console.WriteLine(&quot;Nova mansão, quem te viu quem te vê!&quot;);
+    }
+}
+</div></section><section class="chapter"><h2 id="system-tipos-de-polimorfismo" data-toc="system-tipos-de-polimorfismo">[SYSTEM://TIPOS_DE_POLIMORFISMO] 🎭</h2><section class="chapter"><h3 id="1-override-reescrevendo-a-hist-ria" data-toc="1-override-reescrevendo-a-hist-ria">1. Override (Reescrevendo a Hist&oacute;ria)</h3><div class="code-block" data-lang="csharp">
+public class ContaBancaria
+{
+    public virtual decimal CalcularTaxa() =&gt; 10.0M;
+}
+
+public class ContaGold : ContaBancaria
+{
+    public override decimal CalcularTaxa() =&gt; 0.0M; // Mentira tem taxa sim
+}
+
+public class ContaPlatinum : ContaBancaria
+{
+    public override decimal CalcularTaxa() =&gt; 
+        base.CalcularTaxa() * -1; // Agora o banco te paga (será?)
+}
+</div></section><section class="chapter"><h3 id="2-sobrecarga-personalidade-m-ltipla" data-toc="2-sobrecarga-personalidade-m-ltipla">2. Sobrecarga (Personalidade M&uacute;ltipla)</h3><div class="code-block" data-lang="csharp">
+public class Desenvolvedor
+{
+    // Função normal
+    public void Trabalhar() =&gt; Console.WriteLine(&quot;Código limpo!&quot;);
+    
+    // Função com deadline
+    public void Trabalhar(bool temDeadline) =&gt; 
+        Console.WriteLine(&quot;if(works) commit;&quot;);
+    
+    // Função sexta depois das 18h
+    public void Trabalhar(bool temDeadline, bool sextaFeira) =&gt; 
+        throw new VaiTrabalharSegundaException();
+        
+    // Função com o chefe olhando
+    public void Trabalhar(bool temDeadline, bool sextaFeira, bool chefePerto) =&gt;
+        Console.WriteLine(&quot;ctrl+r ctrl+r rename everything&quot;);
+}
+</div></section><section class="chapter"><h3 id="3-interface-contratos-que-ningu-m-l" data-toc="3-interface-contratos-que-ningu-m-l">3. Interface (Contratos que Ningu&eacute;m L&ecirc;)</h3><div class="code-block" data-lang="csharp">
+public interface IEstagiario
+{
+    void FazerCafe();
+    void RebootServer();
+    void ConsertarImpressora();
+    void ArrumarBugEmProducao();
+}
+
+public class EstagiarioJunior : IEstagiario
+{
+    public void FazerCafe() =&gt; throw new NaoVimAquiPraIssoException();
+    public void RebootServer() =&gt; System.Threading.Thread.Sleep(TimeSpan.FromDays(1));
+    public void ConsertarImpressora() =&gt; Console.WriteLine(&quot;Tentei dar ctrl+z na impressora&quot;);
+    public void ArrumarBugEmProducao() =&gt; Git.PushForce(&quot;main&quot;);
+}
+</div></section></section><section class="chapter"><h2 id="system-polimorfismo-na-pratica" data-toc="system-polimorfismo-na-pratica">[SYSTEM://POLIMORFISMO_NA_PRATICA] 🎪</h2><section class="chapter"><h3 id="1-o-padr-o-ex-namorado" data-toc="1-o-padr-o-ex-namorado">1. O Padr&atilde;o Ex-Namorado</h3><div class="code-block" data-lang="csharp">
+public interface IEx
+{
+    void MandarMensagem();
+    bool StalkearRedeSocial();
+    void CurtirFotoAntiga();
+}
+
+public class ExBebado : IEx
+{
+    public void MandarMensagem()
+    {
+        Console.WriteLine(&quot;Sinto sua falta bb... *às 3AM*&quot;);
+    }
+    
+    public bool StalkearRedeSocial() =&gt; DateTime.Now.Hour &gt;= 2;
+    
+    public void CurtirFotoAntiga()
+    {
+        if (DateTime.Now.Hour &gt;= 3)
+            throw new ArrrependimentoException(&quot;O que eu fiz?&quot;);
+    }
+}
+
+public class ExVingativo : IEx
+{
+    public void MandarMensagem()
+    {
+        Console.WriteLine(&quot;Tô melhor que nunca! *posta foto antiga*&quot;);
+    }
+    
+    public bool StalkearRedeSocial() =&gt; true; // 24/7 surveillance
+    
+    public void CurtirFotoAntiga()
+    {
+        var random = new Random();
+        if (random.Next(100) &lt; 50)
+            throw new OrgulhoException(&quot;Quase curti sem querer&quot;);
+    }
+}
+
+public class ExProfissional : IEx
+{
+    public void MandarMensagem() =&gt; 
+        throw new LinkedInRequestException(&quot;Quer fazer networking?&quot;);
+        
+    public bool StalkearRedeSocial() =&gt; 
+        LinkedInAPI.VerificarNovoEmprego();
+        
+    public void CurtirFotoAntiga() =&gt; 
+        throw new NotImplementedException(&quot;Muito ocupado fazendo MBA&quot;);
+}
+</div></section><section class="chapter"><h3 id="2-o-padr-o-desculpas" data-toc="2-o-padr-o-desculpas">2. O Padr&atilde;o Desculpas</h3><div class="code-block" data-lang="csharp">
+public abstract class DesculpaBase
+{
+    public abstract string GerarDesculpa();
+    protected virtual bool EhConvincente =&gt; false;
+}
+
+public class DesculpaTrabalho : DesculpaBase
+{
+    public override string GerarDesculpa() =&gt; 
+        &quot;Tô com um bug crítico em produção!&quot;;
+    protected override bool EhConvincente =&gt; true; // Sempre funciona
+}
+
+public class DesculpaFamilia : DesculpaBase
+{
+    private int vezesUsada;
+    public override string GerarDesculpa()
+    {
+        vezesUsada++;
+        return vezesUsada switch
+        {
+            1 =&gt; &quot;Vovó tá passando mal de novo...&quot;,
+            2 =&gt; &quot;Cachorro comeu minha tarefa&quot;,
+            3 =&gt; &quot;Pneu furou&quot;,
+            _ =&gt; throw new DesculpaEsgotadaException(&quot;Preciso ser mais criativo&quot;)
+        };
+    }
+}
+
+public class DesculpaTransito : DesculpaBase
+{
+    public override string GerarDesculpa() =&gt; 
+        &quot;Você não vai acreditar no que aconteceu...&quot;;
+    protected override bool EhConvincente =&gt; 
+        DateTime.Now.DayOfWeek != DayOfWeek.Sunday;
+}
+</div></section></section><section class="chapter"><h2 id="system-polimorfismo-avan-ado" data-toc="system-polimorfismo-avan-ado">[SYSTEM://POLIMORFISMO_AVAN&Ccedil;ADO] 🧠</h2><section class="chapter"><h3 id="1-covariance-subindo-na-vida" data-toc="1-covariance-subindo-na-vida">1. Covariance (Subindo na Vida)</h3><div class="code-block" data-lang="csharp">
+public interface ICarro&lt;out T&gt; where T : IVeiculo
+{
+    T DarPartida();
+    string ExibirStatus();
+}
+
+public class CarroPopular : ICarro&lt;Fusca&gt;
+{
+    public Fusca DarPartida() =&gt; new Fusca { FaltaGasolina = true };
+    public string ExibirStatus() =&gt; &quot;Check engine light is a feature&quot;;
+}
+
+public class CarroLuxo : ICarro&lt;BMW&gt;
+{
+    public BMW DarPartida() =&gt; new BMW { SetaLigada = false };
+    public string ExibirStatus() =&gt; &quot;Tanque cheio de gasolina aditivada&quot;;
+}
+</div></section><section class="chapter"><h3 id="2-contravariance-descendo-na-vida" data-toc="2-contravariance-descendo-na-vida">2. Contravariance (Descendo na Vida)</h3><div class="code-block" data-lang="csharp">
+public interface IDesenvolvedor&lt;in T&gt; where T : ILinguagem
+{
+    void Programar(T linguagem);
+    void StackOverflow(T duvida);
+    void Compilar(T codigo);
+}
+
+public class DevJunior : IDesenvolvedor&lt;JavaScript&gt;
+{
+    public void Programar(JavaScript js)
+    {
+        Console.WriteLine(&quot;npm install solve-my-problems&quot;);
+    }
+    
+    public void StackOverflow(JavaScript duvida)
+    {
+        Console.WriteLine(&quot;Como fazer hello world em JS?&quot;);
+    }
+    
+    public void Compilar(JavaScript codigo)
+    {
+        Console.WriteLine(&quot;node_modules folder: 23GB&quot;);
+    }
+}
+
+public class DevSenior : IDesenvolvedor&lt;AnyLinguagem&gt;
+{
+    public void Programar(AnyLinguagem lang)
+    {
+        if (DateTime.Now.Hour &gt; 17)
+            throw new HoraExtraException(&quot;Já deu hoje&quot;);
+    }
+    
+    public void StackOverflow(AnyLinguagem duvida)
+    {
+        Console.WriteLine(&quot;Closed as duplicate&quot;);
+    }
+    
+    public void Compilar(AnyLinguagem codigo)
+    {
+        Thread.Sleep(TimeSpan.FromMinutes(15));
+        Console.WriteLine(&quot;Works on my machine ¯\\_(ツ)_/¯&quot;);
+    }
+}
+</div></section></section><section class="chapter"><h2 id="system-armadilhas-mortais" data-toc="system-armadilhas-mortais">[SYSTEM://ARMADILHAS_MORTAIS] ☠️</h2><section class="chapter"><h3 id="1-o-diamante-da-morte" data-toc="1-o-diamante-da-morte">1. O Diamante da Morte</h3><div class="code-block" data-lang="csharp">
+interface IMae { void Mandar(); }
+interface IPai { void Mandar(); }
+
+// Quem você vai obedecer?
+public class FilhoProblematico : IMae, IPai 
+{
+    public void Mandar() // Confusão mental
+    {
+        throw new CriseDeIdentidadeException();
+    }
+}
+
+public class FilhoEsperto : IMae, IPai
+{
+    void IMae.Mandar() =&gt; Console.WriteLine(&quot;Sim, mãe!&quot;);
+    void IPai.Mandar() =&gt; Console.WriteLine(&quot;Já to indo, pai!&quot;);
+}
+</div></section><section class="chapter"><h3 id="2-cast-inseguro-roleta-russa" data-toc="2-cast-inseguro-roleta-russa">2. Cast Inseguro (Roleta Russa)</h3><div class="code-block" data-lang="csharp">
+object obj = &quot;Eu sou uma string!&quot;;
+int numero = (int)obj; // Top 10 anime betrayals
+
+// Versão segura (mas quem liga?)
+public T CastPerigoso&lt;T&gt;(object obj)
+{
+    try
+    {
+        return (T)obj;
+    }
+    catch (InvalidCastException)
+    {
+        return default; // Fingir que nada aconteceu
+    }
+}
+</div></section><section class="chapter"><h3 id="3-o-problema-do-construtor-base" data-toc="3-o-problema-do-construtor-base">3. O Problema do Construtor Base</h3><div class="code-block" data-lang="csharp">
+public class ClasseBase
+{
+    public ClasseBase()
+    {
+        MetodoVirtual(); // Não faça isso em casa
+    }
+    
+    protected virtual void MetodoVirtual()
+    {
+        Console.WriteLine(&quot;Base segura&quot;);
+    }
+}
+
+public class ClasseDerivada : ClasseBase
+{
+    private readonly string _estado = &quot;Inicializado&quot;;
+    
+    protected override void MetodoVirtual()
+    {
+        // _estado ainda é null aqui!
+        Console.WriteLine(_estado.ToUpper()); // 💥 NullReferenceException
+    }
+}
+</div></section></section><section class="chapter"><h2 id="system-dicas-do-al-m" data-toc="system-dicas-do-al-m">[SYSTEM://DICAS_DO_AL&Eacute;M] 👻</h2><ol class="list _decimal" id="byf4o3_41" type="1"><li class="list__item" id="byf4o3_42"><p id="byf4o3_52">Se voc&ecirc; tem mais que 3 n&iacute;veis de heran&ccedil;a, procure ajuda profissional</p></li><li class="list__item" id="byf4o3_43"><p id="byf4o3_53">Virtual method call &eacute; tipo relacionamento &agrave; dist&acirc;ncia: funciona, mas &eacute; lento</p></li><li class="list__item" id="byf4o3_44"><p id="byf4o3_54">Override sem virtual &eacute; igual promessa de pol&iacute;tico: n&atilde;o funciona</p></li><li class="list__item" id="byf4o3_45"><p id="byf4o3_55">Dynamic dispatch &eacute; como Uber: voc&ecirc; chama, mas nunca sabe o que vem</p></li><li class="list__item" id="byf4o3_46"><p id="byf4o3_56">Type casting &eacute; tipo roleta russa: &agrave;s vezes funciona, &agrave;s vezes explode</p></li><li class="list__item" id="byf4o3_47"><p id="byf4o3_57">Interface &eacute; como contrato de casamento: ningu&eacute;m l&ecirc;, mas todo mundo assina</p></li><li class="list__item" id="byf4o3_48"><p id="byf4o3_58">Abstract class &eacute; tipo pai ausente: define as regras mas n&atilde;o implementa nada</p></li><li class="list__item" id="byf4o3_49"><p id="byf4o3_59">Generic constraint &eacute; tipo card&aacute;pio de restaurante vegano: limita suas op&ccedil;&otilde;es</p></li><li class="list__item" id="byf4o3_50"><p id="byf4o3_60">Sealed class &eacute; tipo amigo ciumento: n&atilde;o deixa ningu&eacute;m se aproximar</p></li><li class="list__item" id="byf4o3_51"><p id="byf4o3_61">Base constructor &eacute; tipo d&iacute;vida: sempre volta pra te assombrar</p></li></ol></section><section class="chapter"><h2 id="aria-avisos-importantes" data-toc="aria-avisos-importantes">[ARIA://AVISOS_IMPORTANTES] ⚠️</h2><ol class="list _decimal" id="byf4o3_63" type="1"><li class="list__item" id="byf4o3_64"><p id="byf4o3_74">Polimorfismo &eacute; poder, e com grandes poderes vem grandes gambiarras</p></li><li class="list__item" id="byf4o3_65"><p id="byf4o3_75">Se voc&ecirc; n&atilde;o sabe qual override chamar, imagine o compilador</p></li><li class="list__item" id="byf4o3_66"><p id="byf4o3_76">Heran&ccedil;a m&uacute;ltipla &eacute; proibida em C# porque at&eacute; a Microsoft tem limites</p></li><li class="list__item" id="byf4o3_67"><p id="byf4o3_77">Type checking &eacute; tipo teste de gravidez: melhor fazer antes que seja tarde</p></li><li class="list__item" id="byf4o3_68"><p id="byf4o3_78">Downcasting &eacute; como aposta esportiva: alto risco, baixa recompensa</p></li><li class="list__item" id="byf4o3_69"><p id="byf4o3_79">Covariance e contravariance s&atilde;o como f&iacute;sica qu&acirc;ntica: ningu&eacute;m entende realmente</p></li><li class="list__item" id="byf4o3_70"><p id="byf4o3_80">Virtual methods s&atilde;o como relacionamentos: t&ecirc;m um custo de performance</p></li><li class="list__item" id="byf4o3_71"><p id="byf4o3_81">Override &eacute; como tatuagem: pense bem antes de fazer</p></li><li class="list__item" id="byf4o3_72"><p id="byf4o3_82">Interface segregation &eacute; como pizza: melhor em peda&ccedil;os menores</p></li><li class="list__item" id="byf4o3_73"><p id="byf4o3_83">LSP (Liskov Substitution Principle) &eacute; como substituir a&ccedil;&uacute;car por ado&ccedil;ante: deveria funcionar, mas nem sempre funciona</p></li></ol></section><section class="chapter"><h2 id="system-conclus-o" data-toc="system-conclus-o">[SYSTEM://CONCLUS&Atilde;O] 🎬</h2><p id="byf4o3_85">Polimorfismo &eacute; como relacionamento aberto:</p><ul class="list _bullet" id="byf4o3_86"><li class="list__item" id="byf4o3_97"><p id="byf4o3_101">Todo mundo acha que entende</p></li><li class="list__item" id="byf4o3_98"><p id="byf4o3_102">Ningu&eacute;m usa direito</p></li><li class="list__item" id="byf4o3_99"><p id="byf4o3_103">Sempre tem algu&eacute;m que se machuca</p></li><li class="list__item" id="byf4o3_100"><p id="byf4o3_104">No final, voc&ecirc; s&oacute; queria uma classe normal</p></li></ul><p id="byf4o3_87">Lembre-se:</p><ul class="list _bullet" id="byf4o3_88"><li class="list__item" id="byf4o3_105"><p id="byf4o3_110">Heran&ccedil;a &eacute; overrated</p></li><li class="list__item" id="byf4o3_106"><p id="byf4o3_111">Composi&ccedil;&atilde;o &eacute; underrated</p></li><li class="list__item" id="byf4o3_107"><p id="byf4o3_112">Interfaces s&atilde;o seu melhor amigo</p></li><li class="list__item" id="byf4o3_108"><p id="byf4o3_113">SOLID &eacute; mais que uma palavra bonita</p></li><li class="list__item" id="byf4o3_109"><p id="byf4o3_114">Design patterns s&atilde;o como receitas de bolo: funcionam melhor quando voc&ecirc; entende os ingredientes</p></li></ul><aside class="prompt" data-type="tip" data-title="" id="byf4o3_90"><p id="byf4o3_115">[!NOTE] &quot;Se seus objetos tivessem personalidade, voc&ecirc; seria preso por indu&ccedil;&atilde;o &agrave; esquizofrenia.&quot;</p></aside><aside class="prompt" data-type="tip" data-title="" id="byf4o3_92"><p id="byf4o3_116">[!WARNING] &quot;Cuidado com override: &agrave;s vezes voc&ecirc; sobrescreve mais que apenas m&eacute;todos.&quot;</p></aside><aside class="prompt" data-type="tip" data-title="" id="byf4o3_94"><p id="byf4o3_117">[!IMPORTANT] &quot;Polimorfismo &eacute; como karat&ecirc;: melhor saber quando n&atilde;o usar do que usar errado.&quot;</p></aside><aside class="prompt" data-type="tip" data-title="" id="byf4o3_96"><p id="byf4o3_118">[SYSTEM://UPDATE] Last modified: | Status: POLYMORPHIC | Matrix Stability: Depends on the type</p></aside></section><div class="last-modified">17 abril 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="core-interfaces.html" class="navigation-links__prev">[SYSTEM://INTERFACES] 🎭</a><a href="core-encapsulation.html" class="navigation-links__next">[SYSTEM://ENCAPSULATION] 🔒</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

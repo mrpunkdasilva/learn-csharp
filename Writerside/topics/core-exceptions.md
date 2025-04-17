@@ -30,7 +30,7 @@
 
 ### Estrutura de uma Exceção
 
-```csharp
+```c#
 public class ExceptionAnatomy
 {
     public void DissectException()
@@ -70,7 +70,7 @@ public class ExceptionAnatomy
 
 ### 1. Try-Catch Básico
 
-```csharp
+```c#
 public class BasicExceptionHandling
 {
     public void DivideNumbers(int a, int b)
@@ -101,7 +101,7 @@ public class BasicExceptionHandling
 
 ### 2. Exceções Personalizadas Avançadas
 
-```csharp
+```c#
 public class MatrixException : Exception
 {
     public string ErrorCode { get; }
@@ -129,7 +129,7 @@ public class MatrixException : Exception
 
 ### 3. Tratamento com Recursos
 
-```csharp
+```c#
 public class ResourceHandling
 {
     public async Task ProcessFileAsync(string path)
@@ -155,7 +155,7 @@ public class ResourceHandling
 
 ### 4. Exception Filters
 
-```csharp
+```c#
 public class ExceptionFilters
 {
     public void ProcessWithFilters()
@@ -186,7 +186,7 @@ public class ExceptionFilters
 
 ### 1. Padrão de Retry
 
-```csharp
+```c#
 public class RetryPattern
 {
     public async Task ExecuteWithRetryAsync(
@@ -217,7 +217,7 @@ public class RetryPattern
 
 ### 2. Padrão de Circuit Breaker
 
-```csharp
+```c#
 public class CircuitBreaker
 {
     private int _failures;
@@ -276,7 +276,7 @@ public class CircuitBreaker
 
 ### Exercício 1: Sistema de Validação
 
-```csharp
+```c#
 public class ValidationExercise
 {
     public void ValidateUser(User user)
@@ -293,7 +293,7 @@ public class ValidationExercise
 
 ### Exercício 2: Gerenciador de Recursos
 
-```csharp
+```c#
 public class ResourceExercise
 {
     public async Task ProcessMultipleFilesAsync(string[] paths)
@@ -309,7 +309,7 @@ public class ResourceExercise
 
 ### Exercício 3: Sistema de Logging
 
-```csharp
+```c#
 public class LoggingExercise
 {
     public class MatrixLogger
@@ -328,7 +328,7 @@ public class LoggingExercise
 
 ### 1. Quando Lançar Exceções
 
-```csharp
+```c#
 public class ExceptionGuidelines
 {
     public void ProcessData(string data)
@@ -358,7 +358,7 @@ public class ExceptionGuidelines
 
 ### 2. Hierarquia de Exceções
 
-```csharp
+```c#
 // ✅ Hierarquia bem definida
 public class MatrixDataException : MatrixException
 {
@@ -373,7 +373,7 @@ public class MatrixValidationException : MatrixException
 
 ### 3. Documentação de Exceções
 
-```csharp
+```c#
 /// <summary>
 /// Processa dados da Matrix
 /// </summary>

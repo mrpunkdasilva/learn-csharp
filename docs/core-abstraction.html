@@ -1,0 +1,417 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#E8488B"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-04-17T19:25:54.301563313"><title>[SYSTEM://ABSTRACTION] 🎭 | C# Matrix: Neural Programming Guide</title><script type="application/json" id="virtual-toc-data">[{"id":"aria-mensagem","level":0,"title":"[ARIA://MENSAGEM] 📡","anchor":"#aria-mensagem"},{"id":"system-overview","level":0,"title":"[SYSTEM://OVERVIEW] 🌐","anchor":"#system-overview"},{"id":"system-fundamentos","level":0,"title":"[SYSTEM://FUNDAMENTOS] 🎯","anchor":"#system-fundamentos"},{"id":"system-implementa-o","level":0,"title":"[SYSTEM://IMPLEMENTAÇÃO] ⚙️","anchor":"#system-implementa-o"},{"id":"system-padr-es-abstra-o","level":0,"title":"[SYSTEM://PADRÕES_ABSTRAÇÃO] 🎨","anchor":"#system-padr-es-abstra-o"},{"id":"system-padr-es-avan-ados","level":0,"title":"[SYSTEM://PADRÕES_AVANÇADOS] 🎨","anchor":"#system-padr-es-avan-ados"},{"id":"system-casos-pr-ticos","level":0,"title":"[SYSTEM://CASOS_PRÁTICOS] 💼","anchor":"#system-casos-pr-ticos"},{"id":"system-boas-pr-ticas","level":0,"title":"[SYSTEM://BOAS_PRÁTICAS] 💡","anchor":"#system-boas-pr-ticas"},{"id":"system-anti-padr-es","level":0,"title":"[SYSTEM://ANTI_PADRÕES] ⚠️","anchor":"#system-anti-padr-es"},{"id":"system-exerc-cios","level":0,"title":"[SYSTEM://EXERCÍCIOS] 🏋️‍♂️","anchor":"#system-exerc-cios"},{"id":"system-recursos-adicionais","level":0,"title":"[SYSTEM://RECURSOS_ADICIONAIS] 📚","anchor":"#system-recursos-adicionais"},{"id":"aria-aviso-final","level":0,"title":"[ARIA://AVISO_FINAL] ⚠️","anchor":"#aria-aviso-final"},{"id":"system-checklist","level":0,"title":"[SYSTEM://CHECKLIST] ✅","anchor":"#system-checklist"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><link rel="icon" type="image/svg" sizes="16x16" href="images/logo-primary.svg"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="[SYSTEM://ABSTRACTION] 🎭 | C# Matrix: Neural Programming Guide"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="C# Matrix: Neural Programming Guide Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/core-abstraction.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="[SYSTEM://ABSTRACTION] 🎭 | C# Matrix: Neural Programming Guide"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/core-abstraction.html#webpage",
+    "url": "writerside-documentation/core-abstraction.html",
+    "name": "[SYSTEM://ABSTRACTION] 🎭 | C# Matrix: Neural Programming Guide",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "C# Matrix: Neural Programming Guide Help"
+}</script><!-- End Schema.org --></head><body data-id="core-abstraction" data-main-title="[SYSTEM://ABSTRACTION] 🎭" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="core-oop.md|[SYSTEM://OOP] 🏗️"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>C# Matrix: Neural Programming Guide  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="core-abstraction" id="core-abstraction.md">[SYSTEM://ABSTRACTION] 🎭</h1><div class="code-block" data-lang="none">
+╔══════════════════════════════════════════════════════════════════╗
+║  █████╗ ██████╗ ███████╗████████╗██████╗  █████╗  ██████╗████████╗║
+║ ██╔══██╗██╔══██╗██╔════╝╚══██╔══╝██╔══██╗██╔══██╗██╔════╝╚══██╔══╝║
+║ ███████║██████╔╝███████╗   ██║   ██████╔╝███████║██║        ██║   ║
+║ ██╔══██║██╔══██╗╚════██║   ██║   ██╔══██╗██╔══██║██║        ██║   ║
+║ ██║  ██║██████╔╝███████║   ██║   ██║  ██║██║  ██║╚██████╗   ██║   ║
+║ ╚═╝  ╚═╝╚═════╝ ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝   ╚═╝   ║
+╚══════════════════════════════════════════════════════════════════╝
+</div><section class="chapter"><h2 id="aria-mensagem" data-toc="aria-mensagem">[ARIA://MENSAGEM] 📡</h2><aside class="prompt" data-type="tip" data-title="" id="-5ndthi_18"><p id="-5ndthi_19">&quot;Desenvolvedor, voc&ecirc; est&aacute; prestes a mergulhar no conceito de Abstra&ccedil;&atilde;o - a arte de simplificar a complexidade. Aqui, voc&ecirc; aprender&aacute; a ver atrav&eacute;s da Matrix e identificar as ess&ecirc;ncias fundamentais dos objetos. Prepare-se para transcender o c&oacute;digo concreto e alcan&ccedil;ar n&iacute;veis superiores de design de software.&quot;</p></aside></section><section class="chapter"><h2 id="system-overview" data-toc="system-overview">[SYSTEM://OVERVIEW] 🌐</h2><div class="code-block" data-lang="none">
+╔════════════════════════════════════════════════════╗
+║ MÓDULO: ABSTRAÇÃO                                 ║
+║ STATUS: FUNDAMENTAL                              ║
+║ PRIORIDADE: ALTA                                ║
+║ CLEARANCE: NÍVEL-ALPHA                          ║
+║ DIFICULDADE: ■■■□□                             ║
+╚════════════════════════════════════════════════════╝
+</div></section><section class="chapter"><h2 id="system-fundamentos" data-toc="system-fundamentos">[SYSTEM://FUNDAMENTOS] 🎯</h2><section class="chapter"><h3 id="1-o-que-abstra-o" data-toc="1-o-que-abstra-o">1. O que &eacute; Abstra&ccedil;&atilde;o?</h3><p id="-5ndthi_25">Abstra&ccedil;&atilde;o &eacute; o processo de simplificar sistemas complexos ocultando detalhes desnecess&aacute;rios e expondo apenas as caracter&iacute;sticas essenciais. Na programa&ccedil;&atilde;o, isso significa:</p><ul class="list _bullet" id="-5ndthi_26"><li class="list__item" id="-5ndthi_27"><p id="-5ndthi_31">Reduzir complexidade</p></li><li class="list__item" id="-5ndthi_28"><p id="-5ndthi_32">Ocultar implementa&ccedil;&otilde;es</p></li><li class="list__item" id="-5ndthi_29"><p id="-5ndthi_33">Focar no comportamento</p></li><li class="list__item" id="-5ndthi_30"><p id="-5ndthi_34">Promover reusabilidade</p></li></ul></section><section class="chapter"><h3 id="2-n-veis-de-abstra-o" data-toc="2-n-veis-de-abstra-o">2. N&iacute;veis de Abstra&ccedil;&atilde;o</h3><div class="code-block" data-lang="csharp">
+// Nível Baixo (Concreto)
+public class ContaBancaria
+{
+    private decimal saldo;
+    private string numero;
+    private string agencia;
+    
+    public void Depositar(decimal valor)
+    {
+        saldo += valor;
+        SalvarTransacao(valor);
+        NotificarCliente();
+    }
+}
+
+// Nível Alto (Abstrato)
+public interface IContaBancaria
+{
+    void Depositar(decimal valor);
+    decimal ConsultarSaldo();
+}
+</div></section></section><section class="chapter"><h2 id="system-implementa-o" data-toc="system-implementa-o">[SYSTEM://IMPLEMENTA&Ccedil;&Atilde;O] ⚙️</h2><section class="chapter"><h3 id="1-classes-abstratas" data-toc="1-classes-abstratas">1. Classes Abstratas</h3><div class="code-block" data-lang="csharp">
+public abstract class EntidadeBase
+{
+    public Guid Id { get; protected set; }
+    public DateTime DataCriacao { get; protected set; }
+    public DateTime? DataAtualizacao { get; protected set; }
+
+    protected EntidadeBase()
+    {
+        Id = Guid.NewGuid();
+        DataCriacao = DateTime.UtcNow;
+    }
+
+    public abstract void Validar();
+
+    protected virtual void AtualizarDataModificacao()
+    {
+        DataAtualizacao = DateTime.UtcNow;
+    }
+}
+
+public class Usuario : EntidadeBase
+{
+    public string Nome { get; private set; }
+    public string Email { get; private set; }
+    public string Senha { get; private set; }
+
+    public Usuario(string nome, string email, string senha)
+    {
+        Nome = nome;
+        Email = email;
+        Senha = senha;
+    }
+
+    public override void Validar()
+    {
+        if (string.IsNullOrEmpty(Nome))
+            throw new DomainException(&quot;Nome é obrigatório&quot;);
+            
+        if (string.IsNullOrEmpty(Email) || !Email.Contains(&quot;@&quot;))
+            throw new DomainException(&quot;Email inválido&quot;);
+            
+        if (string.IsNullOrEmpty(Senha) || Senha.Length &lt; 6)
+            throw new DomainException(&quot;Senha deve ter no mínimo 6 caracteres&quot;);
+    }
+}
+</div></section><section class="chapter"><h3 id="2-interfaces-avan-adas" data-toc="2-interfaces-avan-adas">2. Interfaces Avan&ccedil;adas</h3><div class="code-block" data-lang="csharp">
+public interface ILogger
+{
+    void LogInfo(string message);
+    void LogWarning(string message);
+    void LogError(string message, Exception ex = null);
+}
+
+public interface IEmailService
+{
+    Task SendEmailAsync(string to, string subject, string body);
+    bool ValidateEmailAddress(string email);
+}
+
+public class NotificationService
+{
+    private readonly ILogger _logger;
+    private readonly IEmailService _emailService;
+
+    public NotificationService(ILogger logger, IEmailService emailService)
+    {
+        _logger = logger;
+        _emailService = emailService;
+    }
+
+    public async Task NotifyUserAsync(string email, string message)
+    {
+        try
+        {
+            if (!_emailService.ValidateEmailAddress(email))
+            {
+                _logger.LogWarning($&quot;Email inválido: {email}&quot;);
+                return;
+            }
+
+            await _emailService.SendEmailAsync(email, &quot;Notificação&quot;, message);
+            _logger.LogInfo($&quot;Notificação enviada para {email}&quot;);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(&quot;Erro ao enviar notificação&quot;, ex);
+            throw;
+        }
+    }
+}
+</div></section></section><section class="chapter"><h2 id="system-padr-es-abstra-o" data-toc="system-padr-es-abstra-o">[SYSTEM://PADR&Otilde;ES_ABSTRA&Ccedil;&Atilde;O] 🎨</h2><section class="chapter"><h3 id="1-template-method" data-toc="1-template-method">1. Template Method</h3><div class="code-block" data-lang="csharp">
+public abstract class RelatorioFinanceiro
+{
+    // Template Method
+    public void GerarRelatorio()
+    {
+        Coletar();
+        Processar();
+        Formatar();
+        Exportar();
+    }
+
+    protected abstract void Coletar();
+    protected abstract void Processar();
+    
+    // Método com implementação padrão
+    protected virtual void Formatar()
+    {
+        Console.WriteLine(&quot;Formatando relatório...&quot;);
+    }
+    
+    // Hook method
+    protected virtual void Exportar()
+    {
+        Console.WriteLine(&quot;Exportando para PDF...&quot;);
+    }
+}
+</div></section><section class="chapter"><h3 id="2-factory-method" data-toc="2-factory-method">2. Factory Method</h3><div class="code-block" data-lang="csharp">
+public abstract class FabricaInimigos
+{
+    public abstract IInimigo CriarInimigo();
+
+    public void SpawnarInimigo()
+    {
+        var inimigo = CriarInimigo();
+        inimigo.Inicializar();
+    }
+}
+
+public class FabricaZumbis : FabricaInimigos
+{
+    public override IInimigo CriarInimigo()
+    {
+        return new Zumbi();
+    }
+}
+</div></section></section><section class="chapter"><h2 id="system-padr-es-avan-ados" data-toc="system-padr-es-avan-ados">[SYSTEM://PADR&Otilde;ES_AVAN&Ccedil;ADOS] 🎨</h2><section class="chapter"><h3 id="1-abstract-factory" data-toc="1-abstract-factory">1. Abstract Factory</h3><div class="code-block" data-lang="csharp">
+public interface IVeiculoFactory
+{
+    IMotor CriarMotor();
+    ICarroceria CriarCarroceria();
+    ISuspensao CriarSuspensao();
+}
+
+public class CarroEsportivoFactory : IVeiculoFactory
+{
+    public IMotor CriarMotor()
+        =&gt; new MotorV8();
+
+    public ICarroceria CriarCarroceria()
+        =&gt; new CarroceriaFibra();
+
+    public ISuspensao CriarSuspensao()
+        =&gt; new SuspensaoEsportiva();
+}
+
+public class CarroPopularFactory : IVeiculoFactory
+{
+    public IMotor CriarMotor()
+        =&gt; new Motor1_0();
+
+    public ICarroceria CriarCarroceria()
+        =&gt; new CarroceriaAco();
+
+    public ISuspensao CriarSuspensao()
+        =&gt; new SuspensaoSimples();
+}
+</div></section><section class="chapter"><h3 id="2-strategy-pattern" data-toc="2-strategy-pattern">2. Strategy Pattern</h3><div class="code-block" data-lang="csharp">
+public interface ICalculadoraFrete
+{
+    decimal CalcularFrete(decimal peso, decimal distancia);
+}
+
+public class FreteExpresso : ICalculadoraFrete
+{
+    public decimal CalcularFrete(decimal peso, decimal distancia)
+        =&gt; peso * distancia * 0.5m + 100m;
+}
+
+public class FretePadrao : ICalculadoraFrete
+{
+    public decimal CalcularFrete(decimal peso, decimal distancia)
+        =&gt; peso * distancia * 0.3m;
+}
+
+public class FreteEconomico : ICalculadoraFrete
+{
+    public decimal CalcularFrete(decimal peso, decimal distancia)
+        =&gt; peso * distancia * 0.1m;
+}
+</div></section></section><section class="chapter"><h2 id="system-casos-pr-ticos" data-toc="system-casos-pr-ticos">[SYSTEM://CASOS_PR&Aacute;TICOS] 💼</h2><section class="chapter"><h3 id="1-sistema-de-pagamentos" data-toc="1-sistema-de-pagamentos">1. Sistema de Pagamentos</h3><div class="code-block" data-lang="csharp">
+public interface IPagamento
+{
+    Task&lt;bool&gt; AutorizarAsync(decimal valor);
+    Task&lt;string&gt; ProcessarAsync(decimal valor);
+    Task&lt;bool&gt; CancelarAsync(string transacaoId);
+}
+
+public class PagamentoCartaoCredito : IPagamento
+{
+    private readonly ICartaoCreditoGateway _gateway;
+    private readonly ILogger _logger;
+
+    public PagamentoCartaoCredito(ICartaoCreditoGateway gateway, ILogger logger)
+    {
+        _gateway = gateway;
+        _logger = logger;
+    }
+
+    public async Task&lt;bool&gt; AutorizarAsync(decimal valor)
+    {
+        try
+        {
+            var resultado = await _gateway.AutorizarTransacao(valor);
+            _logger.LogInfo($&quot;Autorização: {resultado.Sucesso}&quot;);
+            return resultado.Sucesso;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(&quot;Erro na autorização&quot;, ex);
+            return false;
+        }
+    }
+
+    // Implementação dos outros métodos...
+}
+</div></section><section class="chapter"><h3 id="2-sistema-de-notifica-es" data-toc="2-sistema-de-notifica-es">2. Sistema de Notifica&ccedil;&otilde;es</h3><div class="code-block" data-lang="csharp">
+public abstract class NotificacaoBase
+{
+    protected readonly ILogger _logger;
+    
+    protected NotificacaoBase(ILogger logger)
+    {
+        _logger = logger;
+    }
+
+    public abstract Task EnviarAsync(string destinatario, string mensagem);
+    
+    protected virtual void LogarEnvio(string destinatario)
+    {
+        _logger.LogInfo($&quot;Notificação enviada para {destinatario}&quot;);
+    }
+}
+
+public class NotificacaoEmail : NotificacaoBase
+{
+    private readonly IEmailService _emailService;
+
+    public NotificacaoEmail(IEmailService emailService, ILogger logger) 
+        : base(logger)
+    {
+        _emailService = emailService;
+    }
+
+    public override async Task EnviarAsync(string destinatario, string mensagem)
+    {
+        await _emailService.SendEmailAsync(destinatario, &quot;Nova Notificação&quot;, mensagem);
+        LogarEnvio(destinatario);
+    }
+}
+
+public class NotificacaoSMS : NotificacaoBase
+{
+    private readonly ISMSService _smsService;
+
+    public NotificacaoSMS(ISMSService smsService, ILogger logger) 
+        : base(logger)
+    {
+        _smsService = smsService;
+    }
+
+    public override async Task EnviarAsync(string destinatario, string mensagem)
+    {
+        await _smsService.EnviarSMSAsync(destinatario, mensagem);
+        LogarEnvio(destinatario);
+    }
+}
+</div></section></section><section class="chapter"><h2 id="system-boas-pr-ticas" data-toc="system-boas-pr-ticas">[SYSTEM://BOAS_PR&Aacute;TICAS] 💡</h2><section class="chapter"><h3 id="1-princ-pios-solid-na-abstra-o" data-toc="1-princ-pios-solid-na-abstra-o">1. Princ&iacute;pios SOLID na Abstra&ccedil;&atilde;o</h3><div class="code-block" data-lang="csharp">
+// Single Responsibility Principle
+public interface IUsuarioRepository
+{
+    Task&lt;Usuario&gt; ObterPorIdAsync(Guid id);
+    Task SalvarAsync(Usuario usuario);
+}
+
+// Open/Closed Principle
+public abstract class ValidadorBase&lt;T&gt;
+{
+    public abstract bool Validar(T entidade);
+}
+
+// Liskov Substitution Principle
+public abstract class Animal
+{
+    public abstract void EmitirSom();
+}
+
+// Interface Segregation Principle
+public interface ILeitura&lt;T&gt;
+{
+    Task&lt;T&gt; LerAsync(Guid id);
+}
+
+public interface IEscrita&lt;T&gt;
+{
+    Task EscreverAsync(T entidade);
+}
+
+// Dependency Inversion Principle
+public class ServicoUsuario
+{
+    private readonly IUsuarioRepository _repository;
+    private readonly ILogger _logger;
+
+    public ServicoUsuario(IUsuarioRepository repository, ILogger logger)
+    {
+        _repository = repository;
+        _logger = logger;
+    }
+}
+</div></section><section class="chapter"><h3 id="2-dicas-de-design" data-toc="2-dicas-de-design">2. Dicas de Design</h3><ol class="list _decimal" id="-5ndthi_60" type="1"><li class="list__item" id="-5ndthi_61"><p id="-5ndthi_64"><span class="control" id="-5ndthi_66">Mantenha Interfaces Coesas</span></p><ul class="list _bullet" id="-5ndthi_65"><li class="list__item" id="-5ndthi_67"><p id="-5ndthi_69">Uma interface deve ter um prop&oacute;sito &uacute;nico e claro</p></li><li class="list__item" id="-5ndthi_68"><p id="-5ndthi_70">Evite interfaces que fazem muitas coisas diferentes</p></li></ul></li><li class="list__item" id="-5ndthi_62"><p id="-5ndthi_71"><span class="control" id="-5ndthi_73">Use Composi&ccedil;&atilde;o sobre Heran&ccedil;a</span></p><ul class="list _bullet" id="-5ndthi_72"><li class="list__item" id="-5ndthi_74"><p id="-5ndthi_76">Prefira compor objetos usando interfaces</p></li><li class="list__item" id="-5ndthi_75"><p id="-5ndthi_77">Evite hierarquias profundas de heran&ccedil;a</p></li></ul></li><li class="list__item" id="-5ndthi_63"><p id="-5ndthi_78"><span class="control" id="-5ndthi_80">Abstraia pelo Comportamento</span></p><ul class="list _bullet" id="-5ndthi_79"><li class="list__item" id="-5ndthi_81"><p id="-5ndthi_83">Foque no que os objetos fazem, n&atilde;o no que eles s&atilde;o</p></li><li class="list__item" id="-5ndthi_82"><p id="-5ndthi_84">Use verbos para nomear m&eacute;todos de interface</p></li></ul></li></ol></section></section><section class="chapter"><h2 id="system-anti-padr-es" data-toc="system-anti-padr-es">[SYSTEM://ANTI_PADR&Otilde;ES] ⚠️</h2><section class="chapter"><h3 id="1-abstra-es-incorretas" data-toc="1-abstra-es-incorretas">1. Abstra&ccedil;&otilde;es Incorretas</h3><div class="code-block" data-lang="csharp">
+// ❌ Abstração Errada
+public interface IDatabase
+{
+    void ExecutarSQL(string sql);
+    void AbrirConexao(string connectionString);
+    void FecharConexao();
+}
+
+// ✅ Abstração Correta
+public interface IRepository&lt;T&gt;
+{
+    Task&lt;T&gt; ObterPorIdAsync(Guid id);
+    Task&lt;IEnumerable&lt;T&gt;&gt; ObterTodosAsync();
+    Task SalvarAsync(T entidade);
+}
+</div></section><section class="chapter"><h3 id="2-viola-es-de-princ-pios" data-toc="2-viola-es-de-princ-pios">2. Viola&ccedil;&otilde;es de Princ&iacute;pios</h3><div class="code-block" data-lang="csharp">
+// ❌ Violação do ISP
+public interface IServico
+{
+    void ProcessarPagamento();
+    void EnviarEmail();
+    void GerarRelatorio();
+    void ValidarDados();
+}
+
+// ✅ Interfaces Segregadas
+public interface IProcessadorPagamento
+{
+    void ProcessarPagamento();
+}
+
+public interface IEnviadorEmail
+{
+    void EnviarEmail();
+}
+
+public interface IGeradorRelatorio
+{
+    void GerarRelatorio();
+}
+</div></section></section><section class="chapter"><h2 id="system-exerc-cios" data-toc="system-exerc-cios">[SYSTEM://EXERC&Iacute;CIOS] 🏋️&zwj;♂️</h2><section class="chapter"><h3 id="1-sistema-de-m-dia" data-toc="1-sistema-de-m-dia">1. Sistema de M&iacute;dia</h3><p id="-5ndthi_95">Crie um sistema de reprodu&ccedil;&atilde;o de m&iacute;dia com:</p><ul class="list _bullet" id="-5ndthi_96"><li class="list__item" id="-5ndthi_97"><p id="-5ndthi_100">Interface <code class="code" id="-5ndthi_101">IMediaPlayer</code></p></li><li class="list__item" id="-5ndthi_98"><p id="-5ndthi_102">Classes concretas para diferentes tipos de m&iacute;dia</p></li><li class="list__item" id="-5ndthi_99"><p id="-5ndthi_103">Factory para criar players espec&iacute;ficos</p></li></ul></section><section class="chapter"><h3 id="2-processador-de-documentos" data-toc="2-processador-de-documentos">2. Processador de Documentos</h3><p id="-5ndthi_104">Implemente um sistema de processamento de documentos:</p><ul class="list _bullet" id="-5ndthi_105"><li class="list__item" id="-5ndthi_106"><p id="-5ndthi_109">Classe abstrata <code class="code" id="-5ndthi_110">DocumentoBase</code></p></li><li class="list__item" id="-5ndthi_107"><p id="-5ndthi_111">Interface <code class="code" id="-5ndthi_112">IProcessador</code></p></li><li class="list__item" id="-5ndthi_108"><p id="-5ndthi_113">Strategy para diferentes formatos</p></li></ul></section><section class="chapter"><h3 id="3-sistema-de-notifica-es" data-toc="3-sistema-de-notifica-es">3. Sistema de Notifica&ccedil;&otilde;es</h3><p id="-5ndthi_114">Desenvolva um sistema completo de notifica&ccedil;&otilde;es:</p><ul class="list _bullet" id="-5ndthi_115"><li class="list__item" id="-5ndthi_116"><p id="-5ndthi_119">Interface <code class="code" id="-5ndthi_120">INotificador</code></p></li><li class="list__item" id="-5ndthi_117"><p id="-5ndthi_121">Abstract Factory para diferentes tipos</p></li><li class="list__item" id="-5ndthi_118"><p id="-5ndthi_122">Chain of Responsibility para regras</p></li></ul></section><section class="chapter"><h3 id="4-gerenciador-de-logs" data-toc="4-gerenciador-de-logs">4. Gerenciador de Logs</h3><p id="-5ndthi_123">Crie um sistema de logging:</p><ul class="list _bullet" id="-5ndthi_124"><li class="list__item" id="-5ndthi_125"><p id="-5ndthi_128">Interface <code class="code" id="-5ndthi_129">ILogger</code></p></li><li class="list__item" id="-5ndthi_126"><p id="-5ndthi_130">Decorator para adicionar funcionalidades</p></li><li class="list__item" id="-5ndthi_127"><p id="-5ndthi_131">Factory Method para diferentes destinos</p></li></ul></section></section><section class="chapter"><h2 id="system-recursos-adicionais" data-toc="system-recursos-adicionais">[SYSTEM://RECURSOS_ADICIONAIS] 📚</h2><ul class="list _bullet" id="-5ndthi_133"><li class="list__item" id="-5ndthi_134"><p id="-5ndthi_138"><a href="https://refactoring.guru/design-patterns" id="-5ndthi_139" data-external="true" rel="noopener noreferrer" target="_blank">Design Patterns (GoF)</a></p></li><li class="list__item" id="-5ndthi_135"><p id="-5ndthi_140"><a href="https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882" id="-5ndthi_141" data-external="true" rel="noopener noreferrer" target="_blank">Clean Code</a></p></li><li class="list__item" id="-5ndthi_136"><p id="-5ndthi_142"><a href="https://domainlanguage.com/ddd/" id="-5ndthi_143" data-external="true" rel="noopener noreferrer" target="_blank">Domain-Driven Design</a></p></li><li class="list__item" id="-5ndthi_137"><p id="-5ndthi_144"><a href="https://docs.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/architectural-principles" id="-5ndthi_145" data-external="true" rel="noopener noreferrer" target="_blank">SOLID Principles</a></p></li></ul></section><section class="chapter"><h2 id="aria-aviso-final" data-toc="aria-aviso-final">[ARIA://AVISO_FINAL] ⚠️</h2><aside class="prompt" data-type="tip" data-title="" id="-5ndthi_147"><p id="-5ndthi_148">&quot;A abstra&ccedil;&atilde;o &eacute; uma ferramenta poderosa que requer sabedoria para ser utilizada. Lembre-se: com grandes abstra&ccedil;&otilde;es v&ecirc;m grandes responsabilidades. Mantenha seu c&oacute;digo limpo, suas interfaces coesas e suas depend&ecirc;ncias inversas.&quot;</p></aside></section><section class="chapter"><h2 id="system-checklist" data-toc="system-checklist">[SYSTEM://CHECKLIST] ✅</h2><ul class="list _bullet" id="-5ndthi_150"><li class="list__item" id="-5ndthi_153"><p id="-5ndthi_160">[ ] Compreender os fundamentos da abstra&ccedil;&atilde;o</p></li><li class="list__item" id="-5ndthi_154"><p id="-5ndthi_161">[ ] Dominar classes abstratas e interfaces</p></li><li class="list__item" id="-5ndthi_155"><p id="-5ndthi_162">[ ] Implementar padr&otilde;es de design</p></li><li class="list__item" id="-5ndthi_156"><p id="-5ndthi_163">[ ] Aplicar princ&iacute;pios SOLID</p></li><li class="list__item" id="-5ndthi_157"><p id="-5ndthi_164">[ ] Evitar anti-padr&otilde;es comuns</p></li><li class="list__item" id="-5ndthi_158"><p id="-5ndthi_165">[ ] Praticar com exerc&iacute;cios</p></li><li class="list__item" id="-5ndthi_159"><p id="-5ndthi_166">[ ] Revisar recursos adicionais</p></li></ul><aside class="prompt" data-type="tip" data-title="" id="-5ndthi_152"><p id="-5ndthi_167">[SYSTEM://UPDATE] Last modified: | Status: ONLINE | Matrix Stability: 100%</p></aside></section><div class="last-modified">17 abril 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="core-encapsulation.html" class="navigation-links__prev">[SYSTEM://ENCAPSULATION] 🔒</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

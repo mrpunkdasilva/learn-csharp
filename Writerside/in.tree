@@ -35,97 +35,97 @@
             <toc-element topic="core-abstraction.md"/>
         </toc-element>
 
-        <toc-element topic="core-collections.md">
-            <toc-element topic="core-arrays.md"/>
-            <toc-element topic="core-lists.md"/>
-            <toc-element topic="core-dictionaries.md"/>
-            <toc-element topic="core-sets.md"/>
-            <toc-element topic="core-queues.md"/>
-            <toc-element topic="core-stacks.md"/>
-            <toc-element topic="core-custom-collections.md"/>
-        </toc-element>
+<!--        <toc-element topic="core-collections.md">-->
+<!--            <toc-element topic="core-arrays.md"/>-->
+<!--            <toc-element topic="core-lists.md"/>-->
+<!--            <toc-element topic="core-dictionaries.md"/>-->
+<!--            <toc-element topic="core-sets.md"/>-->
+<!--            <toc-element topic="core-queues.md"/>-->
+<!--            <toc-element topic="core-stacks.md"/>-->
+<!--            <toc-element topic="core-custom-collections.md"/>-->
+<!--        </toc-element>-->
 
-        <toc-element topic="core-linq.md">
-            <toc-element topic="core-linq-basics.md"/>
-            <toc-element topic="core-linq-queries.md"/>
-            <toc-element topic="core-linq-methods.md"/>
-            <toc-element topic="core-linq-joins.md"/>
-            <toc-element topic="core-linq-grouping.md"/>
-            <toc-element topic="core-linq-aggregation.md"/>
-            <toc-element topic="core-linq-custom.md"/>
-        </toc-element>
+<!--        <toc-element topic="core-linq.md">-->
+<!--            <toc-element topic="core-linq-basics.md"/>-->
+<!--            <toc-element topic="core-linq-queries.md"/>-->
+<!--            <toc-element topic="core-linq-methods.md"/>-->
+<!--            <toc-element topic="core-linq-joins.md"/>-->
+<!--            <toc-element topic="core-linq-grouping.md"/>-->
+<!--            <toc-element topic="core-linq-aggregation.md"/>-->
+<!--            <toc-element topic="core-linq-custom.md"/>-->
+<!--        </toc-element>-->
 
-        <toc-element topic="core-async.md">
-            <toc-element topic="core-tasks.md"/>
-            <toc-element topic="core-async-await.md"/>
-            <toc-element topic="core-parallel.md"/>
-            <toc-element topic="core-threading.md"/>
-            <toc-element topic="core-synchronization.md"/>
-            <toc-element topic="core-cancellation.md"/>
-            <toc-element topic="core-async-patterns.md"/>
-        </toc-element>
+<!--        <toc-element topic="core-async.md">-->
+<!--            <toc-element topic="core-tasks.md"/>-->
+<!--            <toc-element topic="core-async-await.md"/>-->
+<!--            <toc-element topic="core-parallel.md"/>-->
+<!--            <toc-element topic="core-threading.md"/>-->
+<!--            <toc-element topic="core-synchronization.md"/>-->
+<!--            <toc-element topic="core-cancellation.md"/>-->
+<!--            <toc-element topic="core-async-patterns.md"/>-->
+<!--        </toc-element>-->
 
-        <toc-element topic="core-advanced.md">
-            <toc-element topic="core-delegates.md"/>
-            <toc-element topic="core-events.md"/>
-            <toc-element topic="core-generics.md"/>
-            <toc-element topic="core-reflection.md"/>
-            <toc-element topic="core-attributes.md"/>
-            <toc-element topic="core-extensions.md"/>
-            <toc-element topic="core-unsafe.md"/>
-        </toc-element>
+<!--        <toc-element topic="core-advanced.md">-->
+<!--            <toc-element topic="core-delegates.md"/>-->
+<!--            <toc-element topic="core-events.md"/>-->
+<!--            <toc-element topic="core-generics.md"/>-->
+<!--            <toc-element topic="core-reflection.md"/>-->
+<!--            <toc-element topic="core-attributes.md"/>-->
+<!--            <toc-element topic="core-extensions.md"/>-->
+<!--            <toc-element topic="core-unsafe.md"/>-->
+<!--        </toc-element>-->
 
-        <toc-element topic="core-memory.md">
-            <toc-element topic="core-garbage-collection.md"/>
-            <toc-element topic="core-memory-management.md"/>
-            <toc-element topic="core-disposable.md"/>
-            <toc-element topic="core-finalization.md"/>
-            <toc-element topic="core-weak-references.md"/>
-            <toc-element topic="core-memory-leaks.md"/>
-        </toc-element>
-    </toc-element>
+<!--        <toc-element topic="core-memory.md">-->
+<!--            <toc-element topic="core-garbage-collection.md"/>-->
+<!--            <toc-element topic="core-memory-management.md"/>-->
+<!--            <toc-element topic="core-disposable.md"/>-->
+<!--            <toc-element topic="core-finalization.md"/>-->
+<!--            <toc-element topic="core-weak-references.md"/>-->
+<!--            <toc-element topic="core-memory-leaks.md"/>-->
+<!--        </toc-element>-->
+<!--    </toc-element>-->
 
-    <toc-element topic="domus-web.md">
-        <toc-element topic="web-basics.md"/>
-        <toc-element topic="web-mvc.md"/>
-        <toc-element topic="web-api.md"/>
-        <toc-element topic="web-security.md"/>
-        <toc-element topic="web-deployment.md"/>
-    </toc-element>
+<!--    <toc-element topic="domus-web.md">-->
+<!--        <toc-element topic="web-basics.md"/>-->
+<!--        <toc-element topic="web-mvc.md"/>-->
+<!--        <toc-element topic="web-api.md"/>-->
+<!--        <toc-element topic="web-security.md"/>-->
+<!--        <toc-element topic="web-deployment.md"/>-->
+<!--    </toc-element>-->
 
-    <toc-element topic="domus-data.md">
-        <toc-element topic="data-sql.md"/>
-        <toc-element topic="data-orm.md"/>
-        <toc-element topic="data-nosql.md"/>
-        <toc-element topic="data-cache.md"/>
-    </toc-element>
+<!--    <toc-element topic="domus-data.md">-->
+<!--        <toc-element topic="data-sql.md"/>-->
+<!--        <toc-element topic="data-orm.md"/>-->
+<!--        <toc-element topic="data-nosql.md"/>-->
+<!--        <toc-element topic="data-cache.md"/>-->
+<!--    </toc-element>-->
 
-    <toc-element topic="domus-test.md">
-        <toc-element topic="test-unit.md"/>
-        <toc-element topic="test-integration.md"/>
-        <toc-element topic="test-e2e.md"/>
-        <toc-element topic="test-tdd.md"/>
-    </toc-element>
+<!--    <toc-element topic="domus-test.md">-->
+<!--        <toc-element topic="test-unit.md"/>-->
+<!--        <toc-element topic="test-integration.md"/>-->
+<!--        <toc-element topic="test-e2e.md"/>-->
+<!--        <toc-element topic="test-tdd.md"/>-->
+<!--    </toc-element>-->
 
-    <toc-element topic="domus-arch.md">
-        <toc-element topic="arch-patterns.md"/>
-        <toc-element topic="arch-clean.md"/>
-        <toc-element topic="arch-ddd.md"/>
-        <toc-element topic="arch-microservices.md"/>
-    </toc-element>
+<!--    <toc-element topic="domus-arch.md">-->
+<!--        <toc-element topic="arch-patterns.md"/>-->
+<!--        <toc-element topic="arch-clean.md"/>-->
+<!--        <toc-element topic="arch-ddd.md"/>-->
+<!--        <toc-element topic="arch-microservices.md"/>-->
+<!--    </toc-element>-->
 
-    <toc-element topic="domus-devops.md">
-        <toc-element topic="devops-ci.md"/>
-        <toc-element topic="devops-cd.md"/>
-        <toc-element topic="devops-cloud.md"/>
-        <toc-element topic="devops-monitoring.md"/>
-    </toc-element>
+<!--    <toc-element topic="domus-devops.md">-->
+<!--        <toc-element topic="devops-ci.md"/>-->
+<!--        <toc-element topic="devops-cd.md"/>-->
+<!--        <toc-element topic="devops-cloud.md"/>-->
+<!--        <toc-element topic="devops-monitoring.md"/>-->
+<!--    </toc-element>-->
 
-    <toc-element topic="domus-security.md">
-        <toc-element topic="security-auth.md"/>
-        <toc-element topic="security-crypto.md"/>
-        <toc-element topic="security-best-practices.md"/>
-    </toc-element>
+<!--    <toc-element topic="domus-security.md">-->
+<!--        <toc-element topic="security-auth.md"/>-->
+<!--        <toc-element topic="security-crypto.md"/>-->
+<!--        <toc-element topic="security-best-practices.md"/>-->
+<!--    </toc-element>-->
 
     <toc-element topic="matrix-resources.md">
         <toc-element topic="resources-tools.md"/>

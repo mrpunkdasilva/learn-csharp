@@ -92,7 +92,7 @@
 
 ## [ARIA://PRIMEIRO_DESAFIO] 🎮
 
-```csharp
+```c#
 public class DespertarNaMatrix
 {
     public static void Main()

@@ -18,7 +18,7 @@
 ## [SYSTEM://TIPOS_BÁSICOS] 💊
 
 ### 🔢 Números Inteiros
-```csharp
+```c#
 int idade = 25;           // -2,147,483,648 to 2,147,483,647
 long distancia = 9999L;   // Para números muito grandes
 byte nivel = 255;         // 0 to 255
@@ -26,20 +26,20 @@ short codigo = 32000;     // -32,768 to 32,767
 ```
 
 ### 💫 Números Decimais
-```csharp
+```c#
 float energia = 99.9f;    // 7 dígitos de precisão
 double precisao = 99.99;  // 15-17 dígitos de precisão
 decimal creditos = 99.99m;// 28-29 dígitos de precisão
 ```
 
 ### 🎭 Caracteres e Texto
-```csharp
+```c#
 char simbolo = 'X';       // Caractere Unicode único
 string mensagem = "Wake up, Neo..."; // Sequência de caracteres
 ```
 
 ### ⚡ Booleanos
-```csharp
+```c#
 bool conectado = true;    // true ou false
 bool desconectado = false;
 ```
@@ -60,7 +60,7 @@ bool desconectado = false;
 ## [SYSTEM://OPERADORES] ⚔️
 
 ### 🎯 Operadores Aritméticos
-```csharp
+```c#
 int a = 10, b = 5;
 int soma = a + b;        // 15
 int subtracao = a - b;   // 5
@@ -70,7 +70,7 @@ int resto = a % b;       // 0
 ```
 
 ### 🔄 Operadores de Comparação
-```csharp
+```c#
 bool igual = (a == b);           // false
 bool diferente = (a != b);       // true
 bool maior = (a > b);            // true
@@ -80,7 +80,7 @@ bool menorIgual = (a <= b);      // false
 ```
 
 ### ⚡ Operadores Lógicos
-```csharp
+```c#
 bool x = true, y = false;
 bool e = x && y;         // AND (false)
 bool ou = x || y;        // OR (true)
@@ -90,20 +90,20 @@ bool nao = !x;           // NOT (false)
 ## [SYSTEM://CONVERSÕES] 🔄
 
 ### 🎯 Conversão Implícita
-```csharp
+```c#
 int numeroInteiro = 100;
 long numeroLongo = numeroInteiro;  // Conversão segura
 ```
 
 ### ⚠️ Conversão Explícita (Cast)
-```csharp
+```c#
 double numeroDecimal = 99.99;
 int numeroInteiro = (int)numeroDecimal;  // Perde a precisão
 ```
 
 ## [ARIA://EXEMPLOS_PRÁTICOS] 🔬
 
-```csharp
+```c#
 using System;
 
 class MatrixBasics

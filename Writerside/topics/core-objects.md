@@ -20,7 +20,7 @@
 ### 1. Estado (As Entranhas)
 Como aquela gaveta onde você joga tudo que não sabe onde guardar.
 
-```csharp
+```c#
 public class DevedorContumaz
 {
     // Estado público (a vergonha que todo mundo vê)
@@ -37,7 +37,7 @@ public class DevedorContumaz
 ### 2. Comportamento (Os Vícios)
 Métodos são como vícios: uma vez que você começa, não consegue parar.
 
-```csharp
+```c#
 public class ViciadoEmCodigo
 {
     public void CodificarAteAmorte()
@@ -55,7 +55,7 @@ public class ViciadoEmCodigo
 ## [SYSTEM://CICLO_DE_VIDA] ⚰️
 
 ### 1. Nascimento (Construção)
-```csharp
+```c#
 public class SerVivo
 {
     public SerVivo()
@@ -67,7 +67,7 @@ public class SerVivo
 ```
 
 ### 2. Vida (Referência)
-```csharp
+```c#
 public class ExistenciaMiseravel
 {
     public void VidaUtil()
@@ -83,7 +83,7 @@ public class ExistenciaMiseravel
 ```
 
 ### 3. Morte (Garbage Collection)
-```csharp
+```c#
 public class Defunto
 {
     ~Defunto()
@@ -97,7 +97,7 @@ public class Defunto
 ## [SYSTEM://TIPOS_DE_OBJETOS] 🎭
 
 ### 1. Value Types (Os Pobres)
-```csharp
+```c#
 struct Pobre
 {
     public int Salario; // Sempre copiado, nunca referenciado
@@ -109,7 +109,7 @@ struct Pobre
 ```
 
 ### 2. Reference Types (Os Burgueses)
-```csharp
+```c#
 class Burgues
 {
     private HeapMemory _mansao;
@@ -124,7 +124,7 @@ class Burgues
 ## [SYSTEM://OBJECT_METHODS] 🛠️
 
 ### 1. ToString() (A Maquiagem)
-```csharp
+```c#
 public override string ToString()
 {
     // Como você se vê no espelho vs. realidade
@@ -133,7 +133,7 @@ public override string ToString()
 ```
 
 ### 2. GetHashCode() (A Digital)
-```csharp
+```c#
 public override int GetHashCode()
 {
     // Sua identidade única (até dar colisão)
@@ -142,7 +142,7 @@ public override int GetHashCode()
 ```
 
 ### 3. Equals() (O Teste de DNA)
-```csharp
+```c#
 public override bool Equals(object obj)
 {
     // Teste de paternidade orientado a objetos
@@ -152,7 +152,7 @@ public override bool Equals(object obj)
 
 ## [SYSTEM://BOXING_UNBOXING] 🥊
 
-```csharp
+```c#
 public class LutaDeClasses
 {
     public void BoxearValores()
@@ -188,7 +188,7 @@ public class LutaDeClasses
 ## [SYSTEM://OBJECT_PATTERNS] 🎭
 
 ### 1. Singleton (O Forever Alone)
-```csharp
+```c#
 public class ForeverAlone
 {
     private static ForeverAlone _instance;
@@ -206,7 +206,7 @@ public class ForeverAlone
 ```
 
 ### 2. Factory (A Fábrica de Ilusões)
-```csharp
+```c#
 public class FabricaDeProblemas
 {
     public IProblema CriarProblema(TipoProblema tipo)
@@ -225,7 +225,7 @@ public class FabricaDeProblemas
 ## [SYSTEM://OBJECT_RELATIONSHIPS] 💑
 
 ### 1. Composição (Casamento)
-```csharp
+```c#
 public class CasamentoFalido
 {
     private readonly CartaoCredito _cartao; // Até que a morte (ou a fatura) nos separe
@@ -248,7 +248,7 @@ public class CasamentoFalido
 ```
 
 ### 2. Agregação (Namoro)
-```csharp
+```c#
 public class RelacionamentoAberto
 {
     private List<IParceiroObjeto> _parceiros; // Pode viver sem, mas prefere ter
@@ -266,7 +266,7 @@ public class RelacionamentoAberto
 ## [SYSTEM://OBJECT_LIFECYCLE_ADVANCED] 🔄
 
 ### 1. Lazy Loading (Procrastinação)
-```csharp
+```c#
 public class Procrastinador
 {
     private Lazy<TrabalhoImportante> _trabalho 
@@ -283,7 +283,7 @@ public class Procrastinador
 ```
 
 ### 2. Object Pool (Reutilização de Ex)
-```csharp
+```c#
 public class PoolDeObjetos
 {
     private readonly Queue<ObjetoReciclado> _pool;
@@ -301,7 +301,7 @@ public class PoolDeObjetos
 ## [SYSTEM://OBJECT_SERIALIZATION] 💾
 
 ### 1. JSON (O Instagram dos Objetos)
-```csharp
+```c#
 public class InstagramObject
 {
     [JsonProperty("filtros")]
@@ -323,7 +323,7 @@ public class InstagramObject
 ```
 
 ### 2. Binary (O Modo Secreto)
-```csharp
+```c#
 [Serializable]
 public class ObjetoSecreto
 {
@@ -341,7 +341,7 @@ public class ObjetoSecreto
 ## [SYSTEM://OBJECT_MEMORY_MANAGEMENT] 🧠
 
 ### 1. Disposable Pattern (Limpeza de Nome)
-```csharp
+```c#
 public class LimpezaDeName : IDisposable
 {
     private bool _disposed = false;
@@ -369,7 +369,7 @@ public class LimpezaDeName : IDisposable
 ```
 
 ### 2. Weak References (Relacionamento Sem Compromisso)
-```csharp
+```c#
 public class RelacionamentoFraco
 {
     private WeakReference<ObjetoCaro> _referencia; // Não quer compromisso com a memória
@@ -385,7 +385,7 @@ public class RelacionamentoFraco
 ## [SYSTEM://OBJECT_COMPARISON] 🤼
 
 ### 1. IComparable (Competição de Egos)
-```csharp
+```c#
 public class EgoCentrico : IComparable<EgoCentrico>
 {
     public int NivelDeEgo { get; set; }
@@ -400,7 +400,7 @@ public class EgoCentrico : IComparable<EgoCentrico>
 ```
 
 ### 2. IEquatable (Crise de Identidade)
-```csharp
+```c#
 public class IdentidadeDuvidosa : IEquatable<IdentidadeDuvidosa>
 {
     public Guid Id { get; set; }

@@ -28,7 +28,7 @@ cd MatrixFirstContact
 ```
 
 ### 🎯 Hello Matrix
-```csharp
+```c#
 using System;
 
 namespace MatrixFirstContact
@@ -79,20 +79,20 @@ dotnet run
 ## [SYSTEM://EXERCÍCIOS] 🏋️
 
 ### 1. Modificação Básica
-```csharp
+```c#
 // Modifique o programa para incluir seu codenome
 Console.WriteLine($"Codenome: {seu_nome_aqui}");
 ```
 
 ### 2. Interação Neural
-```csharp
+```c#
 Console.Write("Digite seu codenome: ");
 string codenome = Console.ReadLine();
 Console.WriteLine($"Bem-vindo à Matrix, {codenome}!");
 ```
 
 ### 3. Manipulação de Cores
-```csharp
+```c#
 // Experimente diferentes cores
 Console.ForegroundColor = ConsoleColor.Cyan;
 Console.BackgroundColor = ConsoleColor.DarkBlue;
@@ -128,7 +128,7 @@ Tente criar um programa que:
 2. Mude a cor do console aleatoriamente
 3. Exiba uma mensagem personalizada com ASCII art
 
-```csharp
+```c#
 // Exemplo de solução
 using System;
 

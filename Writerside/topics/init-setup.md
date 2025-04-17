@@ -88,7 +88,7 @@ sudo pacman -S code
 ```
 
 ### 3. Extensões Recomendadas (VS Code)
-```csharp
+```
 public class NeuroEnhancers
 {
     public static readonly string[] Extensions = 
@@ -106,7 +106,7 @@ public class NeuroEnhancers
 
 Execute o seguinte código para verificar sua instalação:
 
-```csharp
+```
 using System;
 
 class MatrixTest

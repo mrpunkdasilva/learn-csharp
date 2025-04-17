@@ -30,7 +30,7 @@
 
 ### 🎯 Anatomia de um Método
 
-```csharp
+```c#
 [modificadores] tipo_retorno NomeDoMetodo([parâmetros])
 {
     // Corpo do método
@@ -55,7 +55,7 @@
 ### 🔄 Sistema de Parâmetros
 
 #### Parâmetros Básicos
-```csharp
+```c#
 public class ParameterDemo
 {
     // Parâmetros obrigatórios
@@ -79,7 +79,7 @@ public class ParameterDemo
 ```
 
 #### Parâmetros Avançados
-```csharp
+```c#
 public class AdvancedParameters
 {
     // Params array
@@ -115,7 +115,7 @@ public class AdvancedParameters
 
 ### 💫 Sobrecarga de Métodos
 
-```csharp
+```c#
 public class MethodOverloading
 {
     // Sobrecarga por número de parâmetros
@@ -135,7 +135,7 @@ public class MethodOverloading
 
 ### 🎨 Expression-Bodied Members
 
-```csharp
+```c#
 public class ModernSyntax
 {
     // Método tradicional
@@ -163,7 +163,7 @@ public class ModernSyntax
 
 ### Métodos de Extensão
 
-```csharp
+```c#
 public static class StringExtensions
 {
     public static int ContarPalavras(this string texto) => 
@@ -183,7 +183,7 @@ public static class StringExtensions
 
 ### Métodos Genéricos
 
-```csharp
+```c#
 public class GenericMethods
 {
     public T[] Inverter<T>(T[] array)
@@ -206,7 +206,7 @@ public class GenericMethods
 
 ### Exemplo 1: Sistema de Logging
 
-```csharp
+```c#
 public class MatrixLogger
 {
     private readonly string _logPath;
@@ -235,7 +235,7 @@ public class MatrixLogger
 
 ### Exemplo 2: Calculadora Neural
 
-```csharp
+```c#
 public class NeuralCalculator
 {
     private readonly Dictionary<string, Func<double[], double>> _operations;
@@ -273,7 +273,7 @@ public class NeuralCalculator
 
 ### Exercício 1: Matrix Data Processor
 
-```csharp
+```c#
 public class MatrixDataProcessor
 {
     // TODO: Implementar métodos para processar dados da Matrix
@@ -296,7 +296,7 @@ public class MatrixDataProcessor
 
 ### Exercício 2: Neural Network Builder
 
-```csharp
+```c#
 public class NeuralNetworkBuilder
 {
     // TODO: Implementar builder pattern com métodos fluentes
@@ -322,7 +322,7 @@ public class NeuralNetworkBuilder
 
 ### Exercício 3: Matrix Data Validator
 
-```csharp
+```c#
 public class MatrixDataValidator
 {
     // TODO: Implementar validações com métodos de extensão

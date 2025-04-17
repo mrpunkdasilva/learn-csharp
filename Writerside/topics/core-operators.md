@@ -31,7 +31,7 @@
 ## [SYSTEM://CATEGORIAS] 📊
 
 ### 1. Operadores Aritméticos
-```csharp
+```c#
 public class OperadoresAritmeticos
 {
     public void ExemplosBasicos()
@@ -83,7 +83,7 @@ public class OperadoresAritmeticos
 ```
 
 ### 2. Operadores de Comparação
-```csharp
+```c#
 public class OperadoresComparacao
 {
     public void ExemplosBasicos()
@@ -126,7 +126,7 @@ public class OperadoresComparacao
 ```
 
 ### 3. Operadores Lógicos
-```csharp
+```c#
 public class OperadoresLogicos
 {
     public void ExemplosBasicos()
@@ -172,7 +172,7 @@ public class OperadoresLogicos
 ```
 
 ### 4. Operadores de Atribuição
-```csharp
+```c#
 public class OperadoresAtribuicao
 {
     public void ExemplosBasicos()
@@ -216,7 +216,7 @@ public class OperadoresAtribuicao
 ```
 
 ### 5. Operadores Bit a Bit
-```csharp
+```c#
 public class OperadoresBitwise
 {
     public void ExemplosBasicos()
@@ -269,7 +269,7 @@ public class OperadoresBitwise
 ```
 
 ### 6. Operadores Especiais
-```csharp
+```c#
 public class OperadoresEspeciais
 {
     public void ExemplosBasicos()
@@ -433,7 +433,7 @@ public class OperadoresEspeciais
 
 ## [SYSTEM://EXERCÍCIOS] 🏋️
 
-```csharp
+```c#
 public class OperatorExercises
 {
     // Exercício 1: Implementar calculadora avançada

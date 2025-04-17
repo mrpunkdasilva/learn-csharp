@@ -25,7 +25,7 @@
 
 Herança é como dívida de cartão de crédito: você herda tudo - inclusive os problemas - da classe pai.
 
-```csharp
+```c#
 // A classe pai que todo mundo quer ser
 public class Ricaco
 {
@@ -51,7 +51,7 @@ public class Herdeiro : Ricaco
 ## [SYSTEM://TIPOS_DE_HERANÇA] 🎭
 
 ### 1. Herança Simples (Filho Único)
-```csharp
+```c#
 public class Mae 
 {
     public void DarBronca() => Console.WriteLine("Tá me ouvindo?!");
@@ -64,7 +64,7 @@ public class FilhoRebelde : Mae
 ```
 
 ### 2. Herança Multinível (Árvore Genealógica)
-```csharp
+```c#
 public class Avo 
 {
     protected void ContarHistoria() => Console.WriteLine("No meu tempo...");
@@ -82,7 +82,7 @@ public class Filho : Pai
 ```
 
 ### 3. Herança com Interfaces (Adoção Múltipla)
-```csharp
+```c#
 public interface ITrabalho
 {
     void Trabalhar();
@@ -103,7 +103,7 @@ public class EstudanteEstagiario : Pessoa, ITrabalho, IEstudo
 ## [SYSTEM://MODIFICADORES] 🎛️
 
 ### 1. Protected (Segredo de Família)
-```csharp
+```c#
 public class ContaBancaria
 {
     protected decimal saldo; // Só a família pode ver
@@ -116,7 +116,7 @@ public class ContaBancaria
 ```
 
 ### 2. Internal (Segredo de Vizinhança)
-```csharp
+```c#
 internal class SegredinhosDaFamilia
 {
     internal void ContarFofoca()
@@ -127,7 +127,7 @@ internal class SegredinhosDaFamilia
 ```
 
 ### 3. Protected Internal (Família + Vizinhos)
-```csharp
+```c#
 public class ReuniaoDeFamilia
 {
     protected internal void FazerChurrasco()
@@ -140,7 +140,7 @@ public class ReuniaoDeFamilia
 ## [SYSTEM://REGRAS_DO_JOGO] 📜
 
 ### 1. Sealed (Fim da Linha)
-```csharp
+```c#
 public sealed class FilhoUnico 
 {
     // Ninguém mais pode herdar dessa classe
@@ -149,7 +149,7 @@ public sealed class FilhoUnico
 ```
 
 ### 2. Abstract (Promessas Vazias)
-```csharp
+```c#
 public abstract class PoliticoBrasileiro
 {
     // Método abstrato: promete mas não faz nada
@@ -163,7 +163,7 @@ public abstract class PoliticoBrasileiro
 ## [SYSTEM://POLIMORFISMO] 🦎
 
 ### 1. Override (Reescrevendo a História)
-```csharp
+```c#
 public class ContaBancaria
 {
     public virtual decimal CalcularJuros() => 0.01M;
@@ -176,7 +176,7 @@ public class ContaEspecial : ContaBancaria
 ```
 
 ### 2. New (Fingindo que não te Conheço)
-```csharp
+```c#
 public class PaiRico
 {
     public void Pagar() => Console.WriteLine("Toma 100");
@@ -191,7 +191,7 @@ public class FilhoPobre : PaiRico
 ## [SYSTEM://DESIGN_PATTERNS] 🎨
 
 ### 1. Template Method
-```csharp
+```c#
 public abstract class Funcionario
 {
     // Template method
@@ -216,7 +216,7 @@ public class Programador : Funcionario
 ```
 
 ### 2. Factory Method
-```csharp
+```c#
 public abstract class FabricaDeBugs
 {
     public abstract IBug CriarBug();
@@ -240,7 +240,7 @@ public class FabricaDeBugsJunior : FabricaDeBugs
 ## [SYSTEM://PROBLEMAS_COMUNS] 💣
 
 ### 1. Diamante da Morte
-```csharp
+```c#
 // C# não permite, mas é bom saber porque não fazer
 interface IMae { void Mandar(); }
 interface IPai { void Mandar(); }
@@ -256,7 +256,7 @@ public class FilhoProblematico : IMae, IPai
 ```
 
 ### 2. Herança vs Composição
-```csharp
+```c#
 // Herança: Acoplamento Forte
 public class CarroRoubado : CarroBase { } // Herdar problemas
 
@@ -269,7 +269,7 @@ public class CarroInteligente
 ```
 
 ### 3. Herança Profunda (O Buraco é Mais Embaixo)
-```csharp
+```c#
 public class A { }
 public class B : A { }
 public class C : B { }
@@ -281,7 +281,7 @@ public class F : E { } // Socorro!
 ## [SYSTEM://BOAS_PRÁTICAS] 🌟
 
 ### 1. Princípio de Substituição de Liskov (LSP)
-```csharp
+```c#
 public class Ave
 {
     public virtual void Voar() => Console.WriteLine("Voando...");
@@ -305,7 +305,7 @@ public interface IAveVoadora : IAve
 ```
 
 ### 2. Composição Sobre Herança
-```csharp
+```c#
 // Evite isso
 public class SuperClasse
 {
