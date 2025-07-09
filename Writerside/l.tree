@@ -14,4 +14,5 @@
     <toc-element topic="Constants.md"/>
     <toc-element topic="KeyWords.md"/>
     <toc-element topic="Comments.md"/>
+    <toc-element topic="PrimitiveTypes.md"/>
 </instance-profile>
