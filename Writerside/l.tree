@@ -11,4 +11,6 @@
     <toc-element topic="Namespaces.md"/>
     <toc-element topic="Using.md"/>
     <toc-element topic="Variables.md"/>
+    <toc-element topic="Constants.md"/>
+    <toc-element topic="KeyWords.md"/>
 </instance-profile>
