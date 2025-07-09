@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="l"
+                 name="learn-csharp"
+                 start-page="starter-topic.md">
+
+    <toc-element topic="starter-topic.md"/>
+    <toc-element topic="Scope.md"/>
+    <toc-element topic="Namespaces.md"/>
+    <toc-element topic="Using.md"/>
+    <toc-element topic="Variables.md"/>
+</instance-profile>
