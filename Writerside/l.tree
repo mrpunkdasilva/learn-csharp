@@ -3,8 +3,8 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
 
 <instance-profile id="l"
-                 name="learn-csharp"
-                 start-page="starter-topic.md">
+                  name="learn-csharp"
+                  start-page="starter-topic.md">
 
     <toc-element topic="starter-topic.md"/>
     <toc-element topic="Scope.md"/>
@@ -14,6 +14,10 @@
     <toc-element topic="Constants.md"/>
     <toc-element topic="KeyWords.md"/>
     <toc-element topic="Comments.md"/>
-    <toc-element topic="PrimitiveTypes.md"/>
-    <toc-element topic="System.md"/>
+    <toc-element toc-title="Tipos">
+        <toc-element topic="System.md"/>
+        <toc-element topic="PrimitiveTypes.md">
+            <toc-element topic="Byte.md"/>
+        </toc-element>
+    </toc-element>
 </instance-profile>
