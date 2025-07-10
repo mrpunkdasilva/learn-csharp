@@ -9,7 +9,11 @@ namespace MeuApp
         // Main entry point
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            // Console.WriteLine("Hello World!");
+
+            var name = "João";
+            Console.WriteLine(name.GetType().Name);
+            // name = 12; // Isso aqui vai dar erro
         }
     }
 }

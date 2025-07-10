@@ -23,6 +23,10 @@
             <toc-element topic="Boolean.md"/>
             <toc-element topic="Char.md"/>
             <toc-element topic="String.md"/>
+            <toc-element topic="Var.md"/>
+            <toc-element topic="Object.md"/>
         </toc-element>
     </toc-element>
+    <toc-element topic="Alias.md"/>
+    <toc-element topic="Nullable-Types.md"/>
 </instance-profile>
