@@ -35,6 +35,13 @@ float altura = 1.76f;
 </warning>
 
 
+## Declarações múltiplas
+É possível declarar várias variáveis no mesmo comando separando-as por vírgula.
+```c#
+int a, b, c;
+```
+
+
 Lembre-se sempre que você precisa inicializar uma variável antes de usá-la. E de que C# é uma linguagem fortemente
 tipada, logo, precisamos definir o tipo dela ou seja, você deve especificar o tipo de dados quando declarar uma
 variável. Ou podemos usar a inferência de tipos. Exemplo:
