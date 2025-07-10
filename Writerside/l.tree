@@ -19,5 +19,6 @@
         <toc-element topic="PrimitiveTypes.md">
             <toc-element topic="Byte.md"/>
         </toc-element>
+        <toc-element topic="integers.md"/>
     </toc-element>
 </instance-profile>
