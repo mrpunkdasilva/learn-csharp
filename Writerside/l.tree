@@ -19,6 +19,8 @@
         <toc-element topic="PrimitiveTypes.md">
             <toc-element topic="Byte.md"/>
                 <toc-element topic="integers.md"/>
+            <toc-element topic="Real-Numbers.md"/>
+            <toc-element topic="Boolean.md"/>
         </toc-element>
     </toc-element>
 </instance-profile>
