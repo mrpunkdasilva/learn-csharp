@@ -53,4 +53,9 @@
         <toc-element topic="Functions.md"/>
         <toc-element topic="Procedures.md"/>
     </toc-element>
+    <toc-element toc-title="Tipos de Valor">
+        <toc-element topic="Heap-and-Stack.md"/>
+        <toc-element topic="Value-Types.md"/>
+        <toc-element topic="Reference-Types.md"/>
+    </toc-element>
 </instance-profile>
