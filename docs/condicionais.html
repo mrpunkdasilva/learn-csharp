@@ -1,0 +1,131 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-07-14T16:51:16.910650639"><title>Estruturas Condicionais | learn-csharp</title><script type="application/json" id="virtual-toc-data">[{"id":"a-estrutura-if","level":0,"title":"A Estrutura if","anchor":"#a-estrutura-if"},{"id":"a-estrutura-if-else","level":0,"title":"A Estrutura if-else","anchor":"#a-estrutura-if-else"},{"id":"a-estrutura-if-else-if-else","level":0,"title":"A Estrutura if-else if-else","anchor":"#a-estrutura-if-else-if-else"},{"id":"varia-es-de-sintaxe-e-boas-pr-ticas","level":0,"title":"Variações de Sintaxe e Boas Práticas","anchor":"#varia-es-de-sintaxe-e-boas-pr-ticas"},{"id":"a-instru-o-switch","level":0,"title":"A Instrução switch","anchor":"#a-instru-o-switch"},{"id":"express-es-switch-c-8-0-e-superior","level":0,"title":"Expressões switch (C# 8.0 e superior)","anchor":"#express-es-switch-c-8-0-e-superior"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Estruturas Condicionais | learn-csharp"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="learn-csharp Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/condicionais.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Estruturas Condicionais | learn-csharp"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/condicionais.html#webpage",
+    "url": "writerside-documentation/condicionais.html",
+    "name": "Estruturas Condicionais | learn-csharp",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "learn-csharp Help"
+}</script><!-- End Schema.org --></head><body data-id="Condicionais" data-main-title="Estruturas Condicionais" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>learn-csharp  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Condicionais" id="Condicionais.md">Estruturas Condicionais</h1><p id="-mskdxx_3">Estruturas condicionais permitem que um programa execute diferentes blocos de c&oacute;digo com base em condi&ccedil;&otilde;es booleanas (<code class="code" id="-mskdxx_10">true</code> ou <code class="code" id="-mskdxx_11">false</code>). Elas s&atilde;o a principal maneira de criar l&oacute;gica e tomar decis&otilde;es em C#.</p><section class="chapter"><h2 id="a-estrutura-if" data-toc="a-estrutura-if">A Estrutura <code class="code" id="-mskdxx_18">if</code></h2><p id="-mskdxx_13">A instru&ccedil;&atilde;o <code class="code" id="-mskdxx_19">if</code> &eacute; a estrutura condicional mais fundamental. Ela executa um bloco de c&oacute;digo somente se a condi&ccedil;&atilde;o especificada for <code class="code" id="-mskdxx_20">true</code>.</p><p id="-mskdxx_14"><span class="control" id="-mskdxx_21">Sintaxe:</span></p><div class="code-block" data-lang="none">
+if (condição)
+{
+    // Bloco de código a ser executado se a condição for verdadeira.
+}
+</div><p id="-mskdxx_16"><span class="control" id="-mskdxx_22">Exemplo:</span></p><div class="code-block" data-lang="csharp">
+int idade = 20;
+if (idade &gt;= 18)
+{
+    Console.WriteLine(&quot;Você é maior de idade.&quot;);
+}
+</div></section><section class="chapter"><h2 id="a-estrutura-if-else" data-toc="a-estrutura-if-else">A Estrutura <code class="code" id="-mskdxx_29">if-else</code></h2><p id="-mskdxx_24">A instru&ccedil;&atilde;o <code class="code" id="-mskdxx_30">else</code> pode ser adicionada a um <code class="code" id="-mskdxx_31">if</code> para executar um bloco de c&oacute;digo alternativo quando a condi&ccedil;&atilde;o do <code class="code" id="-mskdxx_32">if</code> for <code class="code" id="-mskdxx_33">false</code>.</p><p id="-mskdxx_25"><span class="control" id="-mskdxx_34">Sintaxe:</span></p><div class="code-block" data-lang="none">
+if (condição)
+{
+    // Bloco de código se a condição for verdadeira.
+}
+else
+{
+    // Bloco de código se a condição for falsa.
+}
+</div><p id="-mskdxx_27"><span class="control" id="-mskdxx_35">Exemplo:</span></p><div class="code-block" data-lang="csharp">
+int temperatura = 15;
+if (temperatura &gt; 25)
+{
+    Console.WriteLine(&quot;Está calor.&quot;);
+}
+else
+{
+    Console.WriteLine(&quot;Não está calor.&quot;);
+}
+</div></section><section class="chapter"><h2 id="a-estrutura-if-else-if-else" data-toc="a-estrutura-if-else-if-else">A Estrutura <code class="code" id="-mskdxx_42">if-else if-else</code></h2><p id="-mskdxx_37">Para testar m&uacute;ltiplas condi&ccedil;&otilde;es em sequ&ecirc;ncia, voc&ecirc; pode usar a estrutura <code class="code" id="-mskdxx_43">else if</code>. O C# avaliar&aacute; as condi&ccedil;&otilde;es na ordem em que aparecem e executar&aacute; o primeiro bloco de c&oacute;digo cuja condi&ccedil;&atilde;o seja <code class="code" id="-mskdxx_44">true</code>. O bloco <code class="code" id="-mskdxx_45">else</code> final &eacute; opcional e serve como uma condi&ccedil;&atilde;o &quot;pega-tudo&quot; se nenhuma das anteriores for satisfeita.</p><p id="-mskdxx_38"><span class="control" id="-mskdxx_46">Sintaxe:</span></p><div class="code-block" data-lang="none">
+if (condição1)
+{
+    // Bloco 1
+}
+else if (condição2)
+{
+    // Bloco 2
+}
+else
+{
+    // Bloco 3 (opcional)
+}
+</div><p id="-mskdxx_40"><span class="control" id="-mskdxx_47">Exemplo:</span></p><div class="code-block" data-lang="csharp">
+int numero = 0;
+
+if (numero &gt; 0)
+{
+    Console.WriteLine(&quot;O número é positivo.&quot;);
+}
+else if (numero &lt; 0)
+{
+    Console.WriteLine(&quot;O número é negativo.&quot;);
+}
+else
+{
+    Console.WriteLine(&quot;O número é zero.&quot;);
+}
+</div></section><section class="chapter"><h2 id="varia-es-de-sintaxe-e-boas-pr-ticas" data-toc="varia-es-de-sintaxe-e-boas-pr-ticas">Varia&ccedil;&otilde;es de Sintaxe e Boas Pr&aacute;ticas</h2><section class="chapter"><h3 id="omiss-o-de-chaves" data-toc="omiss-o-de-chaves">Omiss&atilde;o de Chaves (<code class="code" id="-mskdxx_54">{}</code>)</h3><p id="-mskdxx_50">Em C#, se o bloco de c&oacute;digo dentro de uma instru&ccedil;&atilde;o <code class="code" id="-mskdxx_55">if</code>, <code class="code" id="-mskdxx_56">else if</code> ou <code class="code" id="-mskdxx_57">else</code> cont&eacute;m <span class="control" id="-mskdxx_58">apenas uma &uacute;nica linha de comando</span>, as chaves <code class="code" id="-mskdxx_59">{}</code> s&atilde;o opcionais.</p><p id="-mskdxx_51"><span class="control" id="-mskdxx_60">Exemplo:</span></p><div class="code-block" data-lang="csharp">
+int temperatura = 30;
+
+if (temperatura &gt; 25)
+    Console.WriteLine(&quot;Está calor.&quot;);
+else
+    Console.WriteLine(&quot;Não está calor.&quot;);
+</div><aside class="prompt" data-type="warning" data-title="" id="-mskdxx_53"><p id="-mskdxx_61"><span class="control" id="-mskdxx_67">Cuidado com a omiss&atilde;o de chaves!</span></p><p id="-mskdxx_62">Embora a sintaxe seja permitida, ela &eacute; uma fonte comum de bugs. Se voc&ecirc; adicionar uma segunda linha de c&oacute;digo ao <code class="code" id="-mskdxx_68">if</code> ou <code class="code" id="-mskdxx_69">else</code> sem adicionar as chaves, apenas a primeira linha ser&aacute; condicional. A segunda linha ser&aacute; executada incondicionalmente, o que pode levar a um comportamento inesperado.</p><p id="-mskdxx_63"><span class="control" id="-mskdxx_70">Exemplo de Bug:</span></p><div class="code-block" data-lang="csharp">
+bool usuarioLogado = false;
+
+if (usuarioLogado)
+    Console.WriteLine(&quot;Bem-vindo!&quot;);
+    RenderizarPainelDeControle(); // Esta linha será executada SEMPRE, mesmo se o usuário não estiver logado!
+</div><p id="-mskdxx_65"><span class="control" id="-mskdxx_71">Boa Pr&aacute;tica:</span> Para evitar erros e melhorar a legibilidade e a manuten&ccedil;&atilde;o do c&oacute;digo, &eacute; altamente recomend&aacute;vel <span class="control" id="-mskdxx_72">sempre usar chaves</span>, mesmo para blocos de uma &uacute;nica linha.</p><div class="code-block" data-lang="csharp">
+// Forma segura e recomendada
+if (usuarioLogado)
+{
+    Console.WriteLine(&quot;Bem-vindo!&quot;);
+}
+</div></aside></section></section><section class="chapter"><h2 id="a-instru-o-switch" data-toc="a-instru-o-switch">A Instru&ccedil;&atilde;o <code class="code" id="-mskdxx_78">switch</code></h2><p id="-mskdxx_74">A instru&ccedil;&atilde;o <code class="code" id="-mskdxx_79">switch</code> &eacute; uma alternativa &agrave; estrutura <code class="code" id="-mskdxx_80">if-else if-else</code>, ideal para quando voc&ecirc; precisa comparar uma &uacute;nica vari&aacute;vel contra uma lista de valores constantes.</p><ul class="list _bullet" id="-mskdxx_75"><li class="list__item" id="-mskdxx_81"><p id="-mskdxx_84"><code class="code" id="-mskdxx_85">case</code>: Define um valor a ser comparado com a vari&aacute;vel do <code class="code" id="-mskdxx_86">switch</code>.</p></li><li class="list__item" id="-mskdxx_82"><p id="-mskdxx_87"><code class="code" id="-mskdxx_88">break</code>: &Eacute; <span class="control" id="-mskdxx_89">obrigat&oacute;rio</span> ao final de cada <code class="code" id="-mskdxx_90">case</code> para sair do <code class="code" id="-mskdxx_91">switch</code> e impedir a execu&ccedil;&atilde;o do pr&oacute;ximo <code class="code" id="-mskdxx_92">case</code> (fall-through).</p></li><li class="list__item" id="-mskdxx_83"><p id="-mskdxx_93"><code class="code" id="-mskdxx_94">default</code>: &Eacute; opcional e funciona como o <code class="code" id="-mskdxx_95">else</code> final, sendo executado se nenhum <code class="code" id="-mskdxx_96">case</code> corresponder.</p></li></ul><p id="-mskdxx_76"><span class="control" id="-mskdxx_97">Exemplo:</span></p><div class="code-block" data-lang="csharp">
+int diaDaSemana = 3;
+string nomeDoDia;
+
+switch (diaDaSemana)
+{
+    case 1:
+        nomeDoDia = &quot;Domingo&quot;;
+        break;
+    case 2:
+        nomeDoDia = &quot;Segunda-feira&quot;;
+        break;
+    case 3:
+        nomeDoDia = &quot;Terça-feira&quot;;
+        break;
+    // ... outros casos
+    default:
+        nomeDoDia = &quot;Dia inválido&quot;;
+        break;
+}
+
+Console.WriteLine(nomeDoDia); // Saída: Terça-feira
+</div></section><section class="chapter"><h2 id="express-es-switch-c-8-0-e-superior" data-toc="express-es-switch-c-8-0-e-superior">Express&otilde;es <code class="code" id="-mskdxx_104">switch</code> (C# 8.0 e superior)</h2><p id="-mskdxx_99">Vers&otilde;es mais recentes do C# introduziram a express&atilde;o <code class="code" id="-mskdxx_105">switch</code>, uma forma mais moderna e concisa que &eacute; especialmente &uacute;til para atribuir um valor a uma vari&aacute;vel com base em uma condi&ccedil;&atilde;o.</p><ul class="list _bullet" id="-mskdxx_100"><li class="list__item" id="-mskdxx_106"><p id="-mskdxx_111">&Eacute; uma express&atilde;o, o que significa que ela <span class="control" id="-mskdxx_112">retorna um valor</span>.</p></li><li class="list__item" id="-mskdxx_107"><p id="-mskdxx_113">Usa a sintaxe <code class="code" id="-mskdxx_114">=&gt;</code> (lambda).</p></li><li class="list__item" id="-mskdxx_108"><p id="-mskdxx_115">N&atilde;o precisa de <code class="code" id="-mskdxx_116">case</code> ou <code class="code" id="-mskdxx_117">break</code>.</p></li><li class="list__item" id="-mskdxx_109"><p id="-mskdxx_118">Usa o descarte (<code class="code" id="-mskdxx_119">_</code>) para o caso <code class="code" id="-mskdxx_120">default</code>.</p></li><li class="list__item" id="-mskdxx_110"><p id="-mskdxx_121">Suporta <span class="emphasis" id="-mskdxx_122">pattern matching</span> avan&ccedil;ado.</p></li></ul><p id="-mskdxx_101"><span class="control" id="-mskdxx_123">Exemplo:</span></p><div class="code-block" data-lang="csharp">
+int diaDaSemana = 3;
+
+string nomeDoDia = diaDaSemana switch
+{
+    1 =&gt; &quot;Domingo&quot;,
+    2 =&gt; &quot;Segunda-feira&quot;,
+    3 =&gt; &quot;Terça-feira&quot;,
+    4 =&gt; &quot;Quarta-feira&quot;,
+    5 =&gt; &quot;Quinta-feira&quot;,
+    6 =&gt; &quot;Sexta-feira&quot;,
+    7 =&gt; &quot;Sábado&quot;,
+    _ =&gt; &quot;Dia inválido&quot; // Caso default
+};
+
+Console.WriteLine(nomeDoDia); // Saída: Terça-feira
+</div><section class="chapter"><h3 id="quando-usar-if-vs-switch" data-toc="quando-usar-if-vs-switch">Quando Usar <code class="code" id="-mskdxx_126">if</code> vs. <code class="code" id="-mskdxx_127">switch</code></h3><ul class="list _bullet" id="-mskdxx_125"><li class="list__item" id="-mskdxx_128"><p id="-mskdxx_130"><span class="control" id="-mskdxx_131">Use <code class="code" id="-mskdxx_133">if-else if</code>:</span> Para condi&ccedil;&otilde;es complexas, compara&ccedil;&otilde;es de intervalos (ex: <code class="code" id="-mskdxx_132">idade &gt; 18 &amp;&amp; idade &lt; 60</code>) ou quando m&uacute;ltiplas vari&aacute;veis est&atilde;o envolvidas.</p></li><li class="list__item" id="-mskdxx_129"><p id="-mskdxx_134"><span class="control" id="-mskdxx_135">Use <code class="code" id="-mskdxx_137">switch</code>:</span> Para comparar uma &uacute;nica vari&aacute;vel contra um conjunto de valores constantes e distintos. A express&atilde;o <code class="code" id="-mskdxx_136">switch</code> &eacute; a abordagem moderna e preferida quando dispon&iacute;vel.</p></li></ul></section></section><div class="last-modified">14 July 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="operadores-logicos-e-condicionais.html" class="navigation-links__prev">Operadores L&oacute;gicos e Condicionais</a><a href="for.html" class="navigation-links__next">La&ccedil;o de Repeti&ccedil;&atilde;o for</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

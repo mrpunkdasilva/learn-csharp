@@ -10,4 +10,16 @@
         <description>Created after removal of "Valores Padrões" from learn-csharp</description>
         <accepts>Valores-Padroes.html</accepts>
     </rule>
+    <rule id="38ad836d">
+        <description>Created after removal of "Laços de repetição" from learn-csharp</description>
+        <accepts>Loops.html</accepts>
+    </rule>
+    <rule id="66d164f6">
+        <description>Created after removal of "Metódos e Funções" from learn-csharp</description>
+        <accepts>Methods-and-Functions.html</accepts>
+    </rule>
+    <rule id="65bdc204">
+        <description>Created after removal of "Blocos de Comportamento" from learn-csharp</description>
+        <accepts>Blocos-de-Comportamento.html</accepts>
+    </rule>
 </rules>

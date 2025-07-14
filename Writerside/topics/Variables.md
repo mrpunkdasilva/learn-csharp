@@ -1,4 +1,4 @@
-# Variables
+# Variáveis
 
 Variavel é um espaço na mémoria que vai guardar um dado
 

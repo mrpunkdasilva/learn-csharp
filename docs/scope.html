@@ -1,10 +1,10 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
-<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-07-14T14:23:20.114640677"><title>Escopo de um Programa | learn-csharp</title><script type="application/json" id="virtual-toc-data">[]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Escopo de um Programa | learn-csharp"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="learn-csharp Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/scope.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Escopo de um Programa | learn-csharp"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-07-14T16:51:16.950725723"><title>Escopo | learn-csharp</title><script type="application/json" id="virtual-toc-data">[{"id":"n-veis-de-escopo","level":0,"title":"Níveis de Escopo","anchor":"#n-veis-de-escopo"},{"id":"sombreamento-de-vari-veis-variable-shadowing","level":0,"title":"Sombreamento de Variáveis (Variable Shadowing)","anchor":"#sombreamento-de-vari-veis-variable-shadowing"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Escopo | learn-csharp"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="learn-csharp Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/scope.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Escopo | learn-csharp"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
     "@context": "http://schema.org",
     "@type": "WebPage",
     "@id": "writerside-documentation/scope.html#webpage",
     "url": "writerside-documentation/scope.html",
-    "name": "Escopo de um Programa | learn-csharp",
+    "name": "Escopo | learn-csharp",
     "description": "",
     "image": "",
     "inLanguage":"en-US"
@@ -13,41 +13,84 @@
     "@id": "writerside-documentation/#website",
     "url": "writerside-documentation/",
     "name": "learn-csharp Help"
-}</script><!-- End Schema.org --></head><body data-id="Scope" data-main-title="Escopo de um Programa" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>learn-csharp  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Scope" id="Scope.md">Escopo de um Programa</h1><p id="ptz4b0_3">O escopo do programa se entende como o espa&ccedil;o onde as vari&aacute;veis podem ser acessadas. Em C#, todo c&oacute;digo &eacute; dividido em namespaces, classes e m&eacute;todos.</p><p id="ptz4b0_4">Os namespaces s&atilde;o usados para organizar os programas, sendo o mais externo, o escopo mais global.</p><p id="ptz4b0_5">Depois disso temos as classes que cont&eacute;m os m&eacute;todos e vari&aacute;veis. O escopo das vari&aacute;veis dentro da classe &eacute; chamado de escopo local.</p><p id="ptz4b0_6">Agora vamos ver um exemplo:</p><div class="code-block" data-lang="csharp">
-using System;
-
-// Namespace is a logic division
-namespace MeuApp
+}</script><!-- End Schema.org --></head><body data-id="Scope" data-main-title="Escopo" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>learn-csharp  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Scope" id="Scope.md">Escopo</h1><p id="ptz4b0_3">Em C#, &quot;escopo&quot; refere-se &agrave; regi&atilde;o do c&oacute;digo onde uma vari&aacute;vel ou um membro de uma classe pode ser acessado. Entender o escopo &eacute; fundamental para escrever um c&oacute;digo organizado e livre de erros, pois ele determina o ciclo de vida e a visibilidade das suas vari&aacute;veis.</p><p id="ptz4b0_4">O escopo em C# &eacute; geralmente definido por blocos de c&oacute;digo, que s&atilde;o delimitados por chaves <code class="code" id="ptz4b0_7">{}</code>.</p><section class="chapter"><h2 id="n-veis-de-escopo" data-toc="n-veis-de-escopo">N&iacute;veis de Escopo</h2><section class="chapter"><h3 id="1-escopo-de-classe-campos-ou-fields" data-toc="1-escopo-de-classe-campos-ou-fields">1. Escopo de Classe (Campos ou <span class="emphasis" id="ptz4b0_15">Fields</span>)</h3><p id="ptz4b0_12">Vari&aacute;veis declaradas diretamente dentro de uma classe, mas fora de qualquer m&eacute;todo, s&atilde;o chamadas de <span class="control" id="ptz4b0_16">campos</span> (<span class="emphasis" id="ptz4b0_17">fields</span>) ou vari&aacute;veis de membro. Elas est&atilde;o dispon&iacute;veis para <span class="control" id="ptz4b0_18">todos os m&eacute;todos</span> (e outros membros) dentro daquela classe.</p><ul class="list _bullet" id="ptz4b0_13"><li class="list__item" id="ptz4b0_19"><p id="ptz4b0_21">Seu ciclo de vida &eacute; o mesmo do objeto da classe.</p></li><li class="list__item" id="ptz4b0_20"><p id="ptz4b0_22">Podem ser acessadas usando a palavra-chave <code class="code" id="ptz4b0_23">this</code>.</p></li></ul><div class="code-block" data-lang="csharp">
+public class Personagem
 {
-    // Main class
-    class Program
+    // 'nome' e 'pontosDeVida' são campos com escopo de classe.
+    private string nome;
+    private int pontosDeVida = 100;
+
+    public Personagem(string nomeInicial)
     {
-        // Main entry point
-        static void Main(string[] args)
-        {
-            Console.WriteLine(&quot;Hello World!&quot;);
-        }
+        this.nome = nomeInicial; // Acessando o campo 'nome'
+    }
+
+    public void ReceberDano(int dano)
+    {
+        // Acessando e modificando o campo 'pontosDeVida'
+        this.pontosDeVida -= dano;
+        Console.WriteLine($&quot;{this.nome} recebeu {dano} de dano e agora tem {this.pontosDeVida} HP.&quot;);
     }
 }
-</div><p id="ptz4b0_8">O escopo ficaria assim:</p><div class="code-block" data-lang="none">
-|-----------------|
-|  Namespace                 
-| 
-|  -------------------
-|  |   
-|  |   Class
-|  |                
-|  |   ---------------
-|  |  |     
-|  |  |     Method     
-|  |  |    
-|  |  |     ---------
-|  |  |    |  Local Funcions
-|  |  |    -----------
-|  |  |
-|  |   -----------------
-|  |
-|  |------------------
-|
-|-------------------|
-</div><div class="last-modified">09 July 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="starter-topic.html" class="navigation-links__prev">About learn-csharp</a><a href="namespaces.html" class="navigation-links__next">Namespace</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>
+</div></section><section class="chapter"><h3 id="2-escopo-de-m-todo-vari-veis-locais" data-toc="2-escopo-de-m-todo-vari-veis-locais">2. Escopo de M&eacute;todo (Vari&aacute;veis Locais)</h3><p id="ptz4b0_24">Vari&aacute;veis declaradas dentro de um m&eacute;todo s&atilde;o chamadas de <span class="control" id="ptz4b0_27">vari&aacute;veis locais</span>. Elas s&oacute; podem ser acessadas <span class="control" id="ptz4b0_28">dentro do m&eacute;todo</span> onde foram declaradas.</p><ul class="list _bullet" id="ptz4b0_25"><li class="list__item" id="ptz4b0_29"><p id="ptz4b0_31">Elas s&atilde;o criadas quando o m&eacute;todo &eacute; chamado e destru&iacute;das quando o m&eacute;todo termina.</p></li><li class="list__item" id="ptz4b0_30"><p id="ptz4b0_32">N&atilde;o podem ser acessadas por outros m&eacute;todos.</p></li></ul><div class="code-block" data-lang="csharp">
+public class Calculadora
+{
+    public int Somar(int a, int b)
+    {
+        // 'resultado' é uma variável local com escopo de método.
+        int resultado = a + b;
+        return resultado;
+    }
+
+    public void OutroMetodo()
+    {
+        // A linha abaixo causaria um erro de compilação, pois 'resultado'
+        // não existe neste escopo.
+        // Console.WriteLine(resultado); 
+    }
+}
+</div></section><section class="chapter"><h3 id="3-escopo-de-bloco" data-toc="3-escopo-de-bloco">3. Escopo de Bloco</h3><p id="ptz4b0_33">Vari&aacute;veis declaradas dentro de um bloco de c&oacute;digo (como um <code class="code" id="ptz4b0_36">if</code>, <code class="code" id="ptz4b0_37">for</code>, <code class="code" id="ptz4b0_38">while</code> ou mesmo um bloco <code class="code" id="ptz4b0_39">{}</code> avulso) s&oacute; existem dentro daquele bloco.</p><ul class="list _bullet" id="ptz4b0_34"><li class="list__item" id="ptz4b0_40"><p id="ptz4b0_41">Este &eacute; o n&iacute;vel de escopo mais restrito.</p></li></ul><div class="code-block" data-lang="csharp">
+public void TestarEscopoDeBloco()
+{
+    int a = 10;
+
+    if (a &gt; 5)
+    {
+        // 'b' só existe dentro deste bloco 'if'.
+        int b = 20;
+        Console.WriteLine(a + b); // Válido: 'a' e 'b' estão em escopo.
+    }
+
+    // A linha abaixo causaria um erro de compilação, pois 'b' está fora de escopo.
+    // Console.WriteLine(b);
+}
+</div></section></section><section class="chapter"><h2 id="sombreamento-de-vari-veis-variable-shadowing" data-toc="sombreamento-de-vari-veis-variable-shadowing">Sombreamento de Vari&aacute;veis (<span class="emphasis" id="ptz4b0_47">Variable Shadowing</span>)</h2><p id="ptz4b0_43">O C# <span class="control" id="ptz4b0_48">impede</span> que voc&ecirc; declare uma vari&aacute;vel local com o mesmo nome de outra vari&aacute;vel local que j&aacute; esteja em um escopo externo (pai). Isso evita bugs e confus&atilde;o.</p><div class="code-block" data-lang="csharp">
+int x = 10; // Escopo do método
+
+if (x &gt; 5)
+{
+    int y = 20; // Escopo do bloco
+    // int x = 30; // Erro de compilação! Não se pode declarar 'x' aqui porque já existe no escopo pai.
+}
+</div><p id="ptz4b0_45">No entanto, uma vari&aacute;vel local <span class="control" id="ptz4b0_49">pode</span> ter o mesmo nome de um campo da classe. Nesse caso, a vari&aacute;vel local &quot;sombra&quot; (ou esconde) o campo. Para acessar o campo da classe, voc&ecirc; <span class="control" id="ptz4b0_50">deve</span> usar a palavra-chave <code class="code" id="ptz4b0_51">this</code>.</p><div class="code-block" data-lang="csharp">
+public class Exemplo
+{
+    private string nome = &quot;Classe&quot;; // Campo da classe
+
+    public void MeuMetodo(string nome) // Parâmetro do método
+    {
+        // 'nome' aqui se refere ao parâmetro do método (&quot;Método&quot;).
+        Console.WriteLine($&quot;Variável local: {nome}&quot;);
+
+        // Para acessar o campo da classe, usamos 'this.nome'.
+        Console.WriteLine($&quot;Campo da classe: {this.nome}&quot;);
+    }
+}
+
+// Uso:
+Exemplo ex = new Exemplo();
+ex.MeuMetodo(&quot;Método&quot;);
+// Saída:
+// Variável local: Método
+// Campo da classe: Classe
+</div></section><div class="last-modified">14 July 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="starter-topic.html" class="navigation-links__prev">About learn-csharp</a><a href="namespaces.html" class="navigation-links__next">Namespaces</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>
