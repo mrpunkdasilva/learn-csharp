@@ -1,0 +1,91 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-07-14T14:23:20.073727321"><title>Casting | learn-csharp</title><script type="application/json" id="virtual-toc-data">[{"id":"convers-o-impl-cita-casting-impl-cito","level":0,"title":"Conversão Implícita (Casting Implícito)","anchor":"#convers-o-impl-cita-casting-impl-cito"},{"id":"convers-o-expl-cita-casting-expl-cito","level":0,"title":"Conversão Explícita (Casting Explícito)","anchor":"#convers-o-expl-cita-casting-expl-cito"},{"id":"casting-em-programa-o-orientada-a-objetos","level":0,"title":"Casting em Programação Orientada a Objetos","anchor":"#casting-em-programa-o-orientada-a-objetos"},{"id":"alternativas-seguras-para-downcasting-as-e-is","level":0,"title":"Alternativas Seguras para Downcasting: as e is","anchor":"#alternativas-seguras-para-downcasting-as-e-is"},{"id":"guia-r-pido-casting-vs-convert-vs-parse","level":0,"title":"Guia Rápido: Casting vs. Convert vs. Parse","anchor":"#guia-r-pido-casting-vs-convert-vs-parse"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Casting | learn-csharp"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="learn-csharp Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/casting.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Casting | learn-csharp"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/casting.html#webpage",
+    "url": "writerside-documentation/casting.html",
+    "name": "Casting | learn-csharp",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "learn-csharp Help"
+}</script><!-- End Schema.org --></head><body data-id="Casting" data-main-title="Casting" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>learn-csharp  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Casting" id="Casting.md">Casting</h1><p id="-v3uhz7_3">Em C#, &quot;casting&quot; (ou convers&atilde;o expl&iacute;cita) &eacute; o processo de instruir o compilador a tratar uma vari&aacute;vel de um tipo como se fosse de outro tipo. &Eacute; uma opera&ccedil;&atilde;o fundamental, mas que deve ser compreendida para evitar perda de dados ou erros em tempo de execu&ccedil;&atilde;o.</p><p id="-v3uhz7_4">O casting &eacute; diferente de usar classes utilit&aacute;rias como <code class="code" id="-v3uhz7_10">Convert</code> ou m&eacute;todos como <code class="code" id="-v3uhz7_11">Parse</code>. O casting &eacute; uma opera&ccedil;&atilde;o mais direta e de n&iacute;vel mais baixo, usada principalmente entre tipos numericamente compat&iacute;veis ou dentro de uma hierarquia de classes (heran&ccedil;a).</p><section class="chapter"><h2 id="convers-o-impl-cita-casting-impl-cito" data-toc="convers-o-impl-cita-casting-impl-cito">Convers&atilde;o Impl&iacute;cita (Casting Impl&iacute;cito)</h2><p id="-v3uhz7_12">A convers&atilde;o impl&iacute;cita, tamb&eacute;m conhecida como <span class="emphasis" id="-v3uhz7_14">widening conversion</span>, ocorre automaticamente quando um valor de um tipo &quot;menor&quot; &eacute; atribu&iacute;do a uma vari&aacute;vel de um tipo &quot;maior&quot;, onde n&atilde;o h&aacute; risco de perda de dados. &Eacute; uma opera&ccedil;&atilde;o segura, e o compilador a realiza por voc&ecirc;.</p><div class="code-block" data-lang="csharp">
+// Um int (32 bits) cabe facilmente em um long (64 bits).
+int meuInt = 2147483647;
+long meuLong = meuInt; // Conversão implícita, totalmente segura.
+
+// Um int (inteiro) cabe facilmente em um double (ponto flutuante).
+int numero = 10;
+double meuDouble = numero; // Conversão implícita. O valor se torna 10.0.
+
+Console.WriteLine(meuDouble); // Saída: 10
+</div></section><section class="chapter"><h2 id="convers-o-expl-cita-casting-expl-cito" data-toc="convers-o-expl-cita-casting-expl-cito">Convers&atilde;o Expl&iacute;cita (Casting Expl&iacute;cito)</h2><p id="-v3uhz7_15">A convers&atilde;o expl&iacute;cita, tamb&eacute;m chamada de <span class="emphasis" id="-v3uhz7_18">narrowing conversion</span>, &eacute; necess&aacute;ria quando h&aacute; risco de perda de dados. Voc&ecirc; deve instruir o compilador explicitamente usando a sintaxe de cast <code class="code" id="-v3uhz7_19">(novoTipo)</code>. Ao fazer isso, voc&ecirc; est&aacute; dizendo ao compilador: &quot;Eu sei que isso pode falhar ou perder dados, mas eu assumo a responsabilidade.&quot;</p><div class="code-block" data-lang="csharp">
+double salario = 2599.95;
+
+// Forçar a conversão de double para int. A parte decimal será perdida (truncada).
+// Você DEVE usar o (int) para que o código compile.
+int salarioInteiro = (int)salario;
+
+Console.WriteLine(salarioInteiro); // Saída: 2599 (a informação .95 foi perdida)
+
+// Outro exemplo de risco: converter um número grande para um tipo menor
+long numeroGrande = 3000000000; // 3 bilhões
+
+// int só pode armazenar até ~2.1 bilhões. Isso causará um Overflow.
+// O resultado será um número inesperado e incorreto, sem lançar exceção em um contexto unchecked.
+int intPequeno = (int)numeroGrande;
+
+Console.WriteLine(intPequeno); // Saída: -1294967296 (lixo de memória)
+</div><aside class="prompt" data-type="warning" data-title="" id="-v3uhz7_17"><p>O casting expl&iacute;cito de tipos num&eacute;ricos pode levar &agrave; **perda de dados** (truncamento) ou **estouro de capacidade** (overflow), resultando em valores incorretos. Use-o apenas quando tiver certeza de que o valor de origem caber&aacute; no tipo de destino.</p></aside></section><section class="chapter"><h2 id="casting-em-programa-o-orientada-a-objetos" data-toc="casting-em-programa-o-orientada-a-objetos">Casting em Programa&ccedil;&atilde;o Orientada a Objetos</h2><p id="-v3uhz7_20">O casting &eacute; essencial ao trabalhar com heran&ccedil;a de classes.</p><div class="code-block" data-lang="csharp">
+// Cenário de exemplo
+public class Animal { }
+public class Cachorro : Animal { public void Latir() { } }
+public class Gato : Animal { public void Miar() { } }
+</div><section class="chapter"><h3 id="upcasting-impl-cito-e-seguro" data-toc="upcasting-impl-cito-e-seguro">Upcasting (Impl&iacute;cito e Seguro)</h3><p id="-v3uhz7_24">Upcasting &eacute; converter uma refer&ecirc;ncia de uma classe derivada (filha) para uma de sua classe base (m&atilde;e). Isso &eacute; sempre seguro e, portanto, impl&iacute;cito.</p><div class="code-block" data-lang="csharp">
+Cachorro meuCachorro = new Cachorro();
+
+// Upcasting: tratando um Cachorro como um Animal genérico.
+// Isso é útil para criar listas de diferentes tipos de animais.
+Animal animalGenerico = meuCachorro; // Upcasting implícito.
+</div></section><section class="chapter"><h3 id="downcasting-expl-cito-e-arriscado" data-toc="downcasting-expl-cito-e-arriscado">Downcasting (Expl&iacute;cito e Arriscado)</h3><p id="-v3uhz7_26">Downcasting &eacute; o oposto: tentar converter uma refer&ecirc;ncia de classe base de volta para sua classe derivada original. Isso &eacute; arriscado porque o <code class="code" id="-v3uhz7_28">Animal</code> gen&eacute;rico poderia ser um <code class="code" id="-v3uhz7_29">Gato</code>, e n&atilde;o um <code class="code" id="-v3uhz7_30">Cachorro</code>. Tentar um downcast inv&aacute;lido lan&ccedil;a uma <code class="code" id="-v3uhz7_31">InvalidCastException</code>.</p><div class="code-block" data-lang="csharp">
+// ...continuando de cima
+
+// Tentativa de Downcasting
+// O compilador exige o (Cachorro) porque a operação pode falhar.
+Cachorro cachorroEspecifico = (Cachorro)animalGenerico; 
+cachorroEspecifico.Latir(); // Funciona!
+
+// Exemplo de falha
+Animal outroAnimal = new Gato();
+// A linha abaixo compila, mas lançará uma InvalidCastException em tempo de execução,
+// porque um Gato não pode ser tratado como um Cachorro.
+// Cachorro caoImpossivel = (Cachorro)outroAnimal; 
+</div></section></section><section class="chapter"><h2 id="alternativas-seguras-para-downcasting-as-e-is" data-toc="alternativas-seguras-para-downcasting-as-e-is">Alternativas Seguras para Downcasting: <code class="code" id="-v3uhz7_36">as</code> e <code class="code" id="-v3uhz7_37">is</code></h2><p id="-v3uhz7_33">Para evitar exce&ccedil;&otilde;es, o C# fornece operadores mais seguros para downcasting.</p><ul class="list _bullet" id="-v3uhz7_34"><li class="list__item" id="-v3uhz7_38"><p id="-v3uhz7_40"><span class="control" id="-v3uhz7_41"><code class="code" id="-v3uhz7_44">is</code></span>: Verifica se a convers&atilde;o &eacute; poss&iacute;vel, retornando <code class="code" id="-v3uhz7_42">true</code> ou <code class="code" id="-v3uhz7_43">false</code>.</p></li><li class="list__item" id="-v3uhz7_39"><p id="-v3uhz7_45"><span class="control" id="-v3uhz7_46"><code class="code" id="-v3uhz7_48">as</code></span>: Tenta a convers&atilde;o. Se for bem-sucedida, retorna o objeto convertido. Se falhar, retorna <code class="code" id="-v3uhz7_47">null</code> em vez de lan&ccedil;ar uma exce&ccedil;&atilde;o.</p></li></ul><div class="code-block" data-lang="csharp">
+Animal animalMisterioso = new Gato();
+
+// Usando 'is' para verificar antes de converter
+if (animalMisterioso is Cachorro)
+{
+    Cachorro caoVerificado = (Cachorro)animalMisterioso; // Seguro, mas verboso
+    caoVerificado.Latir();
+}
+else
+{
+    Console.WriteLine(&quot;O animal misterioso não é um cachorro.&quot;);
+}
+
+// Usando 'as' para uma conversão segura e concisa (a abordagem preferida)
+Cachorro caoComAs = animalMisterioso as Cachorro;
+if (caoComAs != null)
+{
+    caoComAs.Latir();
+}
+else
+{
+    Console.WriteLine(&quot;A conversão com 'as' falhou, o animal não é um cachorro.&quot;);
+}
+</div></section><section class="chapter"><h2 id="guia-r-pido-casting-vs-convert-vs-parse" data-toc="guia-r-pido-casting-vs-convert-vs-parse">Guia R&aacute;pido: Casting vs. <code class="code" id="-v3uhz7_51">Convert</code> vs. <code class="code" id="-v3uhz7_52">Parse</code></h2><div class="table-wrapper"><table class="wide" id="-v3uhz7_50"><thead><tr class="ijRowHead" id="-v3uhz7_53"><th id="-v3uhz7_57"><p>Opera&ccedil;&atilde;o</p></th><th id="-v3uhz7_58"><p>Quando Usar</p></th><th id="-v3uhz7_59"><p>Exemplo</p></th></tr></thead><tbody><tr id="-v3uhz7_54"><td id="-v3uhz7_60"><p><span class="control" id="-v3uhz7_63">Casting</span></p></td><td id="-v3uhz7_61"><p>Entre tipos num&eacute;ricos ou em hierarquias de classes.</p></td><td id="-v3uhz7_62"><p><code class="code" id="-v3uhz7_64">int i = (int)10.5;</code></p></td></tr><tr id="-v3uhz7_55"><td id="-v3uhz7_65"><p><span class="control" id="-v3uhz7_68"><code class="code" id="-v3uhz7_69">Convert</code></span></p></td><td id="-v3uhz7_66"><p>Convers&atilde;o segura entre muitos tipos base, especialmente com <code class="code" id="-v3uhz7_70">nulls</code>.</p></td><td id="-v3uhz7_67"><p><code class="code" id="-v3uhz7_71">int i = Convert.ToInt32(null);</code></p></td></tr><tr id="-v3uhz7_56"><td id="-v3uhz7_72"><p><span class="control" id="-v3uhz7_75"><code class="code" id="-v3uhz7_76">Parse</code></span></p></td><td id="-v3uhz7_73"><p><span class="control" id="-v3uhz7_77">Apenas</span> para converter uma <code class="code" id="-v3uhz7_78">string</code> para seu tipo correspondente.</p></td><td id="-v3uhz7_74"><p><code class="code" id="-v3uhz7_79">int i = int.Parse(&quot;10&quot;);</code></p></td></tr></tbody></table></div></section><div class="last-modified">14 July 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="valores-padroes.html" class="navigation-links__prev">Valores Par&otilde;es</a><a href="implicity-casting.html" class="navigation-links__next">Implicit Casting</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

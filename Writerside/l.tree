@@ -18,7 +18,7 @@
         <toc-element topic="System.md"/>
         <toc-element topic="PrimitiveTypes.md">
             <toc-element topic="Byte.md"/>
-                <toc-element topic="integers.md"/>
+            <toc-element topic="integers.md"/>
             <toc-element topic="Real-Numbers.md"/>
             <toc-element topic="Boolean.md"/>
             <toc-element topic="Char.md"/>
@@ -26,7 +26,19 @@
             <toc-element topic="Var.md"/>
             <toc-element topic="Object.md"/>
         </toc-element>
+        <toc-element topic="Nullable-Types.md"/>
+        <toc-element topic="Alias.md"/>
+        <toc-element topic="Valores-Padroes.md"/>
     </toc-element>
-    <toc-element topic="Alias.md"/>
-    <toc-element topic="Nullable-Types.md"/>
+    <toc-element topic="Casting.md">
+        <toc-element topic="Implicity-Casting.md"/>
+        <toc-element topic="Explicit-Conversion.md"/>
+    </toc-element>
+    <toc-element topic="Parse.md"/>
+    <toc-element topic="Convert.md"/>
+    <toc-element toc-title="Operadores">
+        <toc-element topic="Operadores.md"/>
+        <toc-element topic="Operadores-de-Atribuicao.md"/>
+        <toc-element topic="Comparable-Operators.md"/>
+    </toc-element>
 </instance-profile>
