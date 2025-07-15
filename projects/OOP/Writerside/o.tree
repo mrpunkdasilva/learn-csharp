@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="o"
+                 name="oop"
+                 start-page="starter-topic.md">
+
+    <toc-element topic="starter-topic.md">
+        <toc-element topic="Encapsulation.md"/>
+        <toc-element topic="2-Abstraction.md"/>
+        <toc-element topic="Inheritance.md"/>
+        <toc-element topic="Polymorphism.md"/>
+        <toc-element topic="Classe-Principal.md"/>
+    </toc-element>
+    <toc-element topic="Table.md"/>
+    <toc-element topic="referencias-csharp.md"/>
+</instance-profile>

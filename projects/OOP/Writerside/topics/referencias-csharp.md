@@ -1,0 +1,13 @@
+# Referências
+* [Propriedades (Guia de Programação C#) - Microsoft Learn](https://learn.microsoft.com/pt-br/dotnet/csharp/programming-guide/classes-and-structs/properties)
+* [Modificadores de Acesso (Guia de Programação C#) - Microsoft Learn](https://learn.microsoft.com/pt-br/dotnet/csharp/programming-guide/classes-and-structs/access-modifiers)
+* [Classes e Membros Abstratos e Selados (Guia de Programação C#) - Microsoft Learn](https://learn.microsoft.com/pt-br/dotnet/csharp/programming-guide/classes-and-structs/abstract-and-sealed-classes-and-class-members)
+* [Interfaces (Guia de Programação C#) - Microsoft Learn](https://learn.microsoft.com/pt-br/dotnet/csharp/fundamentals/types/interfaces)
+* [Herança (Guia de Programação C#) - Microsoft Learn](https://learn.microsoft.com/pt-br/dotnet/csharp/fundamentals/object-oriented/inheritance)
+* [base (Referência de C#) - Microsoft Learn](https://learn.microsoft.com/pt-br/dotnet/csharp/language-reference/keywords/base)
+* [Polimorfismo (Guia de Programação C#) - Microsoft Learn](https://learn.microsoft.com/pt-br/dotnet/csharp/fundamentals/object-oriented/polymorphism)
+* [virtual (Referência de C#) - Microsoft Learn](https://learn.microsoft.com/pt-br/dotnet/csharp/language-reference/keywords/virtual)
+* [override (Referência de C#) - Microsoft Learn](https://learn.microsoft.com/pt-br/dotnet/csharp/language-reference/keywords/override)
+* [Arrays (Guia de Programação C#) - Microsoft Learn](https://learn.microsoft.com/pt-br/dotnet/csharp/language-reference/builtin-types/arrays)
+* [Classe List<T> - Microsoft Learn](https://learn.microsoft.com/pt-br/dotnet/api/system.collections.generic.list-1)
+* [Classe Dictionary<TKey, TValue> - Microsoft Learn](https://learn.microsoft.com/pt-br/dotnet/api/system.collections.generic.dictionary-2)
