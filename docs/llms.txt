@@ -3151,6 +3151,507 @@ class Program {
 
 
 
+# Kata - Calculadora em C#
+
+Bem-vindo ao nosso primeiro kata prático! Neste exercício, vamos construir uma calculadora simples usando C#. O objetivo é aplicar os conceitos fundamentais que aprendemos, como variáveis, tipos de dados, operadores, condicionais e funções, em um projeto real e funcional.
+
+Este tutorial é voltado para iniciantes e explicará cada parte do código detalhadamente.
+
+## O Código Completo
+
+Aqui está o código completo do nosso arquivo `Program.cs`. Vamos analisá-lo passo a passo.
+
+```
+using System;
+
+namespace Calculator
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      Menu();
+    }
+
+    static void Menu()
+    {
+      Console.Clear();
+      
+      Console.WriteLine("O QUE DESEJA FAZER?");
+      Console.WriteLine("---------------------");
+      Console.WriteLine("1 - Soma");
+      Console.WriteLine("2 - Subtração");
+      Console.WriteLine("3 - Divisão");
+      Console.WriteLine("4 - Multiplicação");
+      Console.WriteLine("5 - Sair");
+
+      Console.WriteLine("---------=-=-=-=-=--");
+      Console.WriteLine("SELECIONE UMA OPÇÃO > ");
+      short res = short.Parse(Console.ReadLine());
+      
+      switch(res)
+      {
+        case 1:
+          Sum(); break;
+        case 2:
+          Subtraction(); break;
+        case 3:
+          Division(); break;
+        case 4:
+          Multiplication(); break;
+        case 5:
+          System.Environment.Exit(0);
+          break;
+        default:
+          Menu();
+          break;
+      }
+    }
+
+    static void Sum()
+    {
+      Console.Clear();
+
+      Console.WriteLine("First value: ");
+      double v1 = double.Parse(Console.ReadLine());
+
+      Console.WriteLine("Second value: ");
+      double v2 = double.Parse(Console.ReadLine());
+
+      double result = v1 + v2;
+
+      Console.Clear();
+
+      Console.WriteLine(" ========= Result ========");
+      Console.WriteLine($" {v1} + {v2}  =  {result}");
+      Console.ReadKey();
+      Menu();
+    }
+
+    static void Subtraction()
+    {
+      Console.Clear();
+
+      Console.WriteLine("First value: ");
+      double v1 = double.Parse(Console.ReadLine());
+
+      Console.WriteLine("Second value: ");
+      double v2 = double.Parse(Console.ReadLine());
+
+      double result = v1 - v2;
+
+      Console.Clear();
+      Console.WriteLine(" ========= Result ========");
+      Console.WriteLine($" {v1} - {v2}  =  {result}");
+      Console.ReadKey();
+      Menu();
+    }
+
+    static void Division()
+    {
+      Console.Clear();
+
+      Console.WriteLine("First value: ");
+      double v1 = double.Parse(Console.ReadLine());
+
+      Console.WriteLine("Second value: ");
+      double v2 = double.Parse(Console.ReadLine());
+
+      double result = v1 / v2;
+
+      Console.Clear();
+      Console.WriteLine(" ========= Result ========");
+      Console.WriteLine($" {v1} / {v2}  =  {result}");
+      Console.ReadKey();
+      Menu();
+    }
+
+    static void Multiplication()
+    {
+      Console.Clear();
+      Console.WriteLine("First value: ");
+      double v1 = double.Parse(Console.ReadLine());
+
+      Console.WriteLine("Second value: ");
+      double v2 = double.Parse(Console.ReadLine());
+
+      double result = v1 * v2;
+
+      Console.Clear();
+      Console.WriteLine(" ========= Result ========");
+      Console.WriteLine($" {v1} x {v2}  =  {result}");
+      Console.ReadKey();
+      Menu();
+    }
+  }
+}
+```
+
+## Análise do Código
+
+### Estrutura Básica
+
+* `using System;`: Esta linha importa o namespace `System`, que contém classes fundamentais e tipos de dados que usamos em quase todos os programas C#, como `Console`, `String`, `Double`, etc.
+
+* `namespace Calculator`: Um `namespace` é usado para organizar o código e evitar conflitos de nomes. Aqui, estamos criando um namespace chamado `Calculator` para o nosso projeto.
+
+* `class Program`: Em C#, todo o código executável deve estar dentro de uma classe. A classe `Program` é o contêiner principal para o nosso código.
+
+* `static void Main(string[] args)`: Este é o ponto de entrada do nosso programa. Quando o aplicativo é executado, o método `Main` é o primeiro a ser chamado. * `static`: Significa que o método pertence à classe `Program` e não a uma instância específica dela. * `void`: Indica que o método não retorna nenhum valor. * `string[] args`: É um array de strings que pode ser usado para passar argumentos de linha de comando para o programa (não estamos usando neste kata).
+
+### 
+
+O Menu Principal (`Menu` function)
+
+O coração da nossa aplicação é a função `Menu`. Ela é responsável por interagir com o usuário.
+
+```
+static void Menu()
+{
+  Console.Clear();
+  
+  Console.WriteLine("O QUE DESEJA FAZER?");
+  // ... (outras opções)
+
+  Console.WriteLine("SELECIONE UMA OPÇÃO > ");
+  short res = short.Parse(Console.ReadLine());
+  
+  switch(res)
+  {
+    // ...
+  }
+}
+```
+
+1. `Console.Clear()`: Limpa a tela do console, proporcionando uma interface mais limpa a cada vez que o menu é exibido.
+
+2. `Console.WriteLine(...)`: Exibe as opções disponíveis para o usuário.
+
+3. `Console.ReadLine()`: Lê a entrada do usuário a partir do console. O valor lido é sempre uma `string`.
+
+4. `short.Parse(...)`: Como `ReadLine` retorna uma `string`, precisamos convertê-la para um tipo numérico para podermos usá-la em nossa lógica. `short.Parse` converte a string de entrada em um `short` (um tipo de número inteiro).
+
+5. `switch(res)`: A estrutura `switch` é uma forma de controle de fluxo que permite executar diferentes blocos de código com base no valor de uma variável. É uma alternativa mais limpa a múltiplos `if-else if`.
+
+* `case X:`: Cada `case` corresponde a um valor possível da variável `res`. Se `res` for `1`, o código dentro de `case 1:` será executado.
+
+* `break;`: A palavra-chave `break` é usada para sair do `switch` após a execução de um `case`.
+
+* `default:`: Se o valor de `res` não corresponder a nenhum dos `case`, o bloco `default` será executado. Em nosso caso, ele simplesmente chama o `Menu()` novamente.
+
+* `System.Environment.Exit(0);`: No `case 5`, usamos este comando para encerrar a aplicação. O `0` indica que o programa terminou com sucesso.
+
+### Funções de Operação (Sum, Subtraction, etc.)
+
+Todas as funções de operação seguem um padrão semelhante. Vamos analisar a função `Sum()`:
+
+```
+static void Sum()
+{
+  Console.Clear();
+
+  Console.WriteLine("First value: ");
+  double v1 = double.Parse(Console.ReadLine());
+
+  Console.WriteLine("Second value: ");
+  double v2 = double.Parse(Console.ReadLine());
+
+  double result = v1 + v2;
+
+  Console.Clear();
+
+  Console.WriteLine(" ========= Result ========");
+  Console.WriteLine($" {v1} + {v2}  =  {result}");
+  Console.ReadKey();
+  Menu();
+}
+```
+
+1. `Console.Clear()`: Limpa a tela para a nova "página" da operação.
+
+2. `double.Parse(Console.ReadLine())`: Novamente, lemos a entrada do usuário e a convertemos. Desta vez, usamos `double.Parse` porque queremos trabalhar com números que podem ter casas decimais.
+
+3. `double result = v1 + v2;`: Aqui está a lógica principal da função. Realizamos a soma dos dois números e armazenamos o resultado na variável `result`.
+
+4. `Console.WriteLine($" {v1} + {v2}  =  {result}");`: Esta é uma string interpolada. O `$` no início da string nos permite incorporar variáveis diretamente no texto usando chaves `{}`. É uma forma moderna e legível de formatar strings.
+
+5. `Console.ReadKey()`: Pausa a execução do programa e espera que o usuário pressione qualquer tecla. Isso é útil para que o usuário possa ver o resultado antes que o programa limpe a tela e volte ao menu.
+
+6. `Menu()`: Após a operação ser concluída e o usuário pressionar uma tecla, chamamos a função `Menu()` novamente, criando um loop que permite ao usuário realizar outra operação ou sair.
+
+## Conceitos-Chave Aplicados
+
+* Funções: Organizamos nosso código em funções reutilizáveis (`Menu`, `Sum`, `Subtraction`, etc.), tornando o código mais limpo e fácil de manter.
+
+* Tipos de Dados: Usamos `short` para a opção do menu e `double` para os valores dos cálculos, escolhendo os tipos apropriados para cada tarefa.
+
+* Conversão de Tipos (Parsing): Convertemos a entrada do usuário de `string` para tipos numéricos usando `short.Parse` and `double.Parse`.
+
+* Controle de Fluxo: Usamos a estrutura `switch` para tomar decisões com base na entrada do usuário.
+
+* Entrada e Saída: Utilizamos a classe `Console` para interagir com o usuário, exibindo informações (`WriteLine`) e lendo dados (`ReadLine`).
+
+* Recursão (Leve): A função `Menu` chama a si mesma no `default` do `switch`, e as funções de operação chamam `Menu` no final. Isso cria um ciclo de vida para a aplicação.
+
+## Desafios para Expansão
+
+Agora que você entende o código, aqui estão alguns desafios para você tentar:
+
+1. Adicionar Potenciação: Crie uma nova opção no menu e uma função `Power()` que calcula `v1` elevado a `v2`. (Dica: você pode usar `Math.Pow(v1, v2)`).
+
+2. Tratamento de Erros: O que acontece se o usuário digitar "abc" em vez de um número? O programa irá quebrar. Pesquise sobre `try-catch` em C# para lidar com essas exceções e exibir uma mensagem de erro amigável.
+
+3. Raiz Quadrada: Adicione uma opção para calcular a raiz quadrada de um número. (Dica: `Math.Sqrt(v1)`).
+
+4. Histórico de Operações: Como você poderia armazenar e exibir as últimas 5 operações que o usuário realizou?
+
+Parabéns por concluir este kata! Você deu um passo importante na sua jornada de aprendizado de C#.
+
+
+
+# Kata - Conversor de Tipos via Linha de Comando
+
+Neste kata, vamos explorar um caso de uso um pouco mais avançado: a criação de uma ferramenta de linha de comando (CLI) em C#. Esta aplicação irá converter um valor de um tipo de dado para outro, com base nos argumentos fornecidos pelo usuário ao executar o programa.
+
+Vamos abordar conceitos como manipulação de argumentos de linha de comando, dicionários para armazenar parâmetros, tratamento de erros robusto com `try-catch` e a diferença crucial entre `Parse` e `Convert`.
+
+## O Código Completo
+
+Este é o código do nosso `Program.cs`. Ele é projetado para ser executado via `dotnet run` com parâmetros específicos.
+
+```
+using System;
+using System.Collections.Generic;
+
+namespace AtividadeSemana1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            if (args.Length == 0)
+            {
+                ShowHelp();
+                return;
+            }
+
+            var parameters = ParseArguments(args);
+
+            if (!ValidateParameters(parameters))
+            {
+                Console.WriteLine("Erro: Parametros 'valor', 'tipoEntrada' e 'tipoSaida' sao obrigatorios.");
+                Console.WriteLine("Uso: dotnet run valor=<valor> tipoEntrada=<tipo> tipoSaida=<tipo>");
+                return;
+            }
+
+            string valorStr = parameters["valor"];
+            string tipoEntrada = parameters["tipoentrada"].ToLower();
+            string tipoSaida = parameters["tiposaida"].ToLower();
+
+            try
+            {
+                object valorEntrada = ParseInputValue(valorStr, tipoEntrada);
+                object valorSaida = ConvertValue(valorEntrada, tipoSaida, valorStr);
+                PrintResult(valorStr, tipoEntrada, valorSaida, tipoSaida);
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine($"Erro: {ex.Message}");
+            }
+            catch (InvalidCastException ex)
+            {
+                Console.WriteLine($"Erro de conversao: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ocorreu um erro inesperado: {ex.Message}");
+            }
+        }
+
+        static void ShowHelp()
+        {
+            Console.WriteLine("=== Conversor de Tipos ===");
+            Console.WriteLine("Por favor, forneca os parametros no formato chave=valor.");
+            Console.WriteLine("Uso: dotnet run valor=<valor> tipoEntrada=<tipo> tipoSaida=<tipo>");
+            Console.WriteLine("Exemplo: dotnet run valor=123.45 tipoEntrada=double tipoSaida=int");
+            Console.WriteLine("Tipos suportados: int, double, float, bool, string, short");
+        }
+
+        static Dictionary<string, string> ParseArguments(string[] args)
+        {
+            var parameters = new Dictionary<string, string>();
+            foreach (var arg in args)
+            {
+                var parts = arg.Split('=', 2);
+                if (parts.Length == 2)
+                {
+                    parameters[parts[0].ToLower()] = parts[1];
+                }
+            }
+            return parameters;
+        }
+
+        static bool ValidateParameters(Dictionary<string, string> parameters)
+        {
+            return parameters.ContainsKey("valor") &&
+                   parameters.ContainsKey("tipoentrada") &&
+                   parameters.ContainsKey("tiposaida");
+        }
+
+        
+        static object ParseInputValue(string valorStr, string tipoEntrada)
+        {
+            try
+            {
+                return tipoEntrada switch
+                {
+                    "int" => int.Parse(valorStr),
+                    "double" => double.Parse(valorStr),
+                    "float" => float.Parse(valorStr),
+                    "bool" => bool.Parse(valorStr),
+                    "string" => valorStr,
+                    "short" => short.Parse(valorStr),
+                    _ => throw new ArgumentException($"Tipo de entrada desconhecido: {tipoEntrada}")
+                };
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException($"Ao processar o valor de entrada '{valorStr}': {ex.Message}", ex);
+            }
+        }
+
+        static object ConvertValue(object valorEntrada, string tipoSaida, string valorStr)
+        {
+            try
+            {
+                return tipoSaida switch
+                {
+                    "int" => Convert.ToInt32(valorEntrada),
+                    "double" => Convert.ToDouble(valorEntrada),
+                    "float" => Convert.ToSingle(valorEntrada),
+                    "bool" => Convert.ToBoolean(valorEntrada),
+                    "string" => Convert.ToString(valorEntrada),
+                    "short" => Convert.ToInt16(valorEntrada),
+                    _ => throw new ArgumentException($"Tipo de saida desconhecido: {tipoSaida}")
+                };
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidCastException($"Nao foi possivel converter '{valorStr}' ({valorEntrada.GetType().Name}) para {tipoSaida}: {ex.Message}", ex);
+            }
+        }
+
+        static void PrintResult(string valorStr, string tipoEntrada, object valorSaida, string tipoSaida)
+        {
+            Console.WriteLine("=== Resultado da Conversao ===" elytra.platform.documentation.core.content.format.MarkdownFile@527144b2);
+            Console.WriteLine($"Entrada: [{valorStr}] ({tipoEntrada})");
+            Console.WriteLine($"Saida:   [{valorSaida}] ({tipoSaida})");
+        }
+    }
+}
+```
+
+## Análise do Código
+
+### 
+
+`Main`: O Ponto de Entrada e Orquestrador
+
+O método `Main` agora tem mais responsabilidades:
+
+1. Verificar Argumentos: `if (args.Length == 0)` checa se o programa foi executado sem nenhum argumento. Se for o caso, exibe uma mensagem de ajuda (`ShowHelp()`) e encerra.
+
+2. Analisar Argumentos: `ParseArguments(args)` é chamado para processar os argumentos da linha de comando.
+
+3. Validar Parâmetros: `ValidateParameters(parameters)` garante que todos os parâmetros necessários (`valor`, `tipoEntrada`, `tipoSaida`) foram fornecidos.
+
+4. Executar a Conversão: O bloco `try-catch` é o núcleo da lógica. Ele tenta analisar o valor de entrada, convertê-lo para o tipo de saída e imprimir o resultado. Se qualquer etapa falhar, uma exceção é capturada e uma mensagem de erro é exibida.
+
+### 
+
+`ParseArguments`: Processando a Entrada do Usuário
+
+```
+static Dictionary<string, string> ParseArguments(string[] args)
+{
+    var parameters = new Dictionary<string, string>();
+    foreach (var arg in args)
+    {
+        var parts = arg.Split('=', 2);
+        if (parts.Length == 2)
+        {
+            parameters[parts[0].ToLower()] = parts[1];
+        }
+    }
+    return parameters;
+}
+```
+
+Esta função transforma um array de strings como `["valor=123", "tipoEntrada=int"]` em um `Dictionary<string, string>`. Um dicionário é uma coleção de pares chave-valor.
+
+* `arg.Split('=', 2)`: Divide cada argumento no caractere `=`, no máximo em 2 partes. Isso garante que, se o valor contiver um `=`, ele não será dividido novamente (ex: `valor=chave=valor`).
+
+* `parameters[parts[0].ToLower()] = parts[1]`: Adiciona a chave (em minúsculas) e o valor ao dicionário.
+
+### 
+
+`ParseInputValue` vs. `ConvertValue`
+
+O programa usa duas funções distintas para a conversão, e a diferença é fundamental:
+
+1. `ParseInputValue`: Usa métodos como `int.Parse(string)`. O objetivo do `Parse` é converter uma representação em string de um valor para o seu tipo de dado correspondente. Ele só funciona de `string` para outro tipo.
+
+2. `ConvertValue`: Usa a classe `Convert`, com métodos como `Convert.ToInt32(object)`. A classe `Convert` é mais flexível. Ela pode converter um valor de qualquer tipo base para outro tipo, desde que uma conversão válida exista. Por exemplo, pode converter um `double` para um `int`, um `bool` para uma `string`, etc.
+
+Em nosso fluxo, primeiro usamos `Parse` para tirar o valor da `string` inicial e, em seguida, usamos `Convert` para realizar a conversão entre os tipos de dados reais (ex: de `double` para `int`).
+
+Ambas as funções usam uma expressão `switch` (uma forma mais concisa do `switch` tradicional) para selecionar a operação correta com base no tipo de entrada/saída.
+
+### 
+
+Tratamento de Erros (`try-catch`)
+
+Este programa é muito mais robusto que a calculadora porque ele antecipa falhas.
+
+* `try { ... }`: O código que pode gerar um erro é colocado dentro do bloco `try`.
+
+* `catch (ArgumentException ex)`: Captura erros relacionados a argumentos inválidos, como um tipo de entrada/saída desconhecido.
+
+* `catch (InvalidCastException ex)`: Captura erros que ocorrem quando a conversão entre dois tipos não é possível (por exemplo, converter a string `"abc"` para `int`).
+
+* `catch (Exception ex)`: Uma cláusula genérica que captura qualquer outro erro inesperado, evitando que o programa "quebre" abruptamente.
+
+## Conceitos-Chave Aplicados
+
+* Argumentos de Linha de Comando: Leitura e processamento de `string[] args` no método `Main`.
+
+* Dicionários (`Dictionary<TKey, TValue>`): Uma estrutura de dados poderosa para armazenar e acessar dados por meio de uma chave única.
+
+* Tratamento de Exceções: Uso de `try-catch` para criar um programa resiliente que lida com entradas inválidas e erros de conversão.
+
+* Expressões `switch`: Uma sintaxe moderna e concisa para controle de fluxo.
+
+* Diferença entre `Parse` e `Convert`: Compreensão de duas maneiras fundamentais de realizar conversões de tipo em C#.
+
+## Como Executar
+
+Para testar este programa, você o executaria a partir do seu terminal, na pasta do projeto, da seguinte forma:
+
+```BASH
+# Exemplo 1: Convertendo um double para um int
+dotnet run valor=123.45 tipoEntrada=double tipoSaida=int
+
+# Exemplo 2: Convertendo uma string para um booleano
+dotnet run valor=true tipoEntrada=string tipoSaida=bool
+
+# Exemplo de erro
+dotnet run valor=texto tipoEntrada=string tipoSaida=int
+```
+
+Este kata demonstra como construir aplicações de console interativas e robustas, um pilar fundamental da programação em muitas linguagens, incluindo C#.
+
+
+
 # References
 
 This page contains a curated list of high-quality resources for learning and mastering C# and the .NET ecosystem.
