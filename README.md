@@ -1,6 +1,6 @@
-# My C# Learning Journey
+# C# Learning Journey
 
-This repository serves as my personal workspace for learning the C# programming language and the .NET ecosystem. It is a structured collection of notes, code examples, and small projects that document my progress from fundamental concepts to more advanced topics.
+This repository serves as personal workspace for learning the C# programming language and the .NET ecosystem. It is a structured collection of notes, code examples, and small projects that document my progress from fundamental concepts to more advanced topics.
 
 ## 📂 Repository Structure
 
