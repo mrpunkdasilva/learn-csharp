@@ -69,7 +69,11 @@
             <toc-element topic="Value-Types.md"/>
             <toc-element topic="Reference-Types.md"/>
         </toc-element>
-        <toc-element toc-title="Strings"/>
+        <toc-element toc-title="Strings">
+            <toc-element topic="GUIDs.md"/>
+            <toc-element topic="Interpolation.md"/>
+            <toc-element topic="Compare.md"/>
+        </toc-element>
         <toc-element toc-title="Katas">
             <toc-element topic="Kata-Calculator.md"/>
             <toc-element topic="Kata-Conversor.md">
@@ -79,6 +83,4 @@
     </toc-element>
     <toc-element topic="References.md">
     </toc-element>
-    <toc-element topic="Interpolation.md"/>
-    <toc-element topic="GUIDs.md"/>
 </instance-profile>
