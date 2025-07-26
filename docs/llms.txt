@@ -325,156 +325,6 @@ Use `using static` com moderação. Embora possa tornar o código mais curto, us
 
 
 
-# Variáveis
-
-Variavel é um espaço na mémoria que vai guardar um dado
-
-No C# como toda linguagem de programação temos tipos primitivos, por exemplo:
-
-* int - inteiro
-
-* string - texto
-
-* bool - booleano (true ou false)
-
-* double e float - número decimal
-
-Note:
-
-Lembrando que: double e float não são o mesmo pois o double possui uma precisão maior do que o float, mas o float ocupa menos memória.
-
-No c# podemos declarar variaveis assim:
-
-```CSHARP
-int idade = 10;
-string nome = "Joao";
-bool estaAprovado = true;
-double salario = 25.98;
-float altura; 
-altura = 1.76f; 
-```
-
-Warning:
-
-Note que para declarar um float devemos colocar a letra f no final da declaração:
-
-```CSHARP
-float altura = 1.76f; 
-```
-
-## Declarações múltiplas
-
-É possível declarar várias variáveis no mesmo comando separando-as por vírgula.
-
-```CSHARP
-int a, b, c;
-```
-
-Lembre-se sempre que você precisa inicializar uma variável antes de usá-la. E de que C# é uma linguagem fortemente
-tipada, logo, precisamos definir o tipo dela ou seja, você deve especificar o tipo de dados quando declarar uma
-variável. Ou podemos usar a inferência de tipos. Exemplo:
-
-```CSHARP
-var idade = 10;
-var nome = "Joao";
-var estaAprovado = true;
-var salario = 25.98;
-var altura = 1.76f; 
-```
-
-Assim o tipo de dado será inferido pelo compilador, deste modo não temos um controle real da tipagem
-
-Note:
-
-Para inferencia de tipos utilizamos a palavra reservada `var`. Mas não podemos utilizar desta forma na hora de criar uma
-variavel:
-
-```CSHARP
-var x; // isso está errado!
-```
-
-
-
-# Constantes
-
-Uma constante (`const`) é um campo cujo valor é definido em tempo de compilação e não pode ser alterado durante a execução do programa. Pense nela como um valor fixo e imutável.
-
-Warning:
-
-Regra Fundamental: Uma constante deve obrigatoriamente ser inicializada no momento em que é declarada. Tentar declarar uma constante sem um valor resultará em um erro de compilação.
-
-Exemplo de Declaração Correta:
-
-```CSHARP
-const double PI = 3.14159;
-const string NOME_EMPRESA = "MinhaApp";
-```
-
-Convenção de Nomenclatura: Por convenção, nomes de constantes em C# são escritos em `PascalCase` ou `ALL_CAPS_SNAKE_CASE` para distingui-los claramente de variáveis.
-
-## 
-
-Características das Constantes (`const`)
-
-1. Valor em Tempo de Compilação: O valor de uma `const` é gravado diretamente no assembly do programa. O compilador substitui o uso da constante pelo seu valor literal em todo o código (semelhante a um "localizar e substituir").
-
-2. Tipos Permitidos: Só podem ser dos tipos primitivos do C# (todos os tipos numéricos, `bool`, `char`, `string`) ou um tipo `enum`.
-
-3. Implicitamente Estáticas: Uma `const` é sempre estática (`static`), mesmo que a palavra-chave `static` não seja usada. Ela pertence ao tipo, não a uma instância do objeto.
-
-## 
-
-`const` vs. `readonly`: Qual a Diferença?
-
-Este é um ponto crucial que diferencia desenvolvedores experientes. C# também possui a palavra-chave `readonly`, que parece similar, mas tem um propósito diferente.
-
-* `readonly` (Constante de Tempo de Execução): Um campo `readonly` também não pode ser alterado após sua inicialização. No entanto, sua inicialização pode ocorrer na declaração ou dentro do construtor da classe. Isso permite que cada instância de um objeto tenha um valor `readonly` diferente.
-
-Tabela Comparativa:
-
-| Característica |`const` |`readonly` |
----------------------------------------
-| Quando o valor é definido? |Tempo de Compilação |Tempo de Execução (no construtor) |
-| Pode ser diferente por instância? |Não (é estático) |Sim (pode ser de instância) |
-| Pode ser de qualquer tipo? |Não (só primitivos/enum) |Sim (qualquer tipo, incluindo objetos) |
-| Pode ser `static`? |Sim (implicitamente) |Sim (explicitamente, `static readonly`) |
-
-Exemplo Prático:
-
-```CSHARP
-public class Circulo
-{
-    // 'PI' é o mesmo para todos os círculos. É uma constante de compilação.
-    public const double PI = 3.14159;
-
-    // 'Raio' e 'DataCriacao' podem ser diferentes para cada objeto Circulo.
-    // Seus valores são definidos quando o objeto é criado e não podem ser mudados depois.
-    public readonly double Raio;
-    public readonly DateTime DataCriacao;
-
-    public Circulo(double raio)
-    {
-        this.Raio = raio; // Inicialização de campo readonly no construtor
-        this.DataCriacao = DateTime.Now;
-    }
-}
-
-// Uso
-Circulo c1 = new Circulo(5.0);
-Circulo c2 = new Circulo(10.0);
-
-// c1.Raio é 5.0, c2.Raio é 10.0. Ambos são imutáveis após a criação.
-// Tentar fazer 'c1.Raio = 7.0;' resultaria em um erro de compilação.
-```
-
-### Quando Usar Qual?
-
-* Use `const`: Para valores que são verdadeiramente universais e imutáveis, conhecidos antes mesmo do programa rodar (ex: `Math.PI`, número de meses no ano, uma string de conexão padrão para um ambiente de teste).
-
-* Use `readonly`: Para valores que são específicos de uma instância de um objeto e que não devem mudar após a sua criação (ex: um ID de usuário, a data de criação de um registro).
-
-
-
 # Palavras-Chave (Keywords)
 
 Palavras-chave (ou keywords) são identificadores reservados que têm um significado especial para o compilador do C#. Elas são os blocos de construção fundamentais da linguagem e não podem ser usadas como nomes de variáveis, métodos ou classes (a menos que sejam prefixadas com `@`, o que é raro e geralmente desaconselhado).
@@ -659,6 +509,156 @@ public double CalcularPagamentoMensal(double taxaAnual, int numParcelas, decimal
 ```
 
 Ao usar a função `CalcularPagamentoMensal` em outro lugar, a IDE mostrará a `summary`, as descrições dos parâmetros e o que ela retorna, tornando o código muito mais fácil de usar.
+
+
+
+# Variáveis
+
+Variavel é um espaço na mémoria que vai guardar um dado
+
+No C# como toda linguagem de programação temos tipos primitivos, por exemplo:
+
+* int - inteiro
+
+* string - texto
+
+* bool - booleano (true ou false)
+
+* double e float - número decimal
+
+Note:
+
+Lembrando que: double e float não são o mesmo pois o double possui uma precisão maior do que o float, mas o float ocupa menos memória.
+
+No c# podemos declarar variaveis assim:
+
+```CSHARP
+int idade = 10;
+string nome = "Joao";
+bool estaAprovado = true;
+double salario = 25.98;
+float altura; 
+altura = 1.76f; 
+```
+
+Warning:
+
+Note que para declarar um float devemos colocar a letra f no final da declaração:
+
+```CSHARP
+float altura = 1.76f; 
+```
+
+## Declarações múltiplas
+
+É possível declarar várias variáveis no mesmo comando separando-as por vírgula.
+
+```CSHARP
+int a, b, c;
+```
+
+Lembre-se sempre que você precisa inicializar uma variável antes de usá-la. E de que C# é uma linguagem fortemente
+tipada, logo, precisamos definir o tipo dela ou seja, você deve especificar o tipo de dados quando declarar uma
+variável. Ou podemos usar a inferência de tipos. Exemplo:
+
+```CSHARP
+var idade = 10;
+var nome = "Joao";
+var estaAprovado = true;
+var salario = 25.98;
+var altura = 1.76f; 
+```
+
+Assim o tipo de dado será inferido pelo compilador, deste modo não temos um controle real da tipagem
+
+Note:
+
+Para inferencia de tipos utilizamos a palavra reservada `var`. Mas não podemos utilizar desta forma na hora de criar uma
+variavel:
+
+```CSHARP
+var x; // isso está errado!
+```
+
+
+
+# Constantes
+
+Uma constante (`const`) é um campo cujo valor é definido em tempo de compilação e não pode ser alterado durante a execução do programa. Pense nela como um valor fixo e imutável.
+
+Warning:
+
+Regra Fundamental: Uma constante deve obrigatoriamente ser inicializada no momento em que é declarada. Tentar declarar uma constante sem um valor resultará em um erro de compilação.
+
+Exemplo de Declaração Correta:
+
+```CSHARP
+const double PI = 3.14159;
+const string NOME_EMPRESA = "MinhaApp";
+```
+
+Convenção de Nomenclatura: Por convenção, nomes de constantes em C# são escritos em `PascalCase` ou `ALL_CAPS_SNAKE_CASE` para distingui-los claramente de variáveis.
+
+## 
+
+Características das Constantes (`const`)
+
+1. Valor em Tempo de Compilação: O valor de uma `const` é gravado diretamente no assembly do programa. O compilador substitui o uso da constante pelo seu valor literal em todo o código (semelhante a um "localizar e substituir").
+
+2. Tipos Permitidos: Só podem ser dos tipos primitivos do C# (todos os tipos numéricos, `bool`, `char`, `string`) ou um tipo `enum`.
+
+3. Implicitamente Estáticas: Uma `const` é sempre estática (`static`), mesmo que a palavra-chave `static` não seja usada. Ela pertence ao tipo, não a uma instância do objeto.
+
+## 
+
+`const` vs. `readonly`: Qual a Diferença?
+
+Este é um ponto crucial que diferencia desenvolvedores experientes. C# também possui a palavra-chave `readonly`, que parece similar, mas tem um propósito diferente.
+
+* `readonly` (Constante de Tempo de Execução): Um campo `readonly` também não pode ser alterado após sua inicialização. No entanto, sua inicialização pode ocorrer na declaração ou dentro do construtor da classe. Isso permite que cada instância de um objeto tenha um valor `readonly` diferente.
+
+Tabela Comparativa:
+
+| Característica |`const` |`readonly` |
+---------------------------------------
+| Quando o valor é definido? |Tempo de Compilação |Tempo de Execução (no construtor) |
+| Pode ser diferente por instância? |Não (é estático) |Sim (pode ser de instância) |
+| Pode ser de qualquer tipo? |Não (só primitivos/enum) |Sim (qualquer tipo, incluindo objetos) |
+| Pode ser `static`? |Sim (implicitamente) |Sim (explicitamente, `static readonly`) |
+
+Exemplo Prático:
+
+```CSHARP
+public class Circulo
+{
+    // 'PI' é o mesmo para todos os círculos. É uma constante de compilação.
+    public const double PI = 3.14159;
+
+    // 'Raio' e 'DataCriacao' podem ser diferentes para cada objeto Circulo.
+    // Seus valores são definidos quando o objeto é criado e não podem ser mudados depois.
+    public readonly double Raio;
+    public readonly DateTime DataCriacao;
+
+    public Circulo(double raio)
+    {
+        this.Raio = raio; // Inicialização de campo readonly no construtor
+        this.DataCriacao = DateTime.Now;
+    }
+}
+
+// Uso
+Circulo c1 = new Circulo(5.0);
+Circulo c2 = new Circulo(10.0);
+
+// c1.Raio é 5.0, c2.Raio é 10.0. Ambos são imutáveis após a criação.
+// Tentar fazer 'c1.Raio = 7.0;' resultaria em um erro de compilação.
+```
+
+### Quando Usar Qual?
+
+* Use `const`: Para valores que são verdadeiramente universais e imutáveis, conhecidos antes mesmo do programa rodar (ex: `Math.PI`, número de meses no ano, uma string de conexão padrão para um ambiente de teste).
+
+* Use `readonly`: Para valores que são específicos de uma instância de um objeto e que não devem mudar após a sua criação (ex: um ID de usuário, a data de criação de um registro).
 
 
 
@@ -1127,23 +1127,6 @@ int? x = null;
 
 
 
-# Alias
-
-Alias, é um apelido que todo tipo no .NET tem por exemplo:
-
-```CSHARP
-int i = 0; // int é o alias de System.Int32
-System.Int32 j = 1; // aqui estamos usando a classe Int32 diretamente.
-```
-
-O mesmo acontece com outros tipos como: `string` e `bool`, etc.
-
-Note:
-
-Você pode ver todos os aliases em [https://docs.microsoft.com/pt-br/dotnet/csharp/language-reference/builtin-types/built-in-types](https://docs.microsoft.com/pt-br/dotnet/csharp/language-reference/builtin-types/built-in-types)
-
-
-
 # Valores Parões
 
 Todo tipo built-in possui um valor padrão.
@@ -1175,6 +1158,23 @@ O valor padrão de uma variável não inicializada é sempre seu valor padrão.
 | DateTime |1/1/0001 |
 | TimeSpan |0:00:00 |
 | Guid |00000000-0000-0000-0000-0000000 |
+
+
+
+# Alias
+
+Alias, é um apelido que todo tipo no .NET tem por exemplo:
+
+```CSHARP
+int i = 0; // int é o alias de System.Int32
+System.Int32 j = 1; // aqui estamos usando a classe Int32 diretamente.
+```
+
+O mesmo acontece com outros tipos como: `string` e `bool`, etc.
+
+Note:
+
+Você pode ver todos os aliases em [https://docs.microsoft.com/pt-br/dotnet/csharp/language-reference/builtin-types/built-in-types](https://docs.microsoft.com/pt-br/dotnet/csharp/language-reference/builtin-types/built-in-types)
 
 
 
@@ -2727,6 +2727,117 @@ Em C#, tanto os métodos que retornam valor (funções) quanto os que não retor
 
 
 
+# Structs
+
+Tipos de dados estruturado, servem apenas para definir a estrutura
+
+Sendo tipo de valor
+
+Armazenam apenas outros tipos de dados, e é definido pela palavra:
+
+```CSHARP
+struct NomeDaEstrutura{
+    //Aqui vai as propriedades da estrutura
+}
+```
+
+Composto por metodos e propriedades
+
+Nome sempre com letras maiuscula
+
+* Igual para propriedades e métodos
+
+Criado apartir da palavra `new`
+
+* Neste momento que temos os valores iniciais das propriedades
+
+Exemplo:
+
+```CSHARP
+struct Pessoa{
+    public string nome;
+}
+Pessoa pessoa = new Pessoa();
+pessoa.nome = "João";
+Console.WriteLine(pessoa.nome);
+```
+
+Também podemos criar um construtor padrão para inicializar o objeto:
+
+```CSHARP
+struct Pessoa{
+    public string nome;
+    public int idade;
+    public Pessoa(string nome){
+        this.nome = nome;
+    }
+}
+Pessoa pessoa = new Pessoa("João");
+Console.WriteLine(pessoa.nome);
+```
+
+E assim criamos metodos dentro do struct:
+
+```CSHARP
+struct Pessoa{
+    public string nome;
+    public int idade;
+    public void MostrarDados(){
+        Console.WriteLine($"Nome: {nome} Idade: {idade}");
+    }
+}
+Pessoa pessoa = new Pessoa("João", 20);
+pessoa.MostrarDados();
+```
+
+Podemos também usar o método `ToString()` para retornar uma string com os dados do objeto:
+
+```CSHARP
+struct Pessoa{
+    public string nome;
+    public int idade;
+    public override string ToString(){
+        return $"Nome: {nome} Idade: {idade}";
+    }
+}
+Pessoa pessoa = new Pessoa("João", 20);
+Console.WriteLine(pessoa.ToString());
+```
+
+
+
+# Enums
+
+Um Enum serve para fornecer uma melhor visualização do código e também facilitar a leitura e entendimento de um código.
+
+Usados em listas curtas e Usados em dados fixos:
+
+* Hard Coded
+
+Note:
+
+No .NET a conveção é usar o PascalCase e começar com a letra maiúscula E sempre
+
+Exemplo:
+
+```CSHARP
+class Program {
+    enum StatusPedido {
+        AguardandoPagamento,
+        Pago,
+        Cancelado
+    }
+    
+    static void Main(string[] args) 
+    {
+        StatusPedido statusAtual = StatusPedido.AguardandoPagamento;
+        Console.WriteLine(statusAtual); // Aguardando Pagamento
+    }
+}
+```
+
+
+
 # Stack vs. Heap: Gerenciamento de Memória em C#
 
 Todo programa .NET utiliza duas áreas de memória fundamentais para sua execução: a Stack (Pilha) e a Heap (Monte). Compreender como elas funcionam e o que é armazenado em cada uma é crucial para escrever código eficiente e prever seu comportamento, especialmente no que diz respeito a performance e ciclo de vida das variáveis.
@@ -3037,117 +3148,6 @@ Se no nosso exemplo fizermos `contaA = null;` e `contaB = null;`, o objeto `Cont
 * Arrays: Vetores e matrizes (ex: `int[]`, `string[]`) são sempre tipos de referência.
 
 * Delegates e Interfaces.
-
-
-
-# Structs
-
-Tipos de dados estruturado, servem apenas para definir a estrutura
-
-Sendo tipo de valor
-
-Armazenam apenas outros tipos de dados, e é definido pela palavra:
-
-```CSHARP
-struct NomeDaEstrutura{
-    //Aqui vai as propriedades da estrutura
-}
-```
-
-Composto por metodos e propriedades
-
-Nome sempre com letras maiuscula
-
-* Igual para propriedades e métodos
-
-Criado apartir da palavra `new`
-
-* Neste momento que temos os valores iniciais das propriedades
-
-Exemplo:
-
-```CSHARP
-struct Pessoa{
-    public string nome;
-}
-Pessoa pessoa = new Pessoa();
-pessoa.nome = "João";
-Console.WriteLine(pessoa.nome);
-```
-
-Também podemos criar um construtor padrão para inicializar o objeto:
-
-```CSHARP
-struct Pessoa{
-    public string nome;
-    public int idade;
-    public Pessoa(string nome){
-        this.nome = nome;
-    }
-}
-Pessoa pessoa = new Pessoa("João");
-Console.WriteLine(pessoa.nome);
-```
-
-E assim criamos metodos dentro do struct:
-
-```CSHARP
-struct Pessoa{
-    public string nome;
-    public int idade;
-    public void MostrarDados(){
-        Console.WriteLine($"Nome: {nome} Idade: {idade}");
-    }
-}
-Pessoa pessoa = new Pessoa("João", 20);
-pessoa.MostrarDados();
-```
-
-Podemos também usar o método `ToString()` para retornar uma string com os dados do objeto:
-
-```CSHARP
-struct Pessoa{
-    public string nome;
-    public int idade;
-    public override string ToString(){
-        return $"Nome: {nome} Idade: {idade}";
-    }
-}
-Pessoa pessoa = new Pessoa("João", 20);
-Console.WriteLine(pessoa.ToString());
-```
-
-
-
-# Enums
-
-Um Enum serve para fornecer uma melhor visualização do código e também facilitar a leitura e entendimento de um código.
-
-Usados em listas curtas e Usados em dados fixos:
-
-* Hard Coded
-
-Note:
-
-No .NET a conveção é usar o PascalCase e começar com a letra maiúscula E sempre
-
-Exemplo:
-
-```CSHARP
-class Program {
-    enum StatusPedido {
-        AguardandoPagamento,
-        Pago,
-        Cancelado
-    }
-    
-    static void Main(string[] args) 
-    {
-        StatusPedido statusAtual = StatusPedido.AguardandoPagamento;
-        Console.WriteLine(statusAtual); // Aguardando Pagamento
-    }
-}
-```
 
 
 
@@ -3649,6 +3649,222 @@ dotnet run valor=texto tipoEntrada=string tipoSaida=int
 ```
 
 Este kata demonstra como construir aplicações de console interativas e robustas, um pilar fundamental da programação em muitas linguagens, incluindo C#.
+
+
+
+# Kata - Editor de Texto Simples de Console
+
+Neste kata, construiremos uma aplicação de console fundamental: um editor de texto simples. Este projeto nos permitirá explorar a manipulação de arquivos em C#, uma habilidade essencial para qualquer desenvolvedor. A aplicação será capaz de criar, salvar e abrir arquivos de texto diretamente do terminal.
+
+Vamos focar em conceitos como entrada e saída do console, leitura e escrita de arquivos com `StreamReader` and `StreamWriter`, e a importância do bloco `using` para gerenciar recursos de forma segura.
+
+## O Código Completo
+
+Este é o código do nosso `Program.cs`. Ele estrutura o editor de texto em um menu interativo.
+
+```
+using System;
+using System.IO;
+
+namespace TextEditor
+{
+  public class Program
+  {
+    public static void Main(string[] args)
+    {
+      Menu();
+    }
+
+    static void Menu()
+    {
+      Console.Clear();
+      Console.WriteLine("O que voce deseja fazer?");
+      Console.WriteLine("1 - Abrir arquivo");
+      Console.WriteLine("2 - Criar novo arquivo");
+      Console.WriteLine("0 - Sair");
+      short option = short.Parse(Console.ReadLine());
+
+      switch (option)
+      {
+        case 0:
+          System.Environment.Exit(0);
+          break;
+        case 1:
+          Open();
+          break;
+        case 2:
+          Edit();
+          break;
+        default:
+          Menu();
+          break;
+      }
+    }
+
+    private static void Open()
+    {
+      Console.Clear();
+      Console.WriteLine("Qual caminho do arquivo?");
+      string path = Console.ReadLine();
+
+      using (var file = new StreamReader(path))
+      {
+        string text = file.ReadToEnd();
+        Console.WriteLine(text);
+      }
+      
+      Console.WriteLine("");
+      Console.ReadLine();
+      Menu();
+    }
+
+    private static void Edit()
+    {
+      Console.Clear();
+      Console.WriteLine("Digite seu texto abaixo (ESC para sair)");
+      Console.WriteLine("--------------------------------");
+
+      string text = "";
+
+      do
+      {
+        text += Console.ReadLine();
+        text += Environment.NewLine;
+      } while (Console.ReadKey().Key != ConsoleKey.Escape);
+      
+      Save(text);
+    }
+    
+    static void Save(string text) 
+    {
+      Console.Clear();
+      Console.WriteLine("Qual caminho para salvar o arquivo? \n");
+      var path = Console.ReadLine();
+      
+      
+      // CRIA E JÁ FECHA O OBJETO - É BOM PARA HANDLER COM ARQUIVOS
+      using (var file = new StreamWriter(path ?? string.Empty))
+      {
+        file.Write(text);
+      }
+
+      Console.WriteLine($"Arquivo salvo em {path} com sucesso!");
+      Console.ReadLine(); 
+      Menu();
+    }
+  }
+}
+```
+
+## Análise do Código
+
+### 
+
+`Main` e `Menu`: Navegação Central
+
+O ponto de entrada `Main` simplesmente chama o método `Menu`, que atua como o coração da nossa aplicação.
+
+* `Console.Clear()`: Limpa a tela do console para uma apresentação mais limpa.
+
+* Loop de Menu: O `Menu` exibe as opções, lê a entrada do usuário com `Console.ReadLine()` e usa uma instrução `switch` para direcionar o fluxo do programa. Note que, após cada ação (`Open`, `Edit`), o `Menu` é chamado novamente, criando um loop que mantém a aplicação em execução até que o usuário escolha sair.
+
+* Saída Segura: `System.Environment.Exit(0)` é usado para encerrar a aplicação de forma limpa quando o usuário digita '0'.
+
+### 
+
+`Open`: Lendo Arquivos
+
+```
+private static void Open()
+{
+    // ...
+    string path = Console.ReadLine();
+
+    using (var file = new StreamReader(path))
+    {
+        string text = file.ReadToEnd();
+        Console.WriteLine(text);
+    }
+    // ...
+}
+```
+
+Esta função é responsável por abrir e exibir o conteúdo de um arquivo de texto.
+
+* `StreamReader`: Esta classe do `System.IO` é projetada para ler caracteres de um fluxo (neste caso, um arquivo).
+
+* Bloco `using`: Este é um dos conceitos mais importantes aqui. O `using` garante que o objeto `file` (que representa o arquivo no sistema operacional) seja "descartado" (`Dispose`) corretamente, mesmo que ocorram erros. Isso significa que o arquivo será fechado, liberando o recurso para outros programas. É a maneira padrão e segura de trabalhar com recursos como arquivos e conexões de rede.
+
+* `ReadToEnd()`: Lê todo o conteúdo do arquivo, do início ao fim, e o retorna como uma única `string`.
+
+### 
+
+`Edit` e `Save`: Criando e Escrevendo em Arquivos
+
+O processo de criação é dividido em duas partes: `Edit` para capturar a entrada e `Save` para escrevê-la no disco.
+
+```
+private static void Edit()
+{
+    // ...
+    string text = "";
+    do
+    {
+        text += Console.ReadLine();
+        text += Environment.NewLine;
+    } while (Console.ReadKey().Key != ConsoleKey.Escape);
+    
+    Save(text);
+}
+```
+
+* Captura de Múltiplas Linhas: O loop `do-while` é uma forma inteligente de capturar texto. Ele continua adicionando linhas à variável `text` até que a tecla `ESC` seja pressionada. `Console.ReadKey()` intercepta a próxima tecla pressionada sem exigir que o usuário pressione Enter.
+
+* `Environment.NewLine`: Garante que as quebras de linha sejam corretas para o sistema operacional em que o programa está sendo executado (seja `\n` no Linux/macOS ou `\r\n` no Windows).
+
+```
+static void Save(string text) 
+{
+    // ...
+    var path = Console.ReadLine();
+    
+    using (var file = new StreamWriter(path ?? string.Empty))
+    {
+        file.Write(text);
+    }
+    // ...
+}
+```
+
+* `StreamWriter`: O oposto do `StreamReader`, esta classe é usada para escrever strings em um fluxo/arquivo. Se o arquivo não existir no `path` especificado, ele será criado. Se já existir, seu conteúdo será sobrescrito.
+
+* Segurança com `using`: Assim como no `Open`, o `using` garante que o arquivo seja fechado e salvo corretamente após a escrita.
+
+## Conceitos-Chave Aplicados
+
+* Entrada e Saída do Console: Uso intensivo de `Console.WriteLine`, `Console.ReadLine` e `Console.ReadKey` para criar uma interface de usuário interativa.
+
+* Manipulação de Arquivos (`System.IO`): Utilização das classes `StreamReader` e `StreamWriter` para operações de leitura e escrita em arquivos.
+
+* Gerenciamento de Recursos com `using`: Aplicação da instrução `using` para garantir que os recursos do sistema (arquivos) sejam liberados de forma segura e automática.
+
+* Estruturas de Controle: Uso de `switch` para navegação no menu e `do-while` para captura de entrada de texto.
+
+* Tratamento de Strings: Concatenação de strings para construir o conteúdo do arquivo e uso de `Environment.NewLine` para compatibilidade entre sistemas operacionais.
+
+## Como Executar
+
+Para testar este programa, você precisa navegar até a pasta do projeto no seu terminal e usar o comando `dotnet run`:
+
+```BASH
+# Navegue até o diretório do projeto
+cd projects/TextEditor/TextEditor
+
+# Execute a aplicação
+dotnet run
+```
+
+A partir daí, o menu interativo irá guiá-lo para criar, abrir ou salvar seus arquivos de texto.
 
 
 
