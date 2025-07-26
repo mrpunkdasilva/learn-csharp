@@ -3892,3 +3892,46 @@ This page contains a curated list of high-quality resources for learning and mas
 
 
 
+# Interpolação
+
+## Concatenação
+
+Interpolação é juntar uma string com outro valor:
+
+```CSHARP
+var price = 12.2;
+var texto = "O preço é " + price;
+
+Console.WriteLine(texto); // O preço é 12.2
+```
+
+Tip:
+
+Ou seja, é transformar uma `string` + `qualquer outro tipo` para uma `string`
+
+## Format
+
+Serve para interpolação e para interpolar, mas tem outras funções também
+
+```CSHARP
+var price = 10.2;
+var texto = string.Format("O preço do produto é {0} apenas na promoção", price);
+```
+
+
+
+# GUIDs
+
+GUIDs (Global Unique IDentificator)  são identificadores únicos dentro do C#
+
+É um 128-bit integer (16 bytes)
+
+```CSHARP
+var id = Guid.NewGuid();
+// O retrona será algo assim: 
+// → 044e69f7-fe93-4e98-ae0d-f650b37f31ff
+System.Console.WriteLine("" + id);
+```
+
+
+
