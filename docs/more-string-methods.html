@@ -1,0 +1,290 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#214C69"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-07-26T21:24:32.816721805"><title>Mais M&eacute;todos e Conceitos | Learn C#</title><script type="application/json" id="virtual-toc-data">[{"id":"1-otimiza-o-de-mem-ria-string-pooling-string-intern-string-isinterned","level":0,"title":"1. Otimização de Memória: String Pooling (string.Intern(), string.IsInterned())","anchor":"#1-otimiza-o-de-mem-ria-string-pooling-string-intern-string-isinterned"},{"id":"2-constru-o-eficiente-de-strings-stringbuilder","level":0,"title":"2. Construção Eficiente de Strings: StringBuilder","anchor":"#2-constru-o-eficiente-de-strings-stringbuilder"},{"id":"3-compara-o-de-strings-com-op-es-de-cultura-string-compare-string-string-bool-cultureinfo","level":0,"title":"3. Comparação de Strings com Opções de Cultura (string.Compare(string, string, bool, CultureInfo))","anchor":"#3-compara-o-de-strings-com-op-es-de-cultura-string-compare-string-string-bool-cultureinfo"},{"id":"4-verificando-o-tipo-de-caractere-char-isdigit-char-isletter-etc","level":0,"title":"4. Verificando o Tipo de Caractere (char.IsDigit(), char.IsLetter(), etc.)","anchor":"#4-verificando-o-tipo-de-caractere-char-isdigit-char-isletter-etc"},{"id":"5-removendo-caracteres-espec-ficos-com-trimstart-char-e-trimend-char","level":0,"title":"5. Removendo Caracteres Específicos com TrimStart(char[]) e TrimEnd(char[])","anchor":"#5-removendo-caracteres-espec-ficos-com-trimstart-char-e-trimend-char"},{"id":"6-verificando-se-a-string-num-rica-double-tryparse-int-tryparse-etc","level":0,"title":"6. Verificando se a String é Numérica (double.TryParse(), int.TryParse(), etc.)","anchor":"#6-verificando-se-a-string-num-rica-double-tryparse-int-tryparse-etc"},{"id":"7-compara-o-de-strings-com-regex-regex-ismatch","level":0,"title":"7. Comparação de Strings com RegEx (Regex.IsMatch())","anchor":"#7-compara-o-de-strings-com-regex-regex-ismatch"},{"id":"8-substitui-o-com-regex-regex-replace","level":0,"title":"8. Substituição com RegEx (Regex.Replace())","anchor":"#8-substitui-o-com-regex-regex-replace"},{"id":"9-extra-o-com-regex-regex-match-regex-matches","level":0,"title":"9. Extração com RegEx (Regex.Match(), Regex.Matches())","anchor":"#9-extra-o-com-regex-regex-match-regex-matches"},{"id":"10-verificando-se-a-string-nula-ou-vazia-de-forma-concisa-string-isnullorempty-com-operador","level":0,"title":"10. Verificando se a String é Nula ou Vazia de Forma Concisa (string.IsNullOrEmpty() com operador ??)","anchor":"#10-verificando-se-a-string-nula-ou-vazia-de-forma-concisa-string-isnullorempty-com-operador"},{"id":"11-criando-strings-a-partir-de-caracteres-repetidos-new-string-char-int","level":0,"title":"11. Criando Strings a Partir de Caracteres Repetidos (new string(char, int))","anchor":"#11-criando-strings-a-partir-de-caracteres-repetidos-new-string-char-int"},{"id":"12-comparando-strings-para-igualdade-de-conte-do-string-equals-object","level":0,"title":"12. Comparando Strings para Igualdade de Conteúdo (string.Equals(object))","anchor":"#12-comparando-strings-para-igualdade-de-conte-do-string-equals-object"},{"id":"13-obtendo-um-substring-de-um-caractere-string-substring-int-int-com-indexof","level":0,"title":"13. Obtendo um Substring de um Caractere (string.Substring(int, int) com IndexOf)","anchor":"#13-obtendo-um-substring-de-um-caractere-string-substring-int-int-com-indexof"},{"id":"14-verificando-se-a-string-vazia-string-isempty-c-11","level":0,"title":"14. Verificando se a String é Vazia (string.IsEmpty - C# 11+)","anchor":"#14-verificando-se-a-string-vazia-string-isempty-c-11"},{"id":"15-usando-readonlyspan-char-para-performance-c-7-2","level":0,"title":"15. Usando ReadOnlySpan\u003cchar\u003e para Performance (C# 7.2+)","anchor":"#15-usando-readonlyspan-char-para-performance-c-7-2"},{"id":"conclus-o","level":0,"title":"Conclusão","anchor":"#conclus-o"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Mais M&eacute;todos e Conceitos | Learn C#"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Learn C# Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/more-string-methods.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Mais M&eacute;todos e Conceitos | Learn C#"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/more-string-methods.html#webpage",
+    "url": "writerside-documentation/more-string-methods.html",
+    "name": "Mais M&eacute;todos e Conceitos | Learn C#",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Learn C# Help"
+}</script><!-- End Schema.org --></head><body data-id="More-String-Methods" data-main-title="Mais Métodos e Conceitos" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Fundamentos///Strings///Manipulate-String.md|Manipulando Strings: Formatação e Validação Adicional"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Learn C#  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="More-String-Methods" id="More-String-Methods.md">Mais Métodos e Conceitos</h1><p id="lbt026_3">No desenvolvimento de software, a manipula&ccedil;&atilde;o de texto &eacute; uma tarefa constante. &Agrave; medida que os sistemas crescem em complexidade e performance se torna um fator cr&iacute;tico, &eacute; essencial ir al&eacute;m dos m&eacute;todos b&aacute;sicos de string e explorar ferramentas mais poderosas e eficientes. Este documento apresenta uma sele&ccedil;&atilde;o de m&eacute;todos e conceitos avan&ccedil;ados que permitem um controle mais granular e otimizado sobre as opera&ccedil;&otilde;es com strings no C#.</p><section class="chapter"><h2 id="1-otimiza-o-de-mem-ria-string-pooling-string-intern-string-isinterned" data-toc="1-otimiza-o-de-mem-ria-string-pooling-string-intern-string-isinterned">1. Otimiza&ccedil;&atilde;o de Mem&oacute;ria: String Pooling (<code class="code" id="lbt026_25">string.Intern()</code>, <code class="code" id="lbt026_26">string.IsInterned()</code>)</h2><p id="lbt026_21">Imagine que voc&ecirc; tem uma biblioteca com muitos livros, e v&aacute;rios deles t&ecirc;m o mesmo t&iacute;tulo. Em vez de ter v&aacute;rias c&oacute;pias f&iacute;sicas do mesmo t&iacute;tulo, a biblioteca decide ter apenas uma c&oacute;pia e v&aacute;rias refer&ecirc;ncias a ela. No C#, o <span class="emphasis" id="lbt026_27">string pooling</span> (ou interning) funciona de forma semelhante para otimizar o uso de mem&oacute;ria, especialmente para strings literais e strings frequentemente repetidas.</p><p id="lbt026_22">Quando uma string &eacute; <span class="emphasis" id="lbt026_28">interned</span>, o Common Language Runtime (CLR) a armazena em um pool interno. Se outra string com o mesmo valor for criada, em vez de alocar nova mem&oacute;ria, o CLR retorna uma refer&ecirc;ncia &agrave; inst&acirc;ncia existente no pool.</p><section class="chapter"><h3 id="string-intern-string-str" data-toc="string-intern-string-str"><code class="code" id="lbt026_31">string.Intern(string str)</code></h3><p id="lbt026_30">Adiciona a string especificada ao pool de interning. Se a string j&aacute; estiver no pool, retorna a refer&ecirc;ncia &agrave; inst&acirc;ncia existente.</p></section><section class="chapter"><h3 id="string-isinterned-string-str" data-toc="string-isinterned-string-str"><code class="code" id="lbt026_37">string.IsInterned(string str)</code></h3><p id="lbt026_33">Verifica se a string especificada j&aacute; est&aacute; no pool de interning. Retorna a refer&ecirc;ncia &agrave; inst&acirc;ncia interned se estiver, caso contr&aacute;rio, retorna <code class="code" id="lbt026_38">null</code>.</p><div class="code-block" data-lang="csharp">
+string s1 = &quot;Hello World&quot;;
+string s2 = &quot;Hello World&quot;;
+string s3 = new StringBuilder().Append(&quot;Hello&quot;).Append(&quot; World&quot;).ToString();
+
+// s1 and s2 are string literals, they are automatically interned by the CLR
+bool areSameReference1 = ReferenceEquals(s1, s2); // Result: true
+Console.WriteLine($&quot;s1 and s2 are same reference: {areSameReference1}&quot;);
+
+// s3 is created at runtime, so it's a new object
+bool areSameReference2 = ReferenceEquals(s1, s3); // Result: false
+Console.WriteLine($&quot;s1 and s3 are same reference (before intern): {areSameReference2}&quot;);
+
+// Intern s3
+string s3Interned = string.Intern(s3);
+
+bool areSameReference3 = ReferenceEquals(s1, s3Interned); // Result: true
+Console.WriteLine($&quot;s1 and s3Interned are same reference (after intern): {areSameReference3}&quot;);
+
+// Check if a string is interned
+string internedCheck1 = string.IsInterned(s1); // Result: &quot;Hello World&quot;
+string internedCheck2 = string.IsInterned(s3); // Result: &quot;Hello World&quot; (after s3 was interned)
+string internedCheck3 = string.IsInterned(&quot;Another String&quot;); // Result: null (if not interned yet)
+Console.WriteLine($&quot;Is s1 interned? {internedCheck1 != null}&quot;);
+Console.WriteLine($&quot;Is s3 interned? {internedCheck2 != null}&quot;);
+Console.WriteLine($&quot;Is 'Another String' interned? {internedCheck3 != null}&quot;);
+</div><p id="lbt026_35"><span class="control" id="lbt026_39">Termos T&eacute;cnicos:</span></p><ul class="list _bullet" id="lbt026_36"><li class="list__item" id="lbt026_40"><p id="lbt026_43"><span class="control" id="lbt026_44">String Pooling (Interning):</span> Um mecanismo de otimiza&ccedil;&atilde;o de mem&oacute;ria onde strings com o mesmo valor s&atilde;o armazenadas como uma &uacute;nica inst&acirc;ncia na mem&oacute;ria.</p></li><li class="list__item" id="lbt026_41"><p id="lbt026_45"><span class="control" id="lbt026_46">CLR (Common Language Runtime):</span> O ambiente de execu&ccedil;&atilde;o do .NET que gerencia a execu&ccedil;&atilde;o de programas.</p></li><li class="list__item" id="lbt026_42"><p id="lbt026_47"><span class="control" id="lbt026_48"><code class="code" id="lbt026_49">ReferenceEquals()</code>:</span> Um m&eacute;todo est&aacute;tico que verifica se duas refer&ecirc;ncias de objeto apontam para a mesma inst&acirc;ncia na mem&oacute;ria.</p></li></ul></section></section><section class="chapter"><h2 id="2-constru-o-eficiente-de-strings-stringbuilder" data-toc="2-constru-o-eficiente-de-strings-stringbuilder">2. Constru&ccedil;&atilde;o Eficiente de Strings: <code class="code" id="lbt026_55">StringBuilder</code></h2><p id="lbt026_51">Imagine que voc&ecirc; est&aacute; construindo uma parede tijolo por tijolo. Se voc&ecirc; tivesse que demolir a parede inteira e reconstru&iacute;-la do zero a cada novo tijolo, seria muito ineficiente. Strings em C# s&atilde;o imut&aacute;veis, o que significa que cada opera&ccedil;&atilde;o que &quot;modifica&quot; uma string na verdade cria uma nova. Para cen&aacute;rios onde voc&ecirc; precisa realizar muitas concatena&ccedil;&otilde;es ou modifica&ccedil;&otilde;es em uma string, <code class="code" id="lbt026_56">StringBuilder</code> &eacute; a ferramenta ideal, pois ela permite a modifica&ccedil;&atilde;o eficiente de uma sequ&ecirc;ncia de caracteres sem criar novas inst&acirc;ncias de string a cada opera&ccedil;&atilde;o.</p><div class="code-block" data-lang="csharp">
+using System.Text;
+
+StringBuilder sb = new StringBuilder();
+
+sb.Append(&quot;Hello&quot;);
+sb.Append(&quot; World&quot;);
+sb.AppendLine(&quot; from StringBuilder!&quot;); // Appends text and a new line
+sb.AppendFormat(&quot;The current time is {0:HH:mm:ss}&quot;, DateTime.Now); // Appends formatted text
+
+Console.WriteLine($&quot;StringBuilder content: {sb.ToString()}&quot;);
+
+sb.Insert(6, &quot;Big &quot;); // Insert &quot;Big &quot; at index 6
+Console.WriteLine($&quot;After Insert: {sb.ToString()}&quot;);
+
+sb.Replace(&quot;World&quot;, &quot;Universe&quot;); // Replace &quot;World&quot; with &quot;Universe&quot;
+Console.WriteLine($&quot;After Replace: {sb.ToString()}&quot;);
+
+sb.Remove(0, 6); // Remove 6 characters from the beginning
+Console.WriteLine($&quot;After Remove: {sb.ToString()}&quot;);
+
+// Get the final string
+string finalString = sb.ToString();
+Console.WriteLine($&quot;Final String: {finalString}&quot;);
+</div><p id="lbt026_53"><span class="control" id="lbt026_57">Termos T&eacute;cnicos:</span></p><ul class="list _bullet" id="lbt026_54"><li class="list__item" id="lbt026_58"><p id="lbt026_60"><span class="control" id="lbt026_61">Mutabilidade:</span> A capacidade de um objeto ter seu estado alterado ap&oacute;s sua cria&ccedil;&atilde;o.</p></li><li class="list__item" id="lbt026_59"><p id="lbt026_62"><span class="control" id="lbt026_63"><code class="code" id="lbt026_65">System.Text</code> Namespace:</span> O namespace que cont&eacute;m classes para manipula&ccedil;&atilde;o de caracteres e codifica&ccedil;&otilde;es de texto, incluindo <code class="code" id="lbt026_64">StringBuilder</code>.</p></li></ul></section><section class="chapter"><h2 id="3-compara-o-de-strings-com-op-es-de-cultura-string-compare-string-string-bool-cultureinfo" data-toc="3-compara-o-de-strings-com-op-es-de-cultura-string-compare-string-string-bool-cultureinfo">3. Compara&ccedil;&atilde;o de Strings com Op&ccedil;&otilde;es de Cultura (<code class="code" id="lbt026_71">string.Compare(string, string, bool, CultureInfo)</code>)</h2><p id="lbt026_67">Embora <code class="code" id="lbt026_72">string.Compare</code> com <code class="code" id="lbt026_73">StringComparison</code> tenha sido abordado, a sobrecarga que aceita um <code class="code" id="lbt026_74">CultureInfo</code> permite especificar explicitamente as regras de compara&ccedil;&atilde;o cultural, o que &eacute; vital para aplica&ccedil;&otilde;es globalizadas.</p><div class="code-block" data-lang="csharp">
+using System.Globalization;
+
+string strA = &quot;Straße&quot;;
+string strB = &quot;strasse&quot;;
+
+// Case-insensitive comparison using German culture
+int resultGerman = string.Compare(strA, strB, true, new CultureInfo(&quot;de-DE&quot;));
+Console.WriteLine($&quot;Compare '{strA}' and '{strB}' (German, ignore case): {resultGerman}&quot;);
+// In German, 'ß' is often treated as 'ss' for case-insensitive comparisons, so result might be 0.
+
+string strC = &quot;file&quot;;
+string strD = &quot;File&quot;;
+
+// Case-sensitive comparison using InvariantCulture
+int resultInvariant = string.Compare(strC, strD, false, CultureInfo.InvariantCulture);
+Console.WriteLine($&quot;Compare '{strC}' and '{strD}' (Invariant, case-sensitive): {resultInvariant}&quot;);
+</div><p id="lbt026_69"><span class="control" id="lbt026_75">Termos T&eacute;cnicos:</span></p><ul class="list _bullet" id="lbt026_70"><li class="list__item" id="lbt026_76"><p id="lbt026_78"><span class="control" id="lbt026_79"><code class="code" id="lbt026_80">CultureInfo</code>:</span> Uma classe que fornece informa&ccedil;&otilde;es sobre uma cultura espec&iacute;fica, incluindo conven&ccedil;&otilde;es de formata&ccedil;&atilde;o de data, hora, n&uacute;meros e regras de compara&ccedil;&atilde;o de strings.</p></li><li class="list__item" id="lbt026_77"><p id="lbt026_81"><span class="control" id="lbt026_82"><code class="code" id="lbt026_83">InvariantCulture</code>:</span> Uma cultura que &eacute; independente de qualquer cultura espec&iacute;fica. &Eacute; usada para opera&ccedil;&otilde;es que devem produzir resultados consistentes, independentemente das configura&ccedil;&otilde;es de cultura do usu&aacute;rio.</p></li></ul></section><section class="chapter"><h2 id="4-verificando-o-tipo-de-caractere-char-isdigit-char-isletter-etc" data-toc="4-verificando-o-tipo-de-caractere-char-isdigit-char-isletter-etc">4. Verificando o Tipo de Caractere (<code class="code" id="lbt026_89">char.IsDigit()</code>, <code class="code" id="lbt026_90">char.IsLetter()</code>, etc.)</h2><p id="lbt026_85">Imagine que voc&ecirc; est&aacute; validando uma senha e precisa garantir que ela contenha pelo menos um n&uacute;mero, uma letra e um s&iacute;mbolo. A classe <code class="code" id="lbt026_91">char</code> (que representa um &uacute;nico caractere) oferece m&eacute;todos est&aacute;ticos para verificar a categoria de um caractere, o que &eacute; muito &uacute;til para valida&ccedil;&atilde;o e an&aacute;lise de texto.</p><div class="code-block" data-lang="csharp">
+string password = &quot;P@ssw0rd1!&quot;;
+
+bool hasDigit = false;
+bool hasLetter = false;
+bool hasSymbol = false;
+
+foreach (char c in password)
+{
+    if (char.IsDigit(c))
+    {
+        hasDigit = true;
+    }
+    else if (char.IsLetter(c))
+    {
+        hasLetter = true;
+    }
+    else if (char.IsSymbol(c) || char.IsPunctuation(c))
+    {
+        hasSymbol = true;
+    }
+}
+
+Console.WriteLine($&quot;Password '{password}' has digit: {hasDigit}&quot;);
+Console.WriteLine($&quot;Password '{password}' has letter: {hasLetter}&quot;);
+Console.WriteLine($&quot;Password '{password}' has symbol/punctuation: {hasSymbol}&quot;);
+
+// Other useful char methods:
+Console.WriteLine($&quot;Is ' ' whitespace? {char.IsWhiteSpace(' ')}&quot;);
+Console.WriteLine($&quot;Is 'A' upper? {char.IsUpper('A')}&quot;);
+Console.WriteLine($&quot;Is 'a' lower? {char.IsLower('a')}&quot;);
+</div><p id="lbt026_87"><span class="control" id="lbt026_92">Termos T&eacute;cnicos:</span></p><ul class="list _bullet" id="lbt026_88"><li class="list__item" id="lbt026_93"><p id="lbt026_95"><span class="control" id="lbt026_96"><code class="code" id="lbt026_97">char</code> (tipo):</span> Um tipo de dado que representa um &uacute;nico caractere Unicode.</p></li><li class="list__item" id="lbt026_94"><p id="lbt026_98"><span class="control" id="lbt026_99">M&eacute;todos Est&aacute;ticos da Classe <code class="code" id="lbt026_102">char</code>:</span> Fun&ccedil;&otilde;es que operam em caracteres e s&atilde;o chamadas diretamente na classe <code class="code" id="lbt026_100">char</code> (e.g., <code class="code" id="lbt026_101">char.IsDigit()</code>).</p></li></ul></section><section class="chapter"><h2 id="5-removendo-caracteres-espec-ficos-com-trimstart-char-e-trimend-char" data-toc="5-removendo-caracteres-espec-ficos-com-trimstart-char-e-trimend-char">5. Removendo Caracteres Espec&iacute;ficos com <code class="code" id="lbt026_106">TrimStart(char[])</code> e <code class="code" id="lbt026_107">TrimEnd(char[])</code></h2><p id="lbt026_104">Complementando o <code class="code" id="lbt026_108">Trim(char[])</code> j&aacute; visto, estes m&eacute;todos permitem remover um conjunto espec&iacute;fico de caracteres apenas do in&iacute;cio (<code class="code" id="lbt026_109">TrimStart</code>) ou apenas do final (<code class="code" id="lbt026_110">TrimEnd</code>) de uma string.</p><div class="code-block" data-lang="csharp">
+string rawInput = &quot;###DATA###&quot;;
+char[] trimChars = { '#' };
+
+string startTrimmed = rawInput.TrimStart(trimChars); // Result: &quot;DATA###&quot;
+Console.WriteLine($&quot;Trimmed Start: '{startTrimmed}'&quot;);
+
+string endTrimmed = rawInput.TrimEnd(trimChars); // Result: &quot;###DATA&quot;
+Console.WriteLine($&quot;Trimmed End: '{endTrimmed}'&quot;);
+</div></section><section class="chapter"><h2 id="6-verificando-se-a-string-num-rica-double-tryparse-int-tryparse-etc" data-toc="6-verificando-se-a-string-num-rica-double-tryparse-int-tryparse-etc">6. Verificando se a String &eacute; Num&eacute;rica (<code class="code" id="lbt026_116">double.TryParse()</code>, <code class="code" id="lbt026_117">int.TryParse()</code>, etc.)</h2><p id="lbt026_112">Em vez de apenas verificar se um caractere &eacute; um d&iacute;gito, muitas vezes voc&ecirc; precisa saber se uma string inteira pode ser convertida para um tipo num&eacute;rico. Os m&eacute;todos <code class="code" id="lbt026_118">TryParse()</code> s&atilde;o a maneira segura e eficiente de fazer isso, evitando exce&ccedil;&otilde;es.</p><div class="code-block" data-lang="csharp">
+string priceText = &quot;123.45&quot;;
+string quantityText = &quot;50&quot;;
+string invalidText = &quot;abc&quot;;
+
+// Try parsing to double
+if (double.TryParse(priceText, out double price))
+{
+    Console.WriteLine($&quot;Price parsed: {price}&quot;);
+}
+else
+{
+    Console.WriteLine($&quot;Could not parse price: {priceText}&quot;);
+}
+
+// Try parsing to int
+if (int.TryParse(quantityText, out int quantity))
+{
+    Console.WriteLine($&quot;Quantity parsed: {quantity}&quot;);
+}
+else
+{
+    Console.WriteLine($&quot;Could not parse quantity: {quantityText}&quot;);
+}
+
+// Invalid parse attempt
+if (!int.TryParse(invalidText, out int parsedInvalid))
+{
+    Console.WriteLine($&quot;Successfully failed to parse: {invalidText}&quot;);
+}
+</div><p id="lbt026_114"><span class="control" id="lbt026_119">Termos T&eacute;cnicos:</span></p><ul class="list _bullet" id="lbt026_115"><li class="list__item" id="lbt026_120"><p id="lbt026_122"><span class="control" id="lbt026_123"><code class="code" id="lbt026_124">TryParse()</code>:</span> Um padr&atilde;o de m&eacute;todo em .NET que tenta converter uma string para um tipo espec&iacute;fico e retorna um booleano indicando o sucesso, sem lan&ccedil;ar uma exce&ccedil;&atilde;o em caso de falha.</p></li><li class="list__item" id="lbt026_121"><p id="lbt026_125"><span class="control" id="lbt026_126"><code class="code" id="lbt026_127">out</code> Keyword:</span> Uma palavra-chave em C# usada para passar argumentos para m&eacute;todos por refer&ecirc;ncia, permitindo que o m&eacute;todo retorne valores atrav&eacute;s desses argumentos.</p></li></ul></section><section class="chapter"><h2 id="7-compara-o-de-strings-com-regex-regex-ismatch" data-toc="7-compara-o-de-strings-com-regex-regex-ismatch">7. Compara&ccedil;&atilde;o de Strings com RegEx (<code class="code" id="lbt026_133">Regex.IsMatch()</code>)</h2><p id="lbt026_129">Para padr&otilde;es de busca e valida&ccedil;&atilde;o mais complexos do que <code class="code" id="lbt026_134">Contains()</code> ou <code class="code" id="lbt026_135">StartsWith()</code>, Express&otilde;es Regulares (RegEx) s&atilde;o a ferramenta. <code class="code" id="lbt026_136">Regex.IsMatch()</code> verifica se uma string corresponde a um padr&atilde;o RegEx.</p><div class="code-block" data-lang="csharp">
+using System.Text.RegularExpressions;
+
+string emailAddress = &quot;test@example.com&quot;;
+string invalidEmail = &quot;test@example&quot;;
+
+// Regex pattern for a simple email validation
+string emailPattern = @&quot;^[^@\s]+@[^@\s]+\.[^@\s]+$&quot;;
+
+bool isValidEmail1 = Regex.IsMatch(emailAddress, emailPattern);
+Console.WriteLine($&quot;'{emailAddress}' is valid email: {isValidEmail1}&quot;);
+
+bool isValidEmail2 = Regex.IsMatch(invalidEmail, emailPattern);
+Console.WriteLine($&quot;'{invalidEmail}' is valid email: {isValidEmail2}&quot;);
+
+// Check for a specific format, e.g., a product code like ABC-1234
+string productCode = &quot;XYZ-9876&quot;;
+string productPattern = @&quot;^[A-Z]{3}-\d{4}$&quot;;
+bool isProductCodeValid = Regex.IsMatch(productCode, productPattern);
+Console.WriteLine($&quot;'{productCode}' matches product pattern: {isProductCodeValid}&quot;);
+</div><p id="lbt026_131"><span class="control" id="lbt026_137">Termos T&eacute;cnicos:</span></p><ul class="list _bullet" id="lbt026_132"><li class="list__item" id="lbt026_138"><p id="lbt026_140"><span class="control" id="lbt026_141">Express&atilde;o Regular (RegEx):</span> Uma sequ&ecirc;ncia de caracteres que define um padr&atilde;o de busca. Usada para encontrar, substituir e validar texto que corresponde a esse padr&atilde;o.</p></li><li class="list__item" id="lbt026_139"><p id="lbt026_142"><span class="control" id="lbt026_143"><code class="code" id="lbt026_144">System.Text.RegularExpressions</code> Namespace:</span> O namespace que cont&eacute;m classes para trabalhar com express&otilde;es regulares.</p></li></ul></section><section class="chapter"><h2 id="8-substitui-o-com-regex-regex-replace" data-toc="8-substitui-o-com-regex-regex-replace">8. Substitui&ccedil;&atilde;o com RegEx (<code class="code" id="lbt026_148">Regex.Replace()</code>)</h2><p id="lbt026_146">Al&eacute;m de verificar, RegEx tamb&eacute;m pode ser usado para substituir partes de uma string que correspondem a um padr&atilde;o.</p><div class="code-block" data-lang="csharp">
+string logLine = &quot;User: JohnDoe, IP: 192.168.1.100, Status: Success&quot;;
+// Replace IP addresses with [REDACTED]
+string redactedLog = Regex.Replace(logLine, @&quot;\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b&quot;, &quot;[REDACTED]&quot;);
+Console.WriteLine($&quot;Redacted Log: {redactedLog}&quot;);
+
+string phoneNumber = &quot;(11) 98765-4321&quot;;
+// Remove all non-digit characters
+string cleanedPhoneNumber = Regex.Replace(phoneNumber, @&quot;\D&quot;, &quot;&quot;); // \D matches any non-digit character
+Console.WriteLine($&quot;Cleaned Phone Number: {cleanedPhoneNumber}&quot;);
+</div></section><section class="chapter"><h2 id="9-extra-o-com-regex-regex-match-regex-matches" data-toc="9-extra-o-com-regex-regex-match-regex-matches">9. Extra&ccedil;&atilde;o com RegEx (<code class="code" id="lbt026_152">Regex.Match()</code>, <code class="code" id="lbt026_153">Regex.Matches()</code>)</h2><p id="lbt026_150">Para extrair informa&ccedil;&otilde;es espec&iacute;ficas de uma string que seguem um padr&atilde;o, <code class="code" id="lbt026_154">Regex.Match()</code> (para a primeira ocorr&ecirc;ncia) e <code class="code" id="lbt026_155">Regex.Matches()</code> (para todas as ocorr&ecirc;ncias) s&atilde;o poderosos.</p><div class="code-block" data-lang="csharp">
+string textWithPrices = &quot;Item A: $10.50, Item B: $25.00, Item C: $5.99&quot;;
+string pricePattern = @&quot;\$(\d+\.\d{2})&quot;; // Pattern to capture prices like $XX.YY
+
+// Find all matches
+MatchCollection matches = Regex.Matches(textWithPrices, pricePattern);
+Console.WriteLine(&quot;Extracted Prices:&quot;);
+foreach (Match match in matches)
+{
+    // Group 1 contains the captured price without the dollar sign
+    Console.WriteLine($&quot;- {match.Groups[1].Value}&quot;);
+}
+</div></section><section class="chapter"><h2 id="10-verificando-se-a-string-nula-ou-vazia-de-forma-concisa-string-isnullorempty-com-operador" data-toc="10-verificando-se-a-string-nula-ou-vazia-de-forma-concisa-string-isnullorempty-com-operador">10. Verificando se a String &eacute; Nula ou Vazia de Forma Concisa (<code class="code" id="lbt026_161">string.IsNullOrEmpty()</code> com operador <code class="code" id="lbt026_162">??</code>)</h2><p id="lbt026_157">Embora <code class="code" id="lbt026_163">string.IsNullOrEmpty()</code> tenha sido abordado, a combina&ccedil;&atilde;o com o operador de coalesc&ecirc;ncia nula (<code class="code" id="lbt026_164">??</code>) &eacute; uma pr&aacute;tica comum para fornecer um valor padr&atilde;o quando uma string &eacute; nula ou vazia.</p><div class="code-block" data-lang="csharp">
+string userName = null;
+string defaultName = &quot;Guest&quot;;
+
+string displayUserName = userName ?? defaultName; // If userName is null, use defaultName
+Console.WriteLine($&quot;Display User Name (null): {displayUserName}&quot;);
+
+string email = &quot;&quot;;
+string defaultEmail = &quot;no_email@example.com&quot;;
+
+// This won't work directly with ?? for empty strings, as ?? only checks for null
+string displayEmail = email ?? defaultEmail; // Result: &quot;&quot; (email is not null)
+Console.WriteLine($&quot;Display Email (empty, with ??): {displayEmail}&quot;);
+
+// Correct way to handle null or empty
+string finalEmail = string.IsNullOrEmpty(email) ? defaultEmail : email;
+Console.WriteLine($&quot;Display Email (empty, with IsNullOrEmpty): {finalEmail}&quot;);
+</div><p id="lbt026_159"><span class="control" id="lbt026_165">Termos T&eacute;cnicos:</span></p><ul class="list _bullet" id="lbt026_160"><li class="list__item" id="lbt026_166"><p id="lbt026_167"><span class="control" id="lbt026_168">Operador de Coalesc&ecirc;ncia Nula (<code class="code" id="lbt026_169">??</code>):</span> Um operador que retorna o operando esquerdo se ele n&atilde;o for nulo; caso contr&aacute;rio, retorna o operando direito.</p></li></ul></section><section class="chapter"><h2 id="11-criando-strings-a-partir-de-caracteres-repetidos-new-string-char-int" data-toc="11-criando-strings-a-partir-de-caracteres-repetidos-new-string-char-int">11. Criando Strings a Partir de Caracteres Repetidos (<code class="code" id="lbt026_173">new string(char, int)</code>)</h2><p id="lbt026_171">Um construtor de string &uacute;til para criar uma string composta por um caractere repetido um certo n&uacute;mero de vezes.</p><div class="code-block" data-lang="csharp">
+string separator = new string('-', 20); // Result: &quot;--------------------&quot;
+Console.WriteLine(separator);
+
+string padding = new string(' ', 10); // Result: &quot;          &quot;
+Console.WriteLine($&quot;Padded text: {padding}Hello&quot;);
+</div></section><section class="chapter"><h2 id="12-comparando-strings-para-igualdade-de-conte-do-string-equals-object" data-toc="12-comparando-strings-para-igualdade-de-conte-do-string-equals-object">12. Comparando Strings para Igualdade de Conte&uacute;do (<code class="code" id="lbt026_177">string.Equals(object)</code>)</h2><p id="lbt026_175">Embora <code class="code" id="lbt026_178">string.Equals(string, StringComparison)</code> seja mais poderoso, a sobrecarga <code class="code" id="lbt026_179">string.Equals(object)</code> &eacute; a que &eacute; chamada quando voc&ecirc; usa <code class="code" id="lbt026_180">myString.Equals(anotherObject)</code>. &Eacute; importante entender que ela compara o <span class="emphasis" id="lbt026_181">conte&uacute;do</span> da string, n&atilde;o a refer&ecirc;ncia, e &eacute; segura para usar com objetos que podem n&atilde;o ser strings.</p><div class="code-block" data-lang="csharp">
+string s1 = &quot;Test&quot;;
+object o1 = &quot;Test&quot;;
+object o2 = new StringBuilder(&quot;Test&quot;).ToString();
+
+bool equalsObject1 = s1.Equals(o1); // Result: true
+Console.WriteLine($&quot;s1 equals o1: {equalsObject1}&quot;);
+
+bool equalsObject2 = s1.Equals(o2); // Result: true
+Console.WriteLine($&quot;s1 equals o2: {equalsObject2}&quot;);
+
+object o3 = 123; // Not a string
+bool equalsObject3 = s1.Equals(o3); // Result: false
+Console.WriteLine($&quot;s1 equals o3: {equalsObject3}&quot;);
+</div></section><section class="chapter"><h2 id="13-obtendo-um-substring-de-um-caractere-string-substring-int-int-com-indexof" data-toc="13-obtendo-um-substring-de-um-caractere-string-substring-int-int-com-indexof">13. Obtendo um Substring de um Caractere (<code class="code" id="lbt026_185">string.Substring(int, int)</code> com <code class="code" id="lbt026_186">IndexOf</code>)</h2><p id="lbt026_183">Uma aplica&ccedil;&atilde;o pr&aacute;tica de <code class="code" id="lbt026_187">Substring</code> e <code class="code" id="lbt026_188">IndexOf</code> &eacute; extrair texto entre dois delimitadores ou a partir de um delimitador at&eacute; o final.</p><div class="code-block" data-lang="csharp">
+string logMessage = &quot;[INFO] User logged in at 2025-07-26&quot;;
+
+// Extract message content (after first ']')
+int startIndex = logMessage.IndexOf(&quot;]&quot;) + 2; // +2 to skip ']' and space
+string messageContent = logMessage.Substring(startIndex);
+Console.WriteLine($&quot;Log Content: {messageContent}&quot;);
+
+string dataRecord = &quot;ID:123;Name:Alice;Status:Active&quot;;
+// Extract Name
+int nameStartIndex = dataRecord.IndexOf(&quot;Name:&quot;) + &quot;Name:&quot;.Length;
+int nameEndIndex = dataRecord.IndexOf(&quot;;&quot;, nameStartIndex);
+string name = dataRecord.Substring(nameStartIndex, nameEndIndex - nameStartIndex);
+Console.WriteLine($&quot;Extracted Name: {name}&quot;);
+</div></section><section class="chapter"><h2 id="14-verificando-se-a-string-vazia-string-isempty-c-11" data-toc="14-verificando-se-a-string-vazia-string-isempty-c-11">14. Verificando se a String &eacute; Vazia (<code class="code" id="lbt026_194">string.IsEmpty</code> - C# 11+)</h2><p id="lbt026_190">Para vers&otilde;es mais recentes do C# (11 e superior), a propriedade <code class="code" id="lbt026_195">string.IsEmpty</code> foi introduzida para uma verifica&ccedil;&atilde;o mais clara e perform&aacute;tica de strings vazias, sem a necessidade de verificar <code class="code" id="lbt026_196">null</code> separadamente.</p><div class="code-block" data-lang="csharp">
+string emptyString = &quot;&quot;;
+string nonEmptyString = &quot;data&quot;;
+
+// Requires C# 11 or later
+// bool isEmpty1 = emptyString.IsEmpty; // Result: true
+// bool isEmpty2 = nonEmptyString.IsEmpty; // Result: false
+// Console.WriteLine($&quot;Is empty string empty? {isEmpty1}&quot;);
+// Console.WriteLine($&quot;Is non-empty string empty? {isEmpty2}&quot;);
+
+// For older C# versions, use Length == 0
+bool isEmptyLegacy1 = emptyString.Length == 0; // Result: true
+bool isEmptyLegacy2 = nonEmptyString.Length == 0; // Result: false
+Console.WriteLine($&quot;Is empty string empty (legacy)? {isEmptyLegacy1}&quot;);
+Console.WriteLine($&quot;Is non-empty string empty (legacy)? {isEmptyLegacy2}&quot;);
+</div><p id="lbt026_192"><span class="control" id="lbt026_197">Termos T&eacute;cnicos:</span></p><ul class="list _bullet" id="lbt026_193"><li class="list__item" id="lbt026_198"><p id="lbt026_199"><span class="control" id="lbt026_200">C# 11+:</span> Indica que a funcionalidade est&aacute; dispon&iacute;vel a partir da vers&atilde;o 11 da linguagem C#.</p></li></ul></section><section class="chapter"><h2 id="15-usando-readonlyspan-char-para-performance-c-7-2" data-toc="15-usando-readonlyspan-char-para-performance-c-7-2">15. Usando <code class="code" id="lbt026_206">ReadOnlySpan&lt;char&gt;</code> para Performance (C# 7.2+)</h2><p id="lbt026_202">Para opera&ccedil;&otilde;es de string de alta performance que n&atilde;o envolvem aloca&ccedil;&atilde;o de mem&oacute;ria (como leitura de substrings sem copi&aacute;-las), <code class="code" id="lbt026_207">ReadOnlySpan&lt;char&gt;</code> &eacute; uma ferramenta avan&ccedil;ada. Ele permite trabalhar com uma &quot;vis&atilde;o&quot; de uma parte da mem&oacute;ria sem criar uma nova string.</p><div class="code-block" data-lang="csharp">
+// This is an advanced topic for performance-critical scenarios.
+// Requires .NET Core 2.1+ or .NET Standard 2.1+ and C# 7.2+
+
+string largeLog = &quot;[2025-07-26 10:30:00 INFO] User 'Alice' logged in from IP 192.168.1.10.&quot;;
+
+// Get a span over the log message without allocating a new string
+ReadOnlySpan&lt;char&gt; logSpan = largeLog.AsSpan();
+
+// Find the start and end of the username
+int userStartIndex = logSpan.IndexOf(&quot;User '&quot;) + &quot;User '&quot;.Length;
+int userEndIndex = logSpan.IndexOf(&quot;' logged&quot;);
+
+if (userStartIndex != -1 &amp;&amp; userEndIndex != -1)
+{
+    // Create a new span for the username (no allocation for the span itself)
+    ReadOnlySpan&lt;char&gt; usernameSpan = logSpan.Slice(userStartIndex, userEndIndex - userStartIndex);
+    Console.WriteLine($&quot;Username (from Span): {usernameSpan.ToString()}&quot;); // .ToString() allocates a string if needed
+}
+
+// Example: Parsing a date from a string without allocating substrings
+string dateString = &quot;2025-07-26&quot;;
+ReadOnlySpan&lt;char&gt; dateSpan = dateString.AsSpan();
+
+int year = int.Parse(dateSpan.Slice(0, 4));
+int month = int.Parse(dateSpan.Slice(5, 2));
+int day = int.Parse(dateSpan.Slice(8, 2));
+
+Console.WriteLine($&quot;Parsed Date (from Span): Year={year}, Month={month}, Day={day}&quot;);
+</div><p id="lbt026_204"><span class="control" id="lbt026_208">Termos T&eacute;cnicos:</span></p><ul class="list _bullet" id="lbt026_205"><li class="list__item" id="lbt026_209"><p id="lbt026_211"><span class="control" id="lbt026_212"><code class="code" id="lbt026_213">ReadOnlySpan&lt;T&gt;</code>:</span> Um tipo de refer&ecirc;ncia que pode apontar para uma regi&atilde;o cont&iacute;gua de mem&oacute;ria. &Eacute; usado para opera&ccedil;&otilde;es de alta performance que evitam aloca&ccedil;&otilde;es de mem&oacute;ria desnecess&aacute;rias.</p></li><li class="list__item" id="lbt026_210"><p id="lbt026_214"><span class="control" id="lbt026_215">Aloca&ccedil;&atilde;o de Mem&oacute;ria:</span> O processo de reservar um espa&ccedil;o na mem&oacute;ria do computador para armazenar dados.</p></li></ul></section><section class="chapter"><h2 id="conclus-o" data-toc="conclus-o">Conclus&atilde;o</h2><p id="lbt026_216">Este conjunto de m&eacute;todos e conceitos avan&ccedil;ados de string no C# equipa voc&ecirc; com as ferramentas necess&aacute;rias para lidar com cen&aacute;rios de manipula&ccedil;&atilde;o de texto mais complexos e otimizados. Desde a gest&atilde;o de mem&oacute;ria com string pooling at&eacute; a constru&ccedil;&atilde;o eficiente com <code class="code" id="lbt026_217">StringBuilder</code> e a performance de <code class="code" id="lbt026_218">ReadOnlySpan&lt;char&gt;</code>, dominar esses recursos &eacute; um passo significativo para se tornar um desenvolvedor C# proficiente e capaz de construir aplica&ccedil;&otilde;es de alta qualidade.</p></section><div class="last-modified">27 July 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="advanced-string-manipulation.html" class="navigation-links__prev">Manipula&ccedil;&atilde;o Avan&ccedil;ada de Strings no C#</a><a href="kata-calculator.html" class="navigation-links__next">Kata - Calculadora em C#</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

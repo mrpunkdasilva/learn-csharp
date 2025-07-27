@@ -1,0 +1,185 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#214C69"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-07-26T21:24:32.805060373"><title>Manipula&ccedil;&atilde;o Avan&ccedil;ada de Strings no C# | Learn C#</title><script type="application/json" id="virtual-toc-data">[{"id":"1-compara-o-avan-ada-com-string-equals-e-string-compare","level":0,"title":"1. Comparação Avançada com string.Equals() e string.Compare()","anchor":"#1-compara-o-avan-ada-com-string-equals-e-string-compare"},{"id":"2-removendo-caracteres-espec-ficos-com-trim-char","level":0,"title":"2. Removendo Caracteres Específicos com Trim(char[])","anchor":"#2-removendo-caracteres-espec-ficos-com-trim-char"},{"id":"3-divis-o-avan-ada-com-split-char-int-stringsplitoptions","level":0,"title":"3. Divisão Avançada com Split(char[], int, StringSplitOptions)","anchor":"#3-divis-o-avan-ada-com-split-char-int-stringsplitoptions"},{"id":"4-unindo-cole-es-com-string-join-string-ienumerable-string","level":0,"title":"4. Unindo Coleções com string.Join(string, IEnumerable\u003cstring\u003e)","anchor":"#4-unindo-cole-es-com-string-join-string-ienumerable-string"},{"id":"5-verificando-caracteres-nicos-com-contains-char","level":0,"title":"5. Verificando Caracteres Únicos com Contains(char)","anchor":"#5-verificando-caracteres-nicos-com-contains-char"},{"id":"6-encontrando-qualquer-caractere-de-um-conjunto-indexofany-lastindexofany","level":0,"title":"6. Encontrando Qualquer Caractere de um Conjunto (IndexOfAny(), LastIndexOfAny())","anchor":"#6-encontrando-qualquer-caractere-de-um-conjunto-indexofany-lastindexofany"},{"id":"7-convertendo-parte-da-string-para-array-de-caracteres-tochararray-int-int","level":0,"title":"7. Convertendo Parte da String para Array de Caracteres (ToCharArray(int, int))","anchor":"#7-convertendo-parte-da-string-para-array-de-caracteres-tochararray-int-int"},{"id":"8-entendendo-string-clone-imutabilidade","level":0,"title":"8. Entendendo string.Clone() (Imutabilidade)","anchor":"#8-entendendo-string-clone-imutabilidade"},{"id":"9-copiando-conte-do-para-array-de-caracteres-copyto","level":0,"title":"9. Copiando Conteúdo para Array de Caracteres (CopyTo())","anchor":"#9-copiando-conte-do-para-array-de-caracteres-copyto"},{"id":"10-obtendo-o-c-digo-hash-gethashcode","level":0,"title":"10. Obtendo o Código Hash (GetHashCode())","anchor":"#10-obtendo-o-c-digo-hash-gethashcode"},{"id":"11-normaliza-o-unicode-normalize-isnormalized","level":0,"title":"11. Normalização Unicode (Normalize(), IsNormalized())","anchor":"#11-normaliza-o-unicode-normalize-isnormalized"},{"id":"12-compara-o-ordinal-pura-com-string-compareordinal","level":0,"title":"12. Comparação Ordinal Pura com string.CompareOrdinal()","anchor":"#12-compara-o-ordinal-pura-com-string-compareordinal"},{"id":"13-formata-o-avan-ada-com-string-format-revis-o-de-especificadores","level":0,"title":"13. Formatação Avançada com string.Format (Revisão de Especificadores)","anchor":"#13-formata-o-avan-ada-com-string-format-revis-o-de-especificadores"},{"id":"conclus-o","level":0,"title":"Conclusão","anchor":"#conclus-o"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Manipula&ccedil;&atilde;o Avan&ccedil;ada de Strings no C# | Learn C#"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Learn C# Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/advanced-string-manipulation.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Manipula&ccedil;&atilde;o Avan&ccedil;ada de Strings no C# | Learn C#"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/advanced-string-manipulation.html#webpage",
+    "url": "writerside-documentation/advanced-string-manipulation.html",
+    "name": "Manipula&ccedil;&atilde;o Avan&ccedil;ada de Strings no C# | Learn C#",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Learn C# Help"
+}</script><!-- End Schema.org --></head><body data-id="Advanced-String-Manipulation" data-main-title="Manipulação Avançada de Strings no C#" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Fundamentos///Strings///Manipulate-String.md|Manipulando Strings: Formatação e Validação Adicional"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Learn C#  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Advanced-String-Manipulation" id="Advanced-String-Manipulation.md">Manipulação Avançada de Strings no C#</h1><p id="-7v0qf4_3">Imagine que voc&ecirc; est&aacute; trabalhando com dados complexos: talvez precise comparar nomes de usu&aacute;rios de forma que &quot;jo&atilde;o&quot; e &quot;Jo&atilde;o&quot; sejam considerados iguais, ou extrair partes de um log de sistema que cont&eacute;m m&uacute;ltiplos delimitadores, ou ainda otimizar o armazenamento de textos repetitivos. O C# oferece um conjunto de m&eacute;todos de string mais avan&ccedil;ados que permitem lidar com esses cen&aacute;rios, proporcionando maior controle e efici&ecirc;ncia.</p><p id="-7v0qf4_4">Este documento explora 15 m&eacute;todos e conceitos &uacute;teis que aprofundam suas habilidades na manipula&ccedil;&atilde;o de strings, indo al&eacute;m do b&aacute;sico.</p><section class="chapter"><h2 id="1-compara-o-avan-ada-com-string-equals-e-string-compare" data-toc="1-compara-o-avan-ada-com-string-equals-e-string-compare">1. Compara&ccedil;&atilde;o Avan&ccedil;ada com <code class="code" id="-7v0qf4_23">string.Equals()</code> e <code class="code" id="-7v0qf4_24">string.Compare()</code></h2><p id="-7v0qf4_20">Enquanto <code class="code" id="-7v0qf4_25">==</code> e <code class="code" id="-7v0qf4_26">CompareTo()</code> fazem compara&ccedil;&otilde;es b&aacute;sicas, <code class="code" id="-7v0qf4_27">string.Equals()</code> e <code class="code" id="-7v0qf4_28">string.Compare()</code> com o enum <code class="code" id="-7v0qf4_29">StringComparison</code> oferecem controle preciso sobre como as strings s&atilde;o comparadas, incluindo sensibilidade a mai&uacute;sculas/min&uacute;sculas e cultura.</p><section class="chapter"><h3 id="string-equals-string-stringcomparison" data-toc="string-equals-string-stringcomparison"><code class="code" id="-7v0qf4_33">string.Equals(string, StringComparison)</code></h3><p id="-7v0qf4_31">Compara duas strings usando regras de compara&ccedil;&atilde;o espec&iacute;ficas.</p><div class="code-block" data-lang="csharp">
+string user1 = &quot;john.doe&quot;;
+string user2 = &quot;John.Doe&quot;;
+
+// Case-sensitive comparison (default)
+bool areEqualCaseSensitive = string.Equals(user1, user2, StringComparison.Ordinal); // Result: false
+Console.WriteLine($&quot;'{user1}' equals '{user2}' (Ordinal): {areEqualCaseSensitive}&quot;);
+
+// Case-insensitive comparison
+bool areEqualCaseInsensitive = string.Equals(user1, user2, StringComparison.OrdinalIgnoreCase); // Result: true
+Console.WriteLine($&quot;'{user1}' equals '{user2}' (OrdinalIgnoreCase): {areEqualCaseInsensitive}&quot;);
+
+// Culture-sensitive comparison (e.g., for 'i' vs 'İ' in Turkish)
+string turkishI = &quot;istanbul&quot;;
+string turkishCapitalI = &quot;İstanbul&quot;;
+bool cultureSensitive = string.Equals(turkishI, turkishCapitalI, StringComparison.CurrentCultureIgnoreCase); // Result: true (in Turkish culture)
+Console.WriteLine($&quot;'{turkishI}' equals '{turkishCapitalI}' (CurrentCultureIgnoreCase): {cultureSensitive}&quot;);
+</div></section><section class="chapter"><h3 id="string-compare-string-string-stringcomparison" data-toc="string-compare-string-string-stringcomparison"><code class="code" id="-7v0qf4_39">string.Compare(string, string, StringComparison)</code></h3><p id="-7v0qf4_35">Compara duas strings e retorna um inteiro indicando sua ordem relativa, similar a <code class="code" id="-7v0qf4_40">CompareTo()</code>, mas com op&ccedil;&otilde;es de compara&ccedil;&atilde;o.</p><div class="code-block" data-lang="csharp">
+string city1 = &quot;São Paulo&quot;;
+string city2 = &quot;Sao Paulo&quot;;
+
+// Culture-sensitive comparison (might treat 'ã' differently)
+int resultCulture = string.Compare(city1, city2, StringComparison.CurrentCulture); // Result depends on culture
+Console.WriteLine($&quot;Compare '{city1}' and '{city2}' (CurrentCulture): {resultCulture}&quot;);
+
+// Ordinal comparison (byte-by-byte, 'ã' is different from 'a')
+int resultOrdinal = string.Compare(city1, city2, StringComparison.Ordinal); // Result: non-zero
+Console.WriteLine($&quot;Compare '{city1}' and '{city2}' (Ordinal): {resultOrdinal}&quot;);
+</div><p id="-7v0qf4_37"><span class="control" id="-7v0qf4_41">Termos T&eacute;cnicos:</span></p><ul class="list _bullet" id="-7v0qf4_38"><li class="list__item" id="-7v0qf4_42"><p id="-7v0qf4_45"><span class="control" id="-7v0qf4_46"><code class="code" id="-7v0qf4_51">StringComparison</code> Enum:</span> Uma enumera&ccedil;&atilde;o que define as regras para compara&ccedil;&otilde;es de strings (e.g., <code class="code" id="-7v0qf4_47">Ordinal</code>, <code class="code" id="-7v0qf4_48">OrdinalIgnoreCase</code>, <code class="code" id="-7v0qf4_49">CurrentCulture</code>, <code class="code" id="-7v0qf4_50">InvariantCulture</code>).</p></li><li class="list__item" id="-7v0qf4_43"><p id="-7v0qf4_52"><span class="control" id="-7v0qf4_53">Ordinal Comparison:</span> Uma compara&ccedil;&atilde;o byte-a-byte, sem considerar regras lingu&iacute;sticas ou culturais. &Eacute; a mais r&aacute;pida e segura para compara&ccedil;&otilde;es de seguran&ccedil;a (senhas, caminhos de arquivo).</p></li><li class="list__item" id="-7v0qf4_44"><p id="-7v0qf4_54"><span class="control" id="-7v0qf4_55">Culture-Sensitive Comparison:</span> Uma compara&ccedil;&atilde;o que leva em conta as regras lingu&iacute;sticas e culturais do sistema atual ou de uma cultura espec&iacute;fica.</p></li></ul></section></section><section class="chapter"><h2 id="2-removendo-caracteres-espec-ficos-com-trim-char" data-toc="2-removendo-caracteres-espec-ficos-com-trim-char">2. Removendo Caracteres Espec&iacute;ficos com <code class="code" id="-7v0qf4_59">Trim(char[])</code></h2><p id="-7v0qf4_57">O m&eacute;todo <code class="code" id="-7v0qf4_60">Trim()</code> que voc&ecirc; j&aacute; conhece remove espa&ccedil;os em branco. A sobrecarga <code class="code" id="-7v0qf4_61">Trim(char[])</code> permite remover um conjunto espec&iacute;fico de caracteres do in&iacute;cio e do fim de uma string.</p><div class="code-block" data-lang="csharp">
+string data = &quot;###ProductCode-123###&quot;;
+char[] trimChars = { '#' };
+string cleanedData = data.Trim(trimChars); // Result: &quot;ProductCode-123&quot;
+Console.WriteLine($&quot;Original: '{data}', Cleaned: '{cleanedData}'&quot;);
+
+string path = &quot;/path/to/file/&quot;;
+char[] slash = { '/' };
+string cleanedPath = path.Trim(slash); // Result: &quot;path/to/file&quot;
+Console.WriteLine($&quot;Original Path: '{path}', Cleaned Path: '{cleanedPath}'&quot;);
+</div></section><section class="chapter"><h2 id="3-divis-o-avan-ada-com-split-char-int-stringsplitoptions" data-toc="3-divis-o-avan-ada-com-split-char-int-stringsplitoptions">3. Divis&atilde;o Avan&ccedil;ada com <code class="code" id="-7v0qf4_67">Split(char[], int, StringSplitOptions)</code></h2><p id="-7v0qf4_63">O <code class="code" id="-7v0qf4_68">Split()</code> b&aacute;sico divide por um delimitador. As sobrecargas permitem controlar o n&uacute;mero m&aacute;ximo de substrings retornadas e como lidar com entradas vazias.</p><div class="code-block" data-lang="csharp">
+string logEntry = &quot;ERROR:::File not found:::2023-01-15&quot;;
+
+// Split into at most 2 parts, removing empty entries
+string[] parts = logEntry.Split(new[] { &quot;:::&quot; }, 2, StringSplitOptions.RemoveEmptyEntries);
+// Result: [&quot;ERROR&quot;, &quot;File not found:::2023-01-15&quot;]
+Console.WriteLine(&quot;Log Parts (max 2):&quot;);
+foreach (string part in parts)
+{
+    Console.WriteLine($&quot;- {part}&quot;);
+}
+
+string csvLine = &quot;apple,,orange,&quot;;
+// Split and remove empty entries
+string[] items = csvLine.Split(',', StringSplitOptions.RemoveEmptyEntries);
+// Result: [&quot;apple&quot;, &quot;orange&quot;]
+Console.WriteLine(&quot;CSV Items (RemoveEmptyEntries):&quot;);
+foreach (string item in items)
+{
+    Console.WriteLine($&quot;- {item}&quot;);
+}
+</div><p id="-7v0qf4_65"><span class="control" id="-7v0qf4_69">Termos T&eacute;cnicos:</span></p><ul class="list _bullet" id="-7v0qf4_66"><li class="list__item" id="-7v0qf4_70"><p id="-7v0qf4_71"><span class="control" id="-7v0qf4_72"><code class="code" id="-7v0qf4_76">StringSplitOptions</code> Enum:</span> Controla o comportamento do m&eacute;todo <code class="code" id="-7v0qf4_73">Split()</code>, como <code class="code" id="-7v0qf4_74">RemoveEmptyEntries</code> (ignora substrings vazias) ou <code class="code" id="-7v0qf4_75">None</code> (inclui substrings vazias).</p></li></ul></section><section class="chapter"><h2 id="4-unindo-cole-es-com-string-join-string-ienumerable-string" data-toc="4-unindo-cole-es-com-string-join-string-ienumerable-string">4. Unindo Cole&ccedil;&otilde;es com <code class="code" id="-7v0qf4_82">string.Join(string, IEnumerable&lt;string&gt;)</code></h2><p id="-7v0qf4_78">Enquanto <code class="code" id="-7v0qf4_83">string.Join()</code> j&aacute; foi abordado, a sobrecarga que aceita <code class="code" id="-7v0qf4_84">IEnumerable&lt;string&gt;</code> &eacute; extremamente &uacute;til para unir qualquer cole&ccedil;&atilde;o de strings (como <code class="code" id="-7v0qf4_85">List&lt;string&gt;</code>, <code class="code" id="-7v0qf4_86">HashSet&lt;string&gt;</code>) sem precisar convert&ecirc;-las para um array primeiro.</p><div class="code-block" data-lang="csharp">
+using System.Collections.Generic;
+
+List&lt;string&gt; tags = new List&lt;string&gt; { &quot;programming&quot;, &quot;csharp&quot;, &quot;backend&quot; };
+string tagString = string.Join(&quot;; &quot;, tags); // Result: &quot;programming; csharp; backend&quot;
+Console.WriteLine($&quot;Joined Tags: {tagString}&quot;);
+
+HashSet&lt;string&gt; uniqueUsers = new HashSet&lt;string&gt; { &quot;alice&quot;, &quot;bob&quot;, &quot;charlie&quot; };
+string userList = string.Join(&quot;, &quot;, uniqueUsers); // Result: &quot;alice, bob, charlie&quot; (order may vary)
+Console.WriteLine($&quot;Joined Users: {userList}&quot;);
+</div><p id="-7v0qf4_80"><span class="control" id="-7v0qf4_87">Termos T&eacute;cnicos:</span></p><ul class="list _bullet" id="-7v0qf4_81"><li class="list__item" id="-7v0qf4_88"><p id="-7v0qf4_89"><span class="control" id="-7v0qf4_90"><code class="code" id="-7v0qf4_91">IEnumerable&lt;T&gt;</code>:</span> Uma interface que representa uma cole&ccedil;&atilde;o de elementos que podem ser iterados (percorridos).</p></li></ul></section><section class="chapter"><h2 id="5-verificando-caracteres-nicos-com-contains-char" data-toc="5-verificando-caracteres-nicos-com-contains-char">5. Verificando Caracteres &Uacute;nicos com <code class="code" id="-7v0qf4_95">Contains(char)</code></h2><p id="-7v0qf4_93">Embora <code class="code" id="-7v0qf4_96">Contains(string)</code> verifique substrings, <code class="code" id="-7v0qf4_97">Contains(char)</code> &eacute; uma sobrecarga mais eficiente para verificar a presen&ccedil;a de um &uacute;nico caractere.</p><div class="code-block" data-lang="csharp">
+string email = &quot;user@example.com&quot;;
+bool hasAtSymbol = email.Contains('@'); // Result: true
+Console.WriteLine($&quot;Email '{email}' contains '@'? {hasAtSymbol}&quot;);
+
+string phoneNumber = &quot;123-456-7890&quot;;
+bool hasDash = phoneNumber.Contains('-'); // Result: true
+Console.WriteLine($&quot;Phone number '{phoneNumber}' contains '-'? {hasDash}&quot;);
+</div></section><section class="chapter"><h2 id="6-encontrando-qualquer-caractere-de-um-conjunto-indexofany-lastindexofany" data-toc="6-encontrando-qualquer-caractere-de-um-conjunto-indexofany-lastindexofany">6. Encontrando Qualquer Caractere de um Conjunto (<code class="code" id="-7v0qf4_102">IndexOfAny()</code>, <code class="code" id="-7v0qf4_103">LastIndexOfAny()</code>)</h2><p id="-7v0qf4_99">Estes m&eacute;todos s&atilde;o como procurar por <span class="emphasis" id="-7v0qf4_104">qualquer um</span> de v&aacute;rios itens em uma lista. Eles retornam o &iacute;ndice da primeira (ou &uacute;ltima) ocorr&ecirc;ncia de <span class="emphasis" id="-7v0qf4_105">qualquer</span> caractere presente em um array de caracteres fornecido.</p><section class="chapter"><h3 id="indexofany-char" data-toc="indexofany-char"><code class="code" id="-7v0qf4_108">IndexOfAny(char[])</code></h3><div class="code-block" data-lang="csharp">
+string text = &quot;Hello, World! How are you?&quot;;
+char[] delimiters = { ',', '!', '?' };
+int firstDelimiterIndex = text.IndexOfAny(delimiters); // Result: 5 (index of ',')
+Console.WriteLine($&quot;First delimiter found at index: {firstDelimiterIndex}&quot;);
+</div></section><section class="chapter"><h3 id="lastindexofany-char" data-toc="lastindexofany-char"><code class="code" id="-7v0qf4_111">LastIndexOfAny(char[])</code></h3><div class="code-block" data-lang="csharp">
+string textWithMultipleDelimiters = &quot;Item1;Item2,Item3|Item4&quot;;
+char[] separators = { ';', ',', '|' };
+int lastSeparatorIndex = textWithMultipleDelimiters.LastIndexOfAny(separators); // Result: 17 (index of '|')
+Console.WriteLine($&quot;Last separator found at index: {lastSeparatorIndex}&quot;);
+</div></section></section><section class="chapter"><h2 id="7-convertendo-parte-da-string-para-array-de-caracteres-tochararray-int-int" data-toc="7-convertendo-parte-da-string-para-array-de-caracteres-tochararray-int-int">7. Convertendo Parte da String para Array de Caracteres (<code class="code" id="-7v0qf4_115">ToCharArray(int, int)</code>)</h2><p id="-7v0qf4_113">Enquanto <code class="code" id="-7v0qf4_116">ToCharArray()</code> converte a string inteira, esta sobrecarga permite converter apenas uma por&ccedil;&atilde;o da string para um array de caracteres.</p><div class="code-block" data-lang="csharp">
+string fullAddress = &quot;123 Main Street, Anytown&quot;;
+// Get characters for &quot;Main Street&quot;
+char[] streetChars = fullAddress.ToCharArray(4, 11); // Start at index 4, take 11 characters
+string streetName = new string(streetChars); // Convert char array back to string
+Console.WriteLine($&quot;Street Name: {streetName}&quot;);
+</div></section><section class="chapter"><h2 id="8-entendendo-string-clone-imutabilidade" data-toc="8-entendendo-string-clone-imutabilidade">8. Entendendo <code class="code" id="-7v0qf4_122">string.Clone()</code> (Imutabilidade)</h2><p id="-7v0qf4_118">O m&eacute;todo <code class="code" id="-7v0qf4_123">Clone()</code> retorna uma nova refer&ecirc;ncia para a mesma inst&acirc;ncia da string. Devido &agrave; imutabilidade das strings em C#, clonar uma string n&atilde;o cria uma c&oacute;pia separada do conte&uacute;do, mas sim uma nova refer&ecirc;ncia para o mesmo objeto na mem&oacute;ria. Isso &eacute; importante para entender o comportamento de strings.</p><div class="code-block" data-lang="csharp">
+string originalString = &quot;Immutable&quot;;
+string clonedString = (string)originalString.Clone();
+
+bool areSameReference = ReferenceEquals(originalString, clonedString); // Result: true
+Console.WriteLine($&quot;Are original and cloned strings the same reference? {areSameReference}&quot;);
+
+// Modifying 'clonedString' actually creates a new string due to imutability
+clonedString = clonedString + &quot; Text&quot;;
+Console.WriteLine($&quot;Original: {originalString}, Cloned (modified): {clonedString}&quot;);
+</div><p id="-7v0qf4_120"><span class="control" id="-7v0qf4_124">Termos T&eacute;cnicos:</span></p><ul class="list _bullet" id="-7v0qf4_121"><li class="list__item" id="-7v0qf4_125"><p id="-7v0qf4_127"><span class="control" id="-7v0qf4_128">Imutabilidade:</span> Uma propriedade de um objeto cujo estado n&atilde;o pode ser modificado ap&oacute;s sua cria&ccedil;&atilde;o.</p></li><li class="list__item" id="-7v0qf4_126"><p id="-7v0qf4_129"><span class="control" id="-7v0qf4_130"><code class="code" id="-7v0qf4_131">ReferenceEquals()</code>:</span> Um m&eacute;todo est&aacute;tico que verifica se duas refer&ecirc;ncias de objeto apontam para a mesma inst&acirc;ncia na mem&oacute;ria.</p></li></ul></section><section class="chapter"><h2 id="9-copiando-conte-do-para-array-de-caracteres-copyto" data-toc="9-copiando-conte-do-para-array-de-caracteres-copyto">9. Copiando Conte&uacute;do para Array de Caracteres (<code class="code" id="-7v0qf4_135">CopyTo()</code>)</h2><p id="-7v0qf4_133">O m&eacute;todo <code class="code" id="-7v0qf4_136">CopyTo()</code> permite copiar uma parte ou a totalidade dos caracteres de uma string para um array de caracteres existente, a partir de um &iacute;ndice espec&iacute;fico no array de destino.</p><div class="code-block" data-lang="csharp">
+string source = &quot;Hello World&quot;;
+char[] destination = new char[10]; // Create a char array to copy into
+
+// Copy 5 characters from 'source' starting at index 0, to 'destination' starting at index 0
+source.CopyTo(0, destination, 0, 5); // Result: destination = ['H', 'e', 'l', 'l', 'o', ' ', ' ', ' ', ' ', ' ']
+Console.WriteLine($&quot;Copied characters: {new string(destination)}&quot;);
+</div></section><section class="chapter"><h2 id="10-obtendo-o-c-digo-hash-gethashcode" data-toc="10-obtendo-o-c-digo-hash-gethashcode">10. Obtendo o C&oacute;digo Hash (<code class="code" id="-7v0qf4_142">GetHashCode()</code>)</h2><p id="-7v0qf4_138">O m&eacute;todo <code class="code" id="-7v0qf4_143">GetHashCode()</code> retorna um c&oacute;digo hash num&eacute;rico para a string. Isso &eacute; fundamental para o funcionamento de cole&ccedil;&otilde;es baseadas em hash, como <code class="code" id="-7v0qf4_144">Dictionary&lt;TKey, TValue&gt;</code> e <code class="code" id="-7v0qf4_145">HashSet&lt;T&gt;</code>, onde as strings s&atilde;o usadas como chaves. Strings iguais (com base em <code class="code" id="-7v0qf4_146">Equals()</code>) devem ter o mesmo c&oacute;digo hash.</p><div class="code-block" data-lang="csharp">
+string key1 = &quot;ProductA&quot;;
+string key2 = &quot;ProductA&quot;;
+string key3 = &quot;productA&quot;;
+
+int hash1 = key1.GetHashCode();
+int hash2 = key2.GetHashCode();
+int hash3 = key3.GetHashCode();
+
+Console.WriteLine($&quot;Hash for '{key1}': {hash1}&quot;);
+Console.WriteLine($&quot;Hash for '{key2}': {hash2}&quot;);
+Console.WriteLine($&quot;Hash for '{key3}': {hash3}&quot;);
+// hash1 and hash2 will be the same. hash3 will likely be different due to case-sensitivity.
+</div><p id="-7v0qf4_140"><span class="control" id="-7v0qf4_147">Termos T&eacute;cnicos:</span></p><ul class="list _bullet" id="-7v0qf4_141"><li class="list__item" id="-7v0qf4_148"><p id="-7v0qf4_149"><span class="control" id="-7v0qf4_150">C&oacute;digo Hash:</span> Um valor num&eacute;rico gerado a partir de um objeto, usado para identificar o objeto em estruturas de dados baseadas em hash. Idealmente, objetos iguais devem ter o mesmo c&oacute;digo hash.</p></li></ul></section><section class="chapter"><h2 id="11-normaliza-o-unicode-normalize-isnormalized" data-toc="11-normaliza-o-unicode-normalize-isnormalized">11. Normaliza&ccedil;&atilde;o Unicode (<code class="code" id="-7v0qf4_155">Normalize()</code>, <code class="code" id="-7v0qf4_156">IsNormalized()</code>)</h2><p id="-7v0qf4_152">Caracteres Unicode podem ter m&uacute;ltiplas representa&ccedil;&otilde;es bin&aacute;rias (formas de composi&ccedil;&atilde;o). A normaliza&ccedil;&atilde;o garante que strings com o mesmo significado tenham a mesma representa&ccedil;&atilde;o bin&aacute;ria, o que &eacute; crucial para compara&ccedil;&otilde;es e buscas corretas em sistemas que lidam com m&uacute;ltiplos idiomas.</p><section class="chapter"><h3 id="normalize" data-toc="normalize"><code class="code" id="-7v0qf4_160">Normalize()</code></h3><p id="-7v0qf4_158">Retorna uma nova string que &eacute; a forma normalizada da string atual.</p><div class="code-block" data-lang="csharp">
+string combinedChar = &quot;e\u0301&quot;; // 'e' followed by combining acute accent
+string precomposedChar = &quot;\u00E9&quot;; // 'é' as a single character
+
+Console.WriteLine($&quot;Combined: {combinedChar}, Length: {combinedChar.Length}&quot;); // Length: 2
+Console.WriteLine($&quot;Precomposed: {precomposedChar}, Length: {precomposedChar.Length}&quot;); // Length: 1
+
+// Normalize to Form C (Canonical Composition)
+string normalizedCombined = combinedChar.Normalize(System.Text.NormalizationForm.FormC);
+Console.WriteLine($&quot;Normalized Combined: {normalizedCombined}, Length: {normalizedCombined.Length}&quot;); // Length: 1, same as precomposed
+
+bool areEqualAfterNormalize = string.Equals(normalizedCombined, precomposedChar); // Result: true
+Console.WriteLine($&quot;Are equal after normalization? {areEqualAfterNormalize}&quot;);
+</div></section><section class="chapter"><h3 id="isnormalized" data-toc="isnormalized"><code class="code" id="-7v0qf4_166">IsNormalized()</code></h3><p id="-7v0qf4_162">Verifica se a string j&aacute; est&aacute; em uma forma de normaliza&ccedil;&atilde;o espec&iacute;fica.</p><div class="code-block" data-lang="csharp">
+string text1 = &quot;résumé&quot;; // Already normalized (Form C)
+string text2 = &quot;re\u0301sume&quot;; // 'e' followed by combining acute accent
+
+bool isText1Normalized = text1.IsNormalized(System.Text.NormalizationForm.FormC); // Result: true
+Console.WriteLine($&quot;'{text1}' is normalized (FormC)? {isText1Normalized}&quot;);
+
+bool isText2Normalized = text2.IsNormalized(System.Text.NormalizationForm.FormC); // Result: false
+Console.WriteLine($&quot;'{text2}' is normalized (FormC)? {isText2Normalized}&quot;);
+</div><p id="-7v0qf4_164"><span class="control" id="-7v0qf4_167">Termos T&eacute;cnicos:</span></p><ul class="list _bullet" id="-7v0qf4_165"><li class="list__item" id="-7v0qf4_168"><p id="-7v0qf4_171"><span class="control" id="-7v0qf4_172">Unicode:</span> Um padr&atilde;o de codifica&ccedil;&atilde;o de caracteres que visa representar todos os caracteres de todos os sistemas de escrita do mundo.</p></li><li class="list__item" id="-7v0qf4_169"><p id="-7v0qf4_173"><span class="control" id="-7v0qf4_174">Normaliza&ccedil;&atilde;o Unicode:</span> O processo de transformar strings Unicode em uma forma can&ocirc;nica para garantir que strings com o mesmo significado tenham a mesma representa&ccedil;&atilde;o bin&aacute;ria.</p></li><li class="list__item" id="-7v0qf4_170"><p id="-7v0qf4_175"><span class="control" id="-7v0qf4_176"><code class="code" id="-7v0qf4_179">NormalizationForm</code> Enum:</span> Define as diferentes formas de normaliza&ccedil;&atilde;o Unicode (e.g., <code class="code" id="-7v0qf4_177">FormC</code>, <code class="code" id="-7v0qf4_178">FormD</code>).</p></li></ul></section></section><section class="chapter"><h2 id="12-compara-o-ordinal-pura-com-string-compareordinal" data-toc="12-compara-o-ordinal-pura-com-string-compareordinal">12. Compara&ccedil;&atilde;o Ordinal Pura com <code class="code" id="-7v0qf4_183">string.CompareOrdinal()</code></h2><p id="-7v0qf4_181">Este m&eacute;todo compara strings caractere por caractere, com base em seus valores Unicode (ordem bin&aacute;ria), sem aplicar regras de cultura ou mai&uacute;sculas/min&uacute;sculas. &Eacute; a compara&ccedil;&atilde;o mais r&aacute;pida e &eacute; usada quando a equival&ecirc;ncia lingu&iacute;stica n&atilde;o &eacute; um fator, como em hashes ou caminhos de arquivo.</p><div class="code-block" data-lang="csharp">
+string path1 = &quot;C:\\Users\\file.txt&quot;;
+string path2 = &quot;c:\\users\\file.txt&quot;;
+
+// Ordinal comparison (case-sensitive, byte-by-byte)
+int ordinalResult = string.CompareOrdinal(path1, path2); // Result: non-zero (due to 'C' vs 'c')
+Console.WriteLine($&quot;CompareOrdinal '{path1}' and '{path2}': {ordinalResult}&quot;);
+
+string s1 = &quot;apple&quot;;
+string s2 = &quot;Apple&quot;;
+int ordinalResult2 = string.CompareOrdinal(s1, s2); // Result: non-zero
+Console.WriteLine($&quot;CompareOrdinal '{s1}' and '{s2}': {ordinalResult2}&quot;);
+</div></section><section class="chapter"><h2 id="13-formata-o-avan-ada-com-string-format-revis-o-de-especificadores" data-toc="13-formata-o-avan-ada-com-string-format-revis-o-de-especificadores">13. Formata&ccedil;&atilde;o Avan&ccedil;ada com <code class="code" id="-7v0qf4_188">string.Format</code> (Revis&atilde;o de Especificadores)</h2><p id="-7v0qf4_185">Embora <code class="code" id="-7v0qf4_189">string.Format</code> e interpola&ccedil;&atilde;o de strings tenham sido introduzidos, a profundidade dos especificadores de formato &eacute; vasta. Aqui, focamos em alguns exemplos avan&ccedil;ados para n&uacute;meros e datas.</p><section class="chapter"><h3 id="formata-o-num-rica" data-toc="formata-o-num-rica">Formata&ccedil;&atilde;o Num&eacute;rica</h3><div class="code-block" data-lang="csharp">
+double price = 12345.6789;
+Console.WriteLine($&quot;Currency (C): {string.Format(&quot;{0:C}&quot;, price)}&quot;); // Result: R$12,345.68 (culture-dependent)
+Console.WriteLine($&quot;Number (N2): {string.Format(&quot;{0:N2}&quot;, price)}&quot;); // Result: 12,345.68 (culture-dependent)
+Console.WriteLine($&quot;Percentage (P1): {string.Format(&quot;{0:P1}&quot;, 0.75)}&quot;); // Result: 75.0%
+Console.WriteLine($&quot;Custom (000.00): {string.Format(&quot;{0:000.00}&quot;, 12.3)}&quot;); // Result: 012.30
+</div></section><section class="chapter"><h3 id="formata-o-de-data-e-hora" data-toc="formata-o-de-data-e-hora">Formata&ccedil;&atilde;o de Data e Hora</h3><div class="code-block" data-lang="csharp">
+DateTime now = DateTime.Now;
+Console.WriteLine($&quot;Short Date (d): {string.Format(&quot;{0:d}&quot;, now)}&quot;); // Result: 26/07/2025 (culture-dependent)
+Console.WriteLine($&quot;Long Date (D): {string.Format(&quot;{0:D}&quot;, now)}&quot;); // Result: sábado, 26 de julho de 2025 (culture-dependent)
+Console.WriteLine($&quot;Full Date/Time (F): {string.Format(&quot;{0:F}&quot;, now)}&quot;); // Result: sábado, 26 de julho de 2025 10:30:00 (culture-dependent)
+Console.WriteLine($&quot;Custom (yyyy-MM-dd HH:mm): {string.Format(&quot;{0:yyyy-MM-dd HH:mm}&quot;, now)}&quot;); // Result: 2025-07-26 10:30
+</div><p id="-7v0qf4_192"><span class="control" id="-7v0qf4_194">Termos T&eacute;cnicos:</span></p><ul class="list _bullet" id="-7v0qf4_193"><li class="list__item" id="-7v0qf4_195"><p id="-7v0qf4_196"><span class="control" id="-7v0qf4_197">Especificadores de Formato:</span> Caracteres ou sequ&ecirc;ncias de caracteres que controlam como um valor &eacute; convertido para sua representa&ccedil;&atilde;o de string (e.g., <code class="code" id="-7v0qf4_198">C</code> para moeda, <code class="code" id="-7v0qf4_199">N</code> para n&uacute;mero, <code class="code" id="-7v0qf4_200">d</code> para data curta).</p></li></ul></section></section><section class="chapter"><h2 id="conclus-o" data-toc="conclus-o">Conclus&atilde;o</h2><p id="-7v0qf4_201">Dominar esses m&eacute;todos e conceitos avan&ccedil;ados de manipula&ccedil;&atilde;o de strings no C# &eacute; um diferencial para qualquer desenvolvedor. Eles permitem escrever c&oacute;digo mais robusto, eficiente e adapt&aacute;vel a diferentes cen&aacute;rios, desde a valida&ccedil;&atilde;o de dados at&eacute; a internacionaliza&ccedil;&atilde;o de aplica&ccedil;&otilde;es. A pr&aacute;tica cont&iacute;nua com esses recursos solidificar&aacute; sua expertise em lidar com dados textuais de forma profissional.</p></section><div class="last-modified">27 July 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="manipulate-string.html" class="navigation-links__prev">Manipulando Strings: Formata&ccedil;&atilde;o e Valida&ccedil;&atilde;o Adicional</a><a href="more-string-methods.html" class="navigation-links__next">Mais M&eacute;todos e Conceitos</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>
