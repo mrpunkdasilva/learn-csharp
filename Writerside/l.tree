@@ -73,6 +73,9 @@
             <toc-element topic="GUIDs.md"/>
             <toc-element topic="Interpolation.md"/>
             <toc-element topic="Compare.md"/>
+            <toc-element topic="Deternmine-Starts-and-End.md"/>
+            <toc-element topic="Index.md"/>
+            <toc-element topic="Another.md"/>
         </toc-element>
         <toc-element toc-title="Katas">
             <toc-element topic="Kata-Calculator.md"/>

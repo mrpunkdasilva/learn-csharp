@@ -1,0 +1,72 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#214C69"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-07-26T21:06:47.237855813"><title>In&iacute;cio e Fim de Strings | Learn C#</title><script type="application/json" id="virtual-toc-data">[{"id":"startswith-verificando-o-in-cio","level":0,"title":"StartsWith(): Verificando o Início","anchor":"#startswith-verificando-o-in-cio"},{"id":"endswith-verificando-o-fim","level":0,"title":"EndsWith(): Verificando o Fim","anchor":"#endswith-verificando-o-fim"},{"id":"compara-o-ignorando-mai-sculas-min-sculas-case-insensitive","level":0,"title":"Comparação Ignorando Maiúsculas/Minúsculas (Case-Insensitive)","anchor":"#compara-o-ignorando-mai-sculas-min-sculas-case-insensitive"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="In&iacute;cio e Fim de Strings | Learn C#"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Learn C# Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/deternmine-starts-and-end.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="In&iacute;cio e Fim de Strings | Learn C#"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/deternmine-starts-and-end.html#webpage",
+    "url": "writerside-documentation/deternmine-starts-and-end.html",
+    "name": "In&iacute;cio e Fim de Strings | Learn C#",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Learn C# Help"
+}</script><!-- End Schema.org --></head><body data-id="Deternmine-Starts-and-End" data-main-title="Início e Fim de Strings" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Fundamentos///Strings"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Learn C#  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Deternmine-Starts-and-End" id="Deternmine-Starts-and-End.md">Início e Fim de Strings</h1><p id="ayrbl3_3">Imagine que voc&ecirc; tem uma lista de nomes de arquivos e quer encontrar todos os arquivos que come&ccedil;am com &quot;relatorio&quot; ou que terminam com &quot;.pdf&quot;. Em programa&ccedil;&atilde;o, para fazer esse tipo de verifica&ccedil;&atilde;o em textos (strings), usamos m&eacute;todos espec&iacute;ficos que nos dizem se uma string come&ccedil;a ou termina com uma determinada sequ&ecirc;ncia de caracteres.</p><section class="chapter"><h2 id="startswith-verificando-o-in-cio" data-toc="startswith-verificando-o-in-cio"><code class="code" id="ayrbl3_15">StartsWith()</code>: Verificando o In&iacute;cio</h2><p id="ayrbl3_8">O m&eacute;todo <code class="code" id="ayrbl3_16">StartsWith()</code> &eacute; como perguntar: &quot;Esta frase come&ccedil;a com esta palavra?&quot;. Ele verifica se a string atual come&ccedil;a com a substring especificada.</p><p id="ayrbl3_9"><span class="control" id="ayrbl3_17">Como funciona:</span></p><ul class="list _bullet" id="ayrbl3_10"><li class="list__item" id="ayrbl3_18"><p id="ayrbl3_21">Voc&ecirc; chama <code class="code" id="ayrbl3_22">StartsWith()</code> a partir de uma string, passando a substring que voc&ecirc; quer verificar como argumento.</p></li><li class="list__item" id="ayrbl3_19"><p id="ayrbl3_23">Ele &eacute; <span class="control" id="ayrbl3_24">case-sensitive</span> (sens&iacute;vel a mai&uacute;sculas e min&uacute;sculas). Isso significa que &quot;Relatorio&quot; &eacute; diferente de &quot;relatorio&quot;.</p></li><li class="list__item" id="ayrbl3_20"><p id="ayrbl3_25">Ele retorna um valor booleano:</p><ul class="list _bullet" id="ayrbl3_26"><li class="list__item" id="ayrbl3_27"><p id="ayrbl3_29"><code class="code" id="ayrbl3_30">true</code>: Se a string come&ccedil;a com a substring.</p></li><li class="list__item" id="ayrbl3_28"><p id="ayrbl3_31"><code class="code" id="ayrbl3_32">false</code>: Se a string n&atilde;o come&ccedil;a com a substring.</p></li></ul></li></ul><p id="ayrbl3_11"><span class="control" id="ayrbl3_33">Exemplo de C&oacute;digo:</span></p><div class="code-block" data-lang="none">
+string nomeArquivo = &quot;relatorio_vendas_2024.xlsx&quot;;
+
+bool comecaComRelatorio = nomeArquivo.StartsWith(&quot;relatorio&quot;);
+Console.WriteLine($&quot;'{nomeArquivo}' começa com 'relatorio'? {comecaComRelatorio}&quot;);
+// Saída: True
+
+bool comecaComRelatorioMaiusculo = nomeArquivo.StartsWith(&quot;Relatorio&quot;);
+Console.WriteLine($&quot;'{nomeArquivo}' começa com 'Relatorio'? {comecaComRelatorioMaiusculo}&quot;);
+// Saída: False (por causa do 'R' maiúsculo)
+
+string url = &quot;https://www.exemplo.com&quot;;
+bool comecaComHttps = url.StartsWith(&quot;https://&quot;);
+Console.WriteLine($&quot;'{url}' começa com 'https://'? {comecaComHttps}&quot;);
+// Saída: True
+</div><p id="ayrbl3_13"><span class="control" id="ayrbl3_34">Termos T&eacute;cnicos:</span></p><ul class="list _bullet" id="ayrbl3_14"><li class="list__item" id="ayrbl3_35"><p id="ayrbl3_38"><span class="control" id="ayrbl3_39">Substring:</span> Uma parte de uma string. Por exemplo, &quot;relatorio&quot; &eacute; uma substring de &quot;relatorio_vendas_2024.xlsx&quot;.</p></li><li class="list__item" id="ayrbl3_36"><p id="ayrbl3_40"><span class="control" id="ayrbl3_41">Booleano:</span> Um tipo de dado que pode ter apenas dois valores: <code class="code" id="ayrbl3_42">true</code> (verdadeiro) ou <code class="code" id="ayrbl3_43">false</code> (falso).</p></li><li class="list__item" id="ayrbl3_37"><p id="ayrbl3_44"><span class="control" id="ayrbl3_45">Case-sensitive (sens&iacute;vel a mai&uacute;sculas e min&uacute;sculas):</span> Significa que a compara&ccedil;&atilde;o diferencia letras mai&uacute;sculas de min&uacute;sculas.</p></li></ul></section><section class="chapter"><h2 id="endswith-verificando-o-fim" data-toc="endswith-verificando-o-fim"><code class="code" id="ayrbl3_52">EndsWith()</code>: Verificando o Fim</h2><p id="ayrbl3_47">O m&eacute;todo <code class="code" id="ayrbl3_53">EndsWith()</code> &eacute; o oposto de <code class="code" id="ayrbl3_54">StartsWith()</code>. Ele &eacute; como perguntar: &quot;Esta frase termina com esta palavra?&quot;. Ele verifica se a string atual termina com a substring especificada.</p><p id="ayrbl3_48"><span class="control" id="ayrbl3_55">Como funciona:</span></p><ul class="list _bullet" id="ayrbl3_49"><li class="list__item" id="ayrbl3_56"><p id="ayrbl3_59">Voc&ecirc; chama <code class="code" id="ayrbl3_60">EndsWith()</code> a partir de uma string, passando a substring que voc&ecirc; quer verificar como argumento.</p></li><li class="list__item" id="ayrbl3_57"><p id="ayrbl3_61">Ele tamb&eacute;m &eacute; <span class="control" id="ayrbl3_62">case-sensitive</span>.</p></li><li class="list__item" id="ayrbl3_58"><p id="ayrbl3_63">Ele retorna um valor booleano:</p><ul class="list _bullet" id="ayrbl3_64"><li class="list__item" id="ayrbl3_65"><p id="ayrbl3_67"><code class="code" id="ayrbl3_68">true</code>: Se a string termina com a substring.</p></li><li class="list__item" id="ayrbl3_66"><p id="ayrbl3_69"><code class="code" id="ayrbl3_70">false</code>: Se a string n&atilde;o termina com a substring.</p></li></ul></li></ul><p id="ayrbl3_50"><span class="control" id="ayrbl3_71">Exemplo de C&oacute;digo:</span></p><div class="code-block" data-lang="none">
+string nomeArquivo = &quot;documento_final.pdf&quot;;
+
+bool terminaComPdf = nomeArquivo.EndsWith(&quot;.pdf&quot;);
+Console.WriteLine($&quot;'{nomeArquivo}' termina com '.pdf'? {terminaComPdf}&quot;);
+// Saída: True
+
+bool terminaComDoc = nomeArquivo.EndsWith(&quot;.doc&quot;);
+Console.WriteLine($&quot;'{nomeArquivo}' termina com '.doc'? {terminaComDoc}&quot;);
+// Saída: False
+
+string email = &quot;usuario@dominio.com.br&quot;;
+bool terminaComBr = email.EndsWith(&quot;.br&quot;);
+Console.WriteLine($&quot;'{email}' termina com '.br'? {terminaComBr}&quot;);
+// Saída: True
+</div></section><section class="chapter"><h2 id="compara-o-ignorando-mai-sculas-min-sculas-case-insensitive" data-toc="compara-o-ignorando-mai-sculas-min-sculas-case-insensitive">Compara&ccedil;&atilde;o Ignorando Mai&uacute;sculas/Min&uacute;sculas (Case-Insensitive)</h2><p id="ayrbl3_72">Assim como em outras compara&ccedil;&otilde;es de strings, muitas vezes voc&ecirc; pode querer verificar o in&iacute;cio ou o fim de uma string sem se preocupar com a diferen&ccedil;a entre letras mai&uacute;sculas e min&uacute;sculas. Para isso, voc&ecirc; pode converter tanto a string original quanto a substring para o mesmo caso (tudo min&uacute;sculo ou tudo mai&uacute;sculo) antes de usar <code class="code" id="ayrbl3_78">StartsWith()</code> ou <code class="code" id="ayrbl3_79">EndsWith()</code>.</p><p id="ayrbl3_73"><span class="control" id="ayrbl3_80">Exemplo:</span></p><div class="code-block" data-lang="none">
+string titulo = &quot;A Grande Aventura&quot;;
+string prefixo = &quot;a grande&quot;; // Minúsculo
+
+// Verificação case-sensitive (retorna False)
+bool comecaCaseSensitive = titulo.StartsWith(prefixo);
+Console.WriteLine($&quot;'{titulo}' começa com '{prefixo}' (case-sensitive)? {comecaCaseSensitive}&quot;);
+// Saída: False
+
+// Verificação case-insensitive (retorna True)
+bool comecaCaseInsensitive = titulo.ToLower().StartsWith(prefixo.ToLower());
+Console.WriteLine($&quot;'{titulo}' começa com '{prefixo}' (case-insensitive)? {comecaCaseInsensitive}&quot;);
+// Saída: True
+
+string caminho = &quot;/home/usuario/documentos/relatorio.PDF&quot;;
+string extensao = &quot;.pdf&quot;; // Minúsculo
+
+// Verificação case-sensitive (retorna False)
+bool terminaCaseSensitive = caminho.EndsWith(extensao);
+Console.WriteLine($&quot;'{caminho}' termina com '{extensao}' (case-sensitive)? {terminaCaseSensitive}&quot;);
+// Saída: False
+
+// Verificação case-insensitive (retorna True)
+bool terminaCaseInsensitive = caminho.ToLower().EndsWith(extensao.ToLower());
+Console.WriteLine($&quot;'{caminho}' termina com '{extensao}' (case-insensitive)? {terminaCaseInsensitive}&quot;);
+// Saída: True
+</div><p id="ayrbl3_75"><span class="control" id="ayrbl3_81">Termos T&eacute;cnicos:</span></p><ul class="list _bullet" id="ayrbl3_76"><li class="list__item" id="ayrbl3_82"><p id="ayrbl3_84"><span class="control" id="ayrbl3_85"><code class="code" id="ayrbl3_86">ToLower()</code> (m&eacute;todo):</span> Um m&eacute;todo de string que retorna uma nova string com todos os caracteres convertidos para min&uacute;sculas.</p></li><li class="list__item" id="ayrbl3_83"><p id="ayrbl3_87"><span class="control" id="ayrbl3_88"><code class="code" id="ayrbl3_89">ToUpper()</code> (m&eacute;todo):</span> Um m&eacute;todo de string que retorna uma nova string com todos os caracteres convertidos para mai&uacute;sculas.</p></li></ul><p id="ayrbl3_77">Dominar <code class="code" id="ayrbl3_90">StartsWith()</code> e <code class="code" id="ayrbl3_91">EndsWith()</code> &eacute; essencial para tarefas comuns de manipula&ccedil;&atilde;o de strings, como valida&ccedil;&atilde;o de entrada de usu&aacute;rio, an&aacute;lise de nomes de arquivos e URLs, e filtragem de dados.</p></section><div class="last-modified">26 July 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="compare.html" class="navigation-links__prev">Comparar Strings</a><a href="index_md.html" class="navigation-links__next">&Iacute;ndices em Strings</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

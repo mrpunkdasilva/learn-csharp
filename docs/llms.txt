@@ -3310,9 +3310,538 @@ Em resumo, a interpolação de strings (`$""`) é a ferramenta mais poderosa e a
 
 # Comparar Strings
 
-ComparareTo() -> vai ser o método de toda string e vai pedir uma striing para verificar se é igual a outra string e ele é case sensitive, e retorna um inteiro 0 para achou e -1 para não achou
+Imagine que você tem duas caixas de brinquedos e quer saber se elas são iguais ou se uma contém um tipo específico de brinquedo. No mundo da programação, comparar strings é muito parecido: você quer verificar se dois textos são idênticos, ou se um texto contém uma parte específica de outro texto. Em C#, temos métodos dedicados para isso.
 
-Contains -> Tem em toda string é verifica se a string a recebida está contida na string atual, retornando verdadeiro ou falso e sendo case sensitive
+## 
+
+`CompareTo()`: Comparação "Dicionário"
+
+O método `CompareTo()` é como organizar palavras em um dicionário. Ele compara a string atual com outra string que você fornece, caractere por caractere, para determinar a ordem lexicográfica (a ordem em que as palavras apareceriam em um dicionário).
+
+Como funciona:
+
+* Ele é um método que você chama a partir de uma string (por exemplo, `minhaString.CompareTo(outraString)`).
+
+* Ele é case-sensitive (sensível a maiúsculas e minúsculas). Isso significa que "Maçã" é diferente de "maçã".
+
+* Ele retorna um número inteiro: * `0`: Se as strings são exatamente iguais. * Um número menor que 0: Se a string atual vem antes da string comparada na ordem do dicionário. * Um número maior que 0: Se a string atual vem depois da string comparada na ordem do dicionário.
+
+Exemplo de Código:
+
+```
+string palavra1 = "Banana";
+string palavra2 = "banana";
+string palavra3 = "Abacaxi";
+string palavra4 = "Banana";
+
+// Comparação case-sensitive
+int resultado1 = palavra1.CompareTo(palavra2); // "Banana" vs "banana"
+Console.WriteLine($"'Banana'.CompareTo('banana') retorna: {resultado1}");
+// Saída: Um número diferente de 0 (porque 'B' é diferente de 'b')
+
+int resultado2 = palavra1.CompareTo(palavra4); // "Banana" vs "Banana"
+Console.WriteLine($"'Banana'.CompareTo('Banana') retorna: {resultado2}");
+// Saída: 0 (porque são idênticas)
+
+int resultado3 = palavra1.CompareTo(palavra3); // "Banana" vs "Abacaxi"
+Console.WriteLine($"'Banana'.CompareTo('Abacaxi') retorna: {resultado3}");
+// Saída: Um número maior que 0 (porque 'Banana' vem depois de 'Abacaxi')
+```
+
+Termos Técnicos:
+
+* Lexicográfico: Refere-se à ordem alfabética ou de dicionário.
+
+* Case-sensitive (sensível a maiúsculas e minúsculas): Significa que a comparação diferencia letras maiúsculas de minúsculas.
+
+## 
+
+`Contains()`: Verificando a Presença
+
+O método `Contains()` é como verificar se uma caixa de brinquedos contém um brinquedo específico. Ele verifica se uma determinada sequência de caracteres (uma "substring") está presente dentro da string atual.
+
+Como funciona:
+
+* Ele é um método que você chama a partir de uma string (por exemplo, `minhaFrase.Contains(palavraChave)`).
+
+* Ele também é case-sensitive.
+
+* Ele retorna um valor booleano: * `true`: Se a substring for encontrada. * `false`: Se a substring não for encontrada.
+
+Exemplo de Código:
+
+```
+string frase = "O rato roeu a roupa do rei de Roma.";
+string palavraChave1 = "rato";
+string palavraChave2 = "Rei"; // Com 'R' maiúsculo
+string palavraChave3 = "gato";
+
+bool contem1 = frase.Contains(palavraChave1);
+Console.WriteLine($"A frase contém '{palavraChave1}'? {contem1}");
+// Saída: True
+
+bool contem2 = frase.Contains(palavraChave2);
+Console.WriteLine($"A frase contém '{palavraChave2}'? {contem2}");
+// Saída: False (porque 'Rei' com 'R' maiúsculo não está na frase, apenas 'rei' com 'r' minúsculo)
+
+bool contem3 = frase.Contains(palavraChave3);
+Console.WriteLine($"A frase contém '{palavraChave3}'? {contem3}");
+// Saída: False
+```
+
+Termos Técnicos:
+
+* Substring: Uma parte de uma string. Por exemplo, "rato" é uma substring de "O rato roeu...".
+
+* Booleano: Um tipo de dado que pode ter apenas dois valores: `true` (verdadeiro) ou `false` (falso).
+
+## Equals
+
+Tip:
+
+Serve não somente para strings
+
+text.Equals(text2)
+
+## Comparação Ignorando Maiúsculas/Minúsculas (Case-Insensitive)
+
+Muitas vezes, você não quer que a comparação seja sensível a maiúsculas e minúsculas. Para isso, você pode converter ambas as strings para o mesmo caso (tudo maiúsculo ou tudo minúsculo) antes de comparar.
+
+Exemplo para `CompareTo()` e `Contains()`:
+
+```
+string textoOriginal = "Olá Mundo";
+string textoComparar = "olá mundo";
+
+// Para CompareTo()
+// Converte ambas para minúsculas antes de comparar
+bool saoIguaisIgnorandoCase = (textoOriginal.ToLower().CompareTo(textoComparar.ToLower()) == 0);
+Console.WriteLine($"'Olá Mundo' e 'olá mundo' são iguais (ignorando case)? {saoIguaisIgnorandoCase}");
+// Saída: True
+
+// Para Contains()
+// Converte ambas para minúsculas antes de verificar
+bool contemIgnorandoCase = textoOriginal.ToLower().Contains(textoComparar.ToLower());
+Console.WriteLine($"'Olá Mundo' contém 'olá mundo' (ignorando case)? {contemIgnorandoCase}");
+// Saída: True
+```
+
+Termos Técnicos:
+
+* `ToLower()` (método): Um método de string que retorna uma nova string com todos os caracteres convertidos para minúsculas.
+
+* `ToUpper()` (método): Um método de string que retorna uma nova string com todos os caracteres convertidos para maiúsculas.
+
+Compreender como e quando usar `CompareTo()` e `Contains()` (e como lidar com a sensibilidade a maiúsculas e minúsculas) é fundamental para manipular textos de forma eficaz em seus programas C#.
+
+
+
+# Início e Fim de Strings
+
+Imagine que você tem uma lista de nomes de arquivos e quer encontrar todos os arquivos que começam com "relatorio" ou que terminam com ".pdf". Em programação, para fazer esse tipo de verificação em textos (strings), usamos métodos específicos que nos dizem se uma string começa ou termina com uma determinada sequência de caracteres.
+
+## 
+
+`StartsWith()`: Verificando o Início
+
+O método `StartsWith()` é como perguntar: "Esta frase começa com esta palavra?". Ele verifica se a string atual começa com a substring especificada.
+
+Como funciona:
+
+* Você chama `StartsWith()` a partir de uma string, passando a substring que você quer verificar como argumento.
+
+* Ele é case-sensitive (sensível a maiúsculas e minúsculas). Isso significa que "Relatorio" é diferente de "relatorio".
+
+* Ele retorna um valor booleano: * `true`: Se a string começa com a substring. * `false`: Se a string não começa com a substring.
+
+Exemplo de Código:
+
+```
+string nomeArquivo = "relatorio_vendas_2024.xlsx";
+
+bool comecaComRelatorio = nomeArquivo.StartsWith("relatorio");
+Console.WriteLine($"'{nomeArquivo}' começa com 'relatorio'? {comecaComRelatorio}");
+// Saída: True
+
+bool comecaComRelatorioMaiusculo = nomeArquivo.StartsWith("Relatorio");
+Console.WriteLine($"'{nomeArquivo}' começa com 'Relatorio'? {comecaComRelatorioMaiusculo}");
+// Saída: False (por causa do 'R' maiúsculo)
+
+string url = "https://www.exemplo.com";
+bool comecaComHttps = url.StartsWith("https://");
+Console.WriteLine($"'{url}' começa com 'https://'? {comecaComHttps}");
+// Saída: True
+```
+
+Termos Técnicos:
+
+* Substring: Uma parte de uma string. Por exemplo, "relatorio" é uma substring de "relatorio_vendas_2024.xlsx".
+
+* Booleano: Um tipo de dado que pode ter apenas dois valores: `true` (verdadeiro) ou `false` (falso).
+
+* Case-sensitive (sensível a maiúsculas e minúsculas): Significa que a comparação diferencia letras maiúsculas de minúsculas.
+
+## 
+
+`EndsWith()`: Verificando o Fim
+
+O método `EndsWith()` é o oposto de `StartsWith()`. Ele é como perguntar: "Esta frase termina com esta palavra?". Ele verifica se a string atual termina com a substring especificada.
+
+Como funciona:
+
+* Você chama `EndsWith()` a partir de uma string, passando a substring que você quer verificar como argumento.
+
+* Ele também é case-sensitive.
+
+* Ele retorna um valor booleano: * `true`: Se a string termina com a substring. * `false`: Se a string não termina com a substring.
+
+Exemplo de Código:
+
+```
+string nomeArquivo = "documento_final.pdf";
+
+bool terminaComPdf = nomeArquivo.EndsWith(".pdf");
+Console.WriteLine($"'{nomeArquivo}' termina com '.pdf'? {terminaComPdf}");
+// Saída: True
+
+bool terminaComDoc = nomeArquivo.EndsWith(".doc");
+Console.WriteLine($"'{nomeArquivo}' termina com '.doc'? {terminaComDoc}");
+// Saída: False
+
+string email = "usuario@dominio.com.br";
+bool terminaComBr = email.EndsWith(".br");
+Console.WriteLine($"'{email}' termina com '.br'? {terminaComBr}");
+// Saída: True
+```
+
+## Comparação Ignorando Maiúsculas/Minúsculas (Case-Insensitive)
+
+Assim como em outras comparações de strings, muitas vezes você pode querer verificar o início ou o fim de uma string sem se preocupar com a diferença entre letras maiúsculas e minúsculas. Para isso, você pode converter tanto a string original quanto a substring para o mesmo caso (tudo minúsculo ou tudo maiúsculo) antes de usar `StartsWith()` ou `EndsWith()`.
+
+Exemplo:
+
+```
+string titulo = "A Grande Aventura";
+string prefixo = "a grande"; // Minúsculo
+
+// Verificação case-sensitive (retorna False)
+bool comecaCaseSensitive = titulo.StartsWith(prefixo);
+Console.WriteLine($"'{titulo}' começa com '{prefixo}' (case-sensitive)? {comecaCaseSensitive}");
+// Saída: False
+
+// Verificação case-insensitive (retorna True)
+bool comecaCaseInsensitive = titulo.ToLower().StartsWith(prefixo.ToLower());
+Console.WriteLine($"'{titulo}' começa com '{prefixo}' (case-insensitive)? {comecaCaseInsensitive}");
+// Saída: True
+
+string caminho = "/home/usuario/documentos/relatorio.PDF";
+string extensao = ".pdf"; // Minúsculo
+
+// Verificação case-sensitive (retorna False)
+bool terminaCaseSensitive = caminho.EndsWith(extensao);
+Console.WriteLine($"'{caminho}' termina com '{extensao}' (case-sensitive)? {terminaCaseSensitive}");
+// Saída: False
+
+// Verificação case-insensitive (retorna True)
+bool terminaCaseInsensitive = caminho.ToLower().EndsWith(extensao.ToLower());
+Console.WriteLine($"'{caminho}' termina com '{extensao}' (case-insensitive)? {terminaCaseInsensitive}");
+// Saída: True
+```
+
+Termos Técnicos:
+
+* `ToLower()` (método): Um método de string que retorna uma nova string com todos os caracteres convertidos para minúsculas.
+
+* `ToUpper()` (método): Um método de string que retorna uma nova string com todos os caracteres convertidos para maiúsculas.
+
+Dominar `StartsWith()` e `EndsWith()` é essencial para tarefas comuns de manipulação de strings, como validação de entrada de usuário, análise de nomes de arquivos e URLs, e filtragem de dados.
+
+
+
+# Índices em Strings
+
+Pense em uma fila de pessoas. Para saber quem é o primeiro, o segundo, e assim por diante, você atribui um número a cada posição. Em programação, as strings funcionam de forma parecida: cada caractere dentro de uma string tem uma posição, e essa posição é chamada de índice.
+
+## O que é um Índice?
+
+Um índice é um número inteiro que representa a posição de um caractere dentro de uma string. É como o endereço de cada letra. A característica mais importante dos índices na maioria das linguagens de programação (incluindo C#) é que eles são baseados em zero.
+
+### Índices Baseados em Zero
+
+Isso significa que:
+
+* O primeiro caractere de uma string está no índice `0`.
+
+* O segundo caractere está no índice `1`.
+
+* O terceiro caractere está no índice `2`.
+
+* E assim por diante.
+
+Se uma string tem `N` caracteres, o último caractere estará no índice `N-1`.
+
+Exemplo:
+
+Para a string `"Hello"`:
+
+* `H` está no índice `0`
+
+* `e` está no índice `1`
+
+* `l` está no índice `2`
+
+* `l` está no índice `3`
+
+* `o` está no índice `4`
+
+Este diagrama Mermaid ilustra como os índices são usados para acessar caracteres individuais em uma string. Cada nó representa um passo lógico, mostrando a string original e como cada índice aponta para um caractere específico.
+
+```MERMAID
+graph TD
+    A[String: Hello] --> B{Index 0};
+    B --> C[Character: 'H'];
+    A --> D{Index 1};
+    D --> E[Character: 'e'];
+    A --> F{Index 2};
+    F --> G[Character: 'l'];
+    A --> H{Index 3};
+    H --> I[Character: 'l'];
+    A --> J{Index 4};
+    J --> K[Character: 'o'];
+```
+
+## Acessando Caracteres Usando Índices
+
+Você pode acessar um caractere específico em uma string usando seu índice. Isso é útil quando você precisa trabalhar com uma parte exata do texto.
+
+```
+string productName = "Smartphone";
+char firstLetter = productName[0]; // Accesses the character at index 0 (S)
+char fifthLetter = productName[4]; // Accesses the character at index 4 (t)
+char lastLetter = productName[productName.Length - 1]; // Accesses the last character (e)
+
+Console.WriteLine($"First letter: {firstLetter}"); // Output: First letter: S
+Console.WriteLine($"Fifth letter: {fifthLetter}"); // Output: Fifth letter: t
+Console.WriteLine($"Last letter: {lastLetter}"); // Output: Last letter: e
+```
+
+## 
+
+Encontrando o Índice de um Substring (`IndexOf`)
+
+Frequentemente, você precisará saber onde uma sequência de caracteres (uma substring) começa dentro de uma string maior. O método `IndexOf()` é usado para isso. Ele retorna o índice da primeira ocorrência da substring que você está procurando.
+
+* Se a substring for encontrada, ele retorna o índice inicial da primeira ocorrência.
+
+* Se a substring não for encontrada, ele retorna `-1`.
+
+```
+string emailAddress = "user.name@example.com";
+
+// Finding the index of the '@' symbol
+int atSymbolIndex = emailAddress.IndexOf("@");
+Console.WriteLine($"'@' symbol found at index: {atSymbolIndex}"); // Output: '@' symbol found at index: 9
+
+// Finding the index of ".com"
+int dotComIndex = emailAddress.IndexOf(".com");
+Console.WriteLine($"'.com' found at index: {dotComIndex}"); // Output: '.com' found at index: 16
+
+// Trying to find a substring that doesn't exist
+int notFoundIndex = emailAddress.IndexOf("xyz");
+Console.WriteLine($"'xyz' found at index: {notFoundIndex}"); // Output: 'xyz' found at index: -1
+
+// Using the index to extract a part of the string
+// For example, extracting the domain name
+if (atSymbolIndex != -1)
+{
+    string domain = emailAddress.Substring(atSymbolIndex + 1);
+    Console.WriteLine($"Domain: {domain}"); // Output: Domain: example.com
+}
+```
+
+## 
+
+`LastIndexOf()`: Encontrando a Última Ocorrência
+
+Se você precisar encontrar a última ocorrência de um caractere ou substring, pode usar o método `LastIndexOf()`. Ele funciona de forma semelhante ao `IndexOf()`, mas busca do final para o início da string.
+
+```
+string filePath = "/home/user/documents/report.pdf";
+
+// Finding the index of the last '/' to get the file name
+int lastSlashIndex = filePath.LastIndexOf("/");
+Console.WriteLine($"Last slash found at index: {lastSlashIndex}"); // Output: Last slash found at index: 20
+
+if (lastSlashIndex != -1)
+{
+    string fileName = filePath.Substring(lastSlashIndex + 1);
+    Console.WriteLine($"File Name: {fileName}"); // Output: File Name: report.pdf
+}
+```
+
+Compreender os índices é fundamental para manipular e extrair informações de strings de forma eficaz em qualquer aplicação.
+
+
+
+# Outros Métodos
+
+Imagine que você é um editor de texto e precisa realizar diversas operações em frases e palavras: contar caracteres, substituir termos, inserir novas informações, remover trechos indesejados ou até mesmo dividir um parágrafo em sentenças. No C#, as strings são como esses textos, e a linguagem oferece um conjunto robusto de métodos para manipular e transformar esses dados de forma eficiente.
+
+Este documento abordará alguns métodos de string fundamentais que complementam as operações já discutidas, permitindo um controle ainda maior sobre o conteúdo textual.
+
+## 
+
+1. Obtendo o Comprimento da String (`.Length`)
+
+A propriedade `.Length` é como um contador de caracteres. Ela retorna o número total de caracteres em uma string, incluindo letras, números, símbolos e espaços.
+
+```CSHARP
+string productName = "Laptop Pro X";
+int length = productName.Length; // Result: 12
+Console.WriteLine($"Product Name: {productName}, Length: {length}");
+
+string emptyString = "";
+int emptyLength = emptyString.Length; // Result: 0
+Console.WriteLine($"Empty String Length: {emptyLength}");
+```
+
+Termos Técnicos:
+
+* Propriedade: Um membro de uma classe ou struct que fornece um mecanismo flexível para ler, gravar ou computar o valor de um campo privado.
+
+## 
+
+2. Substituindo Conteúdo (`.Replace()`)
+
+O método `.Replace()` é como uma ferramenta de "localizar e substituir" em um editor de texto. Ele cria uma nova string onde todas as ocorrências de uma substring específica são substituídas por outra substring.
+
+```CSHARP
+string originalSentence = "The quick brown fox jumps over the lazy fox.";
+string newSentence = originalSentence.Replace("fox", "dog"); // Result: "The quick brown dog jumps over the lazy dog."
+Console.WriteLine($"Original: {originalSentence}");
+Console.WriteLine($"Replaced: {newSentence}");
+
+string productCode = "PROD-ABC-123";
+string updatedCode = productCode.Replace("-", "_"); // Result: "PROD_ABC_123"
+Console.WriteLine($"Original Code: {productCode}, Updated Code: {updatedCode}");
+```
+
+Termos Técnicos:
+
+* Substring: Uma sequência contígua de caracteres dentro de uma string maior.
+
+## 
+
+3. Inserindo Conteúdo (`.Insert()`)
+
+O método `.Insert()` permite que você adicione uma substring em uma posição específica dentro de uma string existente, criando uma nova string com o conteúdo inserido.
+
+```CSHARP
+string baseString = "Hello!";
+string insertedString = baseString.Insert(5, " World"); // Inserts " World" at index 5. Result: "Hello World!"
+Console.WriteLine($"Base String: {baseString}");
+Console.WriteLine($"Inserted String: {insertedString}");
+
+string url = "www.example.com";
+string fullUrl = url.Insert(0, "https://"); // Inserts "https://" at the beginning (index 0). Result: "https://www.example.com"
+Console.WriteLine($"Full URL: {fullUrl}");
+```
+
+Termos Técnicos:
+
+* Índice: A posição baseada em zero de um caractere dentro de uma string.
+
+## 
+
+4. Removendo Conteúdo (`.Remove()`)
+
+O método `.Remove()` é usado para criar uma nova string, removendo um número especificado de caracteres a partir de um índice inicial. Você pode remover até o final da string ou um número específico de caracteres.
+
+```CSHARP
+string originalText = "This is a sample text.";
+
+// Remove from index 8 to the end
+string removedToEnd = originalText.Remove(8); // Result: "This is "
+Console.WriteLine($"Removed to End: {removedToEnd}");
+
+// Remove 7 characters starting from index 8
+string removedSpecific = originalText.Remove(8, 7); // Result: "This is text."
+Console.WriteLine($"Removed Specific: {removedSpecific}");
+```
+
+## 
+
+5. Removendo Espaços em Branco (`.Trim()`, `.TrimStart()`, `.TrimEnd()`)
+
+Estes métodos são úteis para "limpar" strings, removendo espaços em branco (e outros caracteres de espaço, como tabulações e quebras de linha) do início, do fim ou de ambas as extremidades de uma string. Eles também retornam uma nova string.
+
+```CSHARP
+string paddedText = "   Some text with spaces   ";
+
+string trimmedText = paddedText.Trim(); // Result: "Some text with spaces"
+Console.WriteLine($"Original: '{paddedText}'");
+Console.WriteLine($"Trimmed: '{trimmedText}'");
+
+string trimmedStart = paddedText.TrimStart(); // Result: "Some text with spaces   "
+Console.WriteLine($"Trimmed Start: '{trimmedStart}'");
+
+string trimmedEnd = paddedText.TrimEnd(); // Result: "   Some text with spaces"
+Console.WriteLine($"Trimmed End: '{trimmedEnd}'");
+```
+
+## 
+
+6. Dividindo Strings (`.Split()`)
+
+O método `.Split()` é como pegar uma tesoura e cortar uma string em pedaços menores, com base em um ou mais delimitadores (caracteres ou strings que indicam onde cortar). Ele retorna um array de strings.
+
+```CSHARP
+string csvData = "apple,banana,orange,grape";
+string[] fruits = csvData.Split(','); // Splits by comma
+Console.WriteLine("Fruits:");
+foreach (string fruit in fruits)
+{
+    Console.WriteLine($"- {fruit.Trim()}"); // Using Trim() to remove potential spaces after comma
+}
+
+string sentence = "Hello World from C#";
+string[] words = sentence.Split(' '); // Splits by space
+Console.WriteLine("Words:");
+foreach (string word in words)
+{
+    Console.WriteLine($"- {word}");
+}
+```
+
+Termos Técnicos:
+
+* Delimitador: Um caractere ou sequência de caracteres que marca o limite entre regiões ou elementos de dados.
+
+* Array: Uma estrutura de dados que armazena uma coleção de itens do mesmo tipo em uma sequência contígua de locais de memória.
+
+## 
+
+7. Juntando Strings (`string.Join()`)
+
+O método estático `string.Join()` é o inverso de `.Split()`. Ele pega uma coleção de strings (como um array) e as concatena em uma única string, inserindo um separador entre cada elemento.
+
+```CSHARP
+string[] parts = { "data", "science", "project" };
+string fileName = string.Join("_", parts); // Result: "data_science_project"
+Console.WriteLine($"File Name: {fileName}");
+
+string[] tags = { "programming", "c#", "development" };
+string tagList = string.Join(", ", tags); // Result: "programming, c#, development"
+Console.WriteLine($"Tag List: {tagList}");
+```
+
+Termos Técnicos:
+
+* Método Estático: Um método que pertence à própria classe, e não a uma instância específica da classe. Você o chama usando o nome da classe (ex: `string.Join`).
+
+## Conclusão
+
+Compreender e utilizar esses métodos de manipulação de strings é crucial para qualquer desenvolvedor C#. Eles fornecem as ferramentas necessárias para processar, formatar e extrair informações de dados textuais, que são onipresentes em quase todas as aplicações. A prática com esses métodos solidificará sua capacidade de trabalhar com strings de forma eficaz e elegante.
 
 
 
