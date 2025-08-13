@@ -15,12 +15,13 @@ namespace EditorHtml
       WriteOptions();
 
       var option = short.Parse(Console.ReadLine());
+      HandleMenuOption(option);
     }
 
     public static void WriteOptions()
     {
       Console.SetCursorPosition(3, 2);
-      
+
       System.Console.WriteLine("EDITOR HTML");
       Console.SetCursorPosition(3, 3);
       System.Console.WriteLine("=".PadRight(16, '='));
@@ -39,7 +40,7 @@ namespace EditorHtml
     static void DrawScreen()
     {
       DrawBorderLine();
-      
+
       for (int i = 0; i <= 10; i++)
       {
         Console.Write("|");
@@ -54,10 +55,32 @@ namespace EditorHtml
 
       DrawBorderLine();
     }
+
     private static void DrawBorderLine()
     {
-      StringBuilder headerLine = new StringBuilder("+".PadRight(32, '-')).Append("+").Append("\n"); 
+      StringBuilder headerLine = new StringBuilder("+".PadRight(32, '-')).Append("+").Append("\n");
       System.Console.Write(headerLine);
+    }
+
+    private static void HandleMenuOption(short option)
+    {
+      switch (option)
+      {
+        case 1:
+          Editor.Show();
+          break;
+        case 2:
+          Console.WriteLine("View");
+          break;
+        case 0:
+          Console.Clear();
+          Console.WriteLine("Exiting...");
+          Environment.Exit(0);
+          break;
+        default:
+          Show();
+          break;
+      }
     }
   }
 }
