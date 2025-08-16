@@ -40,8 +40,47 @@ public class Editor
         
         Console.WriteLine();
         Console.WriteLine("-".PadRight(12, '-'));
-        Console.WriteLine("Deseja salvar o arquivo? ");
+        Console.WriteLine("Deseja salvar o arquivo? (S/N)");
+        var response = Console.ReadLine()?.ToUpper();
 
-        Viewer.Show(file.ToString());
+        if (response == "S")
+        {
+            Save(file.ToString());
+        }
+        else
+        {
+            Console.WriteLine("Deseja visualizar o arquivo? (S/N)");
+            var viewResponse = Console.ReadLine()?.ToUpper();
+            if (viewResponse == "S")
+            {
+                Viewer.Show(file.ToString());
+            }
+        }
+        
+        Menu.Show();
+    }
+
+    private static void Save(string text)
+    {
+        Console.Clear();
+        Console.WriteLine("Qual o caminho para salvar o arquivo?");
+        var path = Console.ReadLine();
+
+        if (string.IsNullOrEmpty(path))
+        {
+            Console.WriteLine("Caminho inválido. O arquivo não foi salvo.");
+            Console.WriteLine("Pressione qualquer tecla para voltar ao menu.");
+            Console.ReadKey();
+            return;
+        }
+        
+        using (var file = new StreamWriter(path))
+        {
+            file.Write(text);
+        }
+
+        Console.WriteLine($"Arquivo {path} salvo com sucesso!");
+        Console.WriteLine("Pressione qualquer tecla para voltar ao menu.");
+        Console.ReadKey();
     }
 }
