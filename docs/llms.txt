@@ -6003,6 +6003,471 @@ Se você precisar do índice, ou se precisar alterar os elementos de um array de
 
 
 
+# Katas
+
+Start typing here...
+
+
+
+# Kata - Editor de Texto Simples de Console
+
+Neste kata, construiremos uma aplicação de console fundamental: um editor de texto simples. Este projeto nos permitirá explorar a manipulação de arquivos em C#, uma habilidade essencial para qualquer desenvolvedor. A aplicação será capaz de criar, salvar e abrir arquivos de texto diretamente do terminal.
+
+Vamos focar em conceitos como entrada e saída do console, leitura e escrita de arquivos com `StreamReader` and `StreamWriter`, e a importância do bloco `using` para gerenciar recursos de forma segura.
+
+## O Código Completo
+
+Este é o código do nosso `Program.cs`. Ele estrutura o editor de texto em um menu interativo.
+
+```
+using System;
+using System.IO;
+
+namespace TextEditor
+{
+  public class Program
+  {
+    public static void Main(string[] args)
+    {
+      Menu();
+    }
+
+    static void Menu()
+    {
+      Console.Clear();
+      Console.WriteLine("O que voce deseja fazer?");
+      Console.WriteLine("1 - Abrir arquivo");
+      Console.WriteLine("2 - Criar novo arquivo");
+      Console.WriteLine("0 - Sair");
+      short option = short.Parse(Console.ReadLine());
+
+      switch (option)
+      {
+        case 0:
+          System.Environment.Exit(0);
+          break;
+        case 1:
+          Open();
+          break;
+        case 2:
+          Edit();
+          break;
+        default:
+          Menu();
+          break;
+      }
+    }
+
+    private static void Open()
+    {
+      Console.Clear();
+      Console.WriteLine("Qual caminho do arquivo?");
+      string path = Console.ReadLine();
+
+      using (var file = new StreamReader(path))
+      {
+        string text = file.ReadToEnd();
+        Console.WriteLine(text);
+      }
+      
+      Console.WriteLine("");
+      Console.ReadLine();
+      Menu();
+    }
+
+    private static void Edit()
+    {
+      Console.Clear();
+      Console.WriteLine("Digite seu texto abaixo (ESC para sair)");
+      Console.WriteLine("--------------------------------");
+
+      string text = "";
+
+      do
+      {
+        text += Console.ReadLine();
+        text += Environment.NewLine;
+      } while (Console.ReadKey().Key != ConsoleKey.Escape);
+      
+      Save(text);
+    }
+    
+    static void Save(string text) 
+    {
+      Console.Clear();
+      Console.WriteLine("Qual caminho para salvar o arquivo? \n");
+      var path = Console.ReadLine();
+      
+      
+      // CRIA E JÁ FECHA O OBJETO - É BOM PARA HANDLER COM ARQUIVOS
+      using (var file = new StreamWriter(path ?? string.Empty))
+      {
+        file.Write(text);
+      }
+
+      Console.WriteLine($"Arquivo salvo em {path} com sucesso!");
+      Console.ReadLine(); 
+      Menu();
+    }
+  }
+}
+```
+
+## Análise do Código
+
+### 
+
+`Main` e `Menu`: Navegação Central
+
+O ponto de entrada `Main` simplesmente chama o método `Menu`, que atua como o coração da nossa aplicação.
+
+* `Console.Clear()`: Limpa a tela do console para uma apresentação mais limpa.
+
+* Loop de Menu: O `Menu` exibe as opções, lê a entrada do usuário com `Console.ReadLine()` e usa uma instrução `switch` para direcionar o fluxo do programa. Note que, após cada ação (`Open`, `Edit`), o `Menu` é chamado novamente, criando um loop que mantém a aplicação em execução até que o usuário escolha sair.
+
+* Saída Segura: `System.Environment.Exit(0)` é usado para encerrar a aplicação de forma limpa quando o usuário digita '0'.
+
+### 
+
+`Open`: Lendo Arquivos
+
+```
+private static void Open()
+{
+    // ...
+    string path = Console.ReadLine();
+
+    using (var file = new StreamReader(path))
+    {
+        string text = file.ReadToEnd();
+        Console.WriteLine(text);
+    }
+    // ...
+}
+```
+
+Esta função é responsável por abrir e exibir o conteúdo de um arquivo de texto.
+
+* `StreamReader`: Esta classe do `System.IO` é projetada para ler caracteres de um fluxo (neste caso, um arquivo).
+
+* Bloco `using`: Este é um dos conceitos mais importantes aqui. O `using` garante que o objeto `file` (que representa o arquivo no sistema operacional) seja "descartado" (`Dispose`) corretamente, mesmo que ocorram erros. Isso significa que o arquivo será fechado, liberando o recurso para outros programas. É a maneira padrão e segura de trabalhar com recursos como arquivos e conexões de rede.
+
+* `ReadToEnd()`: Lê todo o conteúdo do arquivo, do início ao fim, e o retorna como uma única `string`.
+
+### 
+
+`Edit` e `Save`: Criando e Escrevendo em Arquivos
+
+O processo de criação é dividido em duas partes: `Edit` para capturar a entrada e `Save` para escrevê-la no disco.
+
+```
+private static void Edit()
+{
+    // ...
+    string text = "";
+    do
+    {
+        text += Console.ReadLine();
+        text += Environment.NewLine;
+    } while (Console.ReadKey().Key != ConsoleKey.Escape);
+    
+    Save(text);
+}
+```
+
+* Captura de Múltiplas Linhas: O loop `do-while` é uma forma inteligente de capturar texto. Ele continua adicionando linhas à variável `text` até que a tecla `ESC` seja pressionada. `Console.ReadKey()` intercepta a próxima tecla pressionada sem exigir que o usuário pressione Enter.
+
+* `Environment.NewLine`: Garante que as quebras de linha sejam corretas para o sistema operacional em que o programa está sendo executado (seja `\n` no Linux/macOS ou `\r\n` no Windows).
+
+```
+static void Save(string text) 
+{
+    // ...
+    var path = Console.ReadLine();
+    
+    using (var file = new StreamWriter(path ?? string.Empty))
+    {
+        file.Write(text);
+    }
+    // ...
+}
+```
+
+* `StreamWriter`: O oposto do `StreamReader`, esta classe é usada para escrever strings em um fluxo/arquivo. Se o arquivo não existir no `path` especificado, ele será criado. Se já existir, seu conteúdo será sobrescrito.
+
+* Segurança com `using`: Assim como no `Open`, o `using` garante que o arquivo seja fechado e salvo corretamente após a escrita.
+
+## Conceitos-Chave Aplicados
+
+* Entrada e Saída do Console: Uso intensivo de `Console.WriteLine`, `Console.ReadLine` e `Console.ReadKey` para criar uma interface de usuário interativa.
+
+* Manipulação de Arquivos (`System.IO`): Utilização das classes `StreamReader` e `StreamWriter` para operações de leitura e escrita em arquivos.
+
+* Gerenciamento de Recursos com `using`: Aplicação da instrução `using` para garantir que os recursos do sistema (arquivos) sejam liberados de forma segura e automática.
+
+* Estruturas de Controle: Uso de `switch` para navegação no menu e `do-while` para captura de entrada de texto.
+
+* Tratamento de Strings: Concatenação de strings para construir o conteúdo do arquivo e uso de `Environment.NewLine` para compatibilidade entre sistemas operacionais.
+
+## Como Executar
+
+Para testar este programa, você precisa navegar até a pasta do projeto no seu terminal e usar o comando `dotnet run`:
+
+```BASH
+# Navegue até o diretório do projeto
+cd projects/TextEditor/TextEditor
+
+# Execute a aplicação
+dotnet run
+```
+
+A partir daí, o menu interativo irá guiá-lo para criar, abrir ou salvar seus arquivos de texto.
+
+
+
+# Kata - Conversor de Tipos via Linha de Comando
+
+Neste kata, vamos explorar um caso de uso um pouco mais avançado: a criação de uma ferramenta de linha de comando (CLI) em C#. Esta aplicação irá converter um valor de um tipo de dado para outro, com base nos argumentos fornecidos pelo usuário ao executar o programa.
+
+Vamos abordar conceitos como manipulação de argumentos de linha de comando, dicionários para armazenar parâmetros, tratamento de erros robusto com `try-catch` e a diferença crucial entre `Parse` e `Convert`.
+
+## O Código Completo
+
+Este é o código do nosso `Program.cs`. Ele é projetado para ser executado via `dotnet run` com parâmetros específicos.
+
+```
+using System;
+using System.Collections.Generic;
+
+namespace AtividadeSemana1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            if (args.Length == 0)
+            {
+                ShowHelp();
+                return;
+            }
+
+            var parameters = ParseArguments(args);
+
+            if (!ValidateParameters(parameters))
+            {
+                Console.WriteLine("Erro: Parametros 'valor', 'tipoEntrada' e 'tipoSaida' sao obrigatorios.");
+                Console.WriteLine("Uso: dotnet run valor=<valor> tipoEntrada=<tipo> tipoSaida=<tipo>");
+                return;
+            }
+
+            string valorStr = parameters["valor"];
+            string tipoEntrada = parameters["tipoentrada"].ToLower();
+            string tipoSaida = parameters["tiposaida"].ToLower();
+
+            try
+            {
+                object valorEntrada = ParseInputValue(valorStr, tipoEntrada);
+                object valorSaida = ConvertValue(valorEntrada, tipoSaida, valorStr);
+                PrintResult(valorStr, tipoEntrada, valorSaida, tipoSaida);
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine($"Erro: {ex.Message}");
+            }
+            catch (InvalidCastException ex)
+            {
+                Console.WriteLine($"Erro de conversao: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ocorreu um erro inesperado: {ex.Message}");
+            }
+        }
+
+        static void ShowHelp()
+        {
+            Console.WriteLine("=== Conversor de Tipos ===");
+            Console.WriteLine("Por favor, forneca os parametros no formato chave=valor.");
+            Console.WriteLine("Uso: dotnet run valor=<valor> tipoEntrada=<tipo> tipoSaida=<tipo>");
+            Console.WriteLine("Exemplo: dotnet run valor=123.45 tipoEntrada=double tipoSaida=int");
+            Console.WriteLine("Tipos suportados: int, double, float, bool, string, short");
+        }
+
+        static Dictionary<string, string> ParseArguments(string[] args)
+        {
+            var parameters = new Dictionary<string, string>();
+            foreach (var arg in args)
+            {
+                var parts = arg.Split('=', 2);
+                if (parts.Length == 2)
+                {
+                    parameters[parts[0].ToLower()] = parts[1];
+                }
+            }
+            return parameters;
+        }
+
+        static bool ValidateParameters(Dictionary<string, string> parameters)
+        {
+            return parameters.ContainsKey("valor") &&
+                   parameters.ContainsKey("tipoentrada") &&
+                   parameters.ContainsKey("tiposaida");
+        }
+
+        
+        static object ParseInputValue(string valorStr, string tipoEntrada)
+        {
+            try
+            {
+                return tipoEntrada switch
+                {
+                    "int" => int.Parse(valorStr),
+                    "double" => double.Parse(valorStr),
+                    "float" => float.Parse(valorStr),
+                    "bool" => bool.Parse(valorStr),
+                    "string" => valorStr,
+                    "short" => short.Parse(valorStr),
+                    _ => throw new ArgumentException($"Tipo de entrada desconhecido: {tipoEntrada}")
+                };
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException($"Ao processar o valor de entrada '{valorStr}': {ex.Message}", ex);
+            }
+        }
+
+        static object ConvertValue(object valorEntrada, string tipoSaida, string valorStr)
+        {
+            try
+            {
+                return tipoSaida switch
+                {
+                    "int" => Convert.ToInt32(valorEntrada),
+                    "double" => Convert.ToDouble(valorEntrada),
+                    "float" => Convert.ToSingle(valorEntrada),
+                    "bool" => Convert.ToBoolean(valorEntrada),
+                    "string" => Convert.ToString(valorEntrada),
+                    "short" => Convert.ToInt16(valorEntrada),
+                    _ => throw new ArgumentException($"Tipo de saida desconhecido: {tipoSaida}")
+                };
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidCastException($"Nao foi possivel converter '{valorStr}' ({valorEntrada.GetType().Name}) para {tipoSaida}: {ex.Message}", ex);
+            }
+        }
+
+        static void PrintResult(string valorStr, string tipoEntrada, object valorSaida, string tipoSaida)
+        {
+            Console.WriteLine("=== Resultado da Conversao ===" elytra.platform.documentation.core.content.format.MarkdownFile@527144b2);
+            Console.WriteLine($"Entrada: [{valorStr}] ({tipoEntrada})");
+            Console.WriteLine($"Saida:   [{valorSaida}] ({tipoSaida})");
+        }
+    }
+}
+```
+
+## Análise do Código
+
+### 
+
+`Main`: O Ponto de Entrada e Orquestrador
+
+O método `Main` agora tem mais responsabilidades:
+
+1. Verificar Argumentos: `if (args.Length == 0)` checa se o programa foi executado sem nenhum argumento. Se for o caso, exibe uma mensagem de ajuda (`ShowHelp()`) e encerra.
+
+2. Analisar Argumentos: `ParseArguments(args)` é chamado para processar os argumentos da linha de comando.
+
+3. Validar Parâmetros: `ValidateParameters(parameters)` garante que todos os parâmetros necessários (`valor`, `tipoEntrada`, `tipoSaida`) foram fornecidos.
+
+4. Executar a Conversão: O bloco `try-catch` é o núcleo da lógica. Ele tenta analisar o valor de entrada, convertê-lo para o tipo de saída e imprimir o resultado. Se qualquer etapa falhar, uma exceção é capturada e uma mensagem de erro é exibida.
+
+### 
+
+`ParseArguments`: Processando a Entrada do Usuário
+
+```
+static Dictionary<string, string> ParseArguments(string[] args)
+{
+    var parameters = new Dictionary<string, string>();
+    foreach (var arg in args)
+    {
+        var parts = arg.Split('=', 2);
+        if (parts.Length == 2)
+        {
+            parameters[parts[0].ToLower()] = parts[1];
+        }
+    }
+    return parameters;
+}
+```
+
+Esta função transforma um array de strings como `["valor=123", "tipoEntrada=int"]` em um `Dictionary<string, string>`. Um dicionário é uma coleção de pares chave-valor.
+
+* `arg.Split('=', 2)`: Divide cada argumento no caractere `=`, no máximo em 2 partes. Isso garante que, se o valor contiver um `=`, ele não será dividido novamente (ex: `valor=chave=valor`).
+
+* `parameters[parts[0].ToLower()] = parts[1]`: Adiciona a chave (em minúsculas) e o valor ao dicionário.
+
+### 
+
+`ParseInputValue` vs. `ConvertValue`
+
+O programa usa duas funções distintas para a conversão, e a diferença é fundamental:
+
+1. `ParseInputValue`: Usa métodos como `int.Parse(string)`. O objetivo do `Parse` é converter uma representação em string de um valor para o seu tipo de dado correspondente. Ele só funciona de `string` para outro tipo.
+
+2. `ConvertValue`: Usa a classe `Convert`, com métodos como `Convert.ToInt32(object)`. A classe `Convert` é mais flexível. Ela pode converter um valor de qualquer tipo base para outro tipo, desde que uma conversão válida exista. Por exemplo, pode converter um `double` para um `int`, um `bool` para uma `string`, etc.
+
+Em nosso fluxo, primeiro usamos `Parse` para tirar o valor da `string` inicial e, em seguida, usamos `Convert` para realizar a conversão entre os tipos de dados reais (ex: de `double` para `int`).
+
+Ambas as funções usam uma expressão `switch` (uma forma mais concisa do `switch` tradicional) para selecionar a operação correta com base no tipo de entrada/saída.
+
+### 
+
+Tratamento de Erros (`try-catch`)
+
+Este programa é muito mais robusto que a calculadora porque ele antecipa falhas.
+
+* `try { ... }`: O código que pode gerar um erro é colocado dentro do bloco `try`.
+
+* `catch (ArgumentException ex)`: Captura erros relacionados a argumentos inválidos, como um tipo de entrada/saída desconhecido.
+
+* `catch (InvalidCastException ex)`: Captura erros que ocorrem quando a conversão entre dois tipos não é possível (por exemplo, converter a string `"abc"` para `int`).
+
+* `catch (Exception ex)`: Uma cláusula genérica que captura qualquer outro erro inesperado, evitando que o programa "quebre" abruptamente.
+
+## Conceitos-Chave Aplicados
+
+* Argumentos de Linha de Comando: Leitura e processamento de `string[] args` no método `Main`.
+
+* Dicionários (`Dictionary<TKey, TValue>`): Uma estrutura de dados poderosa para armazenar e acessar dados por meio de uma chave única.
+
+* Tratamento de Exceções: Uso de `try-catch` para criar um programa resiliente que lida com entradas inválidas e erros de conversão.
+
+* Expressões `switch`: Uma sintaxe moderna e concisa para controle de fluxo.
+
+* Diferença entre `Parse` e `Convert`: Compreensão de duas maneiras fundamentais de realizar conversões de tipo em C#.
+
+## Como Executar
+
+Para testar este programa, você o executaria a partir do seu terminal, na pasta do projeto, da seguinte forma:
+
+```BASH
+# Exemplo 1: Convertendo um double para um int
+dotnet run valor=123.45 tipoEntrada=double tipoSaida=int
+
+# Exemplo 2: Convertendo uma string para um booleano
+dotnet run valor=true tipoEntrada=string tipoSaida=bool
+
+# Exemplo de erro
+dotnet run valor=texto tipoEntrada=string tipoSaida=int
+```
+
+Este kata demonstra como construir aplicações de console interativas e robustas, um pilar fundamental da programação em muitas linguagens, incluindo C#.
+
+
+
 # Kata - Calculadora em C#
 
 Bem-vindo ao nosso primeiro kata prático! Neste exercício, vamos construir uma calculadora simples usando C#. O objetivo é aplicar os conceitos fundamentais que aprendemos, como variáveis, tipos de dados, operadores, condicionais e funções, em um projeto real e funcional.
@@ -6258,465 +6723,6 @@ Agora que você entende o código, aqui estão alguns desafios para você tentar
 4. Histórico de Operações: Como você poderia armazenar e exibir as últimas 5 operações que o usuário realizou?
 
 Parabéns por concluir este kata! Você deu um passo importante na sua jornada de aprendizado de C#.
-
-
-
-# Kata - Conversor de Tipos via Linha de Comando
-
-Neste kata, vamos explorar um caso de uso um pouco mais avançado: a criação de uma ferramenta de linha de comando (CLI) em C#. Esta aplicação irá converter um valor de um tipo de dado para outro, com base nos argumentos fornecidos pelo usuário ao executar o programa.
-
-Vamos abordar conceitos como manipulação de argumentos de linha de comando, dicionários para armazenar parâmetros, tratamento de erros robusto com `try-catch` e a diferença crucial entre `Parse` e `Convert`.
-
-## O Código Completo
-
-Este é o código do nosso `Program.cs`. Ele é projetado para ser executado via `dotnet run` com parâmetros específicos.
-
-```
-using System;
-using System.Collections.Generic;
-
-namespace AtividadeSemana1
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            if (args.Length == 0)
-            {
-                ShowHelp();
-                return;
-            }
-
-            var parameters = ParseArguments(args);
-
-            if (!ValidateParameters(parameters))
-            {
-                Console.WriteLine("Erro: Parametros 'valor', 'tipoEntrada' e 'tipoSaida' sao obrigatorios.");
-                Console.WriteLine("Uso: dotnet run valor=<valor> tipoEntrada=<tipo> tipoSaida=<tipo>");
-                return;
-            }
-
-            string valorStr = parameters["valor"];
-            string tipoEntrada = parameters["tipoentrada"].ToLower();
-            string tipoSaida = parameters["tiposaida"].ToLower();
-
-            try
-            {
-                object valorEntrada = ParseInputValue(valorStr, tipoEntrada);
-                object valorSaida = ConvertValue(valorEntrada, tipoSaida, valorStr);
-                PrintResult(valorStr, tipoEntrada, valorSaida, tipoSaida);
-            }
-            catch (ArgumentException ex)
-            {
-                Console.WriteLine($"Erro: {ex.Message}");
-            }
-            catch (InvalidCastException ex)
-            {
-                Console.WriteLine($"Erro de conversao: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Ocorreu um erro inesperado: {ex.Message}");
-            }
-        }
-
-        static void ShowHelp()
-        {
-            Console.WriteLine("=== Conversor de Tipos ===");
-            Console.WriteLine("Por favor, forneca os parametros no formato chave=valor.");
-            Console.WriteLine("Uso: dotnet run valor=<valor> tipoEntrada=<tipo> tipoSaida=<tipo>");
-            Console.WriteLine("Exemplo: dotnet run valor=123.45 tipoEntrada=double tipoSaida=int");
-            Console.WriteLine("Tipos suportados: int, double, float, bool, string, short");
-        }
-
-        static Dictionary<string, string> ParseArguments(string[] args)
-        {
-            var parameters = new Dictionary<string, string>();
-            foreach (var arg in args)
-            {
-                var parts = arg.Split('=', 2);
-                if (parts.Length == 2)
-                {
-                    parameters[parts[0].ToLower()] = parts[1];
-                }
-            }
-            return parameters;
-        }
-
-        static bool ValidateParameters(Dictionary<string, string> parameters)
-        {
-            return parameters.ContainsKey("valor") &&
-                   parameters.ContainsKey("tipoentrada") &&
-                   parameters.ContainsKey("tiposaida");
-        }
-
-        
-        static object ParseInputValue(string valorStr, string tipoEntrada)
-        {
-            try
-            {
-                return tipoEntrada switch
-                {
-                    "int" => int.Parse(valorStr),
-                    "double" => double.Parse(valorStr),
-                    "float" => float.Parse(valorStr),
-                    "bool" => bool.Parse(valorStr),
-                    "string" => valorStr,
-                    "short" => short.Parse(valorStr),
-                    _ => throw new ArgumentException($"Tipo de entrada desconhecido: {tipoEntrada}")
-                };
-            }
-            catch (Exception ex)
-            {
-                throw new ArgumentException($"Ao processar o valor de entrada '{valorStr}': {ex.Message}", ex);
-            }
-        }
-
-        static object ConvertValue(object valorEntrada, string tipoSaida, string valorStr)
-        {
-            try
-            {
-                return tipoSaida switch
-                {
-                    "int" => Convert.ToInt32(valorEntrada),
-                    "double" => Convert.ToDouble(valorEntrada),
-                    "float" => Convert.ToSingle(valorEntrada),
-                    "bool" => Convert.ToBoolean(valorEntrada),
-                    "string" => Convert.ToString(valorEntrada),
-                    "short" => Convert.ToInt16(valorEntrada),
-                    _ => throw new ArgumentException($"Tipo de saida desconhecido: {tipoSaida}")
-                };
-            }
-            catch (Exception ex)
-            {
-                throw new InvalidCastException($"Nao foi possivel converter '{valorStr}' ({valorEntrada.GetType().Name}) para {tipoSaida}: {ex.Message}", ex);
-            }
-        }
-
-        static void PrintResult(string valorStr, string tipoEntrada, object valorSaida, string tipoSaida)
-        {
-            Console.WriteLine("=== Resultado da Conversao ===" elytra.platform.documentation.core.content.format.MarkdownFile@527144b2);
-            Console.WriteLine($"Entrada: [{valorStr}] ({tipoEntrada})");
-            Console.WriteLine($"Saida:   [{valorSaida}] ({tipoSaida})");
-        }
-    }
-}
-```
-
-## Análise do Código
-
-### 
-
-`Main`: O Ponto de Entrada e Orquestrador
-
-O método `Main` agora tem mais responsabilidades:
-
-1. Verificar Argumentos: `if (args.Length == 0)` checa se o programa foi executado sem nenhum argumento. Se for o caso, exibe uma mensagem de ajuda (`ShowHelp()`) e encerra.
-
-2. Analisar Argumentos: `ParseArguments(args)` é chamado para processar os argumentos da linha de comando.
-
-3. Validar Parâmetros: `ValidateParameters(parameters)` garante que todos os parâmetros necessários (`valor`, `tipoEntrada`, `tipoSaida`) foram fornecidos.
-
-4. Executar a Conversão: O bloco `try-catch` é o núcleo da lógica. Ele tenta analisar o valor de entrada, convertê-lo para o tipo de saída e imprimir o resultado. Se qualquer etapa falhar, uma exceção é capturada e uma mensagem de erro é exibida.
-
-### 
-
-`ParseArguments`: Processando a Entrada do Usuário
-
-```
-static Dictionary<string, string> ParseArguments(string[] args)
-{
-    var parameters = new Dictionary<string, string>();
-    foreach (var arg in args)
-    {
-        var parts = arg.Split('=', 2);
-        if (parts.Length == 2)
-        {
-            parameters[parts[0].ToLower()] = parts[1];
-        }
-    }
-    return parameters;
-}
-```
-
-Esta função transforma um array de strings como `["valor=123", "tipoEntrada=int"]` em um `Dictionary<string, string>`. Um dicionário é uma coleção de pares chave-valor.
-
-* `arg.Split('=', 2)`: Divide cada argumento no caractere `=`, no máximo em 2 partes. Isso garante que, se o valor contiver um `=`, ele não será dividido novamente (ex: `valor=chave=valor`).
-
-* `parameters[parts[0].ToLower()] = parts[1]`: Adiciona a chave (em minúsculas) e o valor ao dicionário.
-
-### 
-
-`ParseInputValue` vs. `ConvertValue`
-
-O programa usa duas funções distintas para a conversão, e a diferença é fundamental:
-
-1. `ParseInputValue`: Usa métodos como `int.Parse(string)`. O objetivo do `Parse` é converter uma representação em string de um valor para o seu tipo de dado correspondente. Ele só funciona de `string` para outro tipo.
-
-2. `ConvertValue`: Usa a classe `Convert`, com métodos como `Convert.ToInt32(object)`. A classe `Convert` é mais flexível. Ela pode converter um valor de qualquer tipo base para outro tipo, desde que uma conversão válida exista. Por exemplo, pode converter um `double` para um `int`, um `bool` para uma `string`, etc.
-
-Em nosso fluxo, primeiro usamos `Parse` para tirar o valor da `string` inicial e, em seguida, usamos `Convert` para realizar a conversão entre os tipos de dados reais (ex: de `double` para `int`).
-
-Ambas as funções usam uma expressão `switch` (uma forma mais concisa do `switch` tradicional) para selecionar a operação correta com base no tipo de entrada/saída.
-
-### 
-
-Tratamento de Erros (`try-catch`)
-
-Este programa é muito mais robusto que a calculadora porque ele antecipa falhas.
-
-* `try { ... }`: O código que pode gerar um erro é colocado dentro do bloco `try`.
-
-* `catch (ArgumentException ex)`: Captura erros relacionados a argumentos inválidos, como um tipo de entrada/saída desconhecido.
-
-* `catch (InvalidCastException ex)`: Captura erros que ocorrem quando a conversão entre dois tipos não é possível (por exemplo, converter a string `"abc"` para `int`).
-
-* `catch (Exception ex)`: Uma cláusula genérica que captura qualquer outro erro inesperado, evitando que o programa "quebre" abruptamente.
-
-## Conceitos-Chave Aplicados
-
-* Argumentos de Linha de Comando: Leitura e processamento de `string[] args` no método `Main`.
-
-* Dicionários (`Dictionary<TKey, TValue>`): Uma estrutura de dados poderosa para armazenar e acessar dados por meio de uma chave única.
-
-* Tratamento de Exceções: Uso de `try-catch` para criar um programa resiliente que lida com entradas inválidas e erros de conversão.
-
-* Expressões `switch`: Uma sintaxe moderna e concisa para controle de fluxo.
-
-* Diferença entre `Parse` e `Convert`: Compreensão de duas maneiras fundamentais de realizar conversões de tipo em C#.
-
-## Como Executar
-
-Para testar este programa, você o executaria a partir do seu terminal, na pasta do projeto, da seguinte forma:
-
-```BASH
-# Exemplo 1: Convertendo um double para um int
-dotnet run valor=123.45 tipoEntrada=double tipoSaida=int
-
-# Exemplo 2: Convertendo uma string para um booleano
-dotnet run valor=true tipoEntrada=string tipoSaida=bool
-
-# Exemplo de erro
-dotnet run valor=texto tipoEntrada=string tipoSaida=int
-```
-
-Este kata demonstra como construir aplicações de console interativas e robustas, um pilar fundamental da programação em muitas linguagens, incluindo C#.
-
-
-
-# Kata - Editor de Texto Simples de Console
-
-Neste kata, construiremos uma aplicação de console fundamental: um editor de texto simples. Este projeto nos permitirá explorar a manipulação de arquivos em C#, uma habilidade essencial para qualquer desenvolvedor. A aplicação será capaz de criar, salvar e abrir arquivos de texto diretamente do terminal.
-
-Vamos focar em conceitos como entrada e saída do console, leitura e escrita de arquivos com `StreamReader` and `StreamWriter`, e a importância do bloco `using` para gerenciar recursos de forma segura.
-
-## O Código Completo
-
-Este é o código do nosso `Program.cs`. Ele estrutura o editor de texto em um menu interativo.
-
-```
-using System;
-using System.IO;
-
-namespace TextEditor
-{
-  public class Program
-  {
-    public static void Main(string[] args)
-    {
-      Menu();
-    }
-
-    static void Menu()
-    {
-      Console.Clear();
-      Console.WriteLine("O que voce deseja fazer?");
-      Console.WriteLine("1 - Abrir arquivo");
-      Console.WriteLine("2 - Criar novo arquivo");
-      Console.WriteLine("0 - Sair");
-      short option = short.Parse(Console.ReadLine());
-
-      switch (option)
-      {
-        case 0:
-          System.Environment.Exit(0);
-          break;
-        case 1:
-          Open();
-          break;
-        case 2:
-          Edit();
-          break;
-        default:
-          Menu();
-          break;
-      }
-    }
-
-    private static void Open()
-    {
-      Console.Clear();
-      Console.WriteLine("Qual caminho do arquivo?");
-      string path = Console.ReadLine();
-
-      using (var file = new StreamReader(path))
-      {
-        string text = file.ReadToEnd();
-        Console.WriteLine(text);
-      }
-      
-      Console.WriteLine("");
-      Console.ReadLine();
-      Menu();
-    }
-
-    private static void Edit()
-    {
-      Console.Clear();
-      Console.WriteLine("Digite seu texto abaixo (ESC para sair)");
-      Console.WriteLine("--------------------------------");
-
-      string text = "";
-
-      do
-      {
-        text += Console.ReadLine();
-        text += Environment.NewLine;
-      } while (Console.ReadKey().Key != ConsoleKey.Escape);
-      
-      Save(text);
-    }
-    
-    static void Save(string text) 
-    {
-      Console.Clear();
-      Console.WriteLine("Qual caminho para salvar o arquivo? \n");
-      var path = Console.ReadLine();
-      
-      
-      // CRIA E JÁ FECHA O OBJETO - É BOM PARA HANDLER COM ARQUIVOS
-      using (var file = new StreamWriter(path ?? string.Empty))
-      {
-        file.Write(text);
-      }
-
-      Console.WriteLine($"Arquivo salvo em {path} com sucesso!");
-      Console.ReadLine(); 
-      Menu();
-    }
-  }
-}
-```
-
-## Análise do Código
-
-### 
-
-`Main` e `Menu`: Navegação Central
-
-O ponto de entrada `Main` simplesmente chama o método `Menu`, que atua como o coração da nossa aplicação.
-
-* `Console.Clear()`: Limpa a tela do console para uma apresentação mais limpa.
-
-* Loop de Menu: O `Menu` exibe as opções, lê a entrada do usuário com `Console.ReadLine()` e usa uma instrução `switch` para direcionar o fluxo do programa. Note que, após cada ação (`Open`, `Edit`), o `Menu` é chamado novamente, criando um loop que mantém a aplicação em execução até que o usuário escolha sair.
-
-* Saída Segura: `System.Environment.Exit(0)` é usado para encerrar a aplicação de forma limpa quando o usuário digita '0'.
-
-### 
-
-`Open`: Lendo Arquivos
-
-```
-private static void Open()
-{
-    // ...
-    string path = Console.ReadLine();
-
-    using (var file = new StreamReader(path))
-    {
-        string text = file.ReadToEnd();
-        Console.WriteLine(text);
-    }
-    // ...
-}
-```
-
-Esta função é responsável por abrir e exibir o conteúdo de um arquivo de texto.
-
-* `StreamReader`: Esta classe do `System.IO` é projetada para ler caracteres de um fluxo (neste caso, um arquivo).
-
-* Bloco `using`: Este é um dos conceitos mais importantes aqui. O `using` garante que o objeto `file` (que representa o arquivo no sistema operacional) seja "descartado" (`Dispose`) corretamente, mesmo que ocorram erros. Isso significa que o arquivo será fechado, liberando o recurso para outros programas. É a maneira padrão e segura de trabalhar com recursos como arquivos e conexões de rede.
-
-* `ReadToEnd()`: Lê todo o conteúdo do arquivo, do início ao fim, e o retorna como uma única `string`.
-
-### 
-
-`Edit` e `Save`: Criando e Escrevendo em Arquivos
-
-O processo de criação é dividido em duas partes: `Edit` para capturar a entrada e `Save` para escrevê-la no disco.
-
-```
-private static void Edit()
-{
-    // ...
-    string text = "";
-    do
-    {
-        text += Console.ReadLine();
-        text += Environment.NewLine;
-    } while (Console.ReadKey().Key != ConsoleKey.Escape);
-    
-    Save(text);
-}
-```
-
-* Captura de Múltiplas Linhas: O loop `do-while` é uma forma inteligente de capturar texto. Ele continua adicionando linhas à variável `text` até que a tecla `ESC` seja pressionada. `Console.ReadKey()` intercepta a próxima tecla pressionada sem exigir que o usuário pressione Enter.
-
-* `Environment.NewLine`: Garante que as quebras de linha sejam corretas para o sistema operacional em que o programa está sendo executado (seja `\n` no Linux/macOS ou `\r\n` no Windows).
-
-```
-static void Save(string text) 
-{
-    // ...
-    var path = Console.ReadLine();
-    
-    using (var file = new StreamWriter(path ?? string.Empty))
-    {
-        file.Write(text);
-    }
-    // ...
-}
-```
-
-* `StreamWriter`: O oposto do `StreamReader`, esta classe é usada para escrever strings em um fluxo/arquivo. Se o arquivo não existir no `path` especificado, ele será criado. Se já existir, seu conteúdo será sobrescrito.
-
-* Segurança com `using`: Assim como no `Open`, o `using` garante que o arquivo seja fechado e salvo corretamente após a escrita.
-
-## Conceitos-Chave Aplicados
-
-* Entrada e Saída do Console: Uso intensivo de `Console.WriteLine`, `Console.ReadLine` e `Console.ReadKey` para criar uma interface de usuário interativa.
-
-* Manipulação de Arquivos (`System.IO`): Utilização das classes `StreamReader` e `StreamWriter` para operações de leitura e escrita em arquivos.
-
-* Gerenciamento de Recursos com `using`: Aplicação da instrução `using` para garantir que os recursos do sistema (arquivos) sejam liberados de forma segura e automática.
-
-* Estruturas de Controle: Uso de `switch` para navegação no menu e `do-while` para captura de entrada de texto.
-
-* Tratamento de Strings: Concatenação de strings para construir o conteúdo do arquivo e uso de `Environment.NewLine` para compatibilidade entre sistemas operacionais.
-
-## Como Executar
-
-Para testar este programa, você precisa navegar até a pasta do projeto no seu terminal e usar o comando `dotnet run`:
-
-```BASH
-# Navegue até o diretório do projeto
-cd projects/TextEditor/TextEditor
-
-# Execute a aplicação
-dotnet run
-```
-
-A partir daí, o menu interativo irá guiá-lo para criar, abrir ou salvar seus arquivos de texto.
 
 
 
