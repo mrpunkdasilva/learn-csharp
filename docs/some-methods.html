@@ -1,0 +1,95 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#214C69"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-08-18T15:21:25.201859769"><title>Propriedades e M&eacute;todos Essenciais de Arrays | Learn C#</title><script type="application/json" id="virtual-toc-data">[{"id":"length-propriedade","level":0,"title":"Length (Propriedade)","anchor":"#length-propriedade"},{"id":"clone-m-todo","level":0,"title":"Clone() (Método)","anchor":"#clone-m-todo"},{"id":"copyto-m-todo","level":0,"title":"CopyTo() (Método)","anchor":"#copyto-m-todo"},{"id":"indexof-m-todo-est-tico","level":0,"title":"IndexOf() (Método Estático)","anchor":"#indexof-m-todo-est-tico"},{"id":"sort-m-todo-est-tico","level":0,"title":"Sort() (Método Estático)","anchor":"#sort-m-todo-est-tico"},{"id":"reverse-m-todo-est-tico","level":0,"title":"Reverse() (Método Estático)","anchor":"#reverse-m-todo-est-tico"},{"id":"clear-m-todo-est-tico","level":0,"title":"Clear() (Método Estático)","anchor":"#clear-m-todo-est-tico"},{"id":"resize-m-todo-est-tico","level":0,"title":"Resize() (Método Estático)","anchor":"#resize-m-todo-est-tico"},{"id":"refer-ncias","level":0,"title":"Referências","anchor":"#refer-ncias"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Propriedades e M&eacute;todos Essenciais de Arrays | Learn C#"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Learn C# Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/some-methods.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Propriedades e M&eacute;todos Essenciais de Arrays | Learn C#"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/some-methods.html#webpage",
+    "url": "writerside-documentation/some-methods.html",
+    "name": "Propriedades e M&eacute;todos Essenciais de Arrays | Learn C#",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Learn C# Help"
+}</script><!-- End Schema.org --></head><body data-id="Some-Methods" data-main-title="Propriedades e Métodos Essenciais de Arrays" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Fundamentos///Arrays.md|Arrays"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Learn C#  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Some-Methods" id="Some-Methods.md">Propriedades e Métodos Essenciais de Arrays</h1><p id="yxdwiu_3">Imagine que um array &eacute; como um trem de carga. Cada vag&atilde;o do trem pode carregar um cont&ecirc;iner (um elemento do array), e todos os vag&otilde;es s&atilde;o numerados, come&ccedil;ando do zero. As opera&ccedil;&otilde;es que podemos fazer nesse trem nos ajudam a gerenci&aacute;-lo de forma eficiente.</p><p id="yxdwiu_4">Vamos explorar algumas das propriedades e m&eacute;todos mais comuns que voc&ecirc; usar&aacute; ao trabalhar com arrays, usando nossa analogia do trem.</p><section class="chapter"><h2 id="length-propriedade" data-toc="length-propriedade"><code class="code" id="yxdwiu_17">Length</code> (Propriedade)</h2><p id="yxdwiu_15">O <code class="code" id="yxdwiu_18">Length</code> n&atilde;o &eacute; um m&eacute;todo, mas sim uma <span class="control" id="yxdwiu_19">propriedade</span>. Pense nele como o relat&oacute;rio do chefe da esta&ccedil;&atilde;o que diz exatamente quantos vag&otilde;es o seu trem possui. Ele n&atilde;o <span class="emphasis" id="yxdwiu_20">faz</span> nada, apenas informa um fato sobre o array: seu tamanho total.</p><div class="code-block" data-lang="none">
+// Our array is a &quot;train&quot; with 5 &quot;wagons&quot;
+int[] numbers = new int[5];
+
+// The Length property tells us the total capacity of our train.
+Console.WriteLine($&quot;The train has {numbers.Length} wagons.&quot;); // Outputs: The train has 5 wagons.
+</div></section><section class="chapter"><h2 id="clone-m-todo" data-toc="clone-m-todo"><code class="code" id="yxdwiu_25">Clone()</code> (M&eacute;todo)</h2><p id="yxdwiu_22">O m&eacute;todo <code class="code" id="yxdwiu_26">Clone()</code> constr&oacute;i um trem novo, id&ecirc;ntico ao original. Ele cria um <span class="control" id="yxdwiu_27">novo array</span> com exatamente o mesmo tamanho e com os mesmos elementos do array original.</p><p id="yxdwiu_23">No entanto, h&aacute; um detalhe extremamente importante: <code class="code" id="yxdwiu_28">Clone()</code> cria uma <span class="control" id="yxdwiu_29">c&oacute;pia superficial (shallow copy)</span>. Para uma explica&ccedil;&atilde;o detalhada, veja o exemplo no final da se&ccedil;&atilde;o.</p><div class="code-block" data-lang="none">
+// An array of value types (integers)
+int[] originalTrain = { 10, 20, 30 };
+
+// Clone the train
+int[] clonedTrain = (int[])originalTrain.Clone();
+
+// Change a wagon in the cloned train
+clonedTrain[0] = 100;
+
+// The original train remains unchanged because int is a value type
+Console.WriteLine($&quot;Original train first wagon: {originalTrain[0]}&quot;); // Outputs: 10
+</div></section><section class="chapter"><h2 id="copyto-m-todo" data-toc="copyto-m-todo"><code class="code" id="yxdwiu_33">CopyTo()</code> (M&eacute;todo)</h2><p id="yxdwiu_31">O m&eacute;todo <code class="code" id="yxdwiu_34">CopyTo()</code> &eacute; como mover a carga de alguns vag&otilde;es do seu trem para outro trem que j&aacute; est&aacute; na esta&ccedil;&atilde;o. Ele n&atilde;o cria um novo array, mas copia elementos do array de origem para um <span class="control" id="yxdwiu_35">array de destino que j&aacute; existe</span>.</p><div class="code-block" data-lang="none">
+// The source train with 3 wagons
+int[] sourceTrain = { 1, 2, 3 };
+
+// The destination train, bigger and initially empty
+int[] destinationTrain = new int[5]; // { 0, 0, 0, 0, 0 }
+
+// Copy all wagons from the source train to the destination train,
+// starting at the second position (index 1) of the destination.
+sourceTrain.CopyTo(destinationTrain, 1);
+
+// Final state of destinationTrain: { 0, 1, 2, 3, 0 }
+Console.WriteLine(string.Join(&quot;, &quot;, destinationTrain));
+</div></section><section class="chapter"><h2 id="indexof-m-todo-est-tico" data-toc="indexof-m-todo-est-tico"><code class="code" id="yxdwiu_39">IndexOf()</code> (M&eacute;todo Est&aacute;tico)</h2><p id="yxdwiu_37">Precisa saber em qual vag&atilde;o est&aacute; uma carga espec&iacute;fica? <code class="code" id="yxdwiu_40">Array.IndexOf()</code> faz isso. Ele percorre o trem e te diz o n&uacute;mero do primeiro vag&atilde;o (o &iacute;ndice) onde a carga foi encontrada. Se a carga n&atilde;o existir no trem, ele retorna <code class="code" id="yxdwiu_41">-1</code>.</p><div class="code-block" data-lang="none">
+string[] cargoTrain = { &quot;Apples&quot;, &quot;Oranges&quot;, &quot;Bananas&quot;, &quot;Oranges&quot; };
+
+// Find the wagon number for &quot;Bananas&quot;
+int bananaWagon = Array.IndexOf(cargoTrain, &quot;Bananas&quot;); // Returns 2
+
+// &quot;Oranges&quot; appears twice, but IndexOf returns the first one it finds.
+int orangeWagon = Array.IndexOf(cargoTrain, &quot;Oranges&quot;); // Returns 1
+
+// &quot;Grapes&quot; are not in the train
+int grapeWagon = Array.IndexOf(cargoTrain, &quot;Grapes&quot;); // Returns -1
+
+Console.WriteLine($&quot;Bananas are in wagon: {bananaWagon}&quot;);
+</div></section><section class="chapter"><h2 id="sort-m-todo-est-tico" data-toc="sort-m-todo-est-tico"><code class="code" id="yxdwiu_45">Sort()</code> (M&eacute;todo Est&aacute;tico)</h2><p id="yxdwiu_43">Este m&eacute;todo organiza os vag&otilde;es do seu trem. Se a carga for num&eacute;rica, ele os ordena do menor para o maior. Se for texto, em ordem alfab&eacute;tica. &Eacute; importante saber que <code class="code" id="yxdwiu_46">Array.Sort()</code> <span class="control" id="yxdwiu_47">modifica o array original</span>.</p><div class="code-block" data-lang="none">
+int[] messyTrain = { 5, 1, 4, 2, 3 };
+
+// Sort the train
+Array.Sort(messyTrain);
+
+// The messyTrain is now ordered: { 1, 2, 3, 4, 5 }
+Console.WriteLine(string.Join(&quot;, &quot;, messyTrain));
+</div></section><section class="chapter"><h2 id="reverse-m-todo-est-tico" data-toc="reverse-m-todo-est-tico"><code class="code" id="yxdwiu_51">Reverse()</code> (M&eacute;todo Est&aacute;tico)</h2><p id="yxdwiu_49"><code class="code" id="yxdwiu_52">Array.Reverse()</code> inverte a ordem de todos os vag&otilde;es do trem. O &uacute;ltimo vira o primeiro, o pen&uacute;ltimo vira o segundo, e assim por diante. Assim como o <code class="code" id="yxdwiu_53">Sort</code>, ele <span class="control" id="yxdwiu_54">modifica o array original</span>.</p><div class="code-block" data-lang="none">
+string[] train = { &quot;First&quot;, &quot;Middle&quot;, &quot;Last&quot; };
+
+// Reverse the train
+Array.Reverse(train);
+
+// The train is now in reversed order: { &quot;Last&quot;, &quot;Middle&quot;, &quot;First&quot; }
+Console.WriteLine(string.Join(&quot;, &quot;, train));
+</div></section><section class="chapter"><h2 id="clear-m-todo-est-tico" data-toc="clear-m-todo-est-tico"><code class="code" id="yxdwiu_58">Clear()</code> (M&eacute;todo Est&aacute;tico)</h2><p id="yxdwiu_56">Este m&eacute;todo n&atilde;o remove os vag&otilde;es, mas <span class="control" id="yxdwiu_59">esvazia seu conte&uacute;do</span>, restaurando-os para o valor padr&atilde;o (<code class="code" id="yxdwiu_60">0</code> para n&uacute;meros, <code class="code" id="yxdwiu_61">null</code> para objetos, <code class="code" id="yxdwiu_62">false</code> para booleanos). Voc&ecirc; especifica em qual vag&atilde;o come&ccedil;ar a limpeza e quantos vag&otilde;es limpar.</p><div class="code-block" data-lang="none">
+int[] trainToClean = { 1, 2, 3, 4, 5 };
+
+// Clean 2 wagons, starting from the second wagon (index 1)
+Array.Clear(trainToClean, 1, 2);
+
+// The train's cargo is now: { 1, 0, 0, 4, 5 }
+Console.WriteLine(string.Join(&quot;, &quot;, trainToClean));
+</div></section><section class="chapter"><h2 id="resize-m-todo-est-tico" data-toc="resize-m-todo-est-tico"><code class="code" id="yxdwiu_67">Resize()</code> (M&eacute;todo Est&aacute;tico)</h2><p id="yxdwiu_64">E se voc&ecirc; precisar de um trem mais longo ou mais curto? Arrays em C# t&ecirc;m um tamanho fixo, mas <code class="code" id="yxdwiu_68">Array.Resize()</code> nos ajuda a contornar isso.</p><p id="yxdwiu_65">Aten&ccedil;&atilde;o: ele n&atilde;o &quot;estica&quot; o array original. Ele cria um <span class="control" id="yxdwiu_69">novo array</span> com o tamanho desejado, copia os elementos do array antigo para o novo e, em seguida, faz sua vari&aacute;vel de array apontar para este novo array.</p><div class="code-block" data-lang="none">
+int[] trainToResize = { 1, 2, 3 };
+
+// Resize the train to have 5 wagons
+// The 'ref' keyword is necessary here
+Array.Resize(ref trainToResize, 5);
+
+// The train now has 5 wagons. The new ones have the default value (0).
+// Content: { 1, 2, 3, 0, 0 }
+Console.WriteLine($&quot;New train length: {trainToResize.Length}&quot;);
+Console.WriteLine(string.Join(&quot;, &quot;, trainToResize));
+</div></section><section class="chapter"><h2 id="refer-ncias" data-toc="refer-ncias">Refer&ecirc;ncias</h2><p id="yxdwiu_70">Para aprofundar seus conhecimentos, consulte a documenta&ccedil;&atilde;o oficial da Microsoft, que &eacute; a fonte mais confi&aacute;vel de informa&ccedil;&atilde;o.</p><ul class="list _bullet" id="yxdwiu_71"><li class="list__item" id="yxdwiu_72"><p id="yxdwiu_74"><span class="control" id="yxdwiu_75"><a href="https://learn.microsoft.com/pt-br/dotnet/api/system.array" id="yxdwiu_76" data-external="true" rel="noopener noreferrer" target="_blank">Classe <code class="code" id="yxdwiu_77">System.Array</code></a></span>: A p&aacute;gina principal da classe Array, com uma lista de todas as suas propriedades e m&eacute;todos.</p></li><li class="list__item" id="yxdwiu_73"><p id="yxdwiu_78"><span class="control" id="yxdwiu_79"><a href="https://learn.microsoft.com/pt-br/dotnet/csharp/programming-guide/arrays/" id="yxdwiu_80" data-external="true" rel="noopener noreferrer" target="_blank">Guia de Programa&ccedil;&atilde;o de Arrays (C#)</a></span>: Um guia completo sobre como declarar, inicializar e usar arrays em C#.</p></li></ul></section><div class="last-modified">18 August 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="arrays.html" class="navigation-links__prev">Arrays</a><a href="manipulatin-values.html" class="navigation-links__next">Manipulando Valores em Arrays</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

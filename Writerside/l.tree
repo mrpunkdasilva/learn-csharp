@@ -69,6 +69,7 @@
             <toc-element topic="Value-Types.md"/>
             <toc-element topic="Reference-Types.md"/>
         </toc-element>
+        
         <toc-element toc-title="Strings">
             <toc-element topic="GUIDs.md"/>
             <toc-element topic="Interpolation.md"/>
@@ -82,7 +83,17 @@
             </toc-element>
             <toc-element topic="String-Builder.md"/>
         </toc-element>
+        
         <toc-element topic="Dates.md"/>
+        <toc-element topic="Currency.md"/>
+        
+        <toc-element topic="Arrays.md">
+            <toc-element topic="Some-Methods.md"/>
+            <toc-element topic="Manipulatin-Values.md"/>
+            <toc-element topic="Iteration.md"/>
+            <toc-element topic="ForEach.md"/>
+        </toc-element>
+        
         <toc-element toc-title="Katas">
             <toc-element topic="Kata-Calculator.md"/>
             <toc-element topic="Kata-Conversor.md">
@@ -92,5 +103,4 @@
     </toc-element>
     <toc-element topic="References.md">
     </toc-element>
-    <toc-element topic="Currency.md"/>
 </instance-profile>

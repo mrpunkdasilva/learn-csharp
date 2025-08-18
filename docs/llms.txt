@@ -4992,6 +4992,1017 @@ Regra Geral: Se você espera realizar 5 ou mais operações de concatenação ou
 
 
 
+# Datas
+
+Manipular datas e horas é uma das tarefas mais comuns e, surpreendentemente, uma das mais complexas na programação. Um simples carimbo de data pode esconder armadilhas relacionadas a fusos horários, formatação e performance.
+
+Este guia vai além do básico do `DateTime` e apresenta as ferramentas e práticas recomendadas para manipular datas e horas em C# de forma profissional e robusta.
+
+## A Família de Tipos de Data e Hora
+
+O .NET oferece uma família de tipos para trabalhar com datas e horas. É crucial escolher a ferramenta certa para cada trabalho.
+
+| Tipo |Descrição |Quando Usar |
+--------------------------------
+| `DateTime` |Representa um ponto no tempo, geralmente expresso como uma data e hora do dia. |Usado para necessidades simples, mas pode ser ambíguo em relação ao fuso horário. |
+| `DateTimeOffset` |Representa um ponto no tempo, incluindo um deslocamento (offset) do Tempo Universal Coordenado (UTC). |Recomendado para a maioria dos casos, especialmente em APIs e bancos de dados, pois não é ambíguo. |
+| `TimeSpan` |Representa uma duração ou intervalo de tempo. |Para medir o tempo entre dois pontos ou representar uma quantidade de tempo (ex: 24 horas). |
+| `DateOnly` |(.NET 6+) Representa apenas a parte da data, sem a hora. |Quando você só precisa do dia, mês e ano (ex: data de nascimento). |
+| `TimeOnly` |(.NET 6+) Representa apenas a hora do dia, sem a data. |Quando você só precisa da hora (ex: horário de funcionamento de uma loja). |
+| `TimeZoneInfo` |Representa um fuso horário. |Para converter datas e horas entre diferentes fusos horários. |
+
+## 
+
+O `DateTime` e sua Armadilha: `DateTime.Kind`
+
+O `DateTime` parece simples, mas ele carrega uma propriedade traiçoeira chamada `Kind`. Ela define como o valor da data deve ser interpretado em relação ao fuso horário e pode ser de três tipos:
+
+* `DateTimeKind.Utc`: A data e hora são expressas em Tempo Universal Coordenado. É um padrão global, o mesmo em todo o mundo.
+
+* `DateTimeKind.Local`: A data e hora estão no fuso horário local da máquina onde o código está rodando. Isso pode variar de servidor para servidor.
+
+* `DateTimeKind.Unspecified`: O fuso horário não foi especificado. Este é o padrão para datas criadas manualmente e a principal fonte de bugs.
+
+### 
+
+Exemplo de Bug com `DateTimeKind.Unspecified`
+
+Imagine que um usuário no Brasil (UTC-3) agenda uma tarefa para as `14:00`. Você salva isso no banco de dados como `new DateTime(2025, 10, 20, 14, 0, 0)`. O `Kind` será `Unspecified`.
+
+Um serviço rodando em um servidor na Europa (UTC+1) lê essa data. Ao tentar converter para a hora local, o .NET pode assumir que `14:00` era a hora local do servidor, e não do usuário. A tarefa que deveria rodar às `14:00` no Brasil acaba rodando em um horário completamente diferente.
+
+```
+// Kind is DateTimeKind.Unspecified
+var unspecifiedTime = new DateTime(2025, 1, 1, 14, 0, 0); 
+
+// This conversion is unreliable because the source Kind is Unspecified.
+// The .NET runtime will assume it's a Local time according to the server's timezone.
+var convertedTime = unspecifiedTime.ToUniversalTime();
+
+Console.WriteLine($"Original: {unspecifiedTime} (Kind: {unspecifiedTime.Kind})");
+Console.WriteLine($"Converted to UTC: {convertedTime}"); // The result depends on the server's timezone!
+```
+
+## 
+
+A Solução Profissional: `DateTimeOffset`
+
+Para evitar a ambiguidade do `DateTime.Kind`, use `DateTimeOffset`. Ele armazena a mesma informação que o `DateTime`, mas também inclui o offset, que é a diferença de tempo em relação ao UTC. Isso torna o momento no tempo absoluto e inequívoco.
+
+Um offset de `-03:00` significa "três horas a menos que o UTC".
+
+```
+// This object represents an absolute moment in time.
+// The offset (-03:00) makes it unambiguous.
+var specificMoment = new DateTimeOffset(2025, 8, 16, 15, 0, 0, TimeSpan.FromHours(-3));
+Console.WriteLine(specificMoment);
+
+// You can easily convert it to another timezone's offset, for example, India (UTC+5:30)
+var indiaTime = specificMoment.ToOffset(TimeSpan.FromMinutes(330));
+Console.WriteLine($"Same moment in India: {indiaTime}");
+
+// And you can always get the pure UTC value
+Console.WriteLine($"UTC value: {specificMoment.ToUniversalTime()}");
+```
+
+Com `DateTimeOffset`, o momento `16/08/2025 15:00:00 -03:00` é sempre o mesmo, não importa se o servidor que processa essa informação está no Brasil, no Japão ou na Lua.
+
+## 
+
+Os Especialistas: `DateOnly` e `TimeOnly`
+
+Introduzidos no .NET 6, esses tipos resolvem um problema antigo: a necessidade de carregar uma data e hora completas quando você só precisa de uma parte. Eles são mais eficientes (usam menos memória) e deixam a intenção do seu código mais clara.
+
+### 
+
+`DateOnly`
+
+Use para representar uma data de calendário. Mapeia perfeitamente para o tipo `date` em SQL.
+
+```
+// Represents a birth date, time is irrelevant.
+var birthDate = new DateOnly(1990, 10, 20);
+Console.WriteLine($"Birth date: {birthDate.ToLongDateString()}");
+```
+
+### 
+
+`TimeOnly`
+
+Use para representar uma hora do dia. Mapeia para o tipo `time` em SQL.
+
+```
+// Represents the opening time of a store
+var openingTime = new TimeOnly(9, 0, 0);
+Console.WriteLine($"Store opens at: {openingTime.ToLongTimeString()}");
+```
+
+## 
+
+Convertendo Texto em Datas (`Parse`)
+
+Receber datas como strings é muito comum. Para convertê-las em objetos, use os métodos `Parse` ou `TryParse`. A melhor prática é ser o mais explícito possível sobre o formato esperado.
+
+### 
+
+A Forma Mais Segura: `TryParseExact`
+
+Para evitar exceções (`try-catch`), que podem impactar a performance, e garantir que apenas um formato específico seja aceito, use `TryParseExact`. Ele retorna `true` se a conversão for bem-sucedida e `false` caso contrário.
+
+```
+using System.Globalization;
+
+var dateString = "2025-08-16";
+var format = "yyyy-MM-dd";
+
+// We use CultureInfo.InvariantCulture for machine-to-machine communication
+// to ensure the format is consistent regardless of system culture.
+// DateTimeStyles.None ensures no extra assumptions are made.
+if (DateTime.TryParseExact(dateString, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedDate))
+{
+    Console.WriteLine($"Successfully parsed: {parsedDate:D}");
+}
+else
+{
+    Console.WriteLine("Could not parse the date string.");
+}
+```
+
+## Boas Práticas para Manipulação de Datas
+
+1. Prefira `DateTimeOffset` a `DateTime`. Use-o como padrão para APIs, bancos de dados e logs. Ele elimina a ambiguidade de fuso horário e torna seu sistema mais robusto.
+
+2. Use `DateTime.UtcNow` para Timestamps. Ao registrar quando um evento ocorreu (ex: data de criação de um registro), use sempre `DateTime.UtcNow` (ou `DateTimeOffset.UtcNow`). O tempo do servidor local é irrelevante e pode mudar com o horário de verão ou com a localização do servidor.
+
+3. Use `DateOnly` e `TimeOnly` quando a informação de hora ou data for irrelevante. Isso torna seu modelo de dados mais claro, eficiente e evita bugs relacionados a partes da data que deveriam ser ignoradas.
+
+4. Seja Explícito ao Fazer `Parse` de Strings. Sempre use `TryParseExact`. Para datas de máquina para máquina (ex: JSON, XML), use `CultureInfo.InvariantCulture` e um formato bem definido (como o padrão ISO 8601: `yyyy-MM-ddTHH:mm:ssZ`). Para datas inseridas por usuários, use a cultura específica deles (`new CultureInfo("pt-BR")`).
+
+5. Armazene Datas em UTC e Converta na Apresentação. A regra de ouro: seu back-end e seu banco de dados devem viver em UTC. A conversão para o fuso horário do usuário deve ser a última etapa, realizada pela interface do usuário (UI).
+
+```MERMAID
+graph TD
+    subgraph Servidor/Banco de Dados (Sempre em UTC)
+        A[DateTimeOffset.UtcNow] --> B{Armazenar em UTC};
+    end
+
+    subgraph Cliente/UI (Fuso do Usuário)
+        C[Ler data do BD] --> D{Converter para Fuso Local};
+        D --> E[Exibir para o Usuário];
+    end
+
+    B --> C;
+```
+
+## Veja Também (Referências Oficiais)
+
+* [Estrutura DateTime](https://learn.microsoft.com/dotnet/api/system.datetime)
+
+* [Estrutura DateTimeOffset](https://learn.microsoft.com/dotnet/api/system.datetimeoffset)
+
+* [Estruturas DateOnly e TimeOnly](https://learn.microsoft.com/dotnet/standard/datetime/dateonly-timeonly)
+
+* [Escolhendo entre DateTime e DateTimeOffset](https://learn.microsoft.com/dotnet/standard/datetime/choosing-between-datetime-datetimeoffset-and-timezoneinfo)
+
+* [Strings de Formato de Data e Hora Padrão](https://learn.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)
+
+* [Analisando Strings de Data e Hora em .NET](https://learn.microsoft.com/dotnet/standard/base-types/parsing-datetime)
+
+
+
+# Valores Monetários
+
+Imagine que você está construindo uma casa de blocos de montar. Para que a casa fique firme, cada bloco precisa se encaixar perfeitamente no outro, sem sobras ou vãos. Se os blocos não tiverem o tamanho exato, a estrutura toda fica bamba e pode desabar.
+
+Na programação, trabalhar com dinheiro é muito parecido. Precisamos de uma representação numérica que seja perfeitamente exata, como os blocos de montar. Usar um tipo de dado impreciso para dinheiro é como usar blocos de tamanhos errados: no final, a conta não fecha.
+
+## 
+
+O Desafio dos Tipos de Ponto Flutuante (`float` e `double`)
+
+Muitos tipos numéricos, como `float` e `double`, são baseados em representações binárias de "ponto flutuante". Eles são ótimos para cálculos científicos e gráficos, onde uma aproximação minúscula é aceitável.
+
+O problema é que, em binário, é impossível representar com exatidão algumas frações decimais simples, como `0.1` ou `0.2`. Isso leva a pequenos erros de arredondamento que, em cálculos financeiros, se acumulam e causam grandes problemas.
+
+Pense nisso como tentar pagar `R$ 0,30` com moedas que só existem em frações de `1/2`, `1/4`, `1/8`. Você nunca conseguirá o valor exato.
+
+## 
+
+A Solução: O Tipo `decimal`
+
+Para resolver isso, o C# nos oferece o tipo `decimal`. Ele foi projetado especificamente para cálculos financeiros e monetários.
+
+Diferente do `float` e `double`, o `decimal` armazena os números como uma grande quantidade de dígitos (até 29) e a posição da vírgula decimal. Isso garante que valores como `10.99` ou `0.25` sejam armazenados com exatidão total, sem erros de arredondamento.
+
+```MERMAID
+graph TD
+    A{Preciso de um número com fração} --> B{É para finanças, dinheiro ou contabilidade?};
+    B -->|Sim| C[Use `decimal`];
+    B -->|Não| D{É para ciência, gráficos 3D ou física?};
+    D -->|Sim| E[Use `double` ou `float`];
+    D -->|Não| F[Reavalie o requisito. `decimal` ainda é a aposta mais segura.];
+
+    style C fill:#d4edda,stroke:#c3e6cb
+    style E fill:#f8d7da,stroke:#f5c6cb
+```
+
+Termo Técnico:
+
+* Ponto Flutuante Binário (`float`, `double`): Uma forma de representar números com frações usando potências de 2. É rápido, mas pode ser impreciso para valores decimais.
+
+* Ponto Flutuante Decimal (`decimal`): Uma forma de representar números com frações usando potências de 10. É ideal para finanças, pois representa valores decimais com exatidão.
+
+Sempre que for trabalhar com dinheiro, use `decimal`.
+
+## Realizando Cálculos e Conversões
+
+Trabalhar com `decimal` é direto. Você pode realizar todas as operações aritméticas padrão.
+
+### Operações Aritméticas
+
+```CSHARP
+// The 'm' suffix indicates a decimal literal
+decimal productPrice = 19.95m;
+decimal shippingCost = 5.50m;
+decimal discount = 0.10m; // 10% discount
+
+// Addition
+decimal subTotal = productPrice + shippingCost;
+
+// Multiplication and Subtraction
+decimal discountValue = subTotal * discount;
+decimal finalTotal = subTotal - discountValue;
+
+Console.WriteLine($"Subtotal: {subTotal:C}");
+Console.WriteLine($"Discount: {discountValue:C}");
+Console.WriteLine($"Final Total: {finalTotal:C}");
+```
+
+### 
+
+Convertendo Texto em `decimal`
+
+Frequentemente, você receberá valores monetários como texto (por exemplo, de um campo de formulário). É crucial converter esse texto de forma segura, para evitar erros caso o usuário digite um valor inválido. Use `decimal.TryParse()` para isso.
+
+```CSHARP
+using System.Globalization;
+
+string userInput = "25,50"; // Input might use a comma
+decimal parsedValue;
+
+// TryParse will attempt to convert the string to a decimal.
+// It returns true if successful and false if it fails.
+// We provide a culture to correctly handle the comma as a decimal separator.
+bool isSuccess = decimal.TryParse(userInput, NumberStyles.Currency, new CultureInfo("pt-BR"), out parsedValue);
+
+if (isSuccess)
+{
+    Console.WriteLine($"Successfully parsed. The value is {parsedValue * 2}");
+}
+else
+{
+    Console.WriteLine("Invalid input. Please enter a valid number.");
+}
+```
+
+## Formatando Moeda para Exibição
+
+Depois que os cálculos estiverem corretos, você precisará mostrar o valor para o usuário de uma forma legível. Para isso, usamos o método `ToString("C")` e a classe `CultureInfo`.
+
+Termo Técnico:
+
+* `CultureInfo`: Um objeto que contém informações sobre uma cultura específica, como o idioma, o formato de data e hora, e o símbolo da moeda.
+
+```CSHARP
+using System.Globalization;
+
+decimal value = 1234.56m;
+
+// Format for Brazil (Real)
+var cultureBrazil = new CultureInfo("pt-BR");
+Console.WriteLine(value.ToString("C", cultureBrazil)); // Outputs: R$ 1.234,56
+
+// Format for United States (Dollar)
+var cultureUSA = new CultureInfo("en-US");
+Console.WriteLine(value.ToString("C", cultureUSA)); // Outputs: $1,234.56
+
+// Format for Portugal (Euro)
+var culturePortugal = new CultureInfo("pt-PT");
+Console.WriteLine(value.ToString("C", culturePortugal)); // Outputs: 1 234,56 €
+```
+
+## Recomendações e Boas Práticas
+
+1. Sempre use `decimal`: Para qualquer variável que armazene ou calcule valores monetários.
+
+2. Armazene Corretamente no Banco de Dados: Use tipos de dados equivalentes no seu banco de dados, como `DECIMAL` ou `NUMERIC`. Nunca use `FLOAT` ou `REAL`.
+
+3. Evite Conversões Desnecessárias: Mantenha os valores como `decimal` durante todo o ciclo de vida do cálculo.
+
+4. Internacionalização: Se sua aplicação lida com múltiplas moedas, armazene o código da moeda (ex: "BRL", "USD") junto com o valor.
+
+5. Cuidado com o Arredondamento: Este é um tópico crucial.
+
+### 
+
+Detalhando o Arredondamento com `Math.Round()`
+
+Cálculos podem gerar mais casas decimais do que o necessário. Use `Math.Round()` para arredondar os valores para o número correto de casas decimais (geralmente 2).
+
+O .NET usa por padrão uma estratégia chamada "Arredondar para o par mais próximo" (`MidpointRounding.ToEven`). Isso significa que, se um número está exatamente no meio (como 2.5), ele será arredondado para o número par mais próximo (2). Isso é estatisticamente mais justo em grandes conjuntos de dados, mas pode não ser o que você espera em um extrato bancário.
+
+Para o arredondamento "comercial" comum, onde `2.5` vira `3`, use `MidpointRounding.AwayFromZero`.
+
+```CSHARP
+decimal value1 = 4.255m;
+decimal value2 = 4.265m;
+
+// Default rounding (ToEven)
+// 4.255 is halfway, rounds to the nearest even number (4.26)
+decimal rounded1_even = Math.Round(value1, 2); 
+// 4.265 is halfway, rounds to the nearest even number (4.26)
+decimal rounded2_even = Math.Round(value2, 2);
+
+Console.WriteLine($"Default Rounding: {value1} -> {rounded1_even}");
+Console.WriteLine($"Default Rounding: {value2} -> {rounded2_even}");
+
+
+// Commercial rounding (AwayFromZero)
+// 4.255 rounds away from zero to 4.26
+decimal rounded1_away = Math.Round(value1, 2, MidpointRounding.AwayFromZero);
+// 4.265 rounds away from zero to 4.27
+decimal rounded2_away = Math.Round(value2, 2, MidpointRounding.AwayFromZero);
+
+Console.WriteLine($"AwayFromZero Rounding: {value1} -> {rounded1_away}");
+Console.WriteLine($"AwayFromZero Rounding: {value2} -> {rounded2_away}");
+```
+
+## Referências
+
+Para aprofundar seus conhecimentos, consulte a documentação oficial da Microsoft:
+
+* [Tipo decimal](https://learn.microsoft.com/pt-br/dotnet/csharp/language-reference/builtin-types/floating-point-numeric-types): Documentação oficial sobre os tipos de ponto flutuante, incluindo `decimal`.
+
+* [Classe Math.Round()](https://learn.microsoft.com/pt-br/dotnet/api/system.math.round): Detalhes sobre os métodos de arredondamento e suas sobrecargas.
+
+* [Enum MidpointRounding](https://learn.microsoft.com/pt-br/dotnet/api/system.midpointrounding): Explicação sobre as diferentes estratégias de arredondamento.
+
+* [Cadeias de caracteres de formato numérico padrão](https://learn.microsoft.com/pt-br/dotnet/standard/base-types/standard-numeric-format-strings): Guia completo sobre as opções de formatação, incluindo a formatação de moeda ("C").
+
+* [Classe CultureInfo](https://learn.microsoft.com/pt-br/dotnet/api/system.globalization.cultureinfo): Informações sobre como usar culturas para formatar dados de maneira localizada.
+
+
+
+# Arrays
+
+Imagine uma fila de sete anões mineradores, prontos para o trabalho. Essa fila organizada é a nossa analogia para um Array.
+
+Um array é uma estrutura de dados fundamental que armazena uma coleção de elementos. Para entender completamente, vamos observar as três regras de ouro da fila dos anões:
+
+1. Todos são do Mesmo Tipo: Na fila, só há anões. Você não pode colocar um elfo ou um dragão no meio. Em C#, isso significa que um array declarado para `int` só pode conter números inteiros. Um array de `string` só pode conter textos. Essa homogeneidade é uma regra estrita.
+
+2. A Fila Tem Tamanho Fixo: Se a fila foi formada com 7 anões, ela tem 7 posições. Você não pode simplesmente adicionar um oitavo anão ou remover um do meio e esperar que a fila encolha. O tamanho de um array é definido em sua criação e não pode ser alterado. Para isso, usamos outras estruturas como `List<T>`.
+
+3. Posições Começam do Zero (Índice Baseado em Zero): Esta é a regra mais importante! Para chamar um anão, você usa sua posição na fila, que sempre começa em 0. O primeiro anão está na posição `0`, o segundo na posição `1`, e o último anão (o sétimo) está na posição `6`. O endereço do último elemento é sempre `tamanho - 1`.
+
+## Por Dentro da Memória: Por que Arrays são Rápidos?
+
+Quando você cria um array, o computador aloca um bloco contínuo de memória para ele. Pense nisso como reservar um trecho de uma prateleira, onde cada espaço tem exatamente o mesmo tamanho e todos estão um ao lado do outro.
+
+Como todos os elementos são do mesmo tipo (e, portanto, têm o mesmo tamanho em bytes) e estão em sequência, o computador pode calcular a localização exata de qualquer elemento instantaneamente. Ele pega o endereço de memória do início do array e soma `(índice * tamanho_do_elemento)`. É por isso que acessar `meuArray[500]` é tão rápido quanto acessar `meuArray[0]`.
+
+## Declarando e Inicializando Arrays
+
+Existem algumas maneiras de formar a "fila de anões".
+
+### 1. Declarar e Definir o Tamanho (Valores Padrão)
+
+Você pode primeiro declarar que terá uma fila de anões e definir seu tamanho. Cada anão na fila começará com um valor padrão, pois o espaço na memória é alocado e "zerado".
+
+```
+// Declare an array of integers that will have 5 positions.
+// Each position is initialized with the default value for its type.
+int[] numbers = new int[5]; // Creates [0, 0, 0, 0, 0]
+```
+
+Valores Padrão Comuns:
+
+* Tipos numéricos (`int`, `double`, `decimal`): `0`
+
+* `bool`: `false`
+
+* `char`: `'\0'` (caractere nulo)
+
+* Tipos de referência (`string`, objetos): `null`
+
+### 2. Declarar e Inicializar com Valores
+
+Você pode formar a fila e já definir quem estará em cada posição, tudo de uma vez.
+
+```
+// Declare an array and provide the initial values immediately.
+// The size of the array is automatically determined by the number of elements.
+string[] dwarves = new string[] { "Dopey", "Grumpy", "Doc", "Happy" };
+
+// A syntax shorter is also common
+int[] scores = { 95, 80, 100, 75 };
+```
+
+## Acessando e Modificando Elementos
+
+Para falar com um anão ou trocar sua ferramenta, usamos sua posição (índice) entre colchetes `[]`.
+
+```
+string[] dwarves = { "Dopey", "Grumpy", "Doc", "Happy" };
+
+// Accessing the dwarf at index 0 (the first one)
+string firstDwarf = dwarves[0]; // firstDwarf will be "Dopey"
+
+// Modifying the dwarf at index 1 (the second one)
+dwarves[1] = "Sneezy"; // The array is now { "Dopey", "Sneezy", "Doc", "Happy" }
+```
+
+Tip:
+
+Alerta de Perigo: `IndexOutOfRangeException`
+Se você tentar chamar um anão em uma posição que não existe (por exemplo, `dwarves[4]` em nossa fila de 4 anões), o programa irá parar e gritar um erro em tempo de execução: `IndexOutOfRangeException`. É o erro mais comum ao trabalhar com arrays.
+
+## Percorrendo um Array (Iteração)
+
+Para dar uma ordem a todos os anões na fila, usamos laços de repetição.
+
+### 
+
+O Laço `for` (Controle Total)
+
+O laço `for` é o capataz que anda pela fila, sabendo a posição de cada anão. Ele lhe dá acesso ao índice, o que é útil se você precisar saber a posição do elemento.
+
+```
+// We use the Length property to know the size of the line.
+for (int i = 0; i < dwarves.Length; i++)
+{
+    // We use the index 'i' to access each dwarf.
+    Console.WriteLine($"The dwarf at position {i} is {dwarves[i]}");
+}
+```
+
+### 
+
+O Laço `foreach` (Simples e Seguro)
+
+O `foreach` é mais como um anúncio geral. Ele passa por cada anão da fila, um de cada vez, sem que você precise se preocupar com a posição. É mais simples e evita o risco de um `IndexOutOfRangeException`.
+
+```
+// The loop iterates through each element in the array automatically.
+foreach (string dwarf in dwarves)
+{
+    Console.WriteLine($"{dwarf} is going to the mine!");
+}
+```
+
+## Indo Além: Arrays Multidimensionais
+
+E se os anões se organizassem não em uma fila, mas em um pátio, formando um retângulo? Para isso, temos os arrays multidimensionais. O mais comum é o 2D, que se parece com um tabuleiro de xadrez ou uma planilha.
+
+```
+// A 2D array, like a 2x3 grid.
+int[,] gameBoard = new int[2, 3]; // 2 rows, 3 columns
+
+// You can initialize it directly too
+int[,] matrix = 
+{
+    { 1, 2, 3 },
+    { 4, 5, 6 }
+};
+
+// To access an element, you need two indices: [row, column]
+int element = matrix[1, 2]; // Accesses the element at row 1, column 2, which is 6.
+```
+
+## Referências
+
+Para se aprofundar, a documentação oficial da Microsoft é o melhor recurso:
+
+* [Guia de Programação de Arrays (C#)](https://learn.microsoft.com/pt-br/dotnet/csharp/programming-guide/arrays/): O ponto de partida para tudo sobre arrays.
+
+* [Arrays Multidimensionais](https://learn.microsoft.com/pt-br/dotnet/csharp/programming-guide/arrays/multidimensional-arrays): Guia específico para arrays com mais de uma dimensão.
+
+* [Classe System.Array](https://learn.microsoft.com/pt-br/dotnet/api/system.array): Documentação da classe base para todos os arrays, mostrando métodos úteis que você pode usar (como `Sort`, `Reverse`, etc.).
+
+
+
+# Propriedades e Métodos Essenciais de Arrays
+
+Imagine que um array é como um trem de carga. Cada vagão do trem pode carregar um contêiner (um elemento do array), e todos os vagões são numerados, começando do zero. As operações que podemos fazer nesse trem nos ajudam a gerenciá-lo de forma eficiente.
+
+Vamos explorar algumas das propriedades e métodos mais comuns que você usará ao trabalhar com arrays, usando nossa analogia do trem.
+
+## 
+
+`Length` (Propriedade)
+
+O `Length` não é um método, mas sim uma propriedade. Pense nele como o relatório do chefe da estação que diz exatamente quantos vagões o seu trem possui. Ele não faz nada, apenas informa um fato sobre o array: seu tamanho total.
+
+```
+// Our array is a "train" with 5 "wagons"
+int[] numbers = new int[5];
+
+// The Length property tells us the total capacity of our train.
+Console.WriteLine($"The train has {numbers.Length} wagons."); // Outputs: The train has 5 wagons.
+```
+
+## 
+
+`Clone()` (Método)
+
+O método `Clone()` constrói um trem novo, idêntico ao original. Ele cria um novo array com exatamente o mesmo tamanho e com os mesmos elementos do array original.
+
+No entanto, há um detalhe extremamente importante: `Clone()` cria uma cópia superficial (shallow copy). Para uma explicação detalhada, veja o exemplo no final da seção.
+
+```
+// An array of value types (integers)
+int[] originalTrain = { 10, 20, 30 };
+
+// Clone the train
+int[] clonedTrain = (int[])originalTrain.Clone();
+
+// Change a wagon in the cloned train
+clonedTrain[0] = 100;
+
+// The original train remains unchanged because int is a value type
+Console.WriteLine($"Original train first wagon: {originalTrain[0]}"); // Outputs: 10
+```
+
+## 
+
+`CopyTo()` (Método)
+
+O método `CopyTo()` é como mover a carga de alguns vagões do seu trem para outro trem que já está na estação. Ele não cria um novo array, mas copia elementos do array de origem para um array de destino que já existe.
+
+```
+// The source train with 3 wagons
+int[] sourceTrain = { 1, 2, 3 };
+
+// The destination train, bigger and initially empty
+int[] destinationTrain = new int[5]; // { 0, 0, 0, 0, 0 }
+
+// Copy all wagons from the source train to the destination train,
+// starting at the second position (index 1) of the destination.
+sourceTrain.CopyTo(destinationTrain, 1);
+
+// Final state of destinationTrain: { 0, 1, 2, 3, 0 }
+Console.WriteLine(string.Join(", ", destinationTrain));
+```
+
+## 
+
+`IndexOf()` (Método Estático)
+
+Precisa saber em qual vagão está uma carga específica? `Array.IndexOf()` faz isso. Ele percorre o trem e te diz o número do primeiro vagão (o índice) onde a carga foi encontrada. Se a carga não existir no trem, ele retorna `-1`.
+
+```
+string[] cargoTrain = { "Apples", "Oranges", "Bananas", "Oranges" };
+
+// Find the wagon number for "Bananas"
+int bananaWagon = Array.IndexOf(cargoTrain, "Bananas"); // Returns 2
+
+// "Oranges" appears twice, but IndexOf returns the first one it finds.
+int orangeWagon = Array.IndexOf(cargoTrain, "Oranges"); // Returns 1
+
+// "Grapes" are not in the train
+int grapeWagon = Array.IndexOf(cargoTrain, "Grapes"); // Returns -1
+
+Console.WriteLine($"Bananas are in wagon: {bananaWagon}");
+```
+
+## 
+
+`Sort()` (Método Estático)
+
+Este método organiza os vagões do seu trem. Se a carga for numérica, ele os ordena do menor para o maior. Se for texto, em ordem alfabética. É importante saber que `Array.Sort()` modifica o array original.
+
+```
+int[] messyTrain = { 5, 1, 4, 2, 3 };
+
+// Sort the train
+Array.Sort(messyTrain);
+
+// The messyTrain is now ordered: { 1, 2, 3, 4, 5 }
+Console.WriteLine(string.Join(", ", messyTrain));
+```
+
+## 
+
+`Reverse()` (Método Estático)
+
+`Array.Reverse()` inverte a ordem de todos os vagões do trem. O último vira o primeiro, o penúltimo vira o segundo, e assim por diante. Assim como o `Sort`, ele modifica o array original.
+
+```
+string[] train = { "First", "Middle", "Last" };
+
+// Reverse the train
+Array.Reverse(train);
+
+// The train is now in reversed order: { "Last", "Middle", "First" }
+Console.WriteLine(string.Join(", ", train));
+```
+
+## 
+
+`Clear()` (Método Estático)
+
+Este método não remove os vagões, mas esvazia seu conteúdo, restaurando-os para o valor padrão (`0` para números, `null` para objetos, `false` para booleanos). Você especifica em qual vagão começar a limpeza e quantos vagões limpar.
+
+```
+int[] trainToClean = { 1, 2, 3, 4, 5 };
+
+// Clean 2 wagons, starting from the second wagon (index 1)
+Array.Clear(trainToClean, 1, 2);
+
+// The train's cargo is now: { 1, 0, 0, 4, 5 }
+Console.WriteLine(string.Join(", ", trainToClean));
+```
+
+## 
+
+`Resize()` (Método Estático)
+
+E se você precisar de um trem mais longo ou mais curto? Arrays em C# têm um tamanho fixo, mas `Array.Resize()` nos ajuda a contornar isso.
+
+Atenção: ele não "estica" o array original. Ele cria um novo array com o tamanho desejado, copia os elementos do array antigo para o novo e, em seguida, faz sua variável de array apontar para este novo array.
+
+```
+int[] trainToResize = { 1, 2, 3 };
+
+// Resize the train to have 5 wagons
+// The 'ref' keyword is necessary here
+Array.Resize(ref trainToResize, 5);
+
+// The train now has 5 wagons. The new ones have the default value (0).
+// Content: { 1, 2, 3, 0, 0 }
+Console.WriteLine($"New train length: {trainToResize.Length}");
+Console.WriteLine(string.Join(", ", trainToResize));
+```
+
+## Referências
+
+Para aprofundar seus conhecimentos, consulte a documentação oficial da Microsoft, que é a fonte mais confiável de informação.
+
+* [Classe System.Array](https://learn.microsoft.com/pt-br/dotnet/api/system.array): A página principal da classe Array, com uma lista de todas as suas propriedades e métodos.
+
+* [Guia de Programação de Arrays (C#)](https://learn.microsoft.com/pt-br/dotnet/csharp/programming-guide/arrays/): Um guia completo sobre como declarar, inicializar e usar arrays em C#.
+
+
+
+# Manipulando Valores em Arrays
+
+Nossa fila de anões (nosso array) não é estática. Uma vez formada, muitas vezes precisamos alterar seus elementos. Podemos precisar trocar a ferramenta de um anão, atualizar o status de todos ou mudar o nome de um deles. Esse processo de alterar os dados dentro de um array é uma das operações mais fundamentais na programação.
+
+Vamos ver as principais maneiras de manipular os valores em um array.
+
+## 1. Alteração Direta por Índice
+
+A forma mais simples e rápida de alterar um valor é quando você sabe exatamente a posição (o índice) do elemento que deseja modificar. É como chamar o anão pelo número de sua posição na fila e lhe dar uma nova ferramenta diretamente.
+
+```
+// Our line of dwarves
+string[] dwarves = { "Dopey", "Grumpy", "Doc", "Happy" };
+
+// We know that Grumpy is at index 1. Let's change his name.
+Console.WriteLine($"Before change: {dwarves[1]}");
+
+dwarves[1] = "Cheerful"; // Direct assignment to the element at index 1
+
+Console.WriteLine($"After change: {dwarves[1]}");
+
+// The array is now: { "Dopey", "Cheerful", "Doc", "Happy" }
+```
+
+## 2. Encontrar e Alterar um Valor
+
+Mais comumente, você não saberá a posição exata do elemento, mas saberá seu valor atual. O padrão, nesse caso, é:
+
+1. Percorrer o array para encontrar o elemento.
+
+2. Verificar se o elemento atual é o que você procura.
+
+3. Se for, usar seu índice para alterá-lo.
+
+Para isso, o laço `for` é a ferramenta ideal, pois ele nos dá o índice (`i`) de que precisamos para a modificação.
+
+```
+int[] scores = { 50, 88, 42, 95, 70 };
+
+// Task: Find the score 42 and replace it with 60.
+for (int i = 0; i < scores.Length; i++)
+{
+    // Check if the current element is the one we're looking for
+    if (scores[i] == 42)
+    {
+        // Use the index 'i' to modify the value
+        scores[i] = 60;
+        Console.WriteLine("Found and updated the score.");
+        break; // Exit the loop since we found what we were looking for
+    }
+}
+
+// The array is now: { 50, 88, 60, 95, 70 }
+```
+
+## 3. Alterando Múltiplos Valores com um Laço
+
+E se precisarmos aplicar uma mesma mudança a todos os elementos? Por exemplo, dar um bônus de 5 pontos para todos os anões ou converter todos os nomes para letras maiúsculas. Novamente, um laço `for` é a escolha perfeita.
+
+```
+int[] scores = { 50, 88, 42, 95, 70 };
+
+// Task: Give a 5-point bonus to every score.
+for (int i = 0; i < scores.Length; i++)
+{
+    scores[i] = scores[i] + 5; // Or using the shorthand: scores[i] += 5;
+}
+
+// The array is now: { 55, 93, 47, 100, 75 }
+Console.WriteLine(string.Join(", ", scores));
+```
+
+## Cuidado: Tipos de Valor vs. Tipos de Referência
+
+Como vimos nos outros tópicos, é crucial lembrar dessa diferença ao manipular dados.
+
+* Tipos de Valor (`int`, `bool`): A alteração com `for` funciona perfeitamente, pois estamos acessando a posição de memória do array diretamente e colocando um novo valor lá.
+
+* Tipos de Referência (Objetos): Ao acessar um elemento de um array de objetos, estamos obtendo uma referência para o objeto. Podemos usar essa referência para alterar as propriedades do objeto.
+
+```
+public class Dwarf { public string Name { get; set; } public bool IsHappy { get; set; } }
+
+Dwarf[] dwarves = { 
+    new Dwarf { Name = "Grumpy", IsHappy = false },
+    new Dwarf { Name = "Doc", IsHappy = false }
+};
+
+// Task: Make all dwarves happy.
+for (int i = 0; i < dwarves.Length; i++)
+{
+    // dwarves[i] gives us the reference to the Dwarf object.
+    // We use that reference to change a property of that object.
+    dwarves[i].IsHappy = true;
+}
+
+// Now, if we check the first dwarf...
+Console.WriteLine($"Is Grumpy happy? {dwarves[0].IsHappy}"); // Outputs: True
+```
+
+## Conclusão
+
+Manipular valores em arrays se resume a duas técnicas principais:
+
+1. Acesso Direto: Use `array[indice] = novoValor;` quando souber a posição.
+
+2. Iteração com `for`: Use um laço `for` para encontrar elementos ou aplicar uma modificação em massa, pois ele fornece o índice necessário para a alteração.
+
+Dominar essas técnicas é essencial para fazer seus programas realizarem tarefas úteis e dinâmicas.
+
+## Referências
+
+Os conceitos neste tópico são uma aplicação prática do que foi visto nos documentos anteriores. É recomendado revisá-los:
+
+* [Introdução Detalhada aos Arrays](arrays.html)
+
+* [Percorrendo Arrays (Iteração)](iteration.html)
+
+
+
+# Percorrendo Arrays (Iteração)
+
+## O que é Iteração?
+
+Antes de vermos as ferramentas, vamos entender o conceito. Iteração (do latim iterare, que significa "repetir, fazer de novo") é simplesmente o ato de repetir um processo para cada item de uma coleção, um de cada vez e em sequência.
+
+Usando nossa analogia, a iteração é o próprio ato de o capataz andar pela fila, do primeiro ao último anão, para inspecionar a picareta de cada um. O processo de ir de anão em anão é a iteração. As diferentes maneiras como ele pode fazer isso (usando uma prancheta, um alto-falante, etc.) são os diferentes laços de iteração (`for`, `foreach`, etc.) que usamos no código.
+
+Agora, vamos ver as ferramentas que o C# nos dá para realizar a iteração em arrays.
+
+## 
+
+O Laço `for`: O Capataz com a Prancheta
+
+O laço `for` é como um capataz que anda pela fila dos anões com uma prancheta. Ele é metódico e tem controle total sobre o processo.
+
+Ele controla três coisas:
+
+1. Inicialização (`int i = 0`): Ele começa na posição 0, o primeiro anão.
+
+2. Condição (`i < anoes.Length`): Ele continua enquanto sua posição atual for menor que o tamanho total da fila.
+
+3. Incremento (`i++`): Após falar com um anão, ele passa para o próximo.
+
+O capataz sempre sabe a posição exata (`i`) do anão com quem está falando. Isso é extremamente útil.
+
+Vantagens:
+
+* Você tem acesso ao índice do elemento.
+
+* Você pode modificar o array diretamente.
+
+* Você pode controlar a iteração: pular elementos, ir de trás para frente, etc.
+
+```
+string[] dwarves = { "Dopey", "Grumpy", "Doc", "Happy", "Sneezy" };
+
+// The 'for' loop gives us access to the index 'i'
+for (int i = 0; i < dwarves.Length; i++)
+{
+    // We can use the index to get the element and do something with it
+    Console.WriteLine($"The dwarf at position {i} is {dwarves[i]}. Give him a pickaxe!");
+    
+    // We can also modify the array
+    if (dwarves[i] == "Grumpy")
+    {
+        dwarves[i] = "Cheerful"; // Grumpy is now Cheerful
+    }
+}
+```
+
+## 
+
+O Laço `foreach`: O Anúncio Geral
+
+O laço `foreach` é como fazer um anúncio geral pelo alto-falante para todos os anões. Cada anão, um por um, escuta a mensagem e faz o que foi pedido. É mais simples e direto, mas menos pessoal.
+
+Você não sabe a posição exata de cada anão, apenas que todos eles receberão a instrução.
+
+Vantagens:
+
+* Mais simples e legível: Menos código para escrever.
+
+* Mais seguro: É impossível causar um erro de `IndexOutOfRangeException` com um `foreach`.
+
+Limitações:
+
+* Você não tem acesso ao índice do elemento.
+
+* Você não pode modificar o array diretamente (para tipos de valor como `int`, a variável de iteração é uma cópia).
+
+```
+int[] numbers = { 10, 20, 30, 40, 50 };
+
+// The 'foreach' loop handles getting each element automatically
+foreach (int number in numbers)
+{
+    // 'number' holds the value of the current element
+    Console.WriteLine($"The current number is {number}");
+    
+    // Trying to change the value like this will NOT change the array itself,
+    // because 'number' is a copy of the element, not a reference to it.
+    // number = 100; // This line would not affect the 'numbers' array.
+}
+```
+
+## 
+
+O Laço `while`: O Guarda Manual
+
+O laço `while` é como um guarda que controla a fila manualmente. Ele verifica uma condição e, se for verdadeira, deixa um anão passar e depois decide o que fazer a seguir. Ele é o mais flexível, mas também exige mais cuidado.
+
+Você precisa controlar manualmente o avanço na fila. Se esquecer de incrementar o contador, o guarda ficará preso no mesmo anão para sempre (um laço infinito).
+
+É menos comum para percorrer um array inteiro, mas útil se você precisar parar a iteração com base em uma condição que não seja apenas o tamanho do array.
+
+```
+string[] dwarves = { "Dopey", "Grumpy", "Doc", "Happy", "Sneezy" };
+int i = 0; // Manual counter
+
+// The loop will continue as long as we haven't reached the end
+// AND we haven't found the dwarf named "Doc".
+while (i < dwarves.Length && dwarves[i] != "Doc")
+{
+    Console.WriteLine($"{dwarves[i]} is not Doc. Next!");
+    i++; // Manually move to the next position. CRITICAL!
+}
+
+if (i < dwarves.Length)
+{
+    Console.WriteLine($"Found Doc at position {i}!");
+}
+```
+
+## Qual Laço Usar? A Regra de Bolso
+
+* Precisa do índice? Precisa modificar o array? Precisa de controle total (ir para trás, pular)? * Use o laço `for`.
+
+* Só precisa ler os valores de cada elemento, de forma simples e segura? * Use o laço `foreach`. (Esta é a escolha mais comum para leitura).
+
+* A condição para parar é complexa e não depende apenas de percorrer o array inteiro? * Use o laço `while`.
+
+## Referências
+
+* [O laço for (Guia de C#)](https://learn.microsoft.com/pt-br/dotnet/csharp/language-reference/statements/for)
+
+* [O laço foreach (Guia de C#)](https://learn.microsoft.com/pt-br/dotnet/csharp/language-reference/statements/iteration-statements#the-foreach-statement)
+
+* [O laço while (Guia de C#)](https://learn.microsoft.com/pt-br/dotnet/csharp/language-reference/statements/iteration-statements#the-while-statement)
+
+
+
+# O Laço foreach: A Forma Simples de Iterar
+
+Dentro do nosso universo de arrays, que imaginamos como uma fila de anões, o laço `foreach` é a ferramenta mais amigável e direta para se comunicar com eles. Pense nele como um anúncio geral feito por um alto-falante.
+
+O anúncio diz: "Atenção, cada anão, um de cada vez, por favor, pegue uma tocha". Cada anão, em ordem, ouve a instrução e a executa. É simples, eficiente e não há como errar a ordem ou pular um anão.
+
+O `foreach` foi projetado para uma única tarefa: percorrer uma coleção do início ao fim, elemento por elemento, de forma legível e segura.
+
+## Sintaxe e Funcionamento
+
+A estrutura de um `foreach` é quase como uma frase em inglês:
+
+`foreach (Tipo variavel in colecao)`
+
+Vamos quebrar isso:
+
+* `foreach`: A palavra-chave que inicia o laço.
+
+* `Tipo variavel`: Você declara uma variável temporária que, a cada repetição (iteração), irá armazenar o valor do elemento atual. O `Tipo` deve ser compatível com os elementos da coleção.
+
+* `in`: A palavra-chave que conecta a variável à coleção.
+
+* `colecao`: O array (ou outra coleção) que você deseja percorrer.
+
+```
+string[] dwarves = { "Dopey", "Grumpy", "Doc", "Happy" };
+
+// For each string, which we will call 'dwarf', in the 'dwarves' array...
+foreach (string dwarf in dwarves)
+{
+    // The 'dwarf' variable holds the current element for this iteration
+    Console.WriteLine($"{dwarf} is ready for work!");
+}
+
+// Output:
+// Dopey is ready for work!
+// Grumpy is ready for work!
+// Doc is ready for work!
+// Happy is ready for work!
+```
+
+## Vantagens
+
+1. Legibilidade: A sintaxe é muito clara sobre sua intenção. É mais fácil de ler e entender do que um laço `for` para a simples tarefa de percorrer uma coleção.
+
+2. Segurança: É impossível causar um erro de `IndexOutOfRangeException` com `foreach`, pois você não gerencia o índice manualmente. O laço cuida de começar no primeiro elemento e parar no último, sem erros.
+
+3. Simplicidade: Menos "peças móveis". Você não precisa inicializar um contador, verificar uma condição de parada ou incrementar o contador. Menos código significa menos chance de bugs.
+
+## Limitações e Cuidados Essenciais
+
+A simplicidade do `foreach` vem com algumas regras estritas. Ignorá-las é uma fonte comum de erros.
+
+### 1. Você Não Tem Acesso ao Índice
+
+O `foreach` não sabe (e não te informa) a posição do elemento atual. Se você precisa fazer algo como "Na posição 3, faça isso", o `foreach` não é a ferramenta certa. Você precisará de um laço `for`.
+
+### 2. A Coleção Não Pode Ser Modificada
+
+Você não pode adicionar ou remover elementos de uma coleção enquanto um `foreach` está percorrendo-a. Isso é como tentar adicionar um anão no meio da fila enquanto o capataz está fazendo a contagem. Isso quebraria a lógica da iteração e, por isso, o C# lança uma exceção (`InvalidOperationException`).
+
+```
+// This code will COMPILE, but it will CRASH at runtime.
+var names = new List<string> { "Ana", "Beto" }; // Using a List to show modification
+
+foreach (string name in names)
+{
+    if (name == "Ana")
+    {
+        // DON'T DO THIS! This will throw an InvalidOperationException.
+        // names.Remove(name); 
+    }
+}
+```
+
+### 3. A Variável de Iteração é (Praticamente) Somente Leitura
+
+Este é o ponto mais sutil e importante. Você não pode usar o `foreach` para alterar os valores dentro do seu array.
+
+* Para Tipos de Valor (`int`, `bool`, `struct`): A variável de iteração (`dwarf`, no nosso exemplo) é uma cópia do elemento no array. Mudar a cópia não afeta o original. ``` int[] scores = { 10, 20, 30 }; foreach (int score in scores) { // 'score' is a COPY of the element in the array. // This line does NOT change the original array. It only changes the copy. // In fact, this line would cause a compile error because 'score' is read-only. // score = 100; // COMPILE ERROR! } ```
+
+* Para Tipos de Referência (objetos): A situação é um pouco diferente. A variável de iteração ainda é uma cópia, mas é uma cópia da referência (do endereço de memória). Isso significa que: * Você não pode fazer a variável apontar para um objeto totalmente novo. * Você pode usar a referência para acessar o objeto original e modificar suas propriedades. ``` public class Dwarf { public string Name { get; set; } public bool HasPickaxe { get; set; } } Dwarf[] dwarves = { new Dwarf { Name = "Grumpy", HasPickaxe = false } }; foreach (Dwarf dwarf in dwarves) { // We CAN use the reference to modify a property of the object. dwarf.HasPickaxe = true; // This WORKS. The original object in the array is changed. // We CANNOT assign a completely new object to the iteration variable. // dwarf = new Dwarf { Name = "Happy", HasPickaxe = true }; // COMPILE ERROR! } ```
+
+## 
+
+Conclusão: Quando Usar `foreach`?
+
+Use o `foreach` sempre que sua intenção for percorrer todos os elementos de uma coleção para leitura ou para modificar propriedades de objetos de referência. É a sua escolha padrão para iteração simples pela sua legibilidade e segurança.
+
+Se você precisar do índice, ou se precisar alterar os elementos de um array de tipos de valor (`int`, `bool`, etc.), use o laço `for`.
+
+## Referências
+
+* [A declaração foreach (Guia de C#)](https://learn.microsoft.com/pt-br/dotnet/csharp/language-reference/statements/iteration-statements#the-foreach-statement): Documentação oficial da Microsoft com todos os detalhes técnicos.
+
+
+
 # Kata - Calculadora em C#
 
 Bem-vindo ao nosso primeiro kata prático! Neste exercício, vamos construir uma calculadora simples usando C#. O objetivo é aplicar os conceitos fundamentais que aprendemos, como variáveis, tipos de dados, operadores, condicionais e funções, em um projeto real e funcional.
