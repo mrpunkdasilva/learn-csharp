@@ -1,0 +1,307 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#214C69"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-08-27T17:33:22.388400205"><title>M&eacute;todos | Learn C#</title><script type="application/json" id="virtual-toc-data">[{"id":"a-anatomia-de-um-m-todo","level":0,"title":"A Anatomia de um Método","anchor":"#a-anatomia-de-um-m-todo"},{"id":"passando-dados-para-m-todos-uma-an-lise-profunda","level":0,"title":"Passando Dados para Métodos: Uma Análise Profunda","anchor":"#passando-dados-para-m-todos-uma-an-lise-profunda"},{"id":"sobrecarga-de-m-todos-method-overloading","level":0,"title":"Sobrecarga de Métodos (Method Overloading)","anchor":"#sobrecarga-de-m-todos-method-overloading"},{"id":"exemplo-pr-tico-completo","level":0,"title":"Exemplo Prático Completo","anchor":"#exemplo-pr-tico-completo"},{"id":"refer-ncias-oficiais-da-microsoft","level":0,"title":"Referências Oficiais da Microsoft","anchor":"#refer-ncias-oficiais-da-microsoft"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="M&eacute;todos | Learn C#"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Learn C# Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/metodos.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="M&eacute;todos | Learn C#"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/metodos.html#webpage",
+    "url": "writerside-documentation/metodos.html",
+    "name": "M&eacute;todos | Learn C#",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Learn C# Help"
+}</script><!-- End Schema.org --></head><body data-id="Metodos" data-main-title="Métodos" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="OPP.md|O Paradigma da Programação Orientada a Objetos (POO)///Elementos"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Learn C#  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Metodos" id="Metodos.md">Métodos</h1><p id="-2re368_3">Se as Propriedades representam o <span class="emphasis" id="-2re368_11">estado</span> de um objeto (seus dados, suas caracter&iacute;sticas), os <span class="control" id="-2re368_12">M&eacute;todos</span> representam seu <span class="control" id="-2re368_13">comportamento</span>. Eles s&atilde;o os <span class="emphasis" id="-2re368_14">verbos</span> da Programa&ccedil;&atilde;o Orientada a Objetos, os blocos de c&oacute;digo que executam a&ccedil;&otilde;es, manipulam o estado e, em &uacute;ltima an&aacute;lise, fazem o trabalho do seu programa. Um m&eacute;todo encapsula uma s&eacute;rie de instru&ccedil;&otilde;es sob um &uacute;nico nome, permitindo que essa l&oacute;gica seja reutilizada e invocada de forma clara e organizada.</p><aside class="prompt" data-type="tip" data-title="" id="-2re368_4"><p id="-2re368_15"><span class="control" id="-2re368_16">Disserta&ccedil;&atilde;o</span>: Pense em um objeto <code class="code" id="-2re368_17">Email</code>. Seu estado (propriedades) seria o <code class="code" id="-2re368_18">Destinatario</code>, o <code class="code" id="-2re368_19">Assunto</code> e o <code class="code" id="-2re368_20">CorpoDoEmail</code>. Mas o email por si s&oacute; &eacute; inerte. &Eacute; o m&eacute;todo <code class="code" id="-2re368_21">Enviar()</code> que cont&eacute;m a l&oacute;gica complexa de se conectar a um servidor SMTP, autenticar, transmitir os dados e tratar poss&iacute;veis erros. O m&eacute;todo &eacute; onde a l&oacute;gica de neg&oacute;cio reside. Ele age sobre o estado do objeto (<code class="code" id="-2re368_22">Destinatario</code>, <code class="code" id="-2re368_23">Assunto</code>) para realizar uma tarefa significativa. Dominar a cria&ccedil;&atilde;o de m&eacute;todos claros, coesos e bem definidos &eacute; essencial para construir qualquer aplica&ccedil;&atilde;o funcional.</p></aside><section class="chapter"><h2 id="a-anatomia-de-um-m-todo" data-toc="a-anatomia-de-um-m-todo">A Anatomia de um M&eacute;todo</h2><p id="-2re368_24">Para usar m&eacute;todos de forma eficaz, &eacute; crucial entender cada parte de sua declara&ccedil;&atilde;o, conhecida como sua <span class="control" id="-2re368_29">assinatura</span> e corpo.</p><p id="-2re368_25">Vamos dissecar um exemplo do mundo real: um m&eacute;todo para adicionar um item a um carrinho de compras.</p><p id="-2re368_26"><code class="code" id="-2re368_30">public bool AddItem(Product product, int quantity)</code></p><ol class="list _decimal" id="-2re368_27" type="1"><li class="list__item" id="-2re368_31"><p id="-2re368_36"><span class="control" id="-2re368_37">Modificador de Acesso (<code class="code" id="-2re368_41">public</code>)</span>: Define a visibilidade do m&eacute;todo. <code class="code" id="-2re368_38">public</code> significa que ele pode ser chamado de qualquer lugar do seu c&oacute;digo. Outras op&ccedil;&otilde;es comuns s&atilde;o <code class="code" id="-2re368_39">private</code> (s&oacute; pode ser chamado de dentro da mesma classe) e <code class="code" id="-2re368_40">protected</code> (pode ser chamado pela classe e suas derivadas).</p></li><li class="list__item" id="-2re368_32"><p id="-2re368_42"><span class="control" id="-2re368_43">Tipo de Retorno (<code class="code" id="-2re368_49">bool</code>)</span>: Especifica o tipo de dado que o m&eacute;todo ir&aacute; <span class="control" id="-2re368_44">retornar</span> ap&oacute;s sua execu&ccedil;&atilde;o ser conclu&iacute;da. Neste caso, um <code class="code" id="-2re368_45">bool</code> (booleano) poderia indicar se o item foi adicionado com sucesso (<code class="code" id="-2re368_46">true</code>) ou n&atilde;o (<code class="code" id="-2re368_47">false</code>). Se um m&eacute;todo n&atilde;o retorna nenhum valor, usamos a palavra-chave <code class="code" id="-2re368_48">void</code>.</p></li><li class="list__item" id="-2re368_33"><p id="-2re368_50"><span class="control" id="-2re368_51">Nome do M&eacute;todo (<code class="code" id="-2re368_52">AddItem</code>)</span>: Um nome descritivo e, por conven&ccedil;&atilde;o, baseado em um verbo, que indica a a&ccedil;&atilde;o que o m&eacute;todo realiza.</p></li><li class="list__item" id="-2re368_34"><p id="-2re368_53"><span class="control" id="-2re368_54">Lista de Par&acirc;metros (<code class="code" id="-2re368_58">(Product product, int quantity)</code>)</span>: Define os dados de entrada que o m&eacute;todo precisa para executar sua tarefa. Cada par&acirc;metro tem um tipo (ex: <code class="code" id="-2re368_55">Product</code>) e um nome (ex: <code class="code" id="-2re368_56">product</code>). A combina&ccedil;&atilde;o do nome do m&eacute;todo e dessa lista de par&acirc;metros forma a <span class="control" id="-2re368_57">assinatura</span> &uacute;nica do m&eacute;todo.</p></li><li class="list__item" id="-2re368_35"><p id="-2re368_59"><span class="control" id="-2re368_60">Corpo do M&eacute;todo (<code class="code" id="-2re368_61">{...}</code>)</span>: O bloco de c&oacute;digo entre chaves que cont&eacute;m as instru&ccedil;&otilde;es a serem executadas quando o m&eacute;todo &eacute; chamado.</p></li></ol><section class="chapter"><h3 id="diagrama-de-m-todos-plantuml" data-toc="diagrama-de-m-todos-plantuml">Diagrama de M&eacute;todos (PlantUML)</h3><p id="-2re368_62">Este diagrama ilustra uma classe <code class="code" id="-2re368_65">ShoppingCart</code> e destaca a anatomia de seus m&eacute;todos.</p><style>.theme-dark .plantuml > svg {filter: hue-rotate(180deg) invert(0.9);}div.plantuml {overflow-x: auto;}</style><div class="plantuml"><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="306px" preserveAspectRatio="none" style="width:701px;height:306px;background:#FFFFFF;" version="1.1" viewBox="0 0 701 306" width="701px" zoomAndPan="magnify"><defs/><g><!--class ShoppingCart--><g id="elem_ShoppingCart"><rect codeLine="6" fill="#F1F1F1" height="162.4075" id="ShoppingCart" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="330" x="7" y="7.92"/><ellipse cx="121.25" cy="23.92" fill="#C2C2C2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M121.3594,19.4513 Q120.4375,19.4513 119.7031,19.7638 Q118.9844,20.0763 118.4844,20.67 Q117.9844,21.2481 117.7031,22.1231 Q117.4375,22.9981 117.4375,24.0919 Q117.4375,25.5294 117.875,26.5763 Q118.3281,27.6231 119.1719,28.17 Q120.0313,28.7169 121.3438,28.7169 Q122.125,28.7169 122.8125,28.5919 Q123.5156,28.4513 124.5156,28.1388 L124.5156,30.0138 Q123.6563,30.3419 122.8906,30.4669 Q122.1406,30.5919 121.125,30.5919 Q119.2031,30.5919 117.8906,29.795 Q116.5938,28.9825 115.9375,27.5138 Q115.2813,26.0294 115.2813,24.0606 Q115.2813,22.6388 115.6719,21.4669 Q116.0781,20.2794 116.8594,19.4044 Q117.6406,18.5294 118.7813,18.0606 Q119.9219,17.5763 121.3906,17.5763 Q122.3438,17.5763 123.2344,17.7794 Q124.1406,17.9669 125.0781,18.4356 L124.25,20.2169 Q123.4688,19.8419 122.8125,19.6544 Q122.1563,19.4513 121.3594,19.4513 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="93" x="141.75" y="29.352">ShoppingCart</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="336" y1="39.92" y2="39.92"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="158" x="13" y="58.8859">-_items : List&lt;CartItem&gt;</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="336" y1="66.9879" y2="66.9879"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="318" x="13" y="85.9539">+AddItem(product: Product, quantity: int) : bool</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="247" x="13" y="105.0218">+RemoveItem(productId: Guid) : void</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="160" x="13" y="124.0897">+GetSubtotal() : decimal</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="268" x="13" y="143.1576">+ApplyDiscountCode(code: string) : bool</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="91" x="13" y="162.2255">+Clear() : void</text></g><!--class Product--><g id="elem_Product"><rect codeLine="18" fill="#F1F1F1" height="48" id="Product" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="84" x="130" y="251.24"/><ellipse cx="145" cy="267.24" fill="#C2C2C2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M145.1094,262.7713 Q144.1875,262.7713 143.4531,263.0838 Q142.7344,263.3963 142.2344,263.99 Q141.7344,264.5681 141.4531,265.4431 Q141.1875,266.3181 141.1875,267.4119 Q141.1875,268.8494 141.625,269.8963 Q142.0781,270.9431 142.9219,271.49 Q143.7813,272.0369 145.0938,272.0369 Q145.875,272.0369 146.5625,271.9119 Q147.2656,271.7713 148.2656,271.4588 L148.2656,273.3338 Q147.4063,273.6619 146.6406,273.7869 Q145.8906,273.9119 144.875,273.9119 Q142.9531,273.9119 141.6406,273.115 Q140.3438,272.3025 139.6875,270.8338 Q139.0313,269.3494 139.0313,267.3806 Q139.0313,265.9588 139.4219,264.7869 Q139.8281,263.5994 140.6094,262.7244 Q141.3906,261.8494 142.5313,261.3806 Q143.6719,260.8963 145.1406,260.8963 Q146.0938,260.8963 146.9844,261.0994 Q147.8906,261.2869 148.8281,261.7556 L148,263.5369 Q147.2188,263.1619 146.5625,262.9744 Q145.9063,262.7713 145.1094,262.7713 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="52" x="159" y="272.672">Product</text><line style="stroke:#181818;stroke-width:0.5;" x1="131" x2="213" y1="283.24" y2="283.24"/><line style="stroke:#181818;stroke-width:0.5;" x1="131" x2="213" y1="291.24" y2="291.24"/></g><path d="M372,6 L372,24.706 L331,80.5219 L372,32.706 L372,51.412 A0,0 0 0 0 372,51.412 L598,51.412 A0,0 0 0 0 598,51.412 L598,16 L588,6 L372,6 A0,0 0 0 0 372,6 " fill="#FAFAFA" style="stroke:#181818;stroke-width:0.5;"/><path d="M588,6 L588,16 L598,16 L588,6 " fill="#FAFAFA" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="194" x="378" y="24.897">Signature: AddItem(Product, int)</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="205" x="378" y="42.603">Returns: bool (e.g., success/failure)</text><path d="M372,61.412 L372,80.118 L173,118.6577 L372,88.118 L372,106.8241 A0,0 0 0 0 372,106.8241 L608,106.8241 A0,0 0 0 0 608,106.8241 L608,71.412 L598,61.412 L372,61.412 A0,0 0 0 0 372,61.412 " fill="#FAFAFA" style="stroke:#181818;stroke-width:0.5;"/><path d="M598,61.412 L598,71.412 L608,71.412 L598,61.412 " fill="#FAFAFA" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="144" x="378" y="80.309">Signature: GetSubtotal()</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="215" x="378" y="98.0151">Returns: decimal (a calculated value)</text><path d="M372,116.8241 L372,135.5301 L104,156.7935 L372,143.5301 L372,162.2361 A0,0 0 0 0 372,162.2361 L694,162.2361 A0,0 0 0 0 694,162.2361 L694,126.8241 L684,116.8241 L372,116.8241 A0,0 0 0 0 372,116.8241 " fill="#FAFAFA" style="stroke:#181818;stroke-width:0.5;"/><path d="M684,116.8241 L684,126.8241 L694,126.8241 L684,116.8241 " fill="#FAFAFA" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="102" x="378" y="135.7211">Signature: Clear()</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="301" x="378" y="153.4271">Returns: void (performs an action, no return value)</text><!--reverse link ShoppingCart to Product--><g id="link_ShoppingCart_Product"><path codeLine="35" d="M172,182.61 C172,211.83 172,230.64 172,250.99 " fill="none" id="ShoppingCart-backto-Product" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="172,170.61,168,176.61,172,182.61,176,176.61,172,170.61" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="27" x="173" y="217.137">uses</text></g><!--SRC=[ZPBHgjGm48Rl-nHpTtfmz-Xr4M5PuR2W86SVGAR9T3kQPceogHp5TpVfwIwjWjYBjap- -R_CdyIlx4SCE81n6ED1DN2Rb4v6_9b_4BofuaqoY1VJ1na8D2HQhSGUhNndVu4ENQIgcjtWtCiuvkeHWyBF2l9p1mSO0q-e11sJiw02lPHlJn0rrsVT7ZwpqX2XWGySzMsnEEN2ksgn-KZQYurWgMDVoALVsYzaz2v2IprEB64MluA3jQMv7eFOPBI1Joy_E_YMq2lhSmFizJxJMX6tT3tH81Ej6q-sWSV4jWWdORi87qdFgLLHT7LPicHumAlDOHpTytkEHfBNerYgJNurUTYGz_q7y-W8Gttp_tMDSjbmLNd9oGM-z0hIRH9kccNCR7NcYqTD8MEkizz6BeDcoHFbTHzVw53Jm-LX1p4PGp6-xf1Txhwlo5ieo7-3Lm5iuPjarj0b8gWH33gJN3vu2nEwzD_GEQejRabl3IenGZrIw2JawuGUq2YBtsK2X5drDtPpSMM_lyQVZoL5Yhy1]--></g></svg></div></section></section><section class="chapter"><h2 id="passando-dados-para-m-todos-uma-an-lise-profunda" data-toc="passando-dados-para-m-todos-uma-an-lise-profunda">Passando Dados para M&eacute;todos: Uma An&aacute;lise Profunda</h2><p id="-2re368_66">A maneira como os dados fluem para dentro de um m&eacute;todo &eacute; um dos conceitos mais importantes para se dominar em C#. A escolha do modificador de par&acirc;metro correto afeta n&atilde;o apenas o comportamento do m&eacute;todo, mas tamb&eacute;m a performance e a clareza do c&oacute;digo. Vamos dissecar cada tipo com exemplos pr&aacute;ticos.</p><section class="chapter"><h3 id="o-comportamento-padr-o-passagem-por-valor" data-toc="o-comportamento-padr-o-passagem-por-valor">O Comportamento Padr&atilde;o: Passagem por Valor</h3><p id="-2re368_73">Este &eacute; o comportamento padr&atilde;o em C#. Quando voc&ecirc; passa um argumento para um m&eacute;todo, uma <span class="control" id="-2re368_76">c&oacute;pia</span> do valor desse argumento &eacute; criada e passada para o par&acirc;metro do m&eacute;todo. O que isso significa na pr&aacute;tica depende se o tipo &eacute; um <span class="control" id="-2re368_77">Tipo de Valor</span> (<code class="code" id="-2re368_78">struct</code>, <code class="code" id="-2re368_79">int</code>, <code class="code" id="-2re368_80">bool</code>, etc.) ou um <span class="control" id="-2re368_81">Tipo de Refer&ecirc;ncia</span> (<code class="code" id="-2re368_82">class</code>, <code class="code" id="-2re368_83">string</code>, <code class="code" id="-2re368_84">array</code>, etc.).</p><section class="chapter"><h4 id="passando-tipos-de-valor-ex-int-struct" data-toc="passando-tipos-de-valor-ex-int-struct">Passando Tipos de Valor (ex: <code class="code" id="-2re368_89">int</code>, <code class="code" id="-2re368_90">struct</code>)</h4><p id="-2re368_86">Uma c&oacute;pia completa do valor &eacute; feita. Qualquer altera&ccedil;&atilde;o no par&acirc;metro dentro do m&eacute;todo <span class="control" id="-2re368_91">n&atilde;o afeta</span> a vari&aacute;vel original.</p><div class="code-block" data-lang="csharp">
+public void Square(int number)
+{
+    // 'number' is a copy of the original 'myValue'.
+    number = number * number;
+    Console.WriteLine($&quot;Inside method: {number}&quot;);
+}
+
+public void Test()
+{
+    int myValue = 5;
+    Console.WriteLine($&quot;Before method: {myValue}&quot;);
+    Square(myValue);
+    Console.WriteLine($&quot;After method: {myValue}&quot;);
+}
+
+// Output:
+// Before method: 5
+// Inside method: 25
+// After method: 5 
+</div><aside class="prompt" data-type="tip" data-title="" id="-2re368_88"><p id="-2re368_92"><span class="control" id="-2re368_93">An&aacute;lise</span>: Observe que <code class="code" id="-2re368_94">myValue</code> permaneceu <code class="code" id="-2re368_95">5</code> ap&oacute;s a chamada do m&eacute;todo. A vari&aacute;vel <code class="code" id="-2re368_96">number</code> dentro de <code class="code" id="-2re368_97">Square</code> era uma c&oacute;pia completamente independente.</p></aside></section><section class="chapter"><h4 id="passando-tipos-de-refer-ncia-ex-class" data-toc="passando-tipos-de-refer-ncia-ex-class">Passando Tipos de Refer&ecirc;ncia (ex: <code class="code" id="-2re368_104">class</code>)</h4><p id="-2re368_99">Aqui a situa&ccedil;&atilde;o &eacute; mais sutil e uma fonte comum de confus&atilde;o. O que &eacute; passado por valor (copiado) &eacute; a <span class="control" id="-2re368_105">refer&ecirc;ncia</span> ao objeto, n&atilde;o o objeto em si. Ambas as vari&aacute;veis (a original e o par&acirc;metro) apontam para o <span class="control" id="-2re368_106">mesmo objeto na mem&oacute;ria</span>.</p><p id="-2re368_100">Isso significa que:</p><ol class="list _decimal" id="-2re368_101" type="1"><li class="list__item" id="-2re368_107"><p id="-2re368_109">Se voc&ecirc; <span class="control" id="-2re368_110">alterar uma propriedade do objeto</span> dentro do m&eacute;todo, a altera&ccedil;&atilde;o <span class="control" id="-2re368_111">ser&aacute; vis&iacute;vel</span> fora, pois o objeto &eacute; o mesmo.</p></li><li class="list__item" id="-2re368_108"><p id="-2re368_112">Se voc&ecirc; <span class="control" id="-2re368_113">atribuir um novo objeto</span> ao par&acirc;metro (<code class="code" id="-2re368_114">param = new MyClass()</code>), isso <span class="control" id="-2re368_115">n&atilde;o afetar&aacute;</span> a vari&aacute;vel original. Voc&ecirc; est&aacute; apenas fazendo o par&acirc;metro (a c&oacute;pia da refer&ecirc;ncia) apontar para um novo lugar.</p></li></ol><div class="code-block" data-lang="csharp">
+public class Score
+{
+    public int Value { get; set; }
+}
+
+public void ModifyScore(Score score)
+{
+    // 1. This change WILL be visible outside, because we are modifying
+    // the object that the reference points to.
+    score.Value = 100;
+
+    // 2. This change WILL NOT be visible outside. We are changing the
+    // parameter (the copied reference) to point to a new object.
+    // The original variable still points to the old object.
+    score = new Score { Value = 999 };
+    Console.WriteLine($&quot;Inside method, after new: {score.Value}&quot;);
+}
+
+public void Test()
+{
+    var myScore = new Score { Value = 10 };
+    Console.WriteLine($&quot;Before method: {myScore.Value}&quot;);
+    ModifyScore(myScore);
+    Console.WriteLine($&quot;After method: {myScore.Value}&quot;);
+}
+
+// Output:
+// Before method: 10
+// Inside method, after new: 999
+// After method: 100
+</div><aside class="prompt" data-type="tip" data-title="" id="-2re368_103"><p id="-2re368_116"><span class="control" id="-2re368_117">An&aacute;lise</span>: O valor final de <code class="code" id="-2re368_118">myScore.Value</code> &eacute; <code class="code" id="-2re368_119">100</code>, provando que a altera&ccedil;&atilde;o na propriedade do objeto original foi bem-sucedida. A reatribui&ccedil;&atilde;o para um <code class="code" id="-2re368_120">new Score</code> dentro do m&eacute;todo foi irrelevante para a vari&aacute;vel <code class="code" id="-2re368_121">myScore</code>.</p></aside></section></section><section class="chapter"><h3 id="modificador-ref-passando-por-refer-ncia" data-toc="modificador-ref-passando-por-refer-ncia">Modificador <code class="code" id="-2re368_127">ref</code>: Passando por Refer&ecirc;ncia</h3><p id="-2re368_123">Ao usar <code class="code" id="-2re368_128">ref</code>, voc&ecirc; n&atilde;o passa mais uma c&oacute;pia. Voc&ecirc; passa a <span class="control" id="-2re368_129">pr&oacute;pria refer&ecirc;ncia da vari&aacute;vel original</span>. &Eacute; como dar ao m&eacute;todo o endere&ccedil;o de mem&oacute;ria da sua vari&aacute;vel. Qualquer altera&ccedil;&atilde;o feita no par&acirc;metro, seja no valor/propriedade ou uma reatribui&ccedil;&atilde;o, <span class="control" id="-2re368_130">afetar&aacute; diretamente a vari&aacute;vel original</span>.</p><ul class="list _bullet" id="-2re368_124"><li class="list__item" id="-2re368_131"><p id="-2re368_133">A vari&aacute;vel <span class="control" id="-2re368_134">deve</span> ser inicializada antes de ser passada.</p></li><li class="list__item" id="-2re368_132"><p id="-2re368_135">Tanto na chamada quanto na declara&ccedil;&atilde;o do m&eacute;todo, a palavra-chave <code class="code" id="-2re368_136">ref</code> deve ser usada.</p></li></ul><div class="code-block" data-lang="csharp">
+public void DoubleValue(ref int number)
+{
+    // This now modifies the original variable.
+    number = number * 2;
+}
+
+public void Test()
+{
+    int myValue = 5;
+    Console.WriteLine($&quot;Before: {myValue}&quot;);
+    DoubleValue(ref myValue);
+    Console.WriteLine($&quot;After: {myValue}&quot;);
+}
+
+// Output:
+// Before: 5
+// After: 10
+</div><aside class="prompt" data-type="tip" data-title="" id="-2re368_126"><p id="-2re368_137"><span class="control" id="-2re368_138">Uso</span>: Use <code class="code" id="-2re368_139">ref</code> com modera&ccedil;&atilde;o. Geralmente &eacute; prefer&iacute;vel que um m&eacute;todo retorne um valor em vez de modificar seus par&acirc;metros de entrada. &Eacute; &uacute;til em cen&aacute;rios de alta performance ou ao trabalhar com APIs mais antigas.</p></aside></section><section class="chapter"><h3 id="modificador-out-par-metros-de-sa-da" data-toc="modificador-out-par-metros-de-sa-da">Modificador <code class="code" id="-2re368_146">out</code>: Par&acirc;metros de Sa&iacute;da</h3><p id="-2re368_141">O <code class="code" id="-2re368_147">out</code> &eacute; muito similar ao <code class="code" id="-2re368_148">ref</code>, mas com duas diferen&ccedil;as cruciais:</p><ol class="list _decimal" id="-2re368_142" type="1"><li class="list__item" id="-2re368_149"><p id="-2re368_151">A vari&aacute;vel passada para um par&acirc;metro <code class="code" id="-2re368_152">out</code> <span class="control" id="-2re368_153">n&atilde;o precisa</span> ser inicializada antes da chamada.</p></li><li class="list__item" id="-2re368_150"><p id="-2re368_154">O m&eacute;todo que recebe um par&acirc;metro <code class="code" id="-2re368_155">out</code> &eacute; <span class="control" id="-2re368_156">obrigado</span> a atribuir um valor a ele antes de retornar.</p></li></ol><p id="-2re368_143">&Eacute; o padr&atilde;o da ind&uacute;stria para m&eacute;todos que precisam retornar m&uacute;ltiplos valores. O exemplo cl&aacute;ssico &eacute; o padr&atilde;o <code class="code" id="-2re368_157">Try...</code>.</p><div class="code-block" data-lang="csharp">
+public bool TryParseDate(string text, out DateTime result)
+{
+    // The method MUST assign a value to 'result' before it exits.
+    try
+    {
+        result = DateTime.Parse(text);
+        return true;
+    }
+    catch (FormatException)
+    {
+        result = default; // Assign a default value on failure.
+        return false;
+    }
+}
+
+public void Test()
+{
+    string dateString = &quot;2025-08-27&quot;;
+    // The 'parsedDate' variable doesn't need to be initialized.
+    if (TryParseDate(dateString, out DateTime parsedDate))
+    {
+        Console.WriteLine($&quot;Successfully parsed: {parsedDate.ToShortDateString()}&quot;);
+    }
+    else
+    {
+        Console.WriteLine(&quot;Failed to parse the date.&quot;);
+    }
+}
+
+// Output:
+// Successfully parsed: 27/08/2025
+</div><aside class="prompt" data-type="tip" data-title="" id="-2re368_145"><p id="-2re368_158"><span class="control" id="-2re368_159">An&aacute;lise</span>: O m&eacute;todo <code class="code" id="-2re368_160">TryParseDate</code> consegue comunicar duas coisas: o sucesso da opera&ccedil;&atilde;o (atrav&eacute;s do <code class="code" id="-2re368_161">bool</code> de retorno) e o resultado da opera&ccedil;&atilde;o (atrav&eacute;s do par&acirc;metro <code class="code" id="-2re368_162">out</code>).</p></aside></section><section class="chapter"><h3 id="modificador-in-par-metros-de-entrada-somente-leitura" data-toc="modificador-in-par-metros-de-entrada-somente-leitura">Modificador <code class="code" id="-2re368_167">in</code>: Par&acirc;metros de Entrada Somente Leitura</h3><p id="-2re368_164">Introduzido em vers&otilde;es mais recentes do C#, o <code class="code" id="-2re368_168">in</code> &eacute; o oposto do <code class="code" id="-2re368_169">out</code>. Ele tamb&eacute;m passa o argumento por refer&ecirc;ncia (evitando c&oacute;pias), mas garante que o m&eacute;todo <span class="control" id="-2re368_170">n&atilde;o pode modificar</span> o valor.</p><p id="-2re368_165">Seu principal caso de uso &eacute; um <span class="control" id="-2re368_171">ganho de performance</span> ao passar <code class="code" id="-2re368_172">structs</code> grandes. Copiar um <code class="code" id="-2re368_173">struct</code> grande pode ser custoso; pass&aacute;-lo com <code class="code" id="-2re368_174">in</code> envia apenas uma refer&ecirc;ncia, de forma muito mais r&aacute;pida, com a seguran&ccedil;a de que ele n&atilde;o ser&aacute; alterado.</p><div class="code-block" data-lang="csharp">
+// Imagine this is a very large struct.
+public readonly struct Point3D
+{
+    public double X { get; }
+    public double Y { get; }
+    public double Z { get; }
+
+    public Point3D(double x, double y, double z)
+    {
+        X = x; Y = y; Z = z;
+    }
+}
+
+// By using 'in', we avoid copying the Point3D struct.
+public void PrintPoint(in Point3D point)
+{
+    // The method can read the point's data.
+    Console.WriteLine($&quot;({point.X}, {point.Y}, {point.Z})&quot;);
+
+    // But any attempt to modify it would cause a COMPILE ERROR.
+    // point = new Point3D(0,0,0); // Error!
+    // point.X = 10; // Error (also because property is readonly, but 'in' enforces it)
+}
+</div></section><section class="chapter"><h3 id="modificador-params-array-de-par-metros" data-toc="modificador-params-array-de-par-metros">Modificador <code class="code" id="-2re368_179">params</code>: Array de Par&acirc;metros</h3><p id="-2re368_176">A palavra-chave <code class="code" id="-2re368_180">params</code> permite que um m&eacute;todo aceite um <span class="control" id="-2re368_181">n&uacute;mero vari&aacute;vel de argumentos</span>.</p><ul class="list _bullet" id="-2re368_177"><li class="list__item" id="-2re368_182"><p id="-2re368_185">S&oacute; pode haver um <code class="code" id="-2re368_186">params</code> por m&eacute;todo.</p></li><li class="list__item" id="-2re368_183"><p id="-2re368_187">Ele deve ser o <span class="control" id="-2re368_188">&uacute;ltimo</span> par&acirc;metro na assinatura do m&eacute;todo.</p></li><li class="list__item" id="-2re368_184"><p id="-2re368_189">Os argumentos passados s&atilde;o agrupados em um array dentro do m&eacute;todo.</p></li></ul><div class="code-block" data-lang="csharp">
+// This method can accept any number of integers.
+public double CalculateAverage(params int[] numbers)
+{
+    if (numbers == null || numbers.Length == 0)
+    {
+        return 0;
+    }
+    
+    double sum = 0;
+    foreach (var number in numbers)
+    {
+        sum += number;
+    }
+    return sum / numbers.Length;
+}
+
+public void Test()
+{
+    // You can call it with multiple arguments...
+    double avg1 = CalculateAverage(10, 20, 30);
+    Console.WriteLine($&quot;Average 1: {avg1}&quot;);
+
+    // ...with a single argument...
+    double avg2 = CalculateAverage(99);
+    Console.WriteLine($&quot;Average 2: {avg2}&quot;);
+
+    // ...or with no arguments.
+    double avg3 = CalculateAverage();
+    Console.WriteLine($&quot;Average 3: {avg3}&quot;);
+}
+
+// Output:
+// Average 1: 20
+// Average 2: 99
+// Average 3: 0
+</div></section><section class="chapter"><h3 id="par-metros-opcionais-e-nomeados" data-toc="par-metros-opcionais-e-nomeados">Par&acirc;metros Opcionais e Nomeados</h3><p id="-2re368_190"><span class="control" id="-2re368_194">Par&acirc;metros Opcionais</span> permitem que voc&ecirc; defina um valor padr&atilde;o para um par&acirc;metro na assinatura do m&eacute;todo. Se o chamador n&atilde;o fornecer um argumento para ele, o valor padr&atilde;o &eacute; usado. Eles devem vir depois de todos os par&acirc;metros obrigat&oacute;rios.</p><p id="-2re368_191"><span class="control" id="-2re368_195">Par&acirc;metros Nomeados</span> permitem que voc&ecirc; especifique o nome do par&acirc;metro ao passar o argumento. Isso melhora a legibilidade e permite passar argumentos fora de ordem, o que &eacute; especialmente &uacute;til com par&acirc;metros opcionais.</p><div class="code-block" data-lang="csharp">
+public void CreateUser(string username, string role = &quot;User&quot;, bool isActive = true)
+{
+    Console.WriteLine($&quot;Creating user '{username}' with role '{role}' and status '{(isActive ? &quot;Active&quot; : &quot;Inactive&quot;)}'.&quot;);
+}
+
+public void Test()
+{
+    // 1. Using all default parameters
+    CreateUser(&quot;john.doe&quot;);
+
+    // 2. Providing one optional parameter
+    CreateUser(&quot;jane.doe&quot;, &quot;Administrator&quot;);
+
+    // 3. Using named parameters to skip one and improve readability
+    CreateUser(username: &quot;super.user&quot;, isActive: false);
+    
+    // 4. Using named parameters out of order
+    CreateUser(isActive: true, role: &quot;Guest&quot;, username: &quot;guest.user&quot;);
+}
+
+// Output:
+// Creating user 'john.doe' with role 'User' and status 'Active'.
+// Creating user 'jane.doe' with role 'Administrator' and status 'Active'.
+// Creating user 'super.user' with role 'User' and status 'Inactive'.
+// Creating user 'guest.user' with role 'Guest' and status 'Active'.
+</div></section></section><section class="chapter"><h2 id="sobrecarga-de-m-todos-method-overloading" data-toc="sobrecarga-de-m-todos-method-overloading">Sobrecarga de M&eacute;todos (Method Overloading)</h2><p id="-2re368_196">A sobrecarga &eacute; a capacidade de definir, na mesma classe, m&uacute;ltiplos m&eacute;todos com o <span class="control" id="-2re368_200">mesmo nome</span>, desde que suas <span class="control" id="-2re368_201">assinaturas sejam diferentes</span> (ou seja, a quantidade ou o tipo dos par&acirc;metros sejam diferentes).</p><p id="-2re368_197">Isso &eacute; extremamente &uacute;til para fornecer maneiras mais convenientes de chamar uma mesma a&ccedil;&atilde;o.</p><div class="code-block" data-lang="csharp">
+public class ShoppingCart
+{
+    // Overload 1: The main method
+    public void AddItem(Product product, int quantity)
+    {
+        Console.WriteLine($&quot;Adding {quantity} of '{product.Name}'.&quot;);
+        // ... logic ...
+    }
+
+    // Overload 2: A convenience method. If quantity is not provided, it defaults to 1.
+    public void AddItem(Product product)
+    {
+        // It calls the other overload to avoid duplicating code.
+        AddItem(product, 1);
+    }
+
+    // Overload 3: Another convenience method. Finds the product by its ID first.
+    public void AddItem(Guid productId, int quantity)
+    {
+        // In a real system, we would fetch the product from a database.
+        Product product = FindProductById(productId);
+        if (product != null)
+        {
+            AddItem(product, quantity);
+        }
+    }
+
+    private Product FindProductById(Guid id) { /* ... database logic ... */ return new Product(); }
+    public class Product { public string Name { get; set; } }
+}
+</div></section><section class="chapter"><h2 id="exemplo-pr-tico-completo" data-toc="exemplo-pr-tico-completo">Exemplo Pr&aacute;tico Completo</h2><div class="code-block" data-lang="csharp">
+public class Order
+{
+    public Guid Id { get; private set; }
+    public List&lt;string&gt; Items { get; private set; }
+    public decimal TotalAmount { get; private set; }
+    public bool IsShipped { get; private set; }
+
+    public Order()
+    {
+        Id = Guid.NewGuid();
+        Items = new List&lt;string&gt;();
+        TotalAmount = 0;
+        IsShipped = false;
+    }
+
+    // A simple method to add an item and update the total.
+    public void AddItem(string itemName, decimal price, int quantity = 1)
+    {
+        if (IsShipped)
+        {
+            Console.WriteLine(&quot;Error: Cannot modify a shipped order.&quot;);
+            return;
+        }
+        Items.Add($&quot;{itemName} (x{quantity})&quot;);
+        TotalAmount += price * quantity;
+        Console.WriteLine($&quot;Added '{itemName}'. Subtotal is now {TotalAmount:C}.&quot;);
+    }
+
+    // A method that uses an 'out' parameter.
+    public bool TryApplyDiscount(string discountCode, out decimal discountAmount)
+    {
+        discountAmount = 0;
+        if (discountCode == &quot;SAVE10&quot;)
+        {
+            discountAmount = TotalAmount * 0.10m;
+            TotalAmount -= discountAmount;
+            return true; // Success
+        }
+        return false; // Failure
+    }
+
+    // A method that changes the state of the object.
+    public void ShipOrder()
+    {
+        if (Items.Count == 0)
+        {
+            Console.WriteLine(&quot;Error: Cannot ship an empty order.&quot;);
+            return;
+        }
+        IsShipped = true;
+        Console.WriteLine($&quot;Order {Id} has been shipped.&quot;);
+    }
+}
+
+public class OrderProcessing
+{
+    public static void Main()
+    {
+        var order = new Order();
+        order.AddItem(&quot;Laptop&quot;, 1500.00m);
+        order.AddItem(&quot;Mouse&quot;, 75.50m, 2); // Using the optional parameter
+
+        // Using the method with an 'out' parameter
+        if (order.TryApplyDiscount(&quot;SAVE10&quot;, out decimal appliedDiscount))
+        {
+            Console.WriteLine($&quot;Applied a discount of {appliedDiscount:C}. New total: {order.TotalAmount:C}&quot;);
+        }
+
+        order.ShipOrder();
+        order.AddItem(&quot;Keyboard&quot;, 120.00m); // This will fail because the order is shipped.
+    }
+}
+</div><aside class="prompt" data-type="tip" data-title="" id="-2re368_203"><p id="-2re368_206"><span class="control" id="-2re368_207">Nota sobre M&eacute;todos de Extens&atilde;o</span>: C# tem um recurso poderoso chamado <span class="emphasis" id="-2re368_208">m&eacute;todos de extens&atilde;o</span>, que permite &quot;adicionar&quot; novos m&eacute;todos a tipos existentes sem alterar seu c&oacute;digo-fonte original. Por exemplo, voc&ecirc; poderia criar um m&eacute;todo <code class="code" id="-2re368_209">string.IsEmail()</code> que poderia ser chamado em qualquer string. Eles s&atilde;o amplamente utilizados no LINQ.</p></aside><aside class="prompt" data-type="tip" data-title="" id="-2re368_204"><p id="-2re368_210"><span class="control" id="-2re368_211">Nota sobre M&eacute;todos Est&aacute;ticos</span>: Os m&eacute;todos que vimos s&atilde;o <span class="emphasis" id="-2re368_212">m&eacute;todos de inst&acirc;ncia</span>, pois operam sobre o estado de um objeto espec&iacute;fico (<code class="code" id="-2re368_213">order.ShipOrder()</code>). Existem tamb&eacute;m os <span class="emphasis" id="-2re368_214">m&eacute;todos est&aacute;ticos</span>, que pertencem &agrave; classe em si e n&atilde;o a uma inst&acirc;ncia. Eles s&atilde;o chamados diretamente na classe (ex: <code class="code" id="-2re368_215">Math.Max(5, 10)</code>) e n&atilde;o podem acessar o estado de uma inst&acirc;ncia (como a propriedade <code class="code" id="-2re368_216">TotalAmount</code>).</p></aside></section><section class="chapter"><h2 id="refer-ncias-oficiais-da-microsoft" data-toc="refer-ncias-oficiais-da-microsoft">Refer&ecirc;ncias Oficiais da Microsoft</h2><ul class="list _bullet" id="-2re368_217"><li class="list__item" id="-2re368_218"><p id="-2re368_221"><a href="https://learn.microsoft.com/pt-br/dotnet/csharp/programming-guide/classes-and-structs/methods" id="-2re368_222" data-external="true" rel="noopener noreferrer" target="_blank">M&eacute;todos (Guia de Programa&ccedil;&atilde;o C#)</a></p></li><li class="list__item" id="-2re368_219"><p id="-2re368_223"><a href="https://learn.microsoft.com/pt-br/dotnet/csharp/programming-guide/classes-and-structs/passing-parameters" id="-2re368_224" data-external="true" rel="noopener noreferrer" target="_blank">Passando Par&acirc;metros (Guia de Programa&ccedil;&atilde;o C#)</a></p></li><li class="list__item" id="-2re368_220"><p id="-2re368_225"><a href="https://learn.microsoft.com/pt-br/dotnet/csharp/language-reference/proposals/csharp-7.2/method-overloading-improvements" id="-2re368_226" data-external="true" rel="noopener noreferrer" target="_blank">Sobrecarga de M&eacute;todo (Guia de C#)</a></p></li></ul></section><div class="last-modified">27 August 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="propriedades.html" class="navigation-links__prev">Propriedades</a><a href="contructor.html" class="navigation-links__next">Construtores</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

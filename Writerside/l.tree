@@ -107,12 +107,25 @@
         </toc-element>
     </toc-element>
     <toc-element topic="OPP.md">
-        <toc-element topic="ObjectOOP.md"/>
-        <toc-element topic="Class.md">
+        <toc-element toc-title="Elementos">
+            <toc-element topic="ObjectOOP.md"/>
+            <toc-element topic="Class.md"/>
+            <toc-element topic="Propriedades.md"/>
+            <toc-element topic="Metodos.md">
+                <toc-element topic="Contructor.md"/>
+            </toc-element>
         </toc-element>
-        <toc-element topic="Encapsulamento.md"/>
-        <toc-element topic="Abstracai.md"/>
-        <toc-element topic="Inherirance.md"/>
+        <toc-element toc-title="Pilares">
+            <toc-element topic="Abstracai.md"/>
+            <toc-element topic="Encapsulamento.md"/>
+            <toc-element topic="Inherirance.md"/>
+            <toc-element topic="Polimorfismo.md">
+                <toc-element topic="Overflow.md"/>
+                <toc-element topic="Override.md"/>
+            </toc-element>
+        </toc-element>
+    <toc-element topic="Modificators.md"/>
+        <toc-element topic="ComplexTypes.md"/>
     </toc-element>
     <toc-element topic="References.md">
     </toc-element>
