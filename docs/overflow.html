@@ -1,10 +1,10 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
-<html lang="en-US" data-preset="contrast" data-primary-color="#214C69"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-08-27T17:33:22.318376293"><title>Sobrecarga | Learn C#</title><script type="application/json" id="virtual-toc-data">[]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Sobrecarga | Learn C#"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Learn C# Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/overflow.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Sobrecarga | Learn C#"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+<html lang="en-US" data-preset="contrast" data-primary-color="#214C69"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-08-27T17:40:18.795494546"><title>Sobrecarga de M&eacute;todos (Method Overloading) | Learn C#</title><script type="application/json" id="virtual-toc-data">[{"id":"as-regras-da-sobrecarga","level":0,"title":"As Regras da Sobrecarga","anchor":"#as-regras-da-sobrecarga"},{"id":"exemplo-do-mundo-real-uma-classe-de-log","level":0,"title":"Exemplo do Mundo Real: Uma Classe de Log","anchor":"#exemplo-do-mundo-real-uma-classe-de-log"},{"id":"sobrecarga-de-construtores","level":0,"title":"Sobrecarga de Construtores","anchor":"#sobrecarga-de-construtores"},{"id":"e-as-propriedades-sobrecarga-atrav-s-de-indexadores","level":0,"title":"E as Propriedades? Sobrecarga Através de Indexadores","anchor":"#e-as-propriedades-sobrecarga-atrav-s-de-indexadores"},{"id":"conclus-o","level":0,"title":"Conclusão","anchor":"#conclus-o"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Sobrecarga de M&eacute;todos (Method Overloading) | Learn C#"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Learn C# Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/overflow.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Sobrecarga de M&eacute;todos (Method Overloading) | Learn C#"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
     "@context": "http://schema.org",
     "@type": "WebPage",
     "@id": "writerside-documentation/overflow.html#webpage",
     "url": "writerside-documentation/overflow.html",
-    "name": "Sobrecarga | Learn C#",
+    "name": "Sobrecarga de M&eacute;todos (Method Overloading) | Learn C#",
     "description": "",
     "image": "",
     "inLanguage":"en-US"
@@ -13,4 +13,170 @@
     "@id": "writerside-documentation/#website",
     "url": "writerside-documentation/",
     "name": "Learn C# Help"
-}</script><!-- End Schema.org --></head><body data-id="Overflow" data-main-title="Sobrecarga" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="OPP.md|O Paradigma da Programação Orientada a Objetos (POO)///Pilares///Polimorfismo.md|Polimorfismo: As Muitas Formas do seu Código"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Learn C#  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Overflow" id="Overflow.md">Sobrecarga</h1><div class="last-modified">18 August 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="polimorfismo.html" class="navigation-links__prev">Polimorfismo: As Muitas Formas do seu C&oacute;digo</a><a href="override.html" class="navigation-links__next">Sobreescrita</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>
+}</script><!-- End Schema.org --></head><body data-id="Overflow" data-main-title="Sobrecarga de Métodos (Method Overloading)" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="OPP.md|O Paradigma da Programação Orientada a Objetos (POO)///Pilares///Polimorfismo.md|Polimorfismo: As Muitas Formas do seu Código"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Learn C#  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Overflow" id="Overflow.md">Sobrecarga de Métodos (Method Overloading)</h1><p id="z7bvcrn_3">A <span class="control" id="z7bvcrn_11">Sobrecarga de M&eacute;todos</span> (em ingl&ecirc;s, <span class="emphasis" id="z7bvcrn_12">Method Overloading</span>) &eacute; um recurso da Programa&ccedil;&atilde;o Orientada a Objetos que permite a uma classe ter <span class="control" id="z7bvcrn_13">dois ou mais m&eacute;todos com o mesmo nome</span>, desde que suas <span class="control" id="z7bvcrn_14">assinaturas de par&acirc;metros sejam diferentes</span>.</p><p id="z7bvcrn_4">&Eacute; uma forma de polimorfismo que acontece em <span class="control" id="z7bvcrn_15">tempo de compila&ccedil;&atilde;o</span> (polimorfismo est&aacute;tico). O compilador do C# &eacute; inteligente o suficiente para saber qual vers&atilde;o do m&eacute;todo chamar com base nos argumentos que voc&ecirc; fornece na chamada.</p><p id="z7bvcrn_5">O principal objetivo da sobrecarga &eacute; fornecer maneiras mais flex&iacute;veis e intuitivas de se chamar uma mesma opera&ccedil;&atilde;o, sem a necessidade de se inventar nomes diferentes para a&ccedil;&otilde;es que s&atilde;o conceitualmente id&ecirc;nticas. Ela aumenta a legibilidade e a usabilidade de uma classe.</p><section class="chapter"><h2 id="as-regras-da-sobrecarga" data-toc="as-regras-da-sobrecarga">As Regras da Sobrecarga</h2><p id="z7bvcrn_16">Para que a sobrecarga seja v&aacute;lida, as assinaturas dos m&eacute;todos devem ser &uacute;nicas. A assinatura de um m&eacute;todo &eacute; composta por:</p><ol class="list _decimal" id="z7bvcrn_17" type="1"><li class="list__item" id="z7bvcrn_20"><p id="z7bvcrn_24">O <span class="control" id="z7bvcrn_25">nome</span> do m&eacute;todo.</p></li><li class="list__item" id="z7bvcrn_21"><p id="z7bvcrn_26">O <span class="control" id="z7bvcrn_27">n&uacute;mero</span> de par&acirc;metros.</p></li><li class="list__item" id="z7bvcrn_22"><p id="z7bvcrn_28">O <span class="control" id="z7bvcrn_29">tipo</span> e a <span class="control" id="z7bvcrn_30">ordem</span> dos par&acirc;metros.</p></li><li class="list__item" id="z7bvcrn_23"><p id="z7bvcrn_31">Os <span class="control" id="z7bvcrn_32">modificadores</span> de par&acirc;metro (<code class="code" id="z7bvcrn_33">ref</code>, <code class="code" id="z7bvcrn_34">out</code>, <code class="code" id="z7bvcrn_35">in</code>).</p></li></ol><aside class="prompt" data-type="tip" data-title="" id="z7bvcrn_18"><p id="z7bvcrn_36"><span class="control" id="z7bvcrn_37">Ponto Cr&iacute;tico</span>: O <span class="control" id="z7bvcrn_38">tipo de retorno</span> de um m&eacute;todo <span class="control" id="z7bvcrn_39">N&Atilde;O</span> faz parte de sua assinatura. Voc&ecirc; n&atilde;o pode sobrecarregar um m&eacute;todo apenas mudando seu tipo de retorno. O compilador n&atilde;o saberia qual deles chamar.</p></aside><div class="code-block" data-lang="csharp">
+public class Calculator
+{
+    // Valid Overloads
+    public int Add(int a, int b) { return a + b; }
+    public double Add(double a, double b) { return a + b; } // Different parameter types
+    public int Add(int a, int b, int c) { return a + b + c; } // Different number of parameters
+
+    // Invalid Overload - COMPILE ERROR!
+    // The signature 'Add(int, int)' is already defined.
+    // The return type does not differentiate the signature.
+    // public double Add(int a, int b) { return (double)(a + b); }
+}
+</div></section><section class="chapter"><h2 id="exemplo-do-mundo-real-uma-classe-de-log" data-toc="exemplo-do-mundo-real-uma-classe-de-log">Exemplo do Mundo Real: Uma Classe de Log</h2><p id="z7bvcrn_40">Um dos exemplos mais cl&aacute;ssicos e &uacute;teis de sobrecarga &eacute; uma classe de logging. Um sistema pode precisar registrar diferentes tipos de informa&ccedil;&atilde;o: uma simples mensagem de texto, uma mensagem com um n&iacute;vel de severidade (Info, Warning, Error) ou um objeto de exce&ccedil;&atilde;o completo.</p><style>.theme-dark .plantuml > svg {filter: hue-rotate(180deg) invert(0.9);}div.plantuml {overflow-x: auto;}</style><div class="plantuml"><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="343px" preserveAspectRatio="none" style="width:599px;height:343px;background:#FFFFFF;" version="1.1" viewBox="0 0 599 343" width="599px" zoomAndPan="magnify"><defs/><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="223" x="181" y="24.9659">Diagrama de Sobrecarga: Logger</text><!--class LogLevel--><g id="elem_LogLevel"><rect codeLine="6" fill="#F1F1F1" height="105.2038" id="LogLevel" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="90" x="48.5" y="231.2779"/><ellipse cx="63.5" cy="247.2779" fill="#EB937F" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M66.9688,253.7779 L59.6563,253.7779 L59.6563,241.106 L66.9688,241.106 L66.9688,242.981 L61.7031,242.981 L61.7031,246.2467 L66.6563,246.2467 L66.6563,248.106 L61.7031,248.106 L61.7031,251.9029 L66.9688,251.9029 L66.9688,253.7779 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="58" x="77.5" y="252.7099">LogLevel</text><line style="stroke:#181818;stroke-width:0.5;" x1="49.5" x2="137.5" y1="263.2779" y2="263.2779"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="27" x="54.5" y="282.2439">Info</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="58" x="54.5" y="301.3118">Warning</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="34" x="54.5" y="320.3797">Error</text><line style="stroke:#181818;stroke-width:0.5;" x1="49.5" x2="137.5" y1="328.4817" y2="328.4817"/></g><!--class Logger--><g id="elem_Logger"><rect codeLine="12" fill="#F1F1F1" height="105.2038" id="Logger" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="301" x="7" y="47.0679"/><ellipse cx="129.75" cy="63.0679" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M129.8594,58.5992 Q128.9375,58.5992 128.2031,58.9117 Q127.4844,59.2242 126.9844,59.8179 Q126.4844,60.396 126.2031,61.271 Q125.9375,62.146 125.9375,63.2398 Q125.9375,64.6773 126.375,65.7242 Q126.8281,66.771 127.6719,67.3179 Q128.5313,67.8648 129.8438,67.8648 Q130.625,67.8648 131.3125,67.7398 Q132.0156,67.5992 133.0156,67.2867 L133.0156,69.1617 Q132.1563,69.4898 131.3906,69.6148 Q130.6406,69.7398 129.625,69.7398 Q127.7031,69.7398 126.3906,68.9429 Q125.0938,68.1304 124.4375,66.6617 Q123.7813,65.1773 123.7813,63.2085 Q123.7813,61.7867 124.1719,60.6148 Q124.5781,59.4273 125.3594,58.5523 Q126.1406,57.6773 127.2813,57.2085 Q128.4219,56.7242 129.8906,56.7242 Q130.8438,56.7242 131.7344,56.9273 Q132.6406,57.1148 133.5781,57.5835 L132.75,59.3648 Q131.9688,58.9898 131.3125,58.8023 Q130.6563,58.5992 129.8594,58.5992 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="47" x="150.25" y="68.4999">Logger</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="307" y1="79.0679" y2="79.0679"/><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="307" y1="87.0679" y2="87.0679"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="184" x="13" y="106.0339">+Log(message: string): void</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="289" x="13" y="125.1018">+Log(message: string, level: LogLevel): void</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="164" x="13" y="144.1697">+Log(ex: Exception): void</text></g><!--class Exception--><g id="elem_Exception"><rect fill="#F1F1F1" height="48" id="Exception" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="97" x="173" y="259.8779"/><ellipse cx="188" cy="275.8779" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M188.1094,271.4092 Q187.1875,271.4092 186.4531,271.7217 Q185.7344,272.0342 185.2344,272.6279 Q184.7344,273.206 184.4531,274.081 Q184.1875,274.956 184.1875,276.0498 Q184.1875,277.4873 184.625,278.5342 Q185.0781,279.581 185.9219,280.1279 Q186.7813,280.6748 188.0938,280.6748 Q188.875,280.6748 189.5625,280.5498 Q190.2656,280.4092 191.2656,280.0967 L191.2656,281.9717 Q190.4063,282.2998 189.6406,282.4248 Q188.8906,282.5498 187.875,282.5498 Q185.9531,282.5498 184.6406,281.7529 Q183.3438,280.9404 182.6875,279.4717 Q182.0313,277.9873 182.0313,276.0185 Q182.0313,274.5967 182.4219,273.4248 Q182.8281,272.2373 183.6094,271.3623 Q184.3906,270.4873 185.5313,270.0185 Q186.6719,269.5342 188.1406,269.5342 Q189.0938,269.5342 189.9844,269.7373 Q190.8906,269.9248 191.8281,270.3935 L191,272.1748 Q190.2188,271.7998 189.5625,271.6123 Q188.9063,271.4092 188.1094,271.4092 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="65" x="202" y="281.3099">Exception</text><line style="stroke:#181818;stroke-width:0.5;" x1="174" x2="269" y1="291.8779" y2="291.8779"/><line style="stroke:#181818;stroke-width:0.5;" x1="174" x2="269" y1="299.8779" y2="299.8779"/></g><path d="M343,54.2579 L343,90.6699 L197,100.6019 L343,98.6699 L343,135.082 A0,0 0 0 0 343,135.082 L592,135.082 A0,0 0 0 0 592,135.082 L592,64.2579 L582,54.2579 L343,54.2579 A0,0 0 0 0 343,54.2579 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M582,54.2579 L582,64.2579 L592,64.2579 L582,54.2579 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="206" x="349" y="73.1549">Tr&#234;s sobrecargas do m&#233;todo 'Log'.</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="228" x="349" y="90.8609">O compilador escolhe a vers&#227;o correta</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="225" x="349" y="108.567">com base nos argumentos fornecidos</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="146" x="349" y="126.273">na chamada do m&#233;todo.</text><!--link Logger to LogLevel--><g id="link_Logger_LogLevel"><path codeLine="18" d="M139.33,152.3979 C130.68,177.0179 122.3602,200.7276 113.7002,225.3576 " fill="none" id="Logger-to-LogLevel" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="111.71,231.0179,118.4688,223.8542,113.3685,226.301,110.9217,221.2007,111.71,231.0179" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="27" x="128.5" y="197.1749">uses</text></g><!--link Logger to Exception--><g id="link_Logger_Exception"><path codeLine="19" d="M175.67,152.3979 C188.09,187.7479 201.9506,227.2373 211.3906,254.0973 " fill="none" id="Logger-to-Exception" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="213.38,259.7579,214.1696,249.9408,211.7221,255.0408,206.6221,252.5933,213.38,259.7579" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="27" x="191.5" y="197.1749">uses</text></g><!--SRC=[TP71IWD138RlynIvLL4MptCG17ie53nKy9pEPAU3kvEIp9QY-3IUz3NwOcRBjXR1KpByN_u_J6gk7S5ZnYJO8qI25Q-50af23qjEYSGvVSrbYqP0w53reLR9ww7I8d1PvJU2E-Ue3FquiAGTTV3k01QbPIilA2MNPDrSXCLzE7TqcToFwCtukEf95HDvKFClwTh3ZdFyJxw5Repovz2_FEqzpFU1jZLpEOcMFkKspVtllXu69RsKpfCdpHMk19BJfWAtq_RUMxN4PpbyA-ZvxnGYGt_ugcnrPioiCUe90lVRt65a0TB0tOO0OKUYXqysKOGg6cWOh5492YkOtz1JgTQsB8L2Zgm65OImiQj5l0Xhx10HnbNT3m00]--></g></svg></div><section class="chapter"><h3 id="implementando-a-classe-logger" data-toc="implementando-a-classe-logger">Implementando a Classe <code class="code" id="z7bvcrn_45">Logger</code></h3><div class="code-block" data-lang="csharp">
+public enum LogLevel
+{
+    Info,
+    Warning,
+    Error
+}
+
+public class Logger
+{
+    // Overload 1: For simple string messages. Defaults to Info level.
+    public void Log(string message)
+    {
+        // This overload calls another one to avoid code duplication.
+        // This is a very common and recommended practice.
+        Log(message, LogLevel.Info);
+    }
+
+    // Overload 2: The main overload with message and level.
+    public void Log(string message, LogLevel level)
+    {
+        // In a real system, this would write to a file, database, or console.
+        Console.WriteLine($&quot;[{level.ToString().ToUpper()}] - {DateTime.UtcNow} - {message}&quot;);
+    }
+
+    // Overload 3: For logging exception objects.
+    public void Log(Exception ex)
+    {
+        // This provides a structured way to log exceptions.
+        string formattedMessage = $&quot;An exception occurred.\nType: {ex.GetType().Name}\nMessage: {ex.Message}\nStackTrace:\n{ex.StackTrace}&quot;;
+        Log(formattedMessage, LogLevel.Error);
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        var logger = new Logger();
+
+        // Calling the first overload: Log(string)
+        logger.Log(&quot;User logged in successfully.&quot;);
+
+        // Calling the second overload: Log(string, LogLevel)
+        logger.Log(&quot;Database connection is slow.&quot;, LogLevel.Warning);
+
+        // Calling the third overload: Log(Exception)
+        try
+        {
+            int x = 10;
+            int y = 0;
+            int z = x / y;
+        }
+        catch (Exception ex)
+        {
+            logger.Log(ex);
+        }
+    }
+}
+</div></section></section><section class="chapter"><h2 id="sobrecarga-de-construtores" data-toc="sobrecarga-de-construtores">Sobrecarga de Construtores</h2><p id="z7bvcrn_46">O mesmo princ&iacute;pio se aplica a construtores. &Eacute; extremamente comum sobrecarregar construtores para fornecer diferentes maneiras de inicializar um objeto. Isso torna a classe muito mais flex&iacute;vel.</p><p id="z7bvcrn_47">Uma pr&aacute;tica recomendada &eacute; usar a palavra-chave <code class="code" id="z7bvcrn_49">this(...)</code> para encadear construtores. Isso evita a duplica&ccedil;&atilde;o da l&oacute;gica de inicializa&ccedil;&atilde;o e centraliza o trabalho no construtor mais completo.</p><div class="code-block" data-lang="csharp">
+public class Customer
+{
+    public Guid Id { get; private set; }
+    public string Name { get; set; }
+    public string Email { get; set; }
+    public DateTime MemberSince { get; private set; }
+
+    // Overload 1: The most complete constructor. This is the one that does the actual work.
+    public Customer(string name, string email)
+    {
+        Id = Guid.NewGuid();
+        Name = name;
+        Email = email;
+        MemberSince = DateTime.UtcNow;
+        Console.WriteLine(&quot;Main constructor executed.&quot;);
+    }
+
+    // Overload 2: A convenience constructor for creating a customer with just an email.
+    // It calls the main constructor using 'this(...)', providing a default name.
+    public Customer(string email) : this(&quot;New Customer&quot;, email)
+    {
+        // This body is executed AFTER the main constructor.
+        Console.WriteLine(&quot;Email-only constructor finished.&quot;);
+    }
+
+    // Overload 3: A default constructor.
+    // It calls the second constructor, which in turn calls the first one.
+    public Customer() : this(&quot;default@example.com&quot;)
+    {
+        Console.WriteLine(&quot;Default constructor finished.&quot;);
+    }
+}
+
+// Example Usage:
+var customer1 = new Customer(&quot;John Doe&quot;, &quot;john.doe@example.com&quot;); // Calls the main constructor
+var customer2 = new Customer(&quot;jane.doe@example.com&quot;); // Calls the second, then the main
+var customer3 = new Customer(); // Calls the third, then the second, then the main
+</div></section><section class="chapter"><h2 id="e-as-propriedades-sobrecarga-atrav-s-de-indexadores" data-toc="e-as-propriedades-sobrecarga-atrav-s-de-indexadores">E as Propriedades? Sobrecarga Atrav&eacute;s de Indexadores</h2><p id="z7bvcrn_50">Como mencionado, propriedades com o mesmo nome n&atilde;o podem ser sobrecarregadas. No entanto, o C# oferece os <span class="control" id="z7bvcrn_53">Indexadores</span> (<span class="emphasis" id="z7bvcrn_54">Indexers</span>), que permitem que um objeto seja acessado como se fosse um array (usando <code class="code" id="z7bvcrn_55">[]</code>). E a grande vantagem &eacute; que <span class="control" id="z7bvcrn_56">indexadores podem ser sobrecarregados</span>.</p><p id="z7bvcrn_51">Um indexador &eacute; declarado de forma parecida com uma propriedade, mas usa a palavra-chave <code class="code" id="z7bvcrn_57">this</code> como nome e inclui os par&acirc;metros de &iacute;ndice entre colchetes.</p><section class="chapter"><h3 id="exemplo-uma-cole-o-de-configura-es" data-toc="exemplo-uma-cole-o-de-configura-es">Exemplo: Uma Cole&ccedil;&atilde;o de Configura&ccedil;&otilde;es</h3><p id="z7bvcrn_58">Imagine uma classe que armazena as configura&ccedil;&otilde;es de uma aplica&ccedil;&atilde;o. Seria &uacute;til poder acessar uma configura&ccedil;&atilde;o tanto pelo seu nome (<code class="code" id="z7bvcrn_61">string</code>) quanto pela sua posi&ccedil;&atilde;o na lista (<code class="code" id="z7bvcrn_62">int</code>).</p><div class="code-block" data-lang="csharp">
+public class AppSettings
+{
+    private readonly Dictionary&lt;string, string&gt; _settings = new Dictionary&lt;string, string&gt;();
+    private readonly List&lt;string&gt; _settingKeys = new List&lt;string&gt;();
+
+    // Indexer Overload 1: Access by string key.
+    public string this[string key]
+    {
+        get 
+        {
+            return _settings[key];
+        }
+        set 
+        {
+            if (!_settings.ContainsKey(key))
+            {
+                _settingKeys.Add(key);
+            }
+            _settings[key] = value;
+        }
+    }
+
+    // Indexer Overload 2: Access by integer index.
+    public string this[int index]
+    {
+        get
+        {
+            string key = _settingKeys[index];
+            return _settings[key];
+        }
+        // A 'set' accessor could be added here as well.
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        var settings = new AppSettings();
+
+        // Using the string indexer to set values
+        settings[&quot;ConnectionString&quot;] = &quot;Server=myServer;Database=myDataBase;&quot;;
+        settings[&quot;Theme&quot;] = &quot;Dark&quot;;
+
+        // Using the string indexer to get a value
+        Console.WriteLine($&quot;Theme: {settings[&quot;Theme&quot;]}&quot;);
+
+        // Using the int indexer to get a value by position
+        Console.WriteLine($&quot;First setting: {settings[0]}&quot;);
+    }
+}
+
+// Output:
+// Theme: Dark
+// First setting: Server=myServer;Database=myDataBase;
+</div><p id="z7bvcrn_60">Dessa forma, embora n&atilde;o estejamos sobrecarregando uma propriedade chamada <code class="code" id="z7bvcrn_63">Setting</code>, estamos oferecendo m&uacute;ltiplas formas de acessar os dados da classe, que &eacute; o esp&iacute;rito da sobrecarga, mas aplicado atrav&eacute;s do mecanismo de indexadores.</p></section></section><section class="chapter"><h2 id="conclus-o" data-toc="conclus-o">Conclus&atilde;o</h2><p id="z7bvcrn_64">A sobrecarga de m&eacute;todos e construtores &eacute; uma ferramenta poderosa no arsenal do desenvolvedor C# para criar APIs de classes que s&atilde;o ao mesmo tempo robustas, flex&iacute;veis e f&aacute;ceis de usar. Ao permitir que uma &uacute;nica &quot;a&ccedil;&atilde;o&quot; (o nome do m&eacute;todo) seja invocada de m&uacute;ltiplas maneiras, a sobrecarga reduz a complexidade para quem consome a classe, melhora a legibilidade do c&oacute;digo e evita a prolifera&ccedil;&atilde;o de m&eacute;todos com nomes ligeiramente diferentes para tarefas semelhantes. &Eacute; um pilar do design de software limpo e expressivo.</p><aside class="prompt" data-type="tip" data-title="" id="z7bvcrn_65"><section class="chapter"><h3 id="refer-ncias-oficiais" data-toc="refer-ncias-oficiais">Refer&ecirc;ncias Oficiais</h3><ul class="list _bullet" id="z7bvcrn_67"><li class="list__item" id="z7bvcrn_68"><p id="z7bvcrn_70"><span class="control" id="z7bvcrn_71"><a href="https://learn.microsoft.com/pt-br/dotnet/csharp/methods#method-overloading" id="z7bvcrn_72" data-external="true" rel="noopener noreferrer" target="_blank">Sobrecarga de M&eacute;todos (Guia de C#)</a></span></p></li><li class="list__item" id="z7bvcrn_69"><p id="z7bvcrn_73"><span class="control" id="z7bvcrn_74"><a href="https://learn.microsoft.com/pt-br/dotnet/csharp/programming-guide/classes-and-structs/constructors" id="z7bvcrn_75" data-external="true" rel="noopener noreferrer" target="_blank">Construtores (Guia de Programa&ccedil;&atilde;o C#)</a></span></p></li></ul></section></aside></section><div class="last-modified">27 August 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="polimorfismo.html" class="navigation-links__prev">Polimorfismo: As Muitas Formas do seu C&oacute;digo</a><a href="override.html" class="navigation-links__next">Sobrescrita de M&eacute;todo (override): Especializando o Comportamento Herdado</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

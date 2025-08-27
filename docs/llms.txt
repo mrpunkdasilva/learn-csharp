@@ -9805,15 +9805,484 @@ Tip:
 
 
 
-# Sobrecarga
+# Sobrecarga de Métodos (Method Overloading)
 
+A Sobrecarga de Métodos (em inglês, Method Overloading) é um recurso da Programação Orientada a Objetos que permite a uma classe ter dois ou mais métodos com o mesmo nome, desde que suas assinaturas de parâmetros sejam diferentes.
 
+É uma forma de polimorfismo que acontece em tempo de compilação (polimorfismo estático). O compilador do C# é inteligente o suficiente para saber qual versão do método chamar com base nos argumentos que você fornece na chamada.
 
-# Sobreescrita
+O principal objetivo da sobrecarga é fornecer maneiras mais flexíveis e intuitivas de se chamar uma mesma operação, sem a necessidade de se inventar nomes diferentes para ações que são conceitualmente idênticas. Ela aumenta a legibilidade e a usabilidade de uma classe.
+
+## As Regras da Sobrecarga
+
+Para que a sobrecarga seja válida, as assinaturas dos métodos devem ser únicas. A assinatura de um método é composta por:
+
+1. O nome do método.
+
+2. O número de parâmetros.
+
+3. O tipo e a ordem dos parâmetros.
+
+4. Os modificadores de parâmetro (`ref`, `out`, `in`).
 
 Tip:
 
-usamos o virtual para sobreescrever tanto metodos
+Ponto Crítico: O tipo de retorno de um método NÃO faz parte de sua assinatura. Você não pode sobrecarregar um método apenas mudando seu tipo de retorno. O compilador não saberia qual deles chamar.
+
+```CSHARP
+public class Calculator
+{
+    // Valid Overloads
+    public int Add(int a, int b) { return a + b; }
+    public double Add(double a, double b) { return a + b; } // Different parameter types
+    public int Add(int a, int b, int c) { return a + b + c; } // Different number of parameters
+
+    // Invalid Overload - COMPILE ERROR!
+    // The signature 'Add(int, int)' is already defined.
+    // The return type does not differentiate the signature.
+    // public double Add(int a, int b) { return (double)(a + b); }
+}
+```
+
+## Exemplo do Mundo Real: Uma Classe de Log
+
+Um dos exemplos mais clássicos e úteis de sobrecarga é uma classe de logging. Um sistema pode precisar registrar diferentes tipos de informação: uma simples mensagem de texto, uma mensagem com um nível de severidade (Info, Warning, Error) ou um objeto de exceção completo.
+
+```PLANTUML
+@startuml
+title Diagrama de Sobrecarga: Logger
+
+skinparam classAttributeIconSize 0
+
+enum LogLevel {
+  Info
+  Warning
+  Error
+}
+
+class Logger {
+  + Log(message: string): void
+  + Log(message: string, level: LogLevel): void
+  + Log(ex: Exception): void
+}
+
+Logger ..> LogLevel : uses
+Logger ..> Exception : uses
+
+note right of Logger::Log
+  Três sobrecargas do método 'Log'.
+  O compilador escolhe a versão correta
+  com base nos argumentos fornecidos
+  na chamada do método.
+end note
+
+@enduml
+```
+
+### 
+
+Implementando a Classe `Logger`
+
+```CSHARP
+public enum LogLevel
+{
+    Info,
+    Warning,
+    Error
+}
+
+public class Logger
+{
+    // Overload 1: For simple string messages. Defaults to Info level.
+    public void Log(string message)
+    {
+        // This overload calls another one to avoid code duplication.
+        // This is a very common and recommended practice.
+        Log(message, LogLevel.Info);
+    }
+
+    // Overload 2: The main overload with message and level.
+    public void Log(string message, LogLevel level)
+    {
+        // In a real system, this would write to a file, database, or console.
+        Console.WriteLine($"[{level.ToString().ToUpper()}] - {DateTime.UtcNow} - {message}");
+    }
+
+    // Overload 3: For logging exception objects.
+    public void Log(Exception ex)
+    {
+        // This provides a structured way to log exceptions.
+        string formattedMessage = $"An exception occurred.\nType: {ex.GetType().Name}\nMessage: {ex.Message}\nStackTrace:\n{ex.StackTrace}";
+        Log(formattedMessage, LogLevel.Error);
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        var logger = new Logger();
+
+        // Calling the first overload: Log(string)
+        logger.Log("User logged in successfully.");
+
+        // Calling the second overload: Log(string, LogLevel)
+        logger.Log("Database connection is slow.", LogLevel.Warning);
+
+        // Calling the third overload: Log(Exception)
+        try
+        {
+            int x = 10;
+            int y = 0;
+            int z = x / y;
+        }
+        catch (Exception ex)
+        {
+            logger.Log(ex);
+        }
+    }
+}
+```
+
+## Sobrecarga de Construtores
+
+O mesmo princípio se aplica a construtores. É extremamente comum sobrecarregar construtores para fornecer diferentes maneiras de inicializar um objeto. Isso torna a classe muito mais flexível.
+
+Uma prática recomendada é usar a palavra-chave `this(...)` para encadear construtores. Isso evita a duplicação da lógica de inicialização e centraliza o trabalho no construtor mais completo.
+
+```CSHARP
+public class Customer
+{
+    public Guid Id { get; private set; }
+    public string Name { get; set; }
+    public string Email { get; set; }
+    public DateTime MemberSince { get; private set; }
+
+    // Overload 1: The most complete constructor. This is the one that does the actual work.
+    public Customer(string name, string email)
+    {
+        Id = Guid.NewGuid();
+        Name = name;
+        Email = email;
+        MemberSince = DateTime.UtcNow;
+        Console.WriteLine("Main constructor executed.");
+    }
+
+    // Overload 2: A convenience constructor for creating a customer with just an email.
+    // It calls the main constructor using 'this(...)', providing a default name.
+    public Customer(string email) : this("New Customer", email)
+    {
+        // This body is executed AFTER the main constructor.
+        Console.WriteLine("Email-only constructor finished.");
+    }
+
+    // Overload 3: A default constructor.
+    // It calls the second constructor, which in turn calls the first one.
+    public Customer() : this("default@example.com")
+    {
+        Console.WriteLine("Default constructor finished.");
+    }
+}
+
+// Example Usage:
+var customer1 = new Customer("John Doe", "john.doe@example.com"); // Calls the main constructor
+var customer2 = new Customer("jane.doe@example.com"); // Calls the second, then the main
+var customer3 = new Customer(); // Calls the third, then the second, then the main
+```
+
+## E as Propriedades? Sobrecarga Através de Indexadores
+
+Como mencionado, propriedades com o mesmo nome não podem ser sobrecarregadas. No entanto, o C# oferece os Indexadores (Indexers), que permitem que um objeto seja acessado como se fosse um array (usando `[]`). E a grande vantagem é que indexadores podem ser sobrecarregados.
+
+Um indexador é declarado de forma parecida com uma propriedade, mas usa a palavra-chave `this` como nome e inclui os parâmetros de índice entre colchetes.
+
+### Exemplo: Uma Coleção de Configurações
+
+Imagine uma classe que armazena as configurações de uma aplicação. Seria útil poder acessar uma configuração tanto pelo seu nome (`string`) quanto pela sua posição na lista (`int`).
+
+```CSHARP
+public class AppSettings
+{
+    private readonly Dictionary<string, string> _settings = new Dictionary<string, string>();
+    private readonly List<string> _settingKeys = new List<string>();
+
+    // Indexer Overload 1: Access by string key.
+    public string this[string key]
+    {
+        get 
+        {
+            return _settings[key];
+        }
+        set 
+        {
+            if (!_settings.ContainsKey(key))
+            {
+                _settingKeys.Add(key);
+            }
+            _settings[key] = value;
+        }
+    }
+
+    // Indexer Overload 2: Access by integer index.
+    public string this[int index]
+    {
+        get
+        {
+            string key = _settingKeys[index];
+            return _settings[key];
+        }
+        // A 'set' accessor could be added here as well.
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        var settings = new AppSettings();
+
+        // Using the string indexer to set values
+        settings["ConnectionString"] = "Server=myServer;Database=myDataBase;";
+        settings["Theme"] = "Dark";
+
+        // Using the string indexer to get a value
+        Console.WriteLine($"Theme: {settings["Theme"]}");
+
+        // Using the int indexer to get a value by position
+        Console.WriteLine($"First setting: {settings[0]}");
+    }
+}
+
+// Output:
+// Theme: Dark
+// First setting: Server=myServer;Database=myDataBase;
+```
+
+Dessa forma, embora não estejamos sobrecarregando uma propriedade chamada `Setting`, estamos oferecendo múltiplas formas de acessar os dados da classe, que é o espírito da sobrecarga, mas aplicado através do mecanismo de indexadores.
+
+## Conclusão
+
+A sobrecarga de métodos e construtores é uma ferramenta poderosa no arsenal do desenvolvedor C# para criar APIs de classes que são ao mesmo tempo robustas, flexíveis e fáceis de usar. Ao permitir que uma única "ação" (o nome do método) seja invocada de múltiplas maneiras, a sobrecarga reduz a complexidade para quem consome a classe, melhora a legibilidade do código e evita a proliferação de métodos com nomes ligeiramente diferentes para tarefas semelhantes. É um pilar do design de software limpo e expressivo.
+
+Tip:
+
+### Referências Oficiais
+
+* [Sobrecarga de Métodos (Guia de C#)](https://learn.microsoft.com/pt-br/dotnet/csharp/methods#method-overloading)
+
+* [Construtores (Guia de Programação C#)](https://learn.microsoft.com/pt-br/dotnet/csharp/programming-guide/classes-and-structs/constructors)
+
+
+
+# Sobrescrita de Método (override): Especializando o Comportamento Herdado
+
+A Sobrescrita de Método, ou Method Overriding, é uma das manifestações mais poderosas da Programação Orientada a Objetos. É o mecanismo que permite a uma classe derivada (filha) fornecer uma implementação nova e especializada para um método que ela herdou de sua classe base (mãe). Em essência, a classe filha diz: "Eu reconheço e respeito o comportamento que herdei, mas para mim, essa ação específica funciona de uma maneira diferente e mais adequada".
+
+Este mecanismo é a espinha dorsal do Polimorfismo de Tempo de Execução. É o que permite que você chame o mesmo método em diferentes objetos e obtenha comportamentos diferentes, específicos para o tipo real de cada objeto.
+
+Tip:
+
+Dissertação: A herança nos dá o benefício da reutilização de código, fornecendo um comportamento padrão. A sobrescrita nos dá o poder da especialização. Sem a sobrescrita, a herança seria muito limitada. Teríamos apenas uma forma de comportamento para toda uma hierarquia de classes. A sobrescrita quebra essa rigidez, permitindo que cada classe na hierarquia adapte o comportamento herdado à sua própria realidade, tornando o modelo de objetos imensamente mais flexível e expressivo.
+
+## A Necessidade de Comportamento Especializado
+
+Imagine que estamos modelando um sistema com animais. Podemos ter uma classe base `Animal`.
+
+```CSHARP
+public class Animal
+{
+    public virtual void MakeSound()
+    {
+        Console.WriteLine("An animal makes a sound.");
+    }
+}
+```
+
+Esta implementação padrão é genérica. Agora, criamos uma classe `Dog` que herda de `Animal`. Um cachorro não faz um "som de animal"; ele late. A classe `Dog` precisa de um comportamento mais específico.
+
+```CSHARP
+public class Dog : Animal
+{
+    // The Dog class OVERRIDES the base behavior.
+    public override void MakeSound()
+    {
+        Console.WriteLine("Woof! Woof!");
+    }
+}
+```
+
+Da mesma forma, uma classe `Cat` pode sobrescrever o método para miar. A mágica acontece quando usamos o polimorfismo: podemos ter uma lista de `Animal` e, ao chamar `MakeSound()` em cada um, o som correto é produzido em tempo de execução, com base no tipo real do objeto.
+
+## 
+
+O Contrato de Sobrescrita: `virtual`, `abstract` e `override`
+
+A sobrescrita não é um processo anárquico. Ela é governada por um contrato claro entre a classe base e a classe derivada, definido pelas palavras-chave `virtual`, `abstract` e `override`.
+
+1. `virtual` - O Convite para Sobrescrever
+
+* Onde: Usado em um método na classe base.
+
+* O que significa: "Eu, a classe base, estou fornecendo uma implementação padrão para este método, mas estou ciente de que minhas filhas podem ter uma ideia melhor. Eu as convido a fornecerem suas próprias implementações, se desejarem. Isso é opcional."
+
+2. `abstract` - A Obrigação de Sobrescrever
+
+* Onde: Usado em um método dentro de uma classe base `abstract`.
+
+* O que significa: "Eu, a classe base, sou apenas um conceito e não sei como implementar este método. No entanto, eu declaro que este comportamento existe. Toda e qualquer classe concreta que herdar de mim é obrigada a fornecer sua própria implementação para este método. Isso é mandatório."
+
+3. `override` - A Nova Implementação
+
+* Onde: Usado em um método na classe derivada.
+
+* O que significa: "Eu, a classe filha, estou ciente do convite (`virtual`) ou da obrigação (`abstract`) da minha mãe. Eu estou conscientemente fornecendo a minha própria implementação especializada para esse método."
+
+Tip:
+
+Nota Importante: Você não pode sobrescrever um método que não seja `virtual` ou `abstract`. O C# impõe esse contrato para evitar que você altere acidentalmente o comportamento de uma classe de uma forma que o autor original não previu, o que poderia levar a bugs sutis.
+
+### Diagrama de Contrato (PlantUML)
+
+Vamos visualizar um exemplo mais prático: um sistema que processa diferentes tipos de documentos.
+
+```PLANTUML
+@startuml
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+skinparam shadowing false
+
+abstract class Document {
+    + Title : string
+    + Author : string
+    + <<virtual>> Print() : void
+    + <<abstract>> Save() : bool
+}
+
+class PdfDocument {
+    + CompressionLevel : int
+    + <<override>> Print() : void
+    + <<override>> Save() : bool
+}
+
+class WordDocument {
+    + IsCompatibilityMode : bool
+    + <<override>> Save() : bool
+}
+
+Document <|-- PdfDocument
+Document <|-- WordDocument
+
+note right of Document::Print
+  A **virtual** method.
+  Provides a default printing behavior,
+  but allows derived classes to change it.
+end note
+
+note right of Document::Save
+  An **abstract** method.
+  Forces all derived classes
+  to implement their own save logic.
+end note
+
+note right of WordDocument
+  This class inherits the default
+  Print() behavior from Document
+  but provides its own Save() logic.
+end note
+@enduml
+```
+
+## Exemplo Prático: Processador de Documentos
+
+Este código implementa a hierarquia do diagrama acima.
+
+```CSHARP
+// The abstract base class defines the contract.
+public abstract class Document
+{
+    public string Title { get; set; }
+
+    // This is a VIRTUAL method. It has a default implementation.
+    // Derived classes CAN override it, but they don't have to.
+    public virtual void Print()
+    {
+        Console.WriteLine($"Printing document '{this.Title}' to the default printer.");
+    }
+
+    // This is an ABSTRACT method. It has no implementation.
+    // Derived classes MUST provide their own implementation.
+    public abstract bool Save();
+}
+
+// A derived class providing its own implementations.
+public class PdfDocument : Document
+{
+    // This class OVERRIDES the Print method to add specific behavior.
+    public override void Print()
+    {
+        Console.WriteLine($"Opening Adobe Reader to print PDF document '{this.Title}'.");
+    }
+
+    // This class MUST override the Save method to fulfill the abstract contract.
+    public override bool Save()
+    {
+        Console.WriteLine($"Saving document '{this.Title}' as a PDF file.");
+        return true;
+    }
+}
+
+// Another derived class.
+public class WordDocument : Document
+{
+    // This class does NOT override Print(), so it will use the default
+    // implementation from the base Document class.
+
+    // It MUST, however, override the abstract Save method.
+    public override bool Save()
+    {
+        Console.WriteLine($"Saving document '{this.Title}' as a .docx file.");
+        return true;
+    }
+}
+
+public class DocumentProcessor
+{
+    public static void Main()
+    {
+        var documents = new List<Document>
+        {
+            new PdfDocument { Title = "My-Annual-Report" },
+            new WordDocument { Title = "My-Secret-Novel" }
+        };
+
+        foreach (var doc in documents)
+        {
+            Console.WriteLine($"--- Processing {doc.GetType().Name}: {doc.Title} ---");
+            doc.Print(); // The magic of polymorphism happens here!
+            doc.Save();
+            Console.WriteLine();
+        }
+    }
+}
+```
+
+## Tópicos Adicionais e Avançados
+
+Tip:
+
+`override` vs. `new` (Ocultação de Método): Existe outra palavra-chave, `new`, que pode ser usada em um método de uma classe filha com a mesma assinatura de um método da classe mãe. No entanto, `new` NÃO sobrescreve o método; ela apenas o oculta. Isso quebra o polimorfismo. Se um objeto `PdfDocument` for armazenado em uma variável do tipo `Document`, e o método `Print` fosse definido com `new`, a versão da classe `Document` seria chamada, não a da `PdfDocument`. O uso de `new` é raro e deve ser feito com extremo cuidado, pois quase sempre indica um problema de design. Sempre prefira `override` para especializar comportamento.
+
+Tip:
+
+`sealed override`: Você pode "selar" um método sobrescrito para impedir que classes mais abaixo na hierarquia o sobrescrevam novamente. `public sealed override void MyMethod() { ... }`. Isso "trava" a implementação naquele ponto da cadeia de herança.
+
+## Referências Oficiais da Microsoft
+
+* [Polimorfismo (Guia de Programação C#)](https://learn.microsoft.com/pt-br/dotnet/csharp/fundamentals/object-oriented/polymorphism)
+
+* [Palavras-chave virtual e override](https://learn.microsoft.com/pt-br/dotnet/csharp/language-reference/keywords/override-and-new-keywords)
+
+* [Sabendo quando usar override e new](https://learn.microsoft.com/pt-br/dotnet/csharp/programming-guide/classes-and-structs/knowing-when-to-use-override-and-new-keywords)
 
 
 
