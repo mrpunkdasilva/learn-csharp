@@ -197,5 +197,5 @@ public class DocumentProcessor
 ## Referências Oficiais da Microsoft
 
 -   [Polimorfismo (Guia de Programação C#)](https://learn.microsoft.com/pt-br/dotnet/csharp/fundamentals/object-oriented/polymorphism)
--   [Palavras-chave `virtual` e `override`](https://learn.microsoft.com/pt-br/dotnet/csharp/language-reference/keywords/override-and-new-keywords)
--   [Sabendo quando usar `override` e `new`](https://learn.microsoft.com/pt-br/dotnet/csharp/programming-guide/classes-and-structs/knowing-when-to-use-override-and-new-keywords)
+-   [Palavra-chave `override` (Referência de C#)](https://learn.microsoft.com/pt-br/dotnet/csharp/language-reference/keywords/override)
+-   [Controle de Versão com as Palavras-chave `override` e `new` (Guia de Programação C#)](https://learn.microsoft.com/pt-br/dotnet/csharp/programming-guide/classes-and-structs/versioning-with-the-override-and-new-keywords)
