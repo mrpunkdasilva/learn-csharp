@@ -93,12 +93,26 @@
             <toc-element topic="Iteration.md"/>
             <toc-element topic="ForEach.md"/>
         </toc-element>
+        <toc-element topic="Exceptions.md">
+            <toc-element topic="HandleExceptions.md"/>
+            <toc-element topic="TryCatchStatement.md"/>
+            <toc-element topic="ThrowExceptions.md"/>
+            <toc-element topic="CustoExceptions.md"/>
+        </toc-element>
 
         <toc-element topic="Katas.md">
             <toc-element topic="Kata-TextEditor.md"/>
             <toc-element topic="Kata-Conversor.md"/>
             <toc-element topic="Kata-Calculator.md"/>
         </toc-element>
+    </toc-element>
+    <toc-element topic="OPP.md">
+        <toc-element topic="ObjectOOP.md"/>
+        <toc-element topic="Class.md">
+        </toc-element>
+        <toc-element topic="Encapsulamento.md"/>
+        <toc-element topic="Abstracai.md"/>
+        <toc-element topic="Inherirance.md"/>
     </toc-element>
     <toc-element topic="References.md">
     </toc-element>

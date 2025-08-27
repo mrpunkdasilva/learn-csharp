@@ -1,0 +1,117 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#214C69"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-08-27T16:45:45.043947951"><title>Exce&ccedil;&otilde;es Personalizadas (Custom Exceptions) | Learn C#</title><script type="application/json" id="virtual-toc-data">[{"id":"analogia-o-painel-do-carro","level":0,"title":"Analogia: O Painel do Carro","anchor":"#analogia-o-painel-do-carro"},{"id":"por-que-criar-exce-es-personalizadas","level":0,"title":"Por Que Criar Exceções Personalizadas?","anchor":"#por-que-criar-exce-es-personalizadas"},{"id":"como-implementar-uma-exce-o-personalizada","level":0,"title":"Como Implementar uma Exceção Personalizada","anchor":"#como-implementar-uma-exce-o-personalizada"},{"id":"lan-ando-e-capturando-a-exce-o","level":0,"title":"Lançando e Capturando a Exceção","anchor":"#lan-ando-e-capturando-a-exce-o"},{"id":"refer-ncias-oficiais-da-microsoft","level":0,"title":"Referências Oficiais da Microsoft","anchor":"#refer-ncias-oficiais-da-microsoft"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Exce&ccedil;&otilde;es Personalizadas (Custom Exceptions) | Learn C#"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Learn C# Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/custoexceptions.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Exce&ccedil;&otilde;es Personalizadas (Custom Exceptions) | Learn C#"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/custoexceptions.html#webpage",
+    "url": "writerside-documentation/custoexceptions.html",
+    "name": "Exce&ccedil;&otilde;es Personalizadas (Custom Exceptions) | Learn C#",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Learn C# Help"
+}</script><!-- End Schema.org --></head><body data-id="CustoExceptions" data-main-title="Exceções Personalizadas (Custom Exceptions)" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Fundamentos///Exceptions.md|Exceções em C#"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Learn C#  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="CustoExceptions" id="CustoExceptions.md">Exceções Personalizadas (Custom Exceptions)</h1><p id="z3lx3d1_3">No desenvolvimento de software, prever e gerenciar erros &eacute; t&atilde;o crucial quanto escrever o c&oacute;digo para o &quot;caminho feliz&quot;. O .NET oferece uma vasta hierarquia de classes de exce&ccedil;&atilde;o para erros comuns, como <code class="code" id="z3lx3d1_9">FileNotFoundException</code> ou <code class="code" id="z3lx3d1_10">ArgumentNullException</code>. No entanto, h&aacute; momentos em que essas exce&ccedil;&otilde;es gen&eacute;ricas n&atilde;o s&atilde;o suficientes para descrever um problema espec&iacute;fico do dom&iacute;nio da sua aplica&ccedil;&atilde;o. &Eacute; aqui que entram as exce&ccedil;&otilde;es personalizadas.</p><section class="chapter"><h2 id="analogia-o-painel-do-carro" data-toc="analogia-o-painel-do-carro">Analogia: O Painel do Carro</h2><p id="z3lx3d1_11">Pense nas exce&ccedil;&otilde;es do sistema como as luzes de advert&ecirc;ncia gen&eacute;ricas em um carro. Uma luz de &quot;Verificar Motor&quot; (<code class="code" id="z3lx3d1_13">System.Exception</code>) informa que algo est&aacute; errado, mas n&atilde;o diz o qu&ecirc;. Pode ser um problema no motor, na transmiss&atilde;o ou no sistema de emiss&otilde;es. &Eacute; um sinal &uacute;til, mas vago.</p><p id="z3lx3d1_12">Uma exce&ccedil;&atilde;o personalizada, por outro lado, &eacute; como uma luz de advert&ecirc;ncia espec&iacute;fica: &quot;Press&atilde;o Baixa no Pneu&quot; ou &quot;N&iacute;vel de &Oacute;leo Baixo&quot;. Ela n&atilde;o apenas informa que h&aacute; um problema, mas tamb&eacute;m <span class="control" id="z3lx3d1_14">qual &eacute; o problema</span>, permitindo que o motorista (ou o desenvolvedor) tome a a&ccedil;&atilde;o correta e imediata. Melhor ainda, uma exce&ccedil;&atilde;o personalizada pode carregar dados extras, como qual pneu est&aacute; com a press&atilde;o baixa ou qual era o n&iacute;vel do &oacute;leo.</p></section><section class="chapter"><h2 id="por-que-criar-exce-es-personalizadas" data-toc="por-que-criar-exce-es-personalizadas">Por Que Criar Exce&ccedil;&otilde;es Personalizadas?</h2><ol class="list _decimal" id="z3lx3d1_15" type="1"><li class="list__item" id="z3lx3d1_16"><p id="z3lx3d1_19"><span class="control" id="z3lx3d1_20">Clareza e Sem&acirc;ntica</span>: Capturar uma <code class="code" id="z3lx3d1_21">InsufficientBalanceException</code> &eacute; muito mais leg&iacute;vel e expl&iacute;cito do que capturar uma <code class="code" id="z3lx3d1_22">InvalidOperationException</code> e ter que inspecionar a mensagem de texto para entender o contexto. Isso torna o c&oacute;digo de tratamento de erros mais limpo e auto-documentado.</p></li><li class="list__item" id="z3lx3d1_17"><p id="z3lx3d1_23"><span class="control" id="z3lx3d1_24">Adicionar Contexto ao Erro</span>: Exce&ccedil;&otilde;es personalizadas podem ter propriedades e m&eacute;todos pr&oacute;prios. Isso permite anexar informa&ccedil;&otilde;es valiosas sobre o estado do sistema no momento em que o erro ocorreu. Por exemplo, em uma <code class="code" id="z3lx3d1_25">InsufficientBalanceException</code>, voc&ecirc; pode incluir o saldo atual e o valor da tentativa de saque.</p></li><li class="list__item" id="z3lx3d1_18"><p id="z3lx3d1_26"><span class="control" id="z3lx3d1_27">Controle Granular do Fluxo</span>: Com exce&ccedil;&otilde;es espec&iacute;ficas, voc&ecirc; pode criar blocos <code class="code" id="z3lx3d1_28">catch</code> distintos para lidar com diferentes cen&aacute;rios de erro de maneiras diferentes. Um erro de &quot;Usu&aacute;rio N&atilde;o Encontrado&quot; pode ser tratado de uma forma, enquanto um erro de &quot;Conex&atilde;o com o Banco de Dados Falhou&quot; pode exigir uma l&oacute;gica de nova tentativa.</p></li></ol></section><section class="chapter"><h2 id="como-implementar-uma-exce-o-personalizada" data-toc="como-implementar-uma-exce-o-personalizada">Como Implementar uma Exce&ccedil;&atilde;o Personalizada</h2><p id="z3lx3d1_29">A cria&ccedil;&atilde;o de uma exce&ccedil;&atilde;o personalizada segue um padr&atilde;o bem definido. A regra fundamental &eacute; herdar da classe <code class="code" id="z3lx3d1_32">System.Exception</code> (ou de outra exce&ccedil;&atilde;o mais espec&iacute;fica, se fizer sentido).</p><section class="chapter"><h3 id="melhores-pr-ticas-de-implementa-o" data-toc="melhores-pr-ticas-de-implementa-o">Melhores Pr&aacute;ticas de Implementa&ccedil;&atilde;o</h3><ul class="list _bullet" id="z3lx3d1_33"><li class="list__item" id="z3lx3d1_34"><p id="z3lx3d1_38"><span class="control" id="z3lx3d1_39">Nome</span>: O nome da classe deve terminar com o sufixo <code class="code" id="z3lx3d1_40">Exception</code>.</p></li><li class="list__item" id="z3lx3d1_35"><p id="z3lx3d1_41"><span class="control" id="z3lx3d1_42">Heran&ccedil;a</span>: Herde diretamente de <code class="code" id="z3lx3d1_43">System.Exception</code>.</p></li><li class="list__item" id="z3lx3d1_36"><p id="z3lx3d1_44"><span class="control" id="z3lx3d1_45">Construtores</span>: Forne&ccedil;a os tr&ecirc;s construtores mais comuns para garantir que sua exce&ccedil;&atilde;o se comporte como as exce&ccedil;&otilde;es padr&atilde;o do .NET.</p></li><li class="list__item" id="z3lx3d1_37"><p id="z3lx3d1_46"><span class="control" id="z3lx3d1_47">Serializa&ccedil;&atilde;o</span>: Marque a exce&ccedil;&atilde;o com o atributo <code class="code" id="z3lx3d1_48">[Serializable]</code> para permitir que ela seja transportada atrav&eacute;s de limites de dom&iacute;nio de aplica&ccedil;&atilde;o (embora menos cr&iacute;tico em muitas arquiteturas modernas, ainda &eacute; uma boa pr&aacute;tica).</p></li></ul></section><section class="chapter"><h3 id="exemplo-detalhado-insufficientbalanceexception" data-toc="exemplo-detalhado-insufficientbalanceexception">Exemplo Detalhado: <code class="code" id="z3lx3d1_52">InsufficientBalanceException</code></h3><p id="z3lx3d1_50">Vamos criar uma exce&ccedil;&atilde;o para um sistema banc&aacute;rio.</p><div class="code-block" data-lang="csharp">
+using System;
+using System.Runtime.Serialization;
+
+[Serializable]
+public class InsufficientBalanceException : Exception
+{
+    public decimal CurrentBalance { get; }
+    public decimal WithdrawalAmount { get; }
+
+    // 1. Default constructor
+    public InsufficientBalanceException()
+        : base(&quot;Insufficient balance to perform the operation.&quot;) { }
+
+    // 2. Constructor that accepts a custom message
+    public InsufficientBalanceException(string message)
+        : base(message) { }
+
+    // 3. Constructor that wraps an inner exception
+    public InsufficientBalanceException(string message, Exception innerException)
+        : base(message, innerException) { }
+
+    // 4. Rich constructor with specific error data
+    public InsufficientBalanceException(decimal currentBalance, decimal withdrawalAmount)
+        : base($&quot;Attempted to withdraw {withdrawalAmount:C} when the balance was only {currentBalance:C}.&quot;)
+    {
+        CurrentBalance = currentBalance;
+        WithdrawalAmount = withdrawalAmount;
+    }
+
+    // Constructor for deserialization
+    protected InsufficientBalanceException(SerializationInfo info, StreamingContext context)
+        : base(info, context)
+    {
+    }
+}
+</div></section></section><section class="chapter"><h2 id="lan-ando-e-capturando-a-exce-o" data-toc="lan-ando-e-capturando-a-exce-o">Lan&ccedil;ando e Capturando a Exce&ccedil;&atilde;o</h2><p id="z3lx3d1_53">Uma vez definida, voc&ecirc; pode lan&ccedil;&aacute;-la (<code class="code" id="z3lx3d1_56">throw</code>) em seu c&oacute;digo quando a condi&ccedil;&atilde;o de erro espec&iacute;fica for atendida e captur&aacute;-la (<code class="code" id="z3lx3d1_57">catch</code>) em um bloco de tratamento de erros.</p><div class="code-block" data-lang="csharp">
+public class BankAccount
+{
+    public decimal Balance { get; private set; }
+
+    public BankAccount(decimal initialBalance)
+    {
+        Balance = initialBalance;
+    }
+
+    public void Withdraw(decimal amount)
+    {
+        if (amount &lt;= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(amount), &quot;The withdrawal amount must be positive.&quot;);
+        }
+
+        if (amount &gt; Balance)
+        {
+            // Throwing our custom exception with context!
+            throw new InsufficientBalanceException(Balance, amount);
+        }
+
+        Balance -= amount;
+        Console.WriteLine($&quot;Withdrawal of {amount:C} successful. New balance: {Balance:C}&quot;);
+    }
+}
+
+public class ATM
+{
+    public static void Main()
+    {
+        var account = new BankAccount(100.00m);
+
+        try
+        {
+            Console.WriteLine(&quot;Attempting to withdraw 50.00...&quot;);
+            account.Withdraw(50.00m); // Success
+
+            Console.WriteLine(&quot;\nAttempting to withdraw 80.00...&quot;);
+            account.Withdraw(80.00m); // Failure
+        }
+        catch (InsufficientBalanceException ex)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(&quot;\n--- Operation Failed ---&quot;);
+            Console.WriteLine($&quot;Error Detail: {ex.Message}&quot;);
+            Console.WriteLine($&quot;Recommended Action: Try a smaller amount, up to {ex.CurrentBalance:C}.&quot;);
+            Console.ResetColor();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($&quot;An unexpected error occurred: {ex.GetType().Name} - {ex.Message}&quot;);
+        }
+    }
+}
+</div><section class="chapter"><h3 id="sa-da-do-console" data-toc="sa-da-do-console">Sa&iacute;da do Console:</h3><div class="code-block" data-lang="none">
+Attempting to withdraw 50.00...
+Withdrawal of $50.00 successful. New balance: $50.00
+
+Attempting to withdraw 80.00...
+
+--- Operation Failed ---
+Error Detail: Attempted to withdraw $80.00 when the balance was only $50.00.
+Recommended Action: Try a smaller amount, up to $50.00.
+</div></section></section><section class="chapter"><h2 id="refer-ncias-oficiais-da-microsoft" data-toc="refer-ncias-oficiais-da-microsoft">Refer&ecirc;ncias Oficiais da Microsoft</h2><p id="z3lx3d1_59">Para um aprofundamento no t&oacute;pico e para seguir as diretrizes oficiais, consulte a documenta&ccedil;&atilde;o da Microsoft:</p><ul class="list _bullet" id="z3lx3d1_60"><li class="list__item" id="z3lx3d1_61"><p id="z3lx3d1_63"><a href="https://learn.microsoft.com/pt-br/dotnet/standard/exceptions/creating-and-throwing-exceptions" id="z3lx3d1_64" data-external="true" rel="noopener noreferrer" target="_blank">Criando e lan&ccedil;ando exce&ccedil;&otilde;es</a></p></li><li class="list__item" id="z3lx3d1_62"><p id="z3lx3d1_65"><a href="https://learn.microsoft.com/pt-br/dotnet/standard/exceptions/best-practices-for-exceptions" id="z3lx3d1_66" data-external="true" rel="noopener noreferrer" target="_blank">Pr&aacute;ticas recomendadas para exce&ccedil;&otilde;es</a></p></li></ul></section><div class="last-modified">27 August 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="throwexceptions.html" class="navigation-links__prev">Lan&ccedil;ando Exce&ccedil;&otilde;es (Throwing Exceptions)</a><a href="katas.html" class="navigation-links__next">Katas</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

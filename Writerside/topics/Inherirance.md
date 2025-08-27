@@ -1,0 +1,3 @@
+# Inherirance
+
+Start typing here...

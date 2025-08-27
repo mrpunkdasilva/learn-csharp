@@ -1,0 +1,49 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#214C69"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-08-27T16:45:45.018992785"><title>A Estrutura try-catch | Learn C#</title><script type="application/json" id="virtual-toc-data">[{"id":"capturando-detalhes-da-exce-o","level":0,"title":"Capturando Detalhes da Exceção","anchor":"#capturando-detalhes-da-exce-o"},{"id":"nota-importante-sobre-o-escopo","level":0,"title":"Nota Importante sobre o Escopo","anchor":"#nota-importante-sobre-o-escopo"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="A Estrutura try-catch | Learn C#"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Learn C# Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/trycatchstatement.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="A Estrutura try-catch | Learn C#"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/trycatchstatement.html#webpage",
+    "url": "writerside-documentation/trycatchstatement.html",
+    "name": "A Estrutura try-catch | Learn C#",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Learn C# Help"
+}</script><!-- End Schema.org --></head><body data-id="TryCatchStatement" data-main-title="A Estrutura try-catch" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Fundamentos///Exceptions.md|Exceções em C#"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Learn C#  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="TryCatchStatement" id="TryCatchStatement.md">A Estrutura try-catch</h1><p id="-4dynt6_3">O bloco <code class="code" id="-4dynt6_9">try-catch</code> &eacute; o pilar do tratamento de exce&ccedil;&otilde;es em C#. Ele nos permite isolar um c&oacute;digo que pode falhar e definir um plano de a&ccedil;&atilde;o para quando a falha de fato ocorrer.</p><p id="-4dynt6_4">O funcionamento &eacute; direto:</p><ul class="list _bullet" id="-4dynt6_5"><li class="list__item" id="-4dynt6_10"><p id="-4dynt6_12"><span class="control" id="-4dynt6_13"><code class="code" id="-4dynt6_14">try</code></span>: O c&oacute;digo que pode potencialmente lan&ccedil;ar uma exce&ccedil;&atilde;o &eacute; colocado aqui. O programa tenta execut&aacute;-lo normalmente.</p></li><li class="list__item" id="-4dynt6_11"><p id="-4dynt6_15"><span class="control" id="-4dynt6_16"><code class="code" id="-4dynt6_19">catch</code></span>: Se, e somente se, uma exce&ccedil;&atilde;o ocorrer no bloco <code class="code" id="-4dynt6_17">try</code>, a execu&ccedil;&atilde;o normal &eacute; interrompida e o controle pula imediatamente para o bloco <code class="code" id="-4dynt6_18">catch</code>. &Eacute; o nosso &quot;plano de conting&ecirc;ncia&quot;.</p></li></ul><div class="code-block" data-lang="csharp">
+try 
+{
+    // Code that might cause an exception is placed here.
+    // For example, attempting to divide by zero.
+    int numerator = 10;
+    int denominator = 0;
+    int result = numerator / denominator; // This line will throw a DivideByZeroException.
+
+    // This line will never be reached because the exception occurs before it.
+    Console.WriteLine(&quot;Calculation successful!&quot;);
+} 
+catch 
+{
+    // If the code in the try block fails, this code is executed.
+    Console.WriteLine(&quot;An error occurred during the calculation.&quot;);
+}
+</div><section class="chapter"><h2 id="capturando-detalhes-da-exce-o" data-toc="capturando-detalhes-da-exce-o">Capturando Detalhes da Exce&ccedil;&atilde;o</h2><p id="-4dynt6_20">Na maioria das vezes, apenas saber que um erro ocorreu n&atilde;o &eacute; suficiente. Precisamos de detalhes: o que deu errado? Onde?</p><p id="-4dynt6_21">Para isso, podemos capturar a exce&ccedil;&atilde;o em um objeto dentro do bloco <code class="code" id="-4dynt6_26">catch</code>. Esse objeto, geralmente chamado de <code class="code" id="-4dynt6_27">ex</code> por conven&ccedil;&atilde;o, cont&eacute;m informa&ccedil;&otilde;es valiosas para depura&ccedil;&atilde;o.</p><p id="-4dynt6_22">As propriedades mais usadas s&atilde;o:</p><ul class="list _bullet" id="-4dynt6_23"><li class="list__item" id="-4dynt6_28"><p id="-4dynt6_30"><code class="code" id="-4dynt6_31">ex.Message</code>: Uma string que descreve o erro.</p></li><li class="list__item" id="-4dynt6_29"><p id="-4dynt6_32"><code class="code" id="-4dynt6_33">ex.StackTrace</code>: Um &quot;rastro&quot; de texto que mostra exatamente em qual m&eacute;todo o erro ocorreu e a sequ&ecirc;ncia de chamadas que levou at&eacute; ele.</p></li></ul><div class="code-block" data-lang="csharp">
+try 
+{
+    int numerator = 10;
+    int denominator = 0;
+    int result = numerator / denominator;
+} 
+catch (Exception ex)  
+{
+    // We catch the Exception object to get more details.
+    Console.WriteLine(&quot;An exception was caught!&quot;);
+    Console.WriteLine($&quot;Error Message: {ex.Message}&quot;);
+
+    // The StackTrace is very useful for debugging but can be long.
+    // Console.WriteLine($&quot;Stack Trace: {ex.StackTrace}&quot;);
+}
+</div><aside class="prompt" data-type="tip" data-title="" id="-4dynt6_25"><p id="-4dynt6_34">Ao executar o c&oacute;digo acima, a propriedade <code class="code" id="-4dynt6_35">ex.Message</code> conteria um texto como &quot;Attempted to divide by zero.&quot;.</p></aside></section><section class="chapter"><h2 id="nota-importante-sobre-o-escopo" data-toc="nota-importante-sobre-o-escopo">Nota Importante sobre o Escopo</h2><aside class="prompt" data-type="warning" data-title="" id="-4dynt6_36"><p id="-4dynt6_37">Use blocos <code class="code" id="-4dynt6_38">try-catch</code> de forma cir&uacute;rgica, apenas ao redor do c&oacute;digo que voc&ecirc; suspeita que pode gerar uma exce&ccedil;&atilde;o e que voc&ecirc; sabe como tratar. Evite envolver m&eacute;todos inteiros ou grandes partes do seu programa em um &uacute;nico <code class="code" id="-4dynt6_39">try-catch</code>. Fazer isso pode esconder bugs e tornar o c&oacute;digo mais dif&iacute;cil de depurar e manter.</p></aside></section><div class="last-modified">25 August 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="handleexceptions.html" class="navigation-links__prev">Tratamento de Exce&ccedil;&otilde;es</a><a href="throwexceptions.html" class="navigation-links__next">Lan&ccedil;ando Exce&ccedil;&otilde;es (Throwing Exceptions)</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>
