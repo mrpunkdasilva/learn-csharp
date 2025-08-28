@@ -109,7 +109,9 @@
     <toc-element topic="OPP.md">
         <toc-element toc-title="Elementos">
             <toc-element topic="ObjectOOP.md"/>
-            <toc-element topic="Class.md"/>
+            <toc-element topic="Class.md">
+                <toc-element topic="Classes-Estaticas.md"/>
+            </toc-element>
             <toc-element topic="Propriedades.md"/>
             <toc-element topic="Metodos.md">
                 <toc-element topic="Contructor.md"/>
@@ -126,6 +128,7 @@
         </toc-element>
     <toc-element topic="Modificators.md"/>
         <toc-element topic="ComplexTypes.md"/>
+        <toc-element topic="Using-and-Disposing.md"/>
     </toc-element>
     <toc-element topic="References.md">
     </toc-element>
